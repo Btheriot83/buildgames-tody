@@ -1696,3 +1696,23 @@ body {
   letter-spacing: 0.16em !important;
 }
 .stamp-btn svg { transform: translateY(-6px) scale(1.08) !important; }
+
+
+/* r7 — fonts: household mark + meta utility */
+.billboard-ledger h1 {
+  font-size: clamp(1.85rem, 3.8vw, 2.5rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.032em !important;
+}
+.billboard-ledger p {
+  font-size: 1.02rem !important;
+  line-height: 1.4 !important;
+}
+.chore-meta {
+  font-size: 0.74rem !important;
+  letter-spacing: 0.01em;
+}
+.eyebrow {
+  font-size: 0.64rem !important;
+  letter-spacing: 0.13em !important;
+}
