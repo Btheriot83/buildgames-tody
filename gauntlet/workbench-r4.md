@@ -136,3 +136,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Mark size closer to dream-target without abandoning Newsreader identity.
 - commit: 5094758
 - transitions: (none)
+
+## r19 — contrast
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r19-after-contrast.png
+- verdict: Chrome tape/streak contrast holds; success-check still fires beside streak on slap.
+- commit: 4d0623f
+- transitions: success-check (.t-success-check) on magnet slap; skeleton-reveal on board load
