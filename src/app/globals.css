@@ -1923,3 +1923,77 @@ header .streak-ring { opacity: 0.85; }
   font-weight: 500;
   line-height: 1.3;
 }
+
+/* craft2: ink plate craft — sharp letterpress, press-offset shadow */
+:root {
+  --plate-radius: 4px;
+  --plate-shadow: 3px 3px 0 rgba(34, 28, 36, 0.09);
+  --plate-shadow-lift: 4px 5px 0 rgba(34, 28, 36, 0.12);
+}
+
+.fun-card {
+  border-radius: var(--plate-radius) !important;
+  box-shadow: var(--plate-shadow) !important;
+  border-bottom: 1.5px solid var(--ink) !important;
+}
+.fun-card:hover {
+  box-shadow: var(--plate-shadow-lift) !important;
+}
+.chore-tile.fun-card,
+.room-tile.fun-card,
+.today-room-chip.fun-card {
+  border-radius: var(--plate-radius) !important;
+}
+.room-tile.fun-card {
+  border-radius: 6px !important;
+  position: relative;
+}
+/* register marks — tiny letterpress corner ticks */
+.room-tile.fun-card::before,
+.room-tile.fun-card::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: var(--ink);
+  border-style: solid;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 2;
+}
+.room-tile.fun-card::before {
+  top: 6px;
+  left: 6px;
+  border-width: 1.5px 0 0 1.5px;
+}
+.room-tile.fun-card::after {
+  bottom: 6px;
+  right: 6px;
+  border-width: 0 1.5px 1.5px 0;
+}
+.room-tile-art {
+  border-radius: 3px !important;
+  border-color: var(--ink) !important;
+  box-shadow: inset 0 0 0 1px rgba(34, 28, 36, 0.04);
+}
+.room-tile-art img {
+  filter: contrast(1.05) saturate(0.85);
+}
+.today-aside.tile,
+.job-strip,
+.room-detail-plate.tile,
+.empty-quiet.fun-card {
+  border-radius: var(--plate-radius) !important;
+  box-shadow: var(--plate-shadow) !important;
+  border: 1px solid var(--rule-strong);
+  border-bottom: 1.5px solid var(--ink);
+}
+.chore-tile.fun-card {
+  background: var(--tile);
+}
+.chore-tile[data-status="overdue"] {
+  border-left: 3px solid var(--ink) !important;
+}
+.chore-tile[data-status="due"] {
+  border-left: 3px solid var(--slate) !important;
+}
