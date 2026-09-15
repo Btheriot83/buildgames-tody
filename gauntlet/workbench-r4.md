@@ -115,3 +115,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: CTA triad matches dream-target weight better; original coral Get Tody still category winner.
 - commit: 14e8773
 - transitions: toast on Undo / New chore / Plan accept
+
+## r16 — contrast
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r16-after-contrast.png
+- verdict: Later quieter than Due kraft; Due remains the job fold.
+- commit: c010e78
+- transitions: texts-reveal / stagger already on household billboard load

@@ -1012,3 +1012,12 @@ body {
   box-shadow: none !important;
 }
 .aside-actions .btn-clay { font-size: 1rem !important; padding-inline: 1.1rem; }
+
+
+/* r16 — contrast: Later cards quieter than Due kraft */
+.later-card {
+  background: #f7f1e6 !important;
+  border: 1.5px solid var(--ink) !important;
+  opacity: 0.95;
+}
+.later-card .later-title { font-weight: 700; font-size: 0.98rem; }
