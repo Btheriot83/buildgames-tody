@@ -27,3 +27,4 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat18 | Dirt bar height/gaps 6-seg | beat18-bargap.png | Spottable bar-gap |
 | beat19 | Press indent + square ink flecks | beat19-alive.png | Spottable alive |
 | beat20 | Hand job-hint + toast copy | beat20-copy.png | Spottable copy |
+| beat21 | Mono chore-meta + serif later titles | beat21-fonts.png | Spottable fonts |

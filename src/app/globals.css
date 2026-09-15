@@ -850,3 +850,28 @@ details .btn { border-radius: 2px; }
   background: var(--ink) !important;
   border-radius: 0 !important; /* square ink flecks, not soft dots */
 }
+
+
+/* beat21 — fonts: meta mono + section measure */
+.chore-meta {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.job-strip .job-hint {
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: 0.9rem !important;
+  color: var(--ink-soft) !important;
+}
+.job-strip .job-verb {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+}
+.later-title {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+}
+.label, .eyebrow {
+  font-family: var(--font-mono), monospace !important;
+}
