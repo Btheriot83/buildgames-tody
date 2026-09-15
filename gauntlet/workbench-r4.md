@@ -31,3 +31,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Tomato New chore earns weight vs Plan/Undo; original coral CTA still slicker marketing.
 - commit: efada60
 - transitions: toast already fires on magnet slap / undo / add
+
+## r4 — bar-gap
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r4-after-bar-gap.png
+- verdict: List denser like Tody rows; original still wins colorful room tiles.
+- commit: f5a81fc
+- transitions: (none)

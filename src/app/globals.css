@@ -905,3 +905,9 @@ body {
   font-weight: 600;
   box-shadow: none;
 }
+
+
+/* r4 — bar gap: denser Due list like Tody task rows */
+.today-list { gap: 0.45rem !important; }
+.chore-tile { padding: 0.78rem 0.9rem !important; }
+.chore-title-row { gap: 0.4rem; }
