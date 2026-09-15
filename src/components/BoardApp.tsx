@@ -16,7 +16,6 @@ import {
   type LocalHousehold,
 } from "@/lib/local-board";
 import type { PlannedChore } from "@/lib/plan-chores";
-import { WaterShader } from "./WaterShader";
 import { useToast } from "./Toast";
 import { SlidingTabs } from "./SlidingTabs";
 import { SuccessCheck } from "./SuccessCheck";
@@ -298,7 +297,6 @@ export function BoardApp() {
         <span>Slap magnet</span>
         <span>Done</span>
       </div>
-      <WaterShader />
       {toastNode}
       <StampMotion play={justDone} />
       <header

@@ -12,6 +12,7 @@
 - Mint wipe `#3d8f78` (success only)
 - Steel rule `#c5ccd4` / `#aeb6bf`
 - **Forbidden:** bathhouse sea-glass as brand, vibe purple, glassmorphism, Fraunces-everywhere
+- **Hard bar (Brandon/Inkwell):** no decorative linear/radial/mesh gradients; no glass blur; no glow. Flat fills + real photos only.
 
 ## Type
 - **Mark / household name:** Newsreader (`--font-display`) — clipboard header only

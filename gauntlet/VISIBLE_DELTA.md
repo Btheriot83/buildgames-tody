@@ -18,3 +18,5 @@
 3. **Tomato magnet stamp** — Round red magnet with `DONE` label (not blank clay square).
 4. **Kraft chore cards** on enamel fridge field; household name **Camelback bungalow** with real chores (Wipe island, Sweep garage bay grit…).
 5. **Materials** — Empty fridge photo + circular magnet-beat rail (not ceramic wash plate).
+
+6. **Flat materials** — enamel photo + solid fills only; decorative gradients / glass blur / glow killed (Brandon Inkwell hard bar).

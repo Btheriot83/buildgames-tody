@@ -75,3 +75,7 @@
 
 ## Blind stance vs original
 Original still wins overall polish/native. Candidate wins: ≤3s chore-job read, magnet stamp craft, real Camelback data, anti-slop. No further reseed without Brandon.
+
+
+## Brandon hard bar carry-through (Inkwell → all apps)
+After R2 rounds: stripped all decorative `linear/radial/conic-gradient` from `globals.css` (0 remaining). Removed WaterShader. Transitions blur/glow tokens zeroed. Shadows = hard offset only. Flat tomato magnet + enamel photo field.
