@@ -1,0 +1,56 @@
+{
+  "slug": "ten-options-then-remix",
+  "number": 12,
+  "stage": "Discover",
+  "title": "Ask for ten options, then remix",
+  "principle": "Ask for many options; most won’t be good, and that’s fine—one or two will be. Then remix: pick favorites and ask for riffs that combine them. Claude creates options and starting points so you don’t stare at a blank canvas; you choose what’s good alone or as a combination of versions.",
+  "procedure": [
+    "Ask for a large batch (e.g. ten) with deliberate variation.",
+    "Expect most to miss; keep one or two.",
+    "Name what works across favorites (layout from B, type from D).",
+    "Ask for several riffs that combine those pieces; repeat if needed.",
+    "Use volume specifically when collecting colleague feedback on flows."
+  ],
+  "examplePrompts": [
+    "Give me 10 distinct options for this brief. Vary layout, hierarchy, and visual language. I will pick; do not optimize for a single “best” answer.",
+    "I like option B and a little of option D. Give me five riffs that smoosh those together."
+  ],
+  "tips": [
+    "Volume is intentional: most options can fail if a few succeed.",
+    "Remix across versions instead of polishing one weak default.",
+    "Nate also generates many flow versions specifically to collect colleague feedback."
+  ],
+  "sourceUrls": [
+    "https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them"
+  ],
+  "related": [
+    "thinking-before-prompt",
+    "wireframe-first",
+    "specify-the-look",
+    "critic-subagents"
+  ],
+  "workedExamples": [
+    {
+      "title": "“Option B + a little of D”",
+      "body": "Nate’s remix line: like B and a little of D—give five riffs that smoosh them together. Most options won’t be good; that’s fine. Cite: Anthropic blog."
+    }
+  ],
+  "antiPatterns": [
+    "Polishing one weak default instead of sampling.",
+    "Asking for “the best” single answer."
+  ],
+  "checklist": [
+    "Batch size is large enough to explore.",
+    "Remix cites specific options.",
+    "Feedback round uses multiple flow versions when needed."
+  ],
+  "promptWhy": [
+    "Volume + explicit “I will pick” stops single-answer collapse.",
+    "Named remix targets turn selection into a generative step."
+  ],
+  "pairsWellWith": [
+    "wireframe-first",
+    "thinking-before-prompt",
+    "critic-subagents"
+  ]
+}

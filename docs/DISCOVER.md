@@ -1,53 +1,75 @@
-# Discover — Tileboard / Tody (WEAK reseed · Anshu 1–8)
+# Discover — Tileboard / Cool Letterpress Checklist
 
-Generated: 2026-09-14 ~11:50 PM PT · App Desk WEAK: Brandon wants to love Fridge Magnet Board but finds prior craft “a little ugly.”
+Sources: `docs/catalog-cache/` pulled from https://design-catalog-three.vercel.app/data/  
+`index.json` → anshuMapping + canonicalApps.tileboard · FOR_AGENTS.md · narrow/DESIGN_CATALOG_GUIDE.md  
+Generated: 2026-09-15 ~12:35 AM PT · Do not message Brandon.
 
-## Seed
+## Technique 01 — seed-strings (prompts.json verbatim procedure)
+
+Catalog prompt (`seed-strings` index 1):
+
 ```
-84a38a6ec782d04df071affafec351e7e57e37e2f1230f829edb5d9a3d5439bd
+I want you to build me a landing page for my productivity app.
+
+Follow this procedure:
+
+1. Generate a long, random alphanumeric string using a shell script.
+2. Define the creative direction (color scheme, layout, typography, etc.) based on the string. Look beyond the surface for subpatterns, special numbers, anything that inspires you.
+3. Use your judgment to bring this direction to life and make it look great.
+
+Don't reveal the string in the design. It's only for your inspiration.
 ```
-Derived via `openssl rand -hex 32`. **Not shown in UI.**
 
-### Subpattern reads
-| Slice | Read | Design pull |
-|-------|------|-------------|
-| `84a3` / `8a6e` | warm terracotta / sage quiet | tomato magnet stays primary; quiet mint only for wiped success |
-| `c782d04d` | cream enamel | flat enamel ground (no photo steel) |
-| `f071affa` | coral tomato | magnet slap disc |
-| `fec3517e` | kraft + steel blue | chore slip + hairline rules |
-| `37e2f123` | enamel white / charcoal | paper white + ink |
-| `0f829edb` | cobalt / soft green | member chips |
-| `5d9a3d54` | slate / deep ink | hierarchy, not brutal borders |
-| `39bd` | cool gray | mute meta |
+Adapted to Tileboard (chore PWA, not landing): ran `openssl rand -hex 32` →
 
-## Feel statement (sensory)
-A quiet white enamel fridge door — not brushed stainless, not craft-fair brutalism. Kraft slips under soft tomato magnets you actually want to slap. Hairline steel rules. Room for breath. Household Today chores obvious in ≤3s. Lovable kitchen utility, not a moodboard collage.
+```
+42afb12b2f3069ca8f74bbc5f076ca6aa406e5bec38e610b825117e23b628515
+```
 
-## Broad idea list (Technique 2)
-1. Quiet Enamel Fridge Magnet Board ← **picked** (craft reseed of Fridge Magnet Board)
-2. Soft Dry-Erase Family Board (Tody-adjacent; risk of clone)
-3. Cork + pin chore slips (cute; weaker slap affordance)
-4. Colorful magnet tile grid (Tody room grid clone risk)
-5. Kitchen clipboard spring-clip (stationery, less playful)
-6. Laundry punch card (too narrow)
-7. Scout sash (reject — cute costume)
-8. Prior steel-photo Fridge Magnet (reject — Brandon: ugly)
-9. Bathhouse ledger (reject — already discarded)
-10. Submarine ballast (reject — costume)
+**Not shown in UI.**
 
-## Direction briefs (2–3 bold)
+### Subpattern → direction
+| Slice | Spark | Pull |
+|-------|-------|------|
+| `42af`/`b12b` | cool slate / deep ink | cool paper + letterpress black |
+| `8f74bbc5` | cool gray-blue mist | paper `#FAF9F7` cool cast |
+| `a406e5` / `610b82` | plum digits | ink only — **never** vibe-purple chrome |
+| `5117e2`/`3b62` | cool blue-slate | one mark `#3D4F63` |
+| `8515` | olive end | quiet done `#3F5A4A` |
 
-### A — Quiet Enamel Fridge Magnet Board (PICK)
-Flat enamel paper ground (no stainless photo wash). Kraft chore slips with hairline rules. Tomato magnet disc as the complete control with real enamel magnet photography on the stamp face only. Cobalt/mustard member magnets as soft chips. Dirt = dry-erase residue segments. Cut materials strip + loud magnet tape from the fold. Job ≤3s: Due today → slap tomato magnet.
+Feel: cool letterpress checklist on cotton paper. One job: what’s due in this house today. Not fridge magnet costume. Not red overdue scream.
 
-### B — Soft Dry-Erase Family Board
-Mint-adjacent white board + marker wipe. Closer to Tody pressure bars; weaker unique magnet slap identity.
+## Technique 02 — ambitious-prompts (+ 12 ten-options)
 
-### C — Cork Kitchen Slip Board
-Warm cork + pins. Cozy but loses physical magnet slap craft.
+Catalog (`ambitious-prompts` index 4) verbatim:
 
-## Pick + why
-**Quiet Enamel Fridge Magnet Board** — keeps Fridge Magnet Board identity name and tomato-magnet job clarity (WEAK allows craft reseed). Fixes ugliness: steel photo wash, thick brutal borders, materials clutter. Ambitious enough to feel lovable without becoming Tody mint marketing.
+```
+I want to come up with a bold, unique design language for my product. Can you list as many ideas as you can, with short, high-level descriptions? Go broad, not deep.
+```
+
+### Ten options (12 / prompts.json index 1 spirit — volume, human picks)
+1. Cool Letterpress Checklist ← **PICK**
+2. Quiet Folio Due Board
+3. Cotton Paper Household Index
+4. Soft Dry-Erase Family Board (Tody clone risk)
+5. Scandinavian Pegboard
+6. Fridge Magnet / Quiet Enamel — **REJECT** (Brandon: still ugly)
+7. Ceramic Stamp Pad (skeuomorphic risk)
+8. Botanical Herbarium slips (costume)
+9. Mid-century tile mosaic (busy)
+10. Warm Linen & Brass (warmer than seed)
+
+Remix (catalog `ten-options-then-remix` index 2 pattern): option **1** + a little of **2**.
+
+### Human feel notes → sharpen (catalog ambitious index 5 pattern)
+Cool Letterpress Checklist:
+- Tactile paper/ink, satisfying check-press — not cartoony fridge magnets
+- Avoid skeuomorphic tomato magnets / kraft comic offsets (tacky)
+- Texture via real letterpress photos, not gray gradient chrome
+- One cool slate accent; no red overdue scream; no vibe purple
+
+### Agent POC brief (catalog ambitious index 6)
+Build Tileboard as a cool letterpress household checklist: paper `#FAF9F7`, ink `#221C24`, slate `#3D4F63`, Newsreader + Source Sans 3 + IBM Plex Mono. Today due list + ink check-press complete. Local-first. Beat https://todyapp.com/ craft without cloning mint/coral/Dusty.
 
 ## Discarded
-Prior steel-photo Fridge Magnet craft — readable but “a little ugly”; materials strip + hard offset shadows read DIY, not product Brandon can love.
+Fridge Magnet Board / Quiet Enamel; bathhouse; stainless photo; neo-brutal comic offsets; tomato clay primary.

@@ -1,0 +1,60 @@
+{
+  "slug": "hand-rewrite-copy",
+  "number": 8,
+  "stage": "Deliver",
+  "title": "Rewrite copy by hand",
+  "principle": "Visual polish can still leave AI voice in the words. Name lines, empty states, CTAs, errors, and onboarding survive longest as tells. Don’t ask the model to “make it sound human”—rewrite the critical lines yourself with specific detail and opinion.",
+  "procedure": [
+    "List the high-leverage strings: product name line / tagline, empty states, primary CTA, error messages, onboarding steps.",
+    "Rewrite each by hand—short, concrete, opinionated; cut hedges and template enthusiasm.",
+    "Paste the human copy back for the agent to wire up without “improving” the wording.",
+    "Spot-check that no regenerated marketing blurbs reappear on later passes."
+  ],
+  "examplePrompts": [
+    "Do not rewrite these strings. Wire them exactly as written:\n\n- Name line: <your hand-written line>\n- Empty state: <your hand-written empty state>\n- Primary CTA: <your hand-written CTA>\n- Error: <your hand-written error>\n- Onboarding step 1–n: <your hand-written steps>\n\nIf you need more UI copy, leave a TODO comment rather than inventing marketing language."
+  ],
+  "tips": [
+    "Copy is where AI tells linger after the visuals look intentional.",
+    "Specific lived detail beats polished generic claims.",
+    "Protect hand-written strings from “helpful” regenerations in later agent turns."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
+  ],
+  "related": [
+    "remove-ai-tells",
+    "cut-elements",
+    "last-mile-manual"
+  ],
+  "workedExamples": [
+    {
+      "title": "Hero rewrite on this desk",
+      "before": "How to turn AI into a world-class designer",
+      "after": "Techniques for getting past average AI design",
+      "body": "docs/REDESIGN.md — hand rewrite as Technique 8 practice. Deeper Lenny examples for technique 8 are paywalled in the free preview; we don’t invent quotes."
+    },
+    {
+      "title": "Protect strings from “helpful” regen",
+      "body": "Wire hand-written name line, empty state, CTA, errors, onboarding exactly; TODO rather than inventing marketing blurbs on later turns."
+    }
+  ],
+  "antiPatterns": [
+    "Asking the model to “make the copy sound more human.”",
+    "Letting later agent turns regenerate hero/CTA wording.",
+    "Polished generic claims instead of specific lived detail."
+  ],
+  "checklist": [
+    "High-leverage strings listed (tagline, empty, CTA, errors, onboarding).",
+    "Each rewritten by a human with opinion and specificity.",
+    "Agent instructed not to alter those strings.",
+    "Spot-checked after later passes for regenerated blurbs."
+  ],
+  "promptWhy": [
+    "Exact-string wiring + TODO fallback stops the model from re-AI-ing the voice."
+  ],
+  "pairsWellWith": [
+    "remove-ai-tells",
+    "cut-elements",
+    "last-mile-manual"
+  ]
+}

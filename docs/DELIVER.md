@@ -1,37 +1,54 @@
-# Deliver — Tileboard / Quiet Enamel Fridge Magnet Board (WEAK reseed)
+# Deliver — Tileboard / Cool Letterpress Checklist
 
-Phase A · Anshu 6–8 · 2026-09-14 ~11:55 PM PT
+Sources: catalog prompts for cut / remove-ai-tells / hand-rewrite-copy · 2026-09-15
 
-## Technique 6 — Cut
-- Removed Today-fold materials strip + magnet-beat rail (art lives in empty state + slap reel)
-- Softened neo-brutal thick black borders → hairline steel rules
-- Softened comic 6px offsets → quiet 1–2px hard offsets (no blur glow)
-- Quiet magnet tape (3 labels, not 4 loud chips)
-- Demoted stainless photo body → quiet enamel wash photo
+## Technique 06 — cut-elements
 
-## Technique 7 — Anti-slop
-Cleared ANTI_SLOP.md instant-fails:
-- [x] No vibe purple
-- [x] No decorative gradients (flat fills + photo textures only)
-- [x] No Inter/Geist default (Source Sans 3 + Newsreader mark + Plex mono)
-- [x] No glassmorphism cluster
-- [x] No fake stats dashboard
-- [x] No Fraunces-everywhere
-- [x] No emoji nav
-- [x] No SAMPLE / lorem chore titles
-- [x] No colored glow / blur elevation
+Catalog spirit (deletion bullets). Applied to Tileboard:
 
-## Technique 8 — Hand copy (before → after)
-| Slot | Before (steel craft) | After (Quiet Enamel) |
-|------|----------------------|----------------------|
-| Tagline | What’s due on the fridge. Slap the magnet. Chore’s done. | Due on the fridge. Slap the magnet — done. |
-| Job verb | Today → stamp complete | Today → slap complete |
-| Job hint | Open Due today. Slap the red magnet… | Due today. Slap the tomato magnet. Residue wipes. |
-| Empty | Board’s clear. | Fridge is clear. |
-| Empty hint | Nothing due. Stick a new chore… | Nothing due. Stick a chore — or plan a room. |
-| Aside | Who’s stamping | Who’s on the fridge |
-| Loading | Loading the fridge board… | Opening the fridge… |
-| Tape | 4 loud chips | Fridge Magnet Board · Today · Slap magnet |
+- Removed magnet-tape banner, tomato magnet chrome, COMPLETE rubber stamp, fridge plate / magnet rail
+- Got rid of kraft comic 6px offsets, neo-brutal thick borders → hairline rules
+- Simplified job strip to paper chalk + folio due count
+- Cut red overdue scream as primary chrome
+- Prefer quiet system-like fields over costume controls
+
+## Technique 07 — remove-ai-tells
+
+Catalog kill-list walked verbatim:
+
+```
+Audit this page for AI design tells and remove them. Kill-list:
+- Vibe purple / indigo accent defaults
+- Gradients used as chrome (hero washes, button fills) without compositional reason
+- Glassmorphism cards and frosted panels
+- Inter, Geist, or Space Grotesk as the default type stack
+- Three-card grids with emoji icons and generic feature blurbs
+- Fake stats / social-proof numbers
+- Headline badges (“New”, “AI-powered”, sparkles)
+- Soft drop shadows and glowing orbs as decoration
+
+Replace with intentional color, type, and structure. Do not swap one tell for another.
+```
+
+Cleared: vibe purple · gradient chrome · glass · Inter/Geist/Space Grotesk · emoji 3-cards · fake stats · sparkle badges · soft glow orbs · **plus** tomato-red primary (Tileboard-specific tell).
+
+## Technique 08 — hand-rewrite-copy
+
+Catalog: wire exactly; no invented marketing.
+
+| Slot | Hand string |
+|------|-------------|
+| Name line / tagline | What’s due in this house today. |
+| Job verb | Today → check complete |
+| Job hint | Open Due today. Press the check. |
+| Empty state | Nothing due. |
+| Empty hint | Add a chore — or plan a room. |
+| Primary CTA | Add chore |
+| Aside | Who’s checking |
+| Loading | Opening the list… |
+| Error | Add a title and room. |
+| Toast complete | Checked off |
+| Brand sub | Cool Letterpress Checklist |
 
 ## Exit
-Identity frozen in `docs/IDENTITY.md`. Phase B5 = 10 integrity rounds under Quiet Enamel Fridge Magnet Board.
+Identity frozen in `docs/IDENTITY.md`. Phase B: ≤25 beat loops vs https://todyapp.com/ under Cool Letterpress Checklist.

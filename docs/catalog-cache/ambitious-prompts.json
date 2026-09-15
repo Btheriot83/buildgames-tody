@@ -1,0 +1,74 @@
+{
+  "slug": "ambitious-prompts",
+  "number": 2,
+  "stage": "Discover",
+  "title": "Be much more ambitious with your prompts",
+  "principle": "Vague prompts let the model invent bland defaults. Specific, wild briefs give it a vision to execute. Bring your taste: name an inspiration (game, interior trend, installation) and say how it should shape the output. Prefer ideas that make you think “this might not work.”",
+  "procedure": [
+    "Ask AI for a broad, short list of bold design-language ideas—high-level only, go wide not deep.",
+    "Pick favorites; write human feel notes (what feels tacky, what to keep, texture vs. gradient boredom).",
+    "Ask AI to sharpen one direction based on those notes.",
+    "Iterate until satisfied, then ask AI to write a concise build prompt for an agent POC."
+  ],
+  "examplePrompts": [
+    "Build me a landing page for my productivity app, with a bold pixel art theme and stunning graphics. Each section should feel like a still from a video game, yet somehow it should all function as a landing page.",
+    "Build me a landing page for my productivity app, set in an isometric living 3D city, where different features are somehow represented by neighborhoods or buildings.",
+    "Build me a landing page for my productivity app, with a radically asymmetric layout, dissonant colors and typography, and uncomfortable negative space. Break all the rules but still make it look good.",
+    "I want to come up with a bold, unique design language for my product. Can you list as many ideas as you can, with short, high-level descriptions? Go broad, not deep.",
+    "Industrial Control Panel:\n\n- I’m imagining something tactile. Clicky, satisfying buttons, nice sounds.\n- Initially I pictured something cartoony or skeuomorphic, but this feels tacky to me. Avoid that.\n- Instead, want consistent components and little touches that land this look without going overboard.\n- Gray gradients would look boring. Need more texture. Maybe we can incorporate some color, while retaining the control panel feel?\n\nCan you sharpen this one based on my tastes?",
+    "Can you write a concise prompt that an AI agent could use to build an initial POC page with this?"
+  ],
+  "tips": [
+    "Pasting AI ideas straight back into AI yields average results anyone else could get—your steering is the uniqueness.",
+    "If you think “there’s no way this will work,” you’re often on the right track.",
+    "Save failing prompts and retest on newer models to track the frontier."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
+  ],
+  "related": [
+    "seed-strings",
+    "critic-subagents",
+    "ten-options-then-remix"
+  ],
+  "workedExamples": [
+    {
+      "title": "Pixel-art / isometric / asymmetric briefs",
+      "body": "Lenny shows three ambitious productivity-landing briefs (bold pixel-art game stills; isometric living 3D city of feature-neighborhoods; radically asymmetric dissonant type). Specific wild vision beats “nice modern landing page.” Cite: Lenny URL."
+    },
+    {
+      "title": "Industrial Control Panel taste loop",
+      "before": "AI lists broad design-language ideas.",
+      "after": "Human feel notes (“tactile, not cartoony; texture over gray gradients”) → sharpened direction → agent-written POC prompt.",
+      "body": "Uniqueness comes from steering, not from pasting AI ideas straight back into AI. Cite: Lenny."
+    },
+    {
+      "title": "“This might not work” as a signal",
+      "body": "Anshu: if you think there’s no way this will work, you’re often on the right track—save failing prompts and retest on newer models. Paraphrase; cite Lenny."
+    }
+  ],
+  "antiPatterns": [
+    "Pasting AI-generated idea lists back into AI unchanged—anyone else gets the same average.",
+    "Stopping at the first “safe” brief that sounds professional.",
+    "Skipping the human taste notes between brainstorm and build prompt."
+  ],
+  "checklist": [
+    "Brief names a concrete inspiration (game, interior, installation) and how it shapes UI.",
+    "You wrote feel notes before asking AI to sharpen.",
+    "Build prompt is concise enough for an agent POC.",
+    "At least one idea felt slightly dangerous / “might not work.”"
+  ],
+  "promptWhy": [
+    "Concrete motif + “still function as a landing page” constrains wildness into a usable artifact.",
+    "Isometric city metaphor forces feature→place mapping instead of generic feature cards.",
+    "Explicit rule-breaking + “still look good” invites risk without pure chaos.",
+    "Broad/short list keeps brainstorm from collapsing into one polished average idea.",
+    "Human feel notes are the uniqueness; the model only sharpens them.",
+    "Separates taste work from implementation—agent gets a buildable brief, not a vibe."
+  ],
+  "pairsWellWith": [
+    "seed-strings",
+    "critic-subagents",
+    "ten-options-then-remix"
+  ]
+}

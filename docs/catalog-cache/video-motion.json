@@ -1,0 +1,65 @@
+{
+  "slug": "video-motion",
+  "number": 5,
+  "stage": "Define",
+  "title": "For more advanced motion, use video generation",
+  "principle": "Video models aren’t just for UGC ads. Looping matted clips (solid bg → chroma key or video matting) become UI layers. Keyframe→video interpolation creates scroll/scrub transitions between product states. Aggregators like fal.ai let one key unlock many models.",
+  "procedure": [
+    "For animated graphics: generate a looping clip on a solid background, then chroma-key or matte out the background so it layers cleanly in the UI.",
+    "For richer refraction: render over page background colors first so effects bake in, then remove the background.",
+    "For transitions: generate still keyframes, then interpolate with a video model; seed the next clip from the prior clip’s last frame for continuity.",
+    "Scrub or play clips on scroll, swipe, or navigation gestures.",
+    "Point the agent at fal.ai (or similar) with a local-only API key and let it pick recent suitable models."
+  ],
+  "examplePrompts": [
+    "Can you replace the image on this page with a looping video clip that does something more interesting? Have the crystal splinter apart and slowly spin around. It should have awesome glassy effects that refract the page background and cast shadows and light around it.\n\nTo get convincing glass refraction effects, render the video of the glass over the page background colors first (so it bakes in the refraction effects), then remove the background with a video matting model.\n\nUse this fal.ai API key: <YOUR_KEY>\n\nFind appropriate recent models for video generation and background removal.",
+    "Build a demo page for a suitcase that uses a video model to create interactive transitions between a couple of screens. Each screen should show the suitcase in a different state, with vertical motion that feels appropriate for scrolling:\n\n- Initially, have the suitcase floating high up in the air\n- Then have it land on the floor and pop open\n- Finally, have its contents neatly land into it from the top\n\nGenerate the initial frame using your image generation skill. Then, generate a video clip that starts from that frame and animates to the next state. Use the final frame of that video to seed the next transition so that it continues seamlessly. Scrub through the transitions one by one as the user scrolls.\n\nUse this fal.ai API key: <YOUR_KEY>\n\nUse a video model with strong physics and consistency."
+  ],
+  "tips": [
+    "Matted loops beat CSS animation for caustics, refraction, and physical motion.",
+    "Scroll-scrubbed keyframe transitions make users want to keep reading.",
+    "Model quality changes fast—aggregators reduce integration churn.",
+    "Product motion craft (free recipes by Jakub Antalik): https://transitions.dev/ — supplement to Technique 5 imagery/video, not a substitute; honor prefers-reduced-motion; no Pro shimmer without approval."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+    "https://transitions.dev/"
+  ],
+  "related": [
+    "image-generation",
+    "cut-elements",
+    "make-it-alive"
+  ],
+  "workedExamples": [
+    {
+      "title": "Crystal splinter loop (matted UI layer)",
+      "before": "Static image on the page.",
+      "after": "Looping glass crystal that splinters/spins; rendered over page colors then matted—caustics and refraction CSS can’t fake.",
+      "body": "Public Lenny example using fal.ai for video gen + matting. Cite: Lenny."
+    },
+    {
+      "title": "Suitcase scroll-scrub transitions",
+      "body": "Demo page: suitcase floats → lands/opens → contents fall in; each state seeded from the prior clip’s last frame; scrubbed on scroll. One-prompt build in the essay. Cite: Lenny."
+    }
+  ],
+  "antiPatterns": [
+    "Dropping a rectangular MP4 with black bars into the layout (reads as embedded video, not UI).",
+    "CSS-only motion when the aesthetic needs physical refraction/physics.",
+    "Hard-wiring one video vendor when an aggregator would let the agent pick a current model."
+  ],
+  "checklist": [
+    "Animated graphic is matted (or chroma-keyed) so it layers as UI, not a player chrome.",
+    "Transitions share continuity (last frame seeds next clip) when scrubbing.",
+    "API key is local-only; agent chose an appropriate recent model.",
+    "Motion serves reading/engagement—not decorative autoplay noise."
+  ],
+  "promptWhy": [
+    "Bake-refraction-then-matte recipe produces UI-layer glass, not a floating video rectangle.",
+    "Keyframe→video→seed-next + scroll scrub turns product states into a tangible story."
+  ],
+  "pairsWellWith": [
+    "image-generation",
+    "make-it-alive",
+    "cut-elements"
+  ]
+}

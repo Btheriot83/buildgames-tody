@@ -1,0 +1,62 @@
+{
+  "slug": "cut-elements",
+  "number": 6,
+  "stage": "Deliver",
+  "title": "Cut out elements that don’t add value",
+  "principle": "AI loves to add and rarely subtract. Over-explanation and decorative chrome read as generated. Restraint looks premium. Your job in polish is mostly deletion—push the model to take the risk of removing code.",
+  "procedure": [
+    "Audit the screen: what still needs to be there for the user’s job?",
+    "Kill decorative noise—glows, random text highlights, unnecessary containers, redundant labels when imagery already communicates.",
+    "Prefer native / system controls over worse custom buttons and fields.",
+    "Ask the agent explicitly to simplify layout, remove gradients/glows, and aim for true minimalism."
+  ],
+  "examplePrompts": [
+    "Dial this calorie tracker back:\n\n- Simplify the layout into an image-centric grid\n- Get rid of gradients, glows, and unnecessary containers\n- Aim for a truly minimalist aesthetic that feels Apple-native\n- Prefer built-in iOS components over custom buttons and text fields that look worse\n- Remove extra labels and empty space where the food images already communicate the content"
+  ],
+  "tips": [
+    "Even when you ask for “clean, minimalist,” models still add pink glows, random color highlights, extra labels, and bad custom controls.",
+    "Putting less on screen often communicates more—attention isn’t diluted by clutter.",
+    "Deletion feels risky to next-token models; you must demand it."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
+  ],
+  "related": [
+    "remove-ai-tells",
+    "hand-rewrite-copy",
+    "critic-subagents",
+    "last-mile-manual"
+  ],
+  "workedExamples": [
+    {
+      "title": "Calorie tracker cut story",
+      "before": "Asked for clean minimalism; still got pink glows, random text highlights, redundant labels beside food images, custom controls worse than native iOS.",
+      "after": "Image-centric grid; gradients/glows/containers gone; Apple-native components; tighter type—opinionated, quieter, clearer.",
+      "body": "Primary Deliver case in the Lenny essay. Models won’t delete riskily without an explicit push. Cite: Lenny."
+    },
+    {
+      "title": "This desk’s cut list",
+      "body": "Ochre accents, marketing stage strips, dual CTA rows, badge-above-H1 removed in the App Desk pass—restraint as the taste bet. See docs/REDESIGN.md."
+    }
+  ],
+  "antiPatterns": [
+    "Asking for “minimal” once, then accepting the still-decorated result.",
+    "Adding explanatory labels when imagery already communicates.",
+    "Custom controls that look worse than platform natives."
+  ],
+  "checklist": [
+    "Every element has a job for the user’s task—or it’s gone.",
+    "No glow/gradient chrome without compositional reason.",
+    "Native/system controls preferred where custom is weaker.",
+    "A second pass asked specifically for deletion, not addition."
+  ],
+  "promptWhy": [
+    "Bullet deletion asks (grid, kill glows, native iOS) force subtractive edits models avoid by default."
+  ],
+  "pairsWellWith": [
+    "remove-ai-tells",
+    "hand-rewrite-copy",
+    "critic-subagents",
+    "last-mile-manual"
+  ]
+}

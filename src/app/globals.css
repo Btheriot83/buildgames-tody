@@ -1,26 +1,31 @@
 @import "tailwindcss";
 @import "../transitions/bundle.css";
 
+/* Cool Letterpress Checklist — FULL Anshu reseed 2026-09-15 */
 :root {
-  /* Fridge Magnet Board — household chore board (reseed; no purple, no bathhouse) */
-  --linen: #f7f8fa;
-  --chalk: #eef1f4;
-  --ink: #1a1f24;
-  --ink-soft: #2e3842;
-  --ink-mute: #4f5a64;
-  --sea: #2f5f9e;
-  --sea-deep: #234a7a;
-  --clay: #d63b2c;
-  --clay-deep: #b12e22;
-  --moss: #3d8f78;
-  --mustard: #d4a017;
-  --kraft: #f3e6d0;
-  --rule: #b4bcc6;
-  --rule-strong: #8a949e;
+  --paper: #faf9f7;
+  --chalk: #f0eeea;
+  --ink: #221c24;
+  --ink-soft: #3a343c;
+  --ink-mute: #6b656e;
+  --slate: #3d4f63;
+  --slate-deep: #2c394a;
+  --done: #3f5a4a;
+  --rule: #d4d0c8;
+  --rule-strong: #b8b2a8;
   --tile: #ffffff;
-  --shadow: 4px 4px 0 rgba(26, 31, 36, 0.12);
+  --shadow: 2px 2px 0 rgba(34, 28, 36, 0.08);
 
-  /* Theme transitions.dev tokens to Tide & Tile */
+  /* legacy aliases so old class hooks don't explode mid-cut */
+  --linen: var(--paper);
+  --clay: var(--slate);
+  --clay-deep: var(--slate-deep);
+  --sea: var(--slate);
+  --sea-deep: var(--slate-deep);
+  --moss: var(--done);
+  --mustard: #8a7a5c;
+  --kraft: var(--chalk);
+
   --tabs-bar-bg: var(--chalk);
   --tabs-pill-bg: var(--tile);
   --tabs-text-muted: var(--ink-mute);
@@ -31,25 +36,25 @@
   --toast-open: 350ms;
   --toast-close: 250ms;
   --toast-distance: 18px;
-  --toast-blur: 2px;
+  --toast-blur: 0px;
   --toast-scale: 0.97;
   --toast-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   --check-y-amount: 18px;
   --check-rotate-from: 48deg;
-  --check-blur-from: 6px;
+  --check-blur-from: 0px;
 }
 
 @theme inline {
-  --color-linen: var(--linen);
+  --color-linen: var(--paper);
   --color-chalk: var(--chalk);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-mute: var(--ink-mute);
-  --color-sea: var(--sea);
-  --color-sea-deep: var(--sea-deep);
-  --color-clay: var(--clay);
-  --color-moss: var(--moss);
+  --color-sea: var(--slate);
+  --color-sea-deep: var(--slate-deep);
+  --color-clay: var(--slate);
+  --color-moss: var(--done);
   --color-rule: var(--rule);
   --color-tile: var(--tile);
   --font-serif: var(--font-display);
@@ -62,19 +67,18 @@ html { color-scheme: light; }
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--linen);
-  background-image: url("/art/enamel-wash.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: var(--paper);
+  background-image: url("/art/letterpress-grain.svg");
+  background-size: 160px 160px;
+  background-repeat: repeat;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-::selection { background: rgba(47, 95, 158, 0.22); }
+::selection { background: rgba(61, 79, 99, 0.18); }
 a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid var(--sea); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--slate); outline-offset: 3px; }
 
 .font-display {
   font-family: var(--font-serif), Georgia, serif;
@@ -84,40 +88,41 @@ a { color: inherit; text-decoration: none; }
 }
 .font-mono { font-family: var(--font-mono), ui-monospace, monospace; }
 
-.shell { width: min(1180px, calc(100% - 1.5rem)); margin-inline: auto; }
+.shell { width: min(1080px, calc(100% - 1.5rem)); margin-inline: auto; }
 @media (min-width: 768px) {
-  .shell { width: min(1180px, calc(100% - 2.5rem)); }
+  .shell { width: min(1080px, calc(100% - 2.5rem)); }
 }
 
 .tile {
   background: var(--tile);
   border: 1px solid var(--rule);
   box-shadow: var(--shadow);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  border: 1px solid transparent; border-radius: 4px; padding: 0.75rem 1.15rem;
+  border: 1px solid transparent; border-radius: 2px; padding: 0.75rem 1.15rem;
   font-size: 0.95rem; font-weight: 600; cursor: pointer;
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 120ms ease;
-  min-height: 48px; /* mobile-first large controls */
+  min-height: 48px;
 }
 .btn:active { transform: translateY(1px); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-.btn-primary { background: var(--sea); color: #f7fbfb; }
-.btn-primary:hover:not(:disabled) { background: var(--sea-deep); }
-.btn-clay { background: var(--clay); color: #fff8f4; }
-.btn-clay:hover:not(:disabled) { background: var(--clay-deep); }
+.btn-primary { background: var(--slate); color: #f7f8fa; }
+.btn-primary:hover:not(:disabled) { background: var(--slate-deep); }
+.btn-clay { background: var(--slate); color: #f7f8fa; }
+.btn-clay:hover:not(:disabled) { background: var(--slate-deep); }
 .btn-ghost { background: transparent; color: var(--ink-soft); border-color: var(--rule-strong); }
-.btn-ghost:hover:not(:disabled) { background: rgba(28,36,40,0.04); }
+.btn-ghost:hover:not(:disabled) { background: rgba(34, 28, 36, 0.04); }
+.btn-compact { min-height: 40px; padding: 0.45rem 0.85rem; font-size: 0.88rem; }
 
 .field {
-  width: 100%; border: 1px solid var(--rule-strong); background: #fffcf7; color: var(--ink);
-  border-radius: 4px; padding: 0.85rem 0.95rem; font: inherit; min-height: 48px;
+  width: 100%; border: 1px solid var(--rule-strong); background: #fffcf9; color: var(--ink);
+  border-radius: 2px; padding: 0.85rem 0.95rem; font: inherit; min-height: 48px;
 }
-.field:focus { outline: 2px solid var(--sea); outline-offset: 2px; box-shadow: none; }
-.field.t-error { border-color: var(--clay); }
+.field:focus { outline: 2px solid var(--slate); outline-offset: 2px; box-shadow: none; }
+.field.t-error { border-color: var(--ink); }
 .label {
   display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--ink-mute); margin-bottom: 0.35rem;
@@ -127,10 +132,9 @@ a { color: inherit; text-decoration: none; }
 .eyebrow {
   font-family: var(--font-mono), monospace;
   font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--sea);
+  color: var(--slate);
 }
 
-/* Toast host */
 .toast-host {
   position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%);
   z-index: 60; pointer-events: none; width: min(420px, calc(100% - 2rem));
@@ -138,41 +142,34 @@ a { color: inherit; text-decoration: none; }
 .toast-host .t-toast {
   pointer-events: auto;
   background: var(--ink);
-  color: var(--linen);
+  color: var(--paper);
   padding: 0.85rem 1.1rem;
-  border-radius: 6px;
+  border-radius: 2px;
   box-shadow: var(--shadow);
   font-size: 0.95rem;
 }
-
-/* old flip removed — see gauntlet physical complete below */
 
 .status-pill {
   display: inline-flex; align-items: center; gap: 0.35rem;
   font-family: var(--font-mono), monospace;
   font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.25rem 0.5rem; border-radius: 999px; border: 1px solid var(--rule);
+  padding: 0.25rem 0.5rem; border-radius: 2px; border: 1px solid var(--rule);
+  white-space: nowrap;
 }
-.status-overdue { background: rgba(196,92,58,0.12); color: var(--clay-deep); border-color: rgba(196,92,58,0.35); }
-.status-due { background: rgba(47,95,158,0.12); color: var(--sea-deep); border-color: rgba(47,95,158,0.4); font-weight: 700; }
-.status-ok, .status-fresh { background: rgba(74,107,82,0.1); color: var(--moss); }
+.status-overdue { background: rgba(61, 79, 99, 0.1); color: var(--slate-deep); border-color: rgba(61, 79, 99, 0.35); font-weight: 700; }
+.status-due { background: rgba(61, 79, 99, 0.12); color: var(--slate-deep); border-color: rgba(61, 79, 99, 0.4); font-weight: 700; }
+.status-ok, .status-fresh { background: rgba(63, 90, 74, 0.1); color: var(--done); }
 
 .streak-ring {
-  --p: 0;
-  width: 72px; height: 72px; border-radius: 50%;
+  width: 64px; height: 64px; border-radius: 2px;
   background: var(--tile);
-  border: 3px solid var(--ink);
-  box-shadow: inset 0 0 0 6px var(--chalk), 3px 3px 0 var(--clay);
+  border: 1px solid var(--ink);
+  box-shadow: var(--shadow);
   display: grid; place-items: center;
-  position: relative;
 }
-.streak-ring::after { display: none; }
-.streak-ring > span { position: relative; z-index: 1; text-align: center; line-height: 1.1; }
+.streak-ring > span { text-align: center; line-height: 1.1; }
 
-/* Water ripple canvas sits behind board */
-.shader-bg {
-  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.35;
-}
+.shader-bg { display: none !important; }
 
 @media print {
   .no-print { display: none !important; }
@@ -180,12 +177,7 @@ a { color: inherit; text-decoration: none; }
   .shell { width: 100%; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .chore-tile, .btn { transition: none !important; }
-}
-
-
-/* === Gauntlet: physical Today complete + dirt meter === */
+/* ——— Chore tiles / check-press ——— */
 .chore-tile {
   display: flex;
   gap: 0.85rem;
@@ -202,17 +194,20 @@ a { color: inherit; text-decoration: none; }
     border-color 200ms ease,
     box-shadow 200ms ease;
   max-height: 220px;
+  background: var(--tile);
+  border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow);
+  border-radius: 2px;
 }
 .chore-tile.phase-press { transform: scale(0.985) translateY(1px); }
 .chore-tile.phase-stamp {
-  transform: scale(1.012);
-  border-color: var(--moss);
-  box-shadow: 4px 4px 0 rgba(61, 143, 120, 0.35);
+  transform: scale(1.008);
+  border-color: var(--done);
 }
-.chore-tile.phase-wipe { border-color: var(--moss); }
+.chore-tile.phase-wipe { border-color: var(--done); }
 .chore-tile.phase-exit {
   opacity: 0;
-  transform: translateX(18px) scale(0.98);
+  transform: translateX(12px) scale(0.99);
   max-height: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -224,41 +219,45 @@ a { color: inherit; text-decoration: none; }
 .stamp-btn {
   position: relative;
   flex: 0 0 auto;
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
-  border: 1.5px solid rgba(160, 72, 46, 0.45);
-  background: var(--clay);
-  color: #fff8f4;
+  width: 52px;
+  height: 52px;
+  border-radius: 2px;
+  border: 1.5px solid var(--ink);
+  background: var(--slate);
+  color: #faf9f7;
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: var(--shadow);
   transition:
     transform 140ms cubic-bezier(0.34, 1.56, 0.64, 1),
     background 160ms ease,
     box-shadow 160ms ease;
   --check-len: 15;
 }
+.stamp-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
 .chore-tile.phase-press .stamp-btn {
-  transform: scale(0.9) translateY(2px);
-  box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.18),
-    0 1px 0 rgba(160, 72, 46, 0.3);
+  transform: scale(0.92) translateY(1px);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.16);
 }
 .chore-tile.phase-stamp .stamp-btn {
-  background: var(--moss);
-  border-color: rgba(74, 107, 82, 0.55);
-  transform: scale(1.06);
+  background: var(--done);
+  border-color: var(--ink);
+  transform: scale(1.04);
   animation: stamp-spring 420ms cubic-bezier(0.34, 1.7, 0.64, 1);
 }
 @keyframes stamp-spring {
-  0% { transform: scale(0.86); }
-  55% { transform: scale(1.1); }
+  0% { transform: scale(0.88); }
+  55% { transform: scale(1.08); }
   100% { transform: scale(1); }
 }
 .stamp-btn:disabled { cursor: default; }
-.stamp-btn svg path { stroke: currentColor; }
+.stamp-btn svg path { stroke: currentColor; opacity: 0.85; stroke-width: 1.8; }
+.stamp-btn[aria-checked="true"] svg path { opacity: 1; }
 
 .stamp-particles {
   position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none;
@@ -267,7 +266,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute; left: 0; top: 0;
   width: var(--psize, 2.5px); height: var(--psize, 2.5px);
   border-radius: 50%;
-  background: var(--clay);
+  background: var(--slate);
   opacity: 0;
 }
 .chore-tile.is-bursting .stamp-particles i {
@@ -286,39 +285,39 @@ a { color: inherit; text-decoration: none; }
 .dirt-meter { position: relative; margin-top: 0.2rem; }
 .dirt-meter-fill {
   position: absolute; left: 0; top: 0; bottom: 0;
-  border-radius: 3px;
-  opacity: 0.22;
+  border-radius: 1px;
+  opacity: 0.18;
   transition: width 280ms cubic-bezier(0.22,1,0.36,1), opacity 220ms ease;
   pointer-events: none;
 }
-.dirt-overdue .dirt-meter-fill { background: var(--clay); }
-.dirt-due .dirt-meter-fill { background: #c9843a; }
-.dirt-ok .dirt-meter-fill { background: var(--moss); }
+.dirt-overdue .dirt-meter-fill { background: var(--slate); }
+.dirt-due .dirt-meter-fill { background: var(--slate); }
+.dirt-ok .dirt-meter-fill { background: var(--done); }
 .dirt-meter.is-wiping .dirt-meter-fill { width: 0% !important; opacity: 0; }
 .dirt-meter-track {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 3px;
-  height: 10px;
+  height: 8px;
 }
 .dirt-seg {
-  border-radius: 2px;
-  background: rgba(28, 36, 40, 0.07);
-  border: 1px solid rgba(28, 36, 40, 0.04);
+  border-radius: 1px;
+  background: rgba(34, 28, 36, 0.07);
+  border: 1px solid rgba(34, 28, 36, 0.04);
   transition: background 220ms ease, transform 220ms ease, opacity 220ms ease;
 }
 .dirt-seg.is-on { transform: scaleY(1.05); }
-.dirt-overdue .dirt-seg.is-on { background: var(--clay); }
-.dirt-due .dirt-seg.is-on { background: #c9843a; }
-.dirt-ok .dirt-seg.is-on { background: var(--moss); }
+.dirt-overdue .dirt-seg.is-on { background: var(--slate-deep); }
+.dirt-due .dirt-seg.is-on { background: var(--slate); }
+.dirt-ok .dirt-seg.is-on { background: var(--done); }
 .dirt-meter.is-wiping .dirt-seg.is-on {
-  background: rgba(74, 107, 82, 0.18) !important;
+  background: rgba(63, 90, 74, 0.18) !important;
   opacity: 0.35;
   transform: scaleY(0.7);
 }
 .dirt-wipe {
   position: absolute; inset: 0;
-  background: var(--tile); opacity: 0.85;
+  background: var(--tile);
   transform: translateX(-120%);
   opacity: 0;
   pointer-events: none;
@@ -332,43 +331,147 @@ a { color: inherit; text-decoration: none; }
   to { transform: translateX(120%); }
 }
 
-.today-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+.today-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.65rem; }
 
 .empty-quiet {
   text-align: center;
   padding: 1.75rem 1.25rem 1.5rem;
 }
 .empty-quiet img {
-  width: min(280px, 70%);
+  width: min(260px, 70%);
   height: auto;
-  border-radius: 6px;
+  border-radius: 2px;
   margin: 0 auto 1rem;
   display: block;
   border: 1px solid var(--rule);
   box-shadow: var(--shadow);
 }
+.empty-quiet-title { margin: 0 0 0.35rem; }
+.empty-quiet-lede { color: var(--ink-mute); margin: 0 0 1rem; font-size: 0.95rem; }
+.empty-quiet-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
 
 .plan-panel textarea.field { font: inherit; }
 
-@media (max-width: 860px) {
-  .today-grid { grid-template-columns: 1fr !important; }
+/* Header / brand */
+.magnet-tape { display: none !important; } /* CUT — Technique 6 */
+
+.brand-row {
+  display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.brand-mark { color: var(--slate); display: inline-flex; }
+.brand-name {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600; color: var(--ink);
+}
+.brand-sep { color: var(--ink-mute); }
+.brand-sub {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-mute);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .chore-tile, .stamp-btn, .dirt-seg, .dirt-wipe { animation: none !important; transition: none !important; }
-  .chore-tile.phase-exit { opacity: 0.4; }
+.billboard-ledger h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  max-width: 18ch;
+  margin: 0.15rem 0 0;
+  font-weight: 550;
+}
+.billboard-lede {
+  margin: 0.55rem 0 0;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 36ch;
 }
 
-/* Tech 5 — stamp keyframe reel */
+.job-strip {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
+  background: var(--chalk);
+  border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow);
+  padding: 0.85rem 1.1rem;
+  margin: 0 0 1rem;
+  border-radius: 2px;
+}
+.job-strip-main { flex: 1; min-width: 12rem; }
+.job-strip .job-verb {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 600; line-height: 1.15; margin: 0;
+  letter-spacing: -0.02em;
+}
+.job-strip .job-hint {
+  color: var(--ink-mute); margin: 0.25rem 0 0; font-size: 0.92rem;
+}
+.job-strip .job-count {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.35rem; letter-spacing: -0.02em;
+  color: var(--ink); font-weight: 600;
+  border: 1px solid var(--ink);
+  background: var(--tile);
+  padding: 0.45rem 0.75rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+.job-strip .job-count small {
+  display: block;
+  font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 600; margin-top: 0.2rem;
+}
+.job-complete-stamp { display: none !important; } /* CUT */
+
+.section-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.today-aside { background: var(--tile); }
+.member-row {
+  display: grid;
+  grid-template-columns: 10px 1fr auto;
+  gap: 0.45rem 0.55rem;
+  align-items: center;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--chalk);
+}
+.member-dot { width: 8px; height: 8px; border-radius: 50%; }
+.member-name { font-weight: 600; font-size: 0.92rem; }
+.member-role { grid-column: 2; }
+.member-stamps {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-mute); grid-column: 3; grid-row: 1 / span 2;
+}
+.aside-actions {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem;
+}
+
+.later-card { background: var(--chalk); }
+.later-title { font-weight: 600; font-size: 0.92rem; }
+
+.room-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 550; letter-spacing: -0.02em;
+}
+
 .stamp-motion {
   position: fixed;
   right: 1.25rem;
   bottom: 5.5rem;
-  width: 120px;
-  height: 120px;
+  width: 112px;
+  height: 112px;
   z-index: 50;
   pointer-events: none;
-  border-radius: 8px;
+  border-radius: 2px;
   overflow: hidden;
   border: 1px solid var(--rule);
   box-shadow: var(--shadow);
@@ -398,1377 +501,252 @@ a { color: inherit; text-decoration: none; }
   from { opacity: 0; transform: translateY(8px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+@media (max-width: 860px) {
+  .today-aside { order: 2; }
+  .today-list-col { order: 1; }
+  .today-grid { display: flex !important; flex-direction: column; }
+  .stamp-btn { width: 56px; height: 56px; }
+  .today-grid { gap: 0.85rem !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .chore-tile, .stamp-btn, .dirt-seg, .dirt-wipe, .btn { animation: none !important; transition: none !important; }
+  .chore-tile.phase-exit { opacity: 0.4; }
   .stamp-motion { display: none; }
 }
 
 
-/* Phase B R2 — Today hierarchy: list owns the thumb zone on mobile */
-@media (max-width: 860px) {
-  .today-aside { order: 2; }
-  .today-list-col { order: 1; }
-  .today-grid { display: flex !important; flex-direction: column; }
-  .stamp-btn { width: 64px !important; height: 64px !important; border-radius: 50% !important; }
-}
-
-/* —— RESEED — Fridge Magnet Board (Phase A) —— */
-.magnet-tape {
-  display: flex; gap: 1.25rem; align-items: center; justify-content: center; flex-wrap: wrap;
-  background: var(--ink); color: #f7f8fa;
-  border-bottom: 4px solid var(--clay);
-  padding: 0.55rem 1rem;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-  font-weight: 600;
-}
-.magnet-tape span:nth-child(odd) { color: #fff; }
-.magnet-tape span:nth-child(even) { color: #ffb4a8; }
-
-.job-strip {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem;
-  background: var(--kraft);
-  border: 2px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--clay);
-  padding: 0.85rem 1.1rem;
-  margin: 0 0 1rem;
-}
-.job-strip .job-verb {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.35rem, 3.5vw, 1.85rem);
-  font-weight: 600; line-height: 1.15; margin: 0;
-  letter-spacing: -0.02em;
-}
-.job-strip .job-hint {
-  color: var(--ink-soft); margin: 0; font-size: 0.98rem; flex: 1; min-width: 12rem;
-}
-.job-strip .job-count {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-  background: var(--clay); color: #fff; padding: 0.45rem 0.7rem;
-  border: 2px solid var(--ink); font-weight: 700;
-}
-
-.billboard-ledger h1 {
-  font-family: var(--font-serif), Georgia, serif !important;
-  font-size: clamp(2.4rem, 6vw, 3.6rem) !important;
-  line-height: 0.95 !important;
-  letter-spacing: -0.03em !important;
-  max-width: 16ch;
-  margin: 0.1rem 0 0 !important;
-}
-
-.fridge-plate {
-  margin: 0;
-  border: 2px solid var(--ink);
-  box-shadow: 8px 8px 0 rgba(47, 95, 158, 0.25);
-  background: var(--tile);
-  overflow: hidden;
-}
-.fridge-plate img { display: block; width: 100%; height: auto; max-height: 100px; object-fit: cover; }
-.fridge-plate figcaption {
-  margin: 0; padding: 0.35rem 0.65rem; border-top: 2px solid var(--ink);
-  font-family: var(--font-mono), monospace; font-size: 0.6rem;
-  letter-spacing: 0.1em; text-transform: uppercase; background: var(--chalk);
-}
-
-.magnet-rail {
-  display: flex; gap: 0.45rem; justify-content: center; align-items: center; flex-wrap: wrap;
-  border: 2px solid var(--ink); background: var(--kraft); padding: 0.5rem;
-  box-shadow: 5px 5px 0 var(--mustard);
-}
-.magnet-rail img { width: 48px; height: 48px; object-fit: cover; border-radius: 50%; border: 2px solid var(--ink); }
-
-/* Tomato magnet stamp — readable idle affordance */
-.stamp-btn {
-  border-radius: 50% !important;
-  width: 58px !important; height: 58px !important;
-  border: 2.5px solid var(--ink) !important;
-  background: var(--clay) !important;
-  box-shadow: 3px 3px 0 var(--ink) !important;
-}
-.stamp-btn::after {
-  content: "DONE";
-  position: absolute; bottom: 7px; left: 0; right: 0;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.42rem; letter-spacing: 0.08em;
-  color: rgba(255,248,244,0.92); font-weight: 700;
-  pointer-events: none;
-}
-.stamp-btn svg { transform: translateY(-4px); }
-.stamp-btn svg path {
-  /* idle: faint check ring so blank magnet isn't mute */
-  stroke-dashoffset: 0 !important;
-  opacity: 0.35;
-}
-.stamp-btn[aria-checked="true"] svg path { opacity: 1; }
-.chore-tile.phase-stamp .stamp-btn {
-  background: var(--moss) !important;
-  box-shadow: 3px 3px 0 var(--ink) !important;
-}
-.stamp-btn::before {
-  content: "";
-  position: absolute; inset: 6px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(255,248,244,0.35);
-  pointer-events: none;
-}
-
-.chore-tile {
-  border: 2px solid var(--ink) !important;
-  background: var(--kraft) !important;
-  box-shadow: 5px 5px 0 rgba(47, 95, 158, 0.18) !important;
+/* Phase A polish — letterpress tabs + shell clarity */
+.t-tabs, [class*="tabs"] {
   border-radius: 2px !important;
 }
-.tile {
-  border: 1.5px solid var(--rule-strong);
-  box-shadow: 6px 6px 0 rgba(47, 95, 158, 0.12);
-  background: var(--tile);
-}
-
-.shader-bg { opacity: 0.04 !important; filter: grayscale(0.6) saturate(0.4); }
-
-@media (max-width: 860px) {
-  .today-aside { order: 2; }
-  .today-list-col { order: 1; }
-  .today-grid { display: flex !important; flex-direction: column; }
-  .stamp-btn { width: 64px !important; height: 64px !important; }
-  .materials-row { display: none !important; } /* R2: due list owns the fold */
-}
-
-@media (max-width: 900px) {
-  .ledger-stage { grid-template-columns: 1fr; }
-}
-
-.assignee-chip { color: var(--sea-deep); font-weight: 600; }
-.dirt-meter { height: 12px; }
-.dirt-meter-track { height: 12px; }
-.status-overdue { background: rgba(214,59,44,0.14); color: var(--clay-deep); border-color: rgba(214,59,44,0.45); font-weight: 700; }
-
-
-/* —— BRANDON HARD BAR (Inkwell → all apps) —— */
-/* Decorative gradients / glass blur / glow = AI slop. Flat + photos only. */
-:root {
-  --toast-blur: 0px;
-  --check-blur-from: 0px;
-  --reveal-blur: 0px;
-  --stagger-blur: 0px;
-  --digit-blur: 0px;
-  --page-blur: 0px;
-  --badge-blur: 0px;
-  --panel-blur: 0px;
-  --icon-swap-blur: 0px;
-  --glow-opacity: 0;
-}
-.shader-bg { display: none !important; }
-.t-clear-glow { display: none !important; opacity: 0 !important; }
-.t-shimmer, .t-shimmer-text { background-image: none !important; }
-*[style*="backdrop-filter"], .glass, .glow {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  filter: none !important;
+.shell { position: relative; }
+.billboard-lede, .billboard-ledger p[style] {
+  font-size: 1.05rem;
 }
 
 
-/* —— PHASE B3 — craft: type · contrast · buttons · A/B vs Tody —— */
-/* Identity frozen: Fridge Magnet Board. Flat fills only. No reseed. */
-
-:root {
-  --ink-mute: #4f5a64;
-  --ink-soft: #2e3842;
-  --rule: #b4bcc6;
-  --rule-strong: #8a949e;
-  --shadow: 4px 4px 0 rgba(26, 31, 36, 0.16);
+/* beat1 — flat paper field; letterpress chrome tighter */
+.tile, .chore-tile, .job-strip, .streak-ring, .job-count {
+  box-shadow: none !important;
 }
-
-body {
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  color: var(--ink);
+.tile, .chore-tile {
+  border-color: var(--rule-strong);
 }
-
-/* R1/R2/R3 — Newsreader = mark only; UI hierarchy is Source Sans */
-.billboard-ledger h1 {
-  font-size: clamp(2rem, 4.8vw, 2.85rem) !important;
-  line-height: 1.02 !important;
-  letter-spacing: -0.025em !important;
-  font-weight: 600 !important;
-  max-width: 18ch;
-}
-.job-strip .job-verb {
-  font-family: var(--font-sans), system-ui, sans-serif !important;
-  font-size: clamp(1.2rem, 2.8vw, 1.55rem) !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.015em !important;
-  color: var(--ink);
-}
-.job-strip .job-hint {
-  color: var(--ink-soft) !important;
-  font-size: 0.95rem !important;
-  font-weight: 500;
-  line-height: 1.35;
-}
-.job-strip {
-  border-width: 2.5px;
-  box-shadow: 5px 5px 0 var(--clay);
-  background: #f6e4c8;
-}
-.job-strip .job-count {
-  font-size: 0.75rem !important;
-  padding: 0.5rem 0.8rem !important;
-  letter-spacing: 0.1em;
-}
-
-.section-title {
-  font-family: var(--font-sans), system-ui, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 1.2rem !important;
-  letter-spacing: -0.02em;
-  margin: 0;
-  color: var(--ink);
-}
-
-/* R6/R16 — button weight earns role (Tody-like CTA clarity) */
-.btn {
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  border-radius: 3px;
-}
-.btn-primary {
-  background: var(--sea);
-  color: #f7fbfb;
-  border-color: var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.btn-primary:hover:not(:disabled) {
-  background: var(--sea-deep);
-}
-.btn-clay {
-  background: var(--clay);
-  color: #fff8f4;
-  border-color: var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.btn-clay:hover:not(:disabled) {
-  background: var(--clay-deep);
-}
-.btn-ghost {
-  background: var(--tile);
-  color: var(--ink);
-  border: 1.5px solid var(--ink);
-  font-weight: 600;
-}
-.btn-ghost:hover:not(:disabled) {
-  background: var(--chalk);
-}
-.btn-compact {
-  min-height: 44px;
-  padding: 0.55rem 0.9rem;
-  font-size: 0.88rem;
-}
-
-/* R7 — tomato magnet readable idle (close to Tody tap targets) */
-.stamp-btn {
-  width: 62px !important;
-  height: 62px !important;
-}
-.stamp-btn::after {
-  font-size: 0.55rem !important;
-  letter-spacing: 0.1em !important;
-  bottom: 8px !important;
-  color: #fff !important;
-  opacity: 0.95;
-}
-.stamp-btn svg path {
-  opacity: 0.55 !important;
-}
-.stamp-btn[aria-checked="true"] svg path,
-.chore-tile.phase-stamp .stamp-btn svg path {
-  opacity: 1 !important;
-}
-
-/* R8 — chore title density vs Tody list */
-.chore-title {
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-weight: 700 !important;
-  font-size: 1.1rem !important;
-  line-height: 1.22 !important;
-  letter-spacing: -0.012em;
-  color: var(--ink);
-}
-.chore-meta {
-  color: var(--ink-soft) !important;
-  font-size: 0.86rem !important;
-  font-weight: 500;
-}
-.assignee-chip {
-  color: var(--sea-deep) !important;
-  font-weight: 700 !important;
-}
-
-/* R9 — overdue pill contrast like Tody "5 days overdue" */
-.status-pill {
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
-  border-radius: 3px !important;
-  padding: 0.28rem 0.45rem !important;
-}
-.status-overdue {
-  background: #fde8e4 !important;
-  color: #8f1f16 !important;
-  border-color: var(--clay) !important;
-}
-.status-due {
-  background: #e8f0fa !important;
-  color: var(--sea-deep) !important;
-  border-color: rgba(47, 95, 158, 0.45) !important;
-}
-.status-ok, .status-fresh {
-  background: #e6f3ee !important;
-  color: #2a6b58 !important;
-  border-color: rgba(61, 143, 120, 0.4) !important;
-}
-
-/* R10 — dirt meter holds contrast */
-.dirt-seg {
-  background: rgba(26, 31, 36, 0.12) !important;
-  border-color: rgba(26, 31, 36, 0.1) !important;
-}
-.dirt-overdue .dirt-seg.is-on { background: var(--clay) !important; }
-.dirt-due .dirt-seg.is-on { background: #c9843a !important; }
-.dirt-ok .dirt-seg.is-on { background: var(--moss) !important; }
-.dirt-meter-fill { opacity: 0.14 !important; }
-
-/* R11 — materials demotion: shorter plate, job leads */
-.fridge-plate img { max-height: 72px !important; }
-.fridge-plate {
-  box-shadow: 5px 5px 0 rgba(47, 95, 158, 0.22) !important;
-}
-.magnet-rail img { width: 40px; height: 40px; }
-.materials-row { opacity: 0.92; }
-
-/* R12 — Later cards readable */
-.later-card {
-  border: 1.5px solid var(--ink) !important;
-  background: #faf6ef !important;
-  box-shadow: 3px 3px 0 rgba(47, 95, 158, 0.12) !important;
-}
-.later-card .later-title {
-  font-weight: 650;
-  color: var(--ink);
-  font-size: 0.95rem;
-}
-
-/* R13 — tabs contrast */
 .t-tabs {
-  border: 1.5px solid var(--ink) !important;
   background: var(--chalk) !important;
-  border-radius: 4px;
+  border: 1px solid var(--rule) !important;
+  border-radius: 2px !important;
   padding: 3px !important;
 }
 .t-tabs-pill {
+  border-radius: 2px !important;
+  box-shadow: none !important;
   background: var(--tile) !important;
-  border: 1.5px solid var(--ink) !important;
-  border-radius: 3px !important;
-  box-shadow: 2px 2px 0 rgba(26, 31, 36, 0.12);
+  border: 1px solid var(--ink) !important;
 }
 .t-tab {
-  font-weight: 650 !important;
-  color: var(--ink-soft) !important;
-  font-size: 0.92rem !important;
-}
-.t-tab[aria-selected="true"] {
-  color: var(--ink) !important;
-}
-
-/* R14 — fields hold against enamel */
-.field {
-  background: #ffffff !important;
-  border: 1.5px solid var(--rule-strong) !important;
-  color: var(--ink) !important;
-  font-weight: 500;
-}
-.field:focus {
-  outline: 2px solid var(--sea);
-  border-color: var(--sea) !important;
-}
-
-/* R15 — kraft cards inkier */
-.chore-tile {
-  background: #f4dfc0 !important;
-  border: 2px solid var(--ink) !important;
-  box-shadow: 4px 4px 0 rgba(47, 95, 158, 0.22) !important;
-}
-.tile {
-  border: 1.5px solid var(--ink);
-  box-shadow: 4px 4px 0 rgba(47, 95, 158, 0.14);
-}
-
-/* R17 — room section titles sans */
-.room-title {
-  font-family: var(--font-sans), system-ui, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 1.2rem !important;
-  letter-spacing: -0.015em;
-}
-
-/* R18 — flat hard bar reaffirm */
-*[style*="linear-gradient"],
-*[style*="radial-gradient"],
-*[style*="conic-gradient"] {
-  background-image: none !important;
-}
-.t-skel-skeleton.is-pulsing > div {
-  background: var(--chalk) !important;
-  background-image: none !important;
-}
-
-/* R19 — mobile type + magnet */
-@media (max-width: 860px) {
-  .billboard-ledger h1 {
-    font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
-  }
-  .section-title { font-size: 1.15rem !important; }
-  .stamp-btn { width: 70px !important; height: 70px !important; }
-  .stamp-btn::after { font-size: 0.58rem !important; }
-  .job-strip { margin-bottom: 0.85rem; }
-  .chore-title { font-size: 1.08rem !important; }
-}
-
-/* R20 — aside CTA row + eyebrow contrast */
-.aside-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-.aside-actions .btn { flex: 1 1 auto; }
-.eyebrow {
-  color: var(--sea-deep) !important;
-  font-weight: 650 !important;
-}
-.magnet-tape {
-  border-bottom-width: 3px;
-  font-size: 0.68rem;
-}
-.label {
-  color: var(--ink-soft) !important;
-  letter-spacing: 0.1em;
-}
-
-
-/* —— PHASE B4 INTEGRITY —— */
-/* Identity frozen: Fridge Magnet Board. Flat fills only. dream-loop + transitions. */
-
-/* r1 — fonts: Due today title scale closer to Tody list header */
-.section-title {
-  font-size: 1.28rem !important;
-  font-weight: 750 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 1.15;
-}
-.today-list-col .section-title {
-  font-size: 1.35rem !important;
-}
-
-/* r2 — contrast: enamel vs kraft separation */
-.chore-tile {
-  background: #f2d7a8 !important;
-  border: 2.5px solid var(--ink) !important;
-  box-shadow: 5px 5px 0 rgba(26, 31, 36, 0.22) !important;
-}
-.tile:not(.chore-tile) {
-  background: #ffffff;
-  border: 1.5px solid var(--ink);
-  box-shadow: 4px 4px 0 rgba(26, 31, 36, 0.12);
-}
-body {
-  background-color: #f3f5f7;
-}
-
-
-/* r3 — buttons: New chore / Plan / Undo triad weight */
-.aside-actions .btn-clay {
-  flex: 1.35 1 auto;
-  min-width: 7.5rem;
-  font-size: 0.95rem;
-  box-shadow: 4px 4px 0 var(--ink);
-}
-.aside-actions .btn-primary {
-  flex: 1.1 1 auto;
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.aside-actions .btn-ghost {
-  flex: 0.85 1 auto;
-  border-width: 1.5px;
-  font-weight: 600;
-  box-shadow: none;
-}
-
-
-/* r4 — bar gap: denser Due list like Tody task rows */
-.today-list { gap: 0.45rem !important; }
-.chore-tile { padding: 0.78rem 0.9rem !important; }
-.chore-title-row { gap: 0.4rem; }
-
-
-/* r5 — contrast: overdue pills punch like Tody */
-.status-pill {
-  font-size: 0.7rem !important;
-  border-width: 1.5px !important;
   border-radius: 2px !important;
-  padding: 0.3rem 0.5rem !important;
 }
-.status-overdue {
-  background: #ffe1da !important;
-  color: #7a1510 !important;
-  border-color: #d63b2c !important;
-}
-
-
-/* r6 — buttons/dream-loop: larger tomato magnet + DONE */
-.stamp-btn { width: 68px !important; height: 68px !important; }
-.stamp-btn::after { font-size: 0.62rem !important; letter-spacing: 0.12em !important; bottom: 9px !important; }
-.stamp-btn svg { width: 24px; height: 24px; }
-@media (max-width: 860px) {
-  .stamp-btn { width: 74px !important; height: 74px !important; }
-}
-
-
-/* r7 — fonts: chore title ladder toward target */
-.chore-title { font-size: 1.14rem !important; font-weight: 750 !important; letter-spacing: -0.018em !important; }
-.chore-meta { font-size: 0.82rem !important; font-weight: 500; color: var(--ink-soft) !important; }
-
-
-/* r8 — contrast: dirt residue segments hold */
-.dirt-meter-track { height: 11px !important; gap: 2px !important; }
-.dirt-seg { background: rgba(26,31,36,0.16) !important; border: 1px solid rgba(26,31,36,0.14) !important; border-radius: 1px !important; }
-.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
-.dirt-due .dirt-seg.is-on { background: #c9843a !important; }
-
-
-/* r9 — bar gap/dream: compact materials row */
-.materials-row { opacity: 0.88; transform: scale(0.98); transform-origin: left center; margin-bottom: 0.35rem !important; }
-.fridge-plate img { max-height: 56px !important; }
-.magnet-rail { padding: 0.35rem !important; }
-.magnet-rail img { width: 34px !important; height: 34px !important; }
-
-
-/* r10 — fonts: job strip verb closer to target utility */
-.job-strip .job-verb { font-size: clamp(1.25rem, 2.6vw, 1.65rem) !important; font-weight: 750 !important; letter-spacing: -0.02em !important; }
-.job-strip .job-hint { font-size: 0.92rem !important; }
-.job-strip .job-count { font-size: 0.78rem !important; box-shadow: 2px 2px 0 var(--ink); }
-
-
-/* r11 — buttons: Stick chore full-width clay weight */
-.t-input-wrap .btn-clay {
-  width: 100%;
-  font-weight: 750;
-  box-shadow: 3px 3px 0 var(--ink);
-  letter-spacing: 0.01em;
-}
-.t-input-wrap.is-error .field {
-  border-color: var(--clay) !important;
-}
-
-
-/* r12 — bar gap: plan panel sits as kraft sheet */
-.plan-panel {
-  border: 2px solid var(--ink) !important;
-  background: #faf6ef !important;
-  box-shadow: 4px 4px 0 rgba(47,95,158,0.18) !important;
-}
-.t-panel-slide[data-open="true"] { display: block; }
-
-
-/* r13 — contrast: tabs active like dream-target chips */
-.t-tabs { padding: 4px !important; background: #e6eaee !important; }
-.t-tabs-pill {
-  background: #fff !important;
-  border: 2px solid var(--ink) !important;
-  box-shadow: 2px 2px 0 rgba(26,31,36,0.16) !important;
-}
-.t-tab { font-weight: 700 !important; font-size: 0.95rem !important; }
-.t-tab[aria-selected="true"] { color: var(--ink) !important; }
-
-
-/* r14 — fonts: meta room·freq mono utility */
-.chore-meta {
-  font-family: var(--font-mono), ui-monospace, monospace !important;
-  font-size: 0.78rem !important;
-  letter-spacing: 0.02em;
-}
-.assignee-chip { font-family: var(--font-sans), system-ui, sans-serif !important; font-weight: 700 !important; }
-
-
-/* r15 — buttons/dream: Undo quiet, New chore loud */
-.aside-actions { gap: 0.55rem !important; }
-.aside-actions .btn-ghost {
-  background: #fff !important;
-  color: var(--ink-soft) !important;
-  border: 1.5px solid var(--rule-strong) !important;
-  font-weight: 600 !important;
-  box-shadow: none !important;
-}
-.aside-actions .btn-clay { font-size: 1rem !important; padding-inline: 1.1rem; }
-
-
-/* r16 — contrast: Later cards quieter than Due kraft */
-.later-card {
-  background: #f7f1e6 !important;
-  border: 1.5px solid var(--ink) !important;
-  opacity: 0.95;
-}
-.later-card .later-title { font-weight: 700; font-size: 0.98rem; }
-
-
-/* r17 — bar gap/dream: flat room chips (no gradient) */
-.room-chip {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  padding: 0.35rem 0.55rem; border: 1.5px solid var(--ink);
-  background: var(--chalk); font-weight: 700; font-size: 0.8rem;
-  border-radius: 3px; box-shadow: 2px 2px 0 rgba(26,31,36,0.1);
-}
-.rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.65rem; }
-.room-tile-flat {
-  border: 2px solid var(--ink); background: #fff; padding: 0.85rem;
-  box-shadow: 3px 3px 0 rgba(47,95,158,0.14); border-radius: 3px;
-}
-.room-tile-flat .room-title { font-size: 1.05rem !important; }
-
-
-/* r18 — fonts: household mark optical (Newsreader kept) */
-.billboard-ledger h1 {
-  font-size: clamp(1.85rem, 4.2vw, 2.65rem) !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.028em !important;
-  line-height: 1.05 !important;
-}
-.billboard-ledger .eyebrow { font-size: 0.68rem !important; letter-spacing: 0.16em !important; }
-
-
-/* r19 — contrast: streak ring + footer ink */
-.streak-ring {
-  border-width: 3px !important;
-  box-shadow: inset 0 0 0 5px #fff, 3px 3px 0 var(--clay) !important;
-}
-.magnet-tape {
-  font-size: 0.72rem !important;
-  letter-spacing: 0.16em !important;
-  border-bottom: 4px solid var(--clay) !important;
-}
-footer, .shell > p, .backup-link { color: var(--ink-soft) !important; font-weight: 600; }
-
-
-/* r20 — coherence/dream close: shell + job strip final */
-.shell { width: min(1120px, calc(100% - 1.5rem)); }
-.job-strip {
-  border-width: 3px !important;
-  box-shadow: 6px 6px 0 var(--clay) !important;
-  background: #f4dfc0 !important;
-}
-.today-list-col .section-title { font-size: 1.4rem !important; }
-.chore-tile { border-radius: 2px !important; }
-/* flat hard bar reaffirm */
-*[style*="linear-gradient"], *[style*="radial-gradient"] { background-image: none !important; }
-
-
-/* —— B4 BEAUTY CRAFT (Fridge Magnet Board · still flat) —— */
-/* r21 — beauty: quieter ink offsets (kill comic ugliness) */
-:root { --shadow: 3px 3px 0 rgba(26, 31, 36, 0.1); }
-.chore-tile {
-  box-shadow: 3px 3px 0 rgba(26, 31, 36, 0.14) !important;
-}
-.tile:not(.chore-tile) {
-  box-shadow: 3px 3px 0 rgba(26, 31, 36, 0.08) !important;
-}
-.job-strip {
-  box-shadow: 4px 4px 0 rgba(214, 59, 44, 0.55) !important;
-}
-.btn-primary, .btn-clay { box-shadow: 2px 2px 0 var(--ink) !important; }
-.fridge-plate { box-shadow: 3px 3px 0 rgba(47, 95, 158, 0.14) !important; }
-.magnet-rail { box-shadow: 3px 3px 0 rgba(212, 160, 23, 0.35) !important; }
-
-
-/* r22 — beauty: tomato magnet enamel affordance (flat, no gradient) */
 .stamp-btn {
-  width: 64px !important; height: 64px !important;
-  background: #d63b2c !important;
-  border: 3px solid #1a1f24 !important;
-  box-shadow:
-    inset 0 0 0 2px rgba(255,248,244,0.35),
-    inset 0 0 0 5px #b12e22,
-    2px 2px 0 #1a1f24 !important;
-}
-.stamp-btn::before {
-  inset: 8px !important;
-  border: 1.5px dashed rgba(255,248,244,0.45) !important;
-}
-.stamp-btn::after {
-  font-size: 0.58rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.14em !important;
-  color: #fff !important;
-  text-shadow: none;
-}
-.chore-tile.phase-stamp .stamp-btn {
-  background: #3d8f78 !important;
-  box-shadow:
-    inset 0 0 0 2px rgba(255,248,244,0.35),
-    inset 0 0 0 5px #2a6b58,
-    2px 2px 0 #1a1f24 !important;
-}
-
-
-/* r23 — beauty: type breathing vs cramped neobrutal */
-.chore-title {
-  font-size: 1.08rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  line-height: 1.28 !important;
-}
-.chore-meta {
-  font-size: 0.76rem !important;
-  line-height: 1.35;
-  opacity: 0.92;
-}
-.section-title, .today-list-col .section-title {
-  font-size: 1.22rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em !important;
-}
-.job-strip .job-verb {
-  font-size: clamp(1.15rem, 2.4vw, 1.45rem) !important;
-  font-weight: 700 !important;
-}
-.billboard-ledger h1 {
-  font-size: clamp(1.7rem, 3.8vw, 2.4rem) !important;
-  font-weight: 550 !important;
-}
-
-
-/* r24 — beauty: enamel + kraft materials refine */
-body {
-  background-color: #f5f6f8 !important;
-}
-.chore-tile {
-  background: #f7e7cb !important;
-  border: 2px solid #1a1f24 !important;
-}
-.tile:not(.chore-tile) {
-  background: #ffffff !important;
-  border: 1.5px solid #c5ccd4 !important;
-}
-.job-strip { background: #f3e0c0 !important; border-color: #1a1f24 !important; }
-.later-card { background: #faf7f1 !important; }
-.status-overdue { background: #fff0ec !important; color: #8a2218 !important; }
-
-
-/* r25 — beauty: spacing rhythm */
-.today-list { gap: 0.55rem !important; }
-.chore-tile { padding: 0.85rem 0.95rem !important; gap: 0.95rem !important; }
-.job-strip { padding: 0.75rem 1rem !important; margin-bottom: 0.85rem !important; }
-.materials-row { margin-bottom: 0.55rem !important; }
-.aside-actions { gap: 0.5rem !important; margin-top: 0.85rem !important; }
-.shell header, header.shell { padding-bottom: 0.75rem !important; }
-
-
-/* r26 — beauty: demote decorative materials clutter */
-.materials-row {
-  opacity: 0.75 !important;
-  filter: none !important;
-}
-.fridge-plate {
-  border-width: 1.5px !important;
-  border-radius: 2px;
-}
-.fridge-plate img { max-height: 48px !important; object-position: center; }
-.fridge-plate figcaption { font-size: 0.55rem !important; padding: 0.25rem 0.5rem !important; }
-.magnet-rail {
-  background: #faf6ef !important;
-  border-width: 1.5px !important;
-  padding: 0.3rem !important;
-}
-.magnet-rail img { width: 30px !important; height: 30px !important; border-width: 1.5px !important; }
-.magnet-tape {
-  font-size: 0.65rem !important;
-  letter-spacing: 0.12em !important;
-  padding: 0.4rem 1rem !important;
-  border-bottom-width: 3px !important;
-}
-
-
-/* r27 — beauty: stamp + button craft consistency */
-.btn { border-radius: 4px !important; min-height: 44px; }
-.btn-clay { background: #d63b2c !important; }
-.btn-primary { background: #2f5f9e !important; }
-.stamp-btn svg { transform: translateY(-5px) !important; }
-.stamp-btn svg path { stroke-width: 1.8; opacity: 0.65 !important; }
-.dirt-meter-track { height: 9px !important; gap: 2px !important; }
-.dirt-seg { border-radius: 1px !important; }
-.status-pill { border-radius: 4px !important; font-size: 0.66rem !important; }
-
-
-/* r28 — beauty coherence vs todyapp polish */
-.t-tabs {
-  background: #eef1f4 !important;
-  border: 1.5px solid #1a1f24 !important;
-  border-radius: 6px !important;
-  padding: 3px !important;
-}
-.t-tabs-pill {
-  border-radius: 4px !important;
-  border-width: 1.5px !important;
-  box-shadow: 1px 1px 0 rgba(26,31,36,0.1) !important;
-}
-.streak-ring {
-  box-shadow: inset 0 0 0 5px #fff, 2px 2px 0 #d63b2c !important;
-}
-.eyebrow { letter-spacing: 0.12em !important; }
-/* kill residual loud cobalt offsets on kraft */
-.chore-tile { box-shadow: 3px 3px 0 rgba(26,31,36,0.12) !important; }
-
-
-/* r29 — beauty: residue meter thinner / less loud */
-.dirt-meter { margin-top: 0.35rem !important; }
-.dirt-meter-track { height: 7px !important; gap: 3px !important; }
-.dirt-seg { border-radius: 2px !important; background: rgba(26,31,36,0.1) !important; }
-.dirt-overdue .dirt-seg.is-on { background: #c94a3c !important; }
-.dirt-due .dirt-seg.is-on { background: #c9a04a !important; }
-.dirt-ok .dirt-seg.is-on { background: #4a9a82 !important; }
-.dirt-meter-fill { opacity: 0.08 !important; }
-
-
-/* r30 — beauty: hide materials strip on Today fold (job first) */
-.materials-row { display: none !important; }
-.job-strip { margin-bottom: 1rem !important; border-radius: 2px; }
-.chore-tile { border-radius: 4px !important; }
-.tile { border-radius: 4px !important; }
-.aside-actions .btn { border-radius: 4px !important; }
-
-
-/* r31 — beauty: magnet slap affordance stronger (flat rings only) */
-.stamp-btn {
-  width: 66px !important; height: 66px !important;
-  background: #e04333 !important;
-  border: 2.5px solid #1a1f24 !important;
-  box-shadow:
-    0 0 0 3px #fff8f4,
-    0 0 0 5px #1a1f24,
-    3px 3px 0 rgba(26,31,36,0.25) !important;
-}
-.stamp-btn::before { display: none !important; }
-.stamp-btn::after {
-  bottom: 10px !important;
-  font-size: 0.6rem !important;
-  letter-spacing: 0.16em !important;
-}
-.stamp-btn svg { transform: translateY(-6px) scale(1.05) !important; }
-.stamp-btn svg path { opacity: 0.75 !important; stroke: #fff8f4 !important; }
-
-
-/* r32 — beauty: chrome polish vs todyapp cleanliness */
-.magnet-tape {
-  background: #1a1f24 !important;
-  border-bottom: 3px solid #d63b2c !important;
-  font-size: 0.62rem !important;
-  opacity: 0.95;
-}
-.billboard-ledger p { font-size: 0.98rem !important; color: #3c4650 !important; max-width: 36rem; }
-.t-tabs { border-radius: 8px !important; }
-.status-pill { font-weight: 650 !important; letter-spacing: 0.04em !important; }
-.btn-ghost { border-radius: 4px !important; }
-/* final flat reaffirm */
-.shader-bg, .t-clear-glow { display: none !important; }
-
-
-/* ═══════════════════════════════════════════════════════════
-   PHASE A WEAK RESEED — Quiet Enamel Fridge Magnet Board
-   Seed 84a38a6e… · flat no-gradient · lovable kitchen utility
-   ═══════════════════════════════════════════════════════════ */
-
-:root {
-  --linen: #f4f6f8;
-  --chalk: #eef1f4;
-  --ink: #1a1f24;
-  --ink-soft: #3c4650;
-  --ink-mute: #6a7580;
-  --sea: #2f5f9e;
-  --sea-deep: #234a7a;
-  --clay: #d63b2c;
-  --clay-deep: #b12e22;
-  --moss: #3d8f78;
-  --mustard: #d4a017;
-  --kraft: #f6e8d2;
-  --kraft-deep: #edd9b8;
-  --rule: #c5ccd4;
-  --rule-strong: #aeb6bf;
-  --tile: #ffffff;
-  --shadow: 2px 2px 0 rgba(26, 31, 36, 0.08);
-  --shadow-soft: 1px 1px 0 rgba(26, 31, 36, 0.06);
-}
-
-body {
-  background-color: var(--linen) !important;
-  background-image: url("/art/enamel-quiet.png") !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  color: var(--ink) !important;
-}
-
-/* Quiet brand strip — not comic tape */
-.magnet-tape {
-  background: #1a1f24 !important;
-  color: #f4f6f8 !important;
-  border-bottom: 2px solid var(--clay) !important;
-  font-size: 0.58rem !important;
-  letter-spacing: 0.14em !important;
-  padding: 0.35rem 1rem !important;
-  opacity: 1 !important;
-  display: flex !important;
-  gap: 1.25rem !important;
-  justify-content: center !important;
-  text-transform: uppercase;
-  font-family: var(--font-mono), monospace;
-}
-.magnet-tape span:nth-child(2) { color: #ffb4a8; font-weight: 600; }
-
-/* Soft tiles — hairline steel, no neo-brutal offsets */
-.tile {
   background: var(--tile) !important;
-  border: 1px solid var(--rule) !important;
-  box-shadow: var(--shadow-soft) !important;
-  border-radius: 10px !important;
-}
-.chore-tile {
-  background: var(--kraft) !important;
-  border: 1px solid #d9c7a8 !important;
-  box-shadow: var(--shadow-soft) !important;
-  border-radius: 12px !important;
-  padding: 0.9rem 1rem !important;
-  gap: 1rem !important;
-}
-.later-card {
-  background: #faf8f4 !important;
-  border: 1px solid var(--rule) !important;
-  box-shadow: none !important;
-  opacity: 1 !important;
-  border-radius: 8px !important;
-}
-
-/* Tomato magnet with real enamel photo face */
-.stamp-btn {
-  width: 68px !important;
-  height: 68px !important;
-  border-radius: 50% !important;
-  border: 2px solid #fff8f4 !important;
-  background-color: var(--clay) !important;
-  background-image: url("/art/tomato-magnet.png") !important;
-  background-size: cover !important;
-  background-position: center !important;
-  box-shadow:
-    0 0 0 2px var(--ink),
-    2px 2px 0 rgba(26, 31, 36, 0.2) !important;
-  color: #fff8f4 !important;
-  position: relative;
-  overflow: hidden;
-}
-.stamp-btn::before {
-  display: block !important;
-  content: "" !important;
-  position: absolute;
-  inset: 0;
-  background: rgba(214, 59, 44, 0.42) !important;
-  border-radius: 50%;
-  border: none !important;
-}
-.stamp-btn::after {
-  content: "DONE";
-  position: absolute;
-  bottom: 9px;
-  left: 0; right: 0;
-  text-align: center;
-  font-size: 0.55rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.14em !important;
-  color: #fff !important;
-  z-index: 2;
-  opacity: 0.95;
-}
-.stamp-btn svg {
-  position: relative;
-  z-index: 2;
-  transform: translateY(-5px) !important;
-  color: #fff !important;
+  color: var(--ink) !important;
+  border: 1.5px solid var(--ink) !important;
 }
 .stamp-btn svg path {
-  stroke: #fff !important;
-  opacity: 0.85 !important;
+  stroke: var(--ink) !important;
+  opacity: 1 !important;
 }
 .chore-tile.phase-stamp .stamp-btn,
 .stamp-btn[aria-checked="true"] {
-  background-image: none !important;
-  background-color: var(--moss) !important;
-  box-shadow:
-    0 0 0 2px var(--ink),
-    2px 2px 0 rgba(26, 31, 36, 0.2) !important;
+  background: var(--done) !important;
+  color: #faf9f7 !important;
 }
-.chore-tile.phase-stamp .stamp-btn::before,
-.stamp-btn[aria-checked="true"]::before {
-  background: rgba(61, 143, 120, 0.15) !important;
-}
-
-/* Soft job strip */
-.job-strip {
-  background: #f3e6d0 !important;
-  border: 1px solid #d9c7a8 !important;
-  box-shadow: var(--shadow-soft) !important;
-  border-radius: 12px !important;
-  padding: 0.85rem 1.1rem !important;
-  margin-bottom: 1.1rem !important;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.35rem 1rem;
-  align-items: center;
-}
-.job-strip .job-verb {
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem) !important;
-  font-weight: 700 !important;
-  color: var(--ink) !important;
-  letter-spacing: -0.02em !important;
-}
-.job-strip .job-hint {
-  grid-column: 1;
-  color: var(--ink-soft) !important;
-  font-size: 0.92rem !important;
-  font-weight: 500 !important;
-}
-.job-strip .job-count {
-  grid-row: 1 / span 2;
-  grid-column: 2;
-  background: var(--clay) !important;
-  color: #fff8f4 !important;
-  border: 1px solid var(--ink) !important;
-  border-radius: 8px !important;
-  padding: 0.55rem 0.75rem !important;
-  font-weight: 800 !important;
-  font-size: 0.72rem !important;
-  letter-spacing: 0.08em !important;
-  box-shadow: none !important;
-}
-
-/* Materials stay off the Today fold */
-.materials-row { display: none !important; }
-
-/* Quieter chrome */
-.billboard-ledger h1 {
-  font-size: clamp(1.75rem, 3.6vw, 2.35rem) !important;
-  font-weight: 550 !important;
-  letter-spacing: -0.03em !important;
-  color: var(--ink) !important;
-  max-width: 18ch;
-}
-.billboard-ledger .eyebrow {
-  color: var(--sea) !important;
-  font-size: 0.66rem !important;
-  letter-spacing: 0.14em !important;
-}
-.billboard-ledger p {
-  color: var(--ink-soft) !important;
-  font-size: 1rem !important;
-  max-width: 34rem;
-}
-.section-title, .today-list-col .section-title {
-  font-size: 1.18rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em !important;
-  color: var(--ink) !important;
-}
-.chore-title {
-  font-size: 1.05rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.01em !important;
-  color: var(--ink) !important;
-}
-.chore-meta {
-  font-size: 0.78rem !important;
-  color: var(--ink-mute) !important;
+.chore-tile.phase-stamp .stamp-btn svg path,
+.stamp-btn[aria-checked="true"] svg path {
+  stroke: #faf9f7 !important;
 }
 .status-pill {
-  border-radius: 6px !important;
-  border: 1px solid var(--rule) !important;
-  font-weight: 650 !important;
-  background: #fff !important;
-}
-.status-overdue {
-  background: #fff1ee !important;
-  color: #8a2218 !important;
-  border-color: rgba(214, 59, 44, 0.4) !important;
+  background: var(--chalk) !important;
+  color: var(--ink-soft) !important;
+  border-color: var(--rule) !important;
+  font-weight: 600 !important;
 }
 .status-due {
-  background: #eef4fb !important;
-  color: var(--sea-deep) !important;
-  border-color: rgba(47, 95, 158, 0.35) !important;
+  color: var(--slate-deep) !important;
+  border-color: var(--slate) !important;
 }
-
-/* Soft buttons — flat fills, hairline, no comic offset */
-.btn {
-  border-radius: 8px !important;
-  box-shadow: none !important;
-  border-width: 1px !important;
-  font-weight: 700 !important;
-  min-height: 44px;
-}
-.btn-primary {
-  background: var(--sea) !important;
-  color: #f7fbfb !important;
-  border-color: var(--sea-deep) !important;
-}
-.btn-clay {
-  background: var(--clay) !important;
-  color: #fff8f4 !important;
-  border-color: var(--clay-deep) !important;
-}
-.btn-ghost {
-  background: #fff !important;
-  color: var(--ink-soft) !important;
-  border: 1px solid var(--rule-strong) !important;
-  box-shadow: none !important;
-}
-
-/* Tabs soft */
-.t-tabs {
-  background: var(--chalk) !important;
-  border: 1px solid var(--rule) !important;
-  border-radius: 10px !important;
-  padding: 3px !important;
-  box-shadow: none !important;
-}
-.t-tabs-pill {
-  border-radius: 8px !important;
-  border: 1px solid var(--rule) !important;
-  box-shadow: var(--shadow-soft) !important;
-}
-
-/* Streak quiet disc */
-.streak-ring {
-  border: 2px solid var(--ink) !important;
-  box-shadow: inset 0 0 0 5px #fff, 2px 2px 0 var(--clay) !important;
-  background: #fff !important;
-}
-
-/* Dirt residue — Tody-like thin segments */
-.dirt-meter-track { height: 6px !important; gap: 3px !important; }
-.dirt-seg { border-radius: 2px !important; background: rgba(26,31,36,0.08) !important; }
-.dirt-overdue .dirt-seg.is-on { background: #c94a3c !important; }
-.dirt-due .dirt-seg.is-on { background: #c9a04a !important; }
-.dirt-ok .dirt-seg.is-on { background: #4a9a82 !important; }
-
-/* Aside soft */
-.today-aside {
-  border-radius: 12px !important;
-  box-shadow: var(--shadow) !important;
-}
-.room-tile-flat {
-  border: 1px solid var(--rule) !important;
-  box-shadow: var(--shadow-soft) !important;
-  border-radius: 10px !important;
-  background: #fff !important;
-}
-.room-chip {
-  border: 1px solid var(--rule) !important;
-  box-shadow: none !important;
-  border-radius: 999px !important;
+.status-overdue {
+  color: var(--ink) !important;
+  border-color: var(--ink) !important;
   background: var(--chalk) !important;
 }
 
-/* Empty state plate */
-.empty-quiet {
-  text-align: center;
-  padding: 1.5rem !important;
-  display: grid;
-  gap: 0.75rem;
-  justify-items: center;
-}
-.empty-quiet img {
-  width: min(220px, 70%);
-  height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--rule);
-  box-shadow: var(--shadow-soft);
-}
 
-/* Hard bar: no decorative gradients / glass / glow */
-*[style*="linear-gradient"],
-*[style*="radial-gradient"],
-*[style*="conic-gradient"] { background-image: none !important; }
-.shader-bg, .t-clear-glow { display: none !important; }
-*[style*="backdrop-filter"], .glass, .glow {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-
-/* r1 — fonts: Due / chore optical toward dream-target */
-.today-list-col .section-title {
-  font-size: 1.32rem !important;
-  font-weight: 750 !important;
-  letter-spacing: -0.025em !important;
+/* beat2 — letterpress type hierarchy */
+.billboard-ledger h1,
+.font-display {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.035em !important;
+  font-variation-settings: "opsz" 72;
 }
 .chore-title {
-  font-size: 1.08rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.015em !important;
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+  font-size: 1.06rem !important;
+  letter-spacing: -0.015em;
 }
-.job-strip .job-verb {
-  font-size: clamp(1.15rem, 2.3vw, 1.4rem) !important;
-  letter-spacing: -0.022em !important;
+.job-strip .job-count {
+  font-size: 2rem !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.04em !important;
+  min-width: 3.2rem;
+  text-align: center;
 }
-
-
-/* r2 — contrast: kraft slips punch off quiet enamel */
-.chore-tile {
-  background: #f3e2c4 !important;
-  border-color: #cbb892 !important;
-}
-.status-overdue {
-  background: #ffe8e2 !important;
-  color: #7a1f16 !important;
-  border-color: rgba(214,59,44,0.55) !important;
-  font-weight: 750 !important;
-}
-.job-strip {
-  background: #f0dcc0 !important;
-  border-color: #cbb892 !important;
-}
-
-
-/* r3 — buttons: New chore tomato earns weight */
-.aside-actions .btn-clay {
-  font-size: 1.02rem !important;
-  min-height: 48px !important;
-  padding-inline: 1.15rem !important;
-  border-width: 1.5px !important;
-  border-color: var(--ink) !important;
-}
-.aside-actions .btn-ghost {
-  min-height: 48px !important;
-  color: var(--ink-mute) !important;
-  border-color: var(--rule) !important;
-}
-.aside-actions .btn-primary {
-  min-height: 48px !important;
-  border-color: var(--ink) !important;
-  border-width: 1.5px !important;
-}
-
-
-/* r4 — bar-gap: denser Due list like Tody rows */
-.today-list { gap: 0.4rem !important; }
-.chore-tile { padding: 0.72rem 0.85rem !important; gap: 0.85rem !important; }
-.dirt-meter { margin-top: 0.28rem !important; }
-.job-strip { margin-bottom: 0.85rem !important; padding: 0.7rem 0.95rem !important; }
-
-
-/* r5 — contrast: residue segments + overdue heat toward Tody bars */
-.dirt-meter-track { height: 8px !important; gap: 2px !important; }
-.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
-.dirt-due .dirt-seg.is-on { background: #d4a017 !important; }
-.status-overdue {
-  letter-spacing: 0.04em !important;
-  font-size: 0.64rem !important;
-}
-.chore-tile[data-status="overdue"] {
-  border-color: #c9a07a !important;
-}
-
-
-/* r6 — buttons: magnet discs closer to dream-target DONE stamps */
-.stamp-btn {
-  width: 72px !important;
-  height: 72px !important;
-}
-.stamp-btn::after {
-  font-size: 0.58rem !important;
-  bottom: 10px !important;
-  letter-spacing: 0.16em !important;
-}
-.stamp-btn svg { transform: translateY(-6px) scale(1.08) !important; }
-
-
-/* r7 — fonts: household mark + meta utility */
-.billboard-ledger h1 {
-  font-size: clamp(1.85rem, 3.8vw, 2.5rem) !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.032em !important;
-}
-.billboard-ledger p {
-  font-size: 1.02rem !important;
-  line-height: 1.4 !important;
-}
-.chore-meta {
-  font-size: 0.74rem !important;
-  letter-spacing: 0.01em;
+.section-title {
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
 }
 .eyebrow {
-  font-size: 0.64rem !important;
-  letter-spacing: 0.13em !important;
+  color: var(--ink-mute) !important;
 }
 
 
-/* r8 — contrast: Later quieter; Due kraft owns fold */
-.later-card {
-  background: #f7f4ef !important;
-  border-color: var(--rule) !important;
-  opacity: 0.88 !important;
-}
-.later-card .later-title { font-weight: 650 !important; color: var(--ink-soft) !important; }
+/* beat3 — denser due list, quieter aside */
+.today-list { gap: 0.45rem !important; }
+.chore-tile { padding: 0.75rem 0.85rem !important; }
+.dirt-meter-track { height: 6px !important; gap: 2px !important; }
 .today-aside {
-  border-color: var(--rule) !important;
-  background: #fffcfa !important;
+  border: 1px solid var(--rule) !important;
+  background: var(--chalk) !important;
 }
+.member-row { background: var(--tile) !important; }
+.job-strip { padding: 0.7rem 0.95rem !important; margin-bottom: 0.75rem !important; }
+
+
+/* beat4 — idle check always visible (letterpress checkbox) */
+.stamp-btn svg path {
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+  opacity: 1 !important;
+}
+.stamp-btn {
+  background: var(--tile) !important;
+  color: var(--ink) !important;
+}
+
+
+/* beat5 — folio streak */
+.streak-ring {
+  width: auto !important;
+  height: auto !important;
+  min-width: 3rem;
+  padding: 0.4rem 0.6rem !important;
+  border-radius: 2px !important;
+}
+
+
+/* beat6 — form chrome letterpress */
 .field {
-  background: #fffcf7 !important;
+  background: var(--tile) !important;
+  border-radius: 2px !important;
   border-color: var(--rule-strong) !important;
 }
-
-
-/* r9 — bar-gap: aside actions stack cleaner toward dream-target */
-.aside-actions {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 0.45rem !important;
+select.field { min-height: 40px !important; }
+.btn-primary, .btn-clay {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-radius: 2px !important;
 }
-.aside-actions .btn { width: 100%; }
-.today-aside { padding: 1.05rem 1.1rem !important; }
-.shell { width: min(1100px, calc(100% - 1.5rem)); }
-@media (min-width: 900px) {
-  .today-grid {
-    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.7fr) !important;
-    gap: 1.15rem !important;
-  }
+.btn-primary:hover:not(:disabled),
+.btn-clay:hover:not(:disabled) {
+  background: var(--slate-deep) !important;
+}
+.dirt-due .dirt-seg.is-on,
+.dirt-overdue .dirt-seg.is-on {
+  background: var(--ink) !important;
 }
 
 
-/* r10 — coherence: quiet chrome + flat hard bar reaffirm */
-.magnet-tape {
-  opacity: 0.92 !important;
-  border-bottom-width: 2px !important;
+/* beat7 — editorial measure */
+.shell { width: min(980px, calc(100% - 1.5rem)) !important; }
+.billboard-ledger h1 { max-width: 14ch !important; }
+.today-grid { gap: 1.25rem !important; }
+
+
+/* beat8 — mobile letterpress */
+@media (max-width: 860px) {
+  .job-strip { flex-direction: column; align-items: flex-start !important; }
+  .stamp-btn { width: 56px !important; height: 56px !important; }
+  .billboard-ledger h1 { font-size: 2rem !important; }
 }
-.t-tabs {
-  border-radius: 999px !important;
-  padding: 4px !important;
-}
-.t-tabs-pill { border-radius: 999px !important; }
+
+
+/* beat9 — fix overlap, streak numeral, mute member rainbow */
+.job-strip { position: relative; z-index: 1; margin-bottom: 1.1rem !important; }
+.today-list-col > div:first-child { margin-top: 0.15rem; }
+.section-title { position: relative; z-index: 0; }
 .streak-ring {
-  width: 68px !important;
-  height: 68px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  min-width: 3.4rem !important;
+  min-height: 3.4rem !important;
+  padding: 0.45rem 0.55rem !important;
 }
-.status-pill { border-radius: 999px !important; }
-/* flat hard bar */
-*[style*="linear-gradient"], *[style*="radial-gradient"], *[style*="conic-gradient"] {
-  background-image: none !important;
+.streak-ring span { display: grid; place-items: center; gap: 0.1rem; }
+.member-dot { background: var(--ink) !important; opacity: 0.55; }
+.member-row:first-child .member-dot { opacity: 1; }
+.billboard-ledger h1 {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif !important;
+  font-style: normal;
 }
-.shader-bg, .t-clear-glow { display: none !important; }
+
+
+/* beat10 — empty art + room cards */
+.empty-quiet img {
+  border: 1px solid var(--ink) !important;
+  box-shadow: none !important;
+  background: var(--tile);
+}
+.room-title { font-size: 1.35rem !important; }
+
+
+/* beat11 — folio numerals always readable */
+.job-strip .job-count {
+  font-variant-numeric: tabular-nums;
+  font-size: 2.15rem !important;
+  line-height: 1 !important;
+}
+.streak-ring span > div:first-child {
+  font-family: var(--font-mono), monospace !important;
+  font-size: 1.35rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.03em;
+}
+
+
+/* beat12 — history rows letterpress */
+.history-row, [data-tab-panel="history"] .tile {
+  border-radius: 2px;
+}
+
+
+/* beat13 — job strip main + hairline rules on chore cards */
+.job-strip-main { flex: 1; min-width: 12rem; }
+.chore-tile {
+  border-top: 1px solid var(--rule) !important;
+  border-left: 1px solid var(--rule) !important;
+  border-right: 1px solid var(--rule) !important;
+  border-bottom: 1px solid var(--ink) !important;
+}
+.chore-title-row { align-items: baseline !important; }
+
+
+/* beat14 — summary disclosure letterpress */
+details summary.eyebrow { letter-spacing: 0.12em; }
+details .btn { border-radius: 2px; }

@@ -1,0 +1,54 @@
+{
+  "slug": "specify-the-look",
+  "number": 10,
+  "stage": "Define",
+  "title": "Tell Claude what it should look like",
+  "principle": "Left undirected, Claude picks one of its favorite aesthetics—you’d probably recognize them. Head that off by specifying fonts and colors, providing a moodboard of images for inspiration, or asking Claude to brainstorm font-and-color pairings and going back and forth until a pairing feels right.",
+  "procedure": [
+    "Name concrete fonts and colors, or upload a moodboard.",
+    "Or ask for font-and-color pairing brainstorms—then choose; don’t accept the first default aesthetic.",
+    "Lock the pairing into later prompts / a design system.",
+    "Re-check outputs for drift back to favorite model aesthetics."
+  ],
+  "examplePrompts": [
+    "Do not use your default aesthetic. Use these constraints:\n\nFonts: <primary / secondary>\nColors: <background, text, accent>\nMood references: I uploaded a moodboard—match its typography weight, contrast, and spacing feel.\n\nPropose 3 font-and-color pairings that fit, then wait for me to pick before designing screens."
+  ],
+  "tips": [
+    "Undirected Claude lands on recognizable favorite aesthetics; specify look early.",
+    "Moodboards and explicit type/color beat vague “make it nice” asks.",
+    "Brainstorm pairings, then choose—don’t skip the selection step."
+  ],
+  "sourceUrls": [
+    "https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them"
+  ],
+  "related": [
+    "design-system-from-assets",
+    "thinking-before-prompt",
+    "ten-options-then-remix",
+    "remove-ai-tells",
+    "seed-strings"
+  ],
+  "workedExamples": [
+    {
+      "title": "Head off favorite aesthetics",
+      "body": "Nate: left undirected, Claude picks recognizable favorite aesthetics. Specify fonts/colors, moodboard, or iterate pairings until one feels right. Cite: Anthropic blog."
+    }
+  ],
+  "antiPatterns": [
+    "“Make it nice / modern / clean” with no type or color.",
+    "Accepting the first pairing without a selection step."
+  ],
+  "checklist": [
+    "Fonts named or moodboard attached.",
+    "A human picked the pairing.",
+    "Later artifacts reuse it."
+  ],
+  "promptWhy": [
+    "Explicit type/color + choose-before-build prevents default aesthetic lock-in."
+  ],
+  "pairsWellWith": [
+    "design-system-from-assets",
+    "remove-ai-tells",
+    "seed-strings"
+  ]
+}

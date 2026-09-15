@@ -13,7 +13,7 @@ type Props = {
 };
 
 /**
- * Physical complete: press → magnet slap → check draw → residue wipe → dust → exit.
+ * Physical complete: press → ink check → residue wipe → exit.
  * One job done excellently.
  */
 export function ChoreTile({ due, roomName, assigneeName, busy, onComplete }: Props) {
@@ -68,10 +68,10 @@ export function ChoreTile({ due, roomName, assigneeName, busy, onComplete }: Pro
     >
       <button
         type="button"
-        className="stamp-btn t-check"
+        className="stamp-btn"
         role="checkbox"
         aria-checked={checked}
-        aria-label={`Stamp complete: ${due.title}`}
+        aria-label={`Check complete: ${due.title}`}
         disabled={busy || phase !== "idle"}
         onPointerDown={() => {
           if (phase === "idle" && !busy) setPhase("press");
@@ -89,7 +89,7 @@ export function ChoreTile({ due, roomName, assigneeName, busy, onComplete }: Pro
             d="M1 5.52L3.92 9.17L9.17 1"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.6"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

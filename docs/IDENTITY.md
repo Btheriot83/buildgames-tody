@@ -1,48 +1,46 @@
-# IDENTITY — Tileboard (locked · WEAK craft reseed)
+# IDENTITY — Tileboard (locked · Cool Letterpress Checklist)
 
-**Aesthetic name:** Fridge Magnet Board (Quiet Enamel craft)  
-**Frozen:** 2026-09-14 ~11:55 PM PT after WEAK Phase A Anshu 1–8  
-**Core job:** Today chores → slap tomato magnet complete (≤3s obvious)
+**Aesthetic name:** Cool Letterpress Checklist  
+**Frozen:** 2026-09-15 ~12:35 AM PT after FULL Anshu Phase A 1–8  
+**Core job:** What’s due in this house today → ink check-press complete (≤3s obvious)
 
 ## Palette (do not re-roll)
-- Quiet enamel `#f4f6f8` · chalk `#eef1f4` · kraft `#f6e8d2`
-- Ink `#1a1f24` · ink-soft `#3c4650` · ink-mute `#6a7580`
-- Tomato magnet `#d63b2c` / deep `#b12e22` (primary stamp)
-- Cobalt `#2f5f9e` · mustard `#d4a017`
-- Mint wipe `#3d8f78` (success only)
-- Steel rule `#c5ccd4` / `#aeb6bf`
-- **Forbidden:** brushed stainless body wash, neo-brutal thick comic borders, bathhouse sea-glass, vibe purple, glassmorphism, Fraunces-everywhere
-- **Hard bar:** no decorative linear/radial/mesh gradients; no glass blur; no glow. Flat fills + real photos only.
+- Paper `#FAF9F7` · chalk `#F0EEEA` · tile `#FFFFFF`
+- Ink `#221C24` · ink-soft `#3A343C` · ink-mute `#6B656E`
+- Cool slate mark `#3D4F63` / deep `#2C394A` (due emphasis + primary chrome — **one** accent)
+- Quiet done `#3F5A4A` (success only)
+- Rule `#D4D0C8` / strong `#B8B2A8`
+- **Forbidden:** tomato clay / red overdue scream as chrome, vibe purple/indigo accents, fridge magnet costume, kraft comic offsets, brushed stainless washes, glassmorphism, Inter/Geist/Space Grotesk defaults, Fraunces-everywhere
+- **Hard bar:** no decorative linear/radial/mesh gradients; no glass blur; no glow. Flat fills + real letterpress photos only.
 
 ## Type
 - **Mark / household name:** Newsreader (`--font-display`) — header only
 - **UI:** Source Sans 3
-- **Meta:** IBM Plex Mono (eyebrows, due pills)
+- **Meta / folio:** IBM Plex Mono (eyebrows, due count, pills)
 - **Forbidden:** Inter/Geist default, Space Grotesk + Instrument Serif duo
 
 ## Materials
-- Quiet white enamel photo wash (`enamel-quiet.png`) — not stainless
-- Kraft paper chore slips with hairline steel rules
-- Real tomato magnet photo on stamp face (`tomato-magnet.png`)
-- Imagine beats 1–3 for slap reel; empty fridge for clear state
-- Dirt = thin dry-erase residue segments (Tody-like pressure)
+- Cool letterpress paper wash (`letterpress-paper.png`)
+- Empty checklist still (`empty-checklist.png`) for clear state
+- Press-beat stills 1–3 for complete reel (Tech 5)
+- Dirt = quiet segmented pressure (cool slate / mute — not red scream)
 
 ## Motion rules
-- Complete: press → magnet slap spring → check draw → residue wipe → dust → exit
-- Tech 5 reel: magnet-beat stills on complete
+- Complete: press → ink check spring → residue wipe → exit
+- Tech 5 reel: press-beat stills on complete
 - Respect `prefers-reduced-motion`
-- **Do not** confetti, Dusty mascot, bathhouse wipe, or stainless photo return
+- **Do not** confetti, Dusty mascot, tomato magnet slap, fridge photo return
 
-## Copy voice
-- Kitchen-utility. Verb-first. Instant chore read.
-- Locked: “Due on the fridge. Slap the magnet — done.”, “Today → slap complete”, “Fridge is clear.”
+## Copy voice (Technique 08 — hand strings)
+- Cool utility. Verb-first. Instant chore read.
+- Locked: “What’s due in this house today.”, “Today → check complete”, “Nothing due.”, “Add a chore”, “Who’s checking”
 
 ## AI
 - Optional `/api/plan` from room description — real LLM only
 
-## What we will NOT change in Phase B5 integrity
-- Aesthetic name Fridge Magnet Board / Quiet Enamel craft
-- Palette / type pairing / tomato magnet primary complete
-- Segmented dirt/residue meter language
+## What we will NOT change in Phase B beat loops
+- Aesthetic name Cool Letterpress Checklist
+- Palette / type pairing / slate check-press primary
+- Segmented pressure meter language (cool, not red scream)
 - Local-first IndexedDB core loop
-- No bathhouse return, no stainless body wash, no new seed without Brandon
+- No fridge magnet / bathhouse return, no new seed without Brandon

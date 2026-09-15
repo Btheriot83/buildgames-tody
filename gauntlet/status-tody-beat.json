@@ -1,0 +1,82 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "aesthetic": "Cool Letterpress Checklist",
+  "priorAesthetic": "Fridge Magnet Board / Quiet Enamel",
+  "demo_url": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/6",
+  "branch": "feat/letterpress-reseed",
+  "doNotMessageBrandon": true,
+  "catalog": {
+    "index": "https://design-catalog-three.vercel.app/data/index.json",
+    "prompts": "https://design-catalog-three.vercel.app/data/prompts.json",
+    "forAgents": "https://raw.githubusercontent.com/Btheriot83/design-catalog/main/docs/FOR_AGENTS.md",
+    "localGuide": "/workspace/build-games/narrow/DESIGN_CATALOG_GUIDE.md",
+    "cache": "apps/tody/docs/catalog-cache/"
+  },
+  "phaseA": {
+    "done": true,
+    "reseeded": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "seed": "42afb12b2f3069ca8f74bbc5f076ca6aa406e5bec38e610b825117e23b628515",
+    "seedShownInUI": false,
+    "identityPath": "docs/IDENTITY.md",
+    "artifacts": [
+      "docs/DISCOVER.md",
+      "docs/DEFINE.md",
+      "docs/DELIVER.md",
+      "docs/IDENTITY.md"
+    ],
+    "criticNote": "z.ai vision critic hallucinated / could not fetch image URLs; shots ready for independent critic. Builder did not self-grade studio score.",
+    "at_pt": "2026-09-15 12:45 AM PT"
+  },
+  "phaseB": {
+    "loopsCompleted": 14,
+    "loopsCap": 25,
+    "shotsDir": "gauntlet/shots-beat/",
+    "ledger": "gauntlet/shots-beat/LEDGER.md",
+    "stopEarly": false,
+    "independentCriticWinsOverallCraft": false,
+    "honestVerdictVsTody": "MIXED \u2014 letterpress restraint + no red scream; Tody still leads colorful marketing polish. Continue.",
+    "commits": [
+      "beat1",
+      "beat2",
+      "beat3",
+      "beat4",
+      "beat5",
+      "beat6",
+      "beat7",
+      "beat8",
+      "beat9",
+      "beat10",
+      "beat11",
+      "beat12",
+      "beat13",
+      "beat14"
+    ]
+  },
+  "hardBar": {
+    "gradients": "none in CSS",
+    "glassBlur": "none",
+    "vibePurple": false,
+    "tomatoRedChrome": false
+  },
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "http": 200,
+    "at_pt": "2026-09-15 12:47 AM PT"
+  },
+  "status": "in_progress_beats",
+  "next": "Continue beat13\u201325 until independent screenshot critic says WIN vs todyapp.com"
+}

@@ -1,0 +1,64 @@
+{
+  "slug": "image-generation",
+  "number": 4,
+  "stage": "Define",
+  "title": "Use image generation to enrich designs",
+  "principle": "Coding agents default to CSS gradients, shapes, and basic patterns—strong AI tells. Real generated images (plus shaders or 3D) add personality and signal more than surface effort. Verify frame-by-frame in the browser. Keep API keys local and gitignored.",
+  "procedure": [
+    "Instruct the agent that the design is plain and must gain personality via image generation.",
+    "Allow shaders or 3D effects combined with images for richer visuals.",
+    "Provide an API key for local use only—never store keys in product code; prefer a gitignored .env.agents file referenced from AGENTS.md / CLAUDE.md.",
+    "Require browser verification of the result frame-by-frame."
+  ],
+  "examplePrompts": [
+    "The design is pretty plain. Add more personality using image generation. Consider shaders or 3D effects in combination with images to create more interesting visuals.\n\nFor image generation, use this OpenAI API key (only use it locally, do not store it in the code or product): <YOUR_KEY>\n\nVerify that your work looks right frame-by-frame in the browser.",
+    "Create a gitignored file called .env.agents, store this API key in it, and note to yourself in AGENTS.md/CLAUDE.md that these keys are for you to use during development (but must not ship with the product).",
+    "Use the Codex CLI to generate images. Help me install it if it isn’t already present. Make sure it’s billing my subscription, not an API key."
+  ],
+  "tips": [
+    "Built-in image tools are underused until you explicitly tell the agent to use them.",
+    "Use a separate API key with a tight spend limit so costs stay bounded if the agent misuses it.",
+    "CSS blobs and gradients alone are a giveaway—prefer real imagery."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
+  ],
+  "related": [
+    "video-motion",
+    "remove-ai-tells",
+    "critic-subagents"
+  ],
+  "workedExamples": [
+    {
+      "title": "Plain seeded page → image-enriched",
+      "before": "Code-only gradients, shapes, patterns.",
+      "after": "Agent instructed to add personality via image gen (+ shaders/3D), verify frame-by-frame.",
+      "body": "Lenny shows before/after on prior designs: images signal more than surface CSS effort and reduce “obviously AI” reads. Cite: Lenny."
+    },
+    {
+      "title": "Key hygiene",
+      "body": "Separate spend-capped API key; gitignored .env.agents; never ship keys. Codex CLI can bill a ChatGPT subscription instead of an API key when available. Paraphrase: Lenny."
+    }
+  ],
+  "antiPatterns": [
+    "Relying on CSS blobs/gradients as the only “visual interest.”",
+    "Pasting long-lived production API keys into chat without spend limits.",
+    "Skipping browser frame-by-frame verification after generation."
+  ],
+  "checklist": [
+    "Agent was explicitly told to use image generation (built-in tools are underused otherwise).",
+    "Keys live in gitignored local config, not in product code.",
+    "Result checked in the browser, not only in the file tree.",
+    "Images + effects serve the aesthetic—not random stock decoration."
+  ],
+  "promptWhy": [
+    "Explicit image-gen ask + local-only key + browser verify overrides the code-only default.",
+    "Makes key hygiene a first-class agent instruction so secrets don’t ship.",
+    "Subscription-billed Codex path avoids scattering extra API keys when you already pay for ChatGPT."
+  ],
+  "pairsWellWith": [
+    "video-motion",
+    "remove-ai-tells",
+    "critic-subagents"
+  ]
+}
