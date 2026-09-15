@@ -2244,3 +2244,60 @@ header .streak-ring { opacity: 0.85; }
 .rooms-elevate .job-strip {
   margin-bottom: 0.85rem;
 }
+
+/* craft7: cut plainness — denser plates, empty state craft */
+.today-list-col { margin-top: 0.15rem; }
+.today-list {
+  display: grid;
+  gap: 0.65rem !important;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.empty-quiet.fun-card {
+  padding: 1.35rem 1.25rem 1.4rem !important;
+  text-align: left;
+  display: grid;
+  gap: 0.55rem;
+  justify-items: start;
+}
+.empty-quiet.fun-card img {
+  width: min(220px, 100%);
+  height: auto;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 rgba(34, 28, 36, 0.1);
+  margin-bottom: 0.25rem;
+}
+.empty-quiet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+.today-aside {
+  background: var(--chalk) !important;
+}
+.invite-plate {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--rule-strong);
+  border-bottom: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: var(--tile);
+  margin: 0.45rem 0 0.65rem;
+  display: grid;
+  gap: 0.25rem;
+}
+.later-card {
+  border-radius: 4px !important;
+  border-bottom: 1.5px solid var(--rule-strong) !important;
+  transition: border-color 140ms ease, transform 140ms var(--press-ease);
+}
+.later-card:hover {
+  border-color: var(--ink) !important;
+  transform: translateY(-1px);
+}
+.job-strip {
+  border-radius: 4px !important;
+  padding: 0.85rem 1rem !important;
+}

@@ -477,18 +477,6 @@ export function BoardApp() {
                     }}
                   >
                     <div className="today-list-col">
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "baseline",
-                          marginBottom: "0.75rem",
-                        }}
-                      >
-                        <h2 className="section-title">
-                          Due today
-                        </h2>
-                      </div>
                       {todayDue.length === 0 ? (
                         <div className="tile empty-quiet fun-card">
                           <img
@@ -504,7 +492,7 @@ export function BoardApp() {
                             Nothing due.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
-                            Stamp a pack or add a chore.
+                            Clear plate. Stamp a pack or press Add a chore.
                           </p>
                           <div className="empty-quiet-actions">
                             <button
@@ -550,7 +538,7 @@ export function BoardApp() {
                       {later.length > 0 && (
                         <div style={{ marginTop: "1.75rem" }}>
                           <h3 className="eyebrow" style={{ marginBottom: "0.6rem" }}>
-                            Later
+                            Coming up
                           </h3>
                           <ul
                             style={{
@@ -604,8 +592,8 @@ export function BoardApp() {
                     </div>
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
-                      <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Shared house
+                      <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.15rem" }}>
+                        This house
                       </h2>
                       <div className="invite-plate">
                         <span className="eyebrow">Household invite</span>
@@ -775,7 +763,7 @@ export function BoardApp() {
                   <div className="job-strip-main">
                     <p className="job-verb">House rooms</p>
                     <p className="job-hint">
-                      Cleanliness at a glance. Shared house.
+                      Ink plates for every room — tap one to open the list.
                     </p>
                   </div>
                   <span className="job-count" aria-label={`${board.rooms.length} rooms`}>
@@ -928,10 +916,10 @@ export function BoardApp() {
             {tab === "history" && (
               <div className="tile" style={{ padding: "1.15rem" }}>
                 <h2 className="section-title" style={{ marginTop: 0 }}>
-                  Shared history
+                  Who checked what
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Who checked what.
+                  House ledger — newest first.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
