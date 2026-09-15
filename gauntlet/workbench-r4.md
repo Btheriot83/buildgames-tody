@@ -101,3 +101,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Tab pill harder ink edge toward target; original uses soft iOS segments.
 - commit: 8c366d8
 - transitions: tabs-sliding (.t-tabs / .t-tabs-pill) on Today/Rooms/History/Stuff
+
+## r14 — fonts
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r14-after-fonts.png
+- verdict: Meta line mono utility closer to Tody density labels; mark stays Newsreader.
+- commit: dd1a0cc
+- transitions: (none)

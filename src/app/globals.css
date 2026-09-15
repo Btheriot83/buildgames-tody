@@ -991,3 +991,12 @@ body {
 }
 .t-tab { font-weight: 700 !important; font-size: 0.95rem !important; }
 .t-tab[aria-selected="true"] { color: var(--ink) !important; }
+
+
+/* r14 — fonts: meta room·freq mono utility */
+.chore-meta {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.02em;
+}
+.assignee-chip { font-family: var(--font-sans), system-ui, sans-serif !important; font-weight: 700 !important; }
