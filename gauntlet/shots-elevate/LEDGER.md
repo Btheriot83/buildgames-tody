@@ -18,3 +18,4 @@ Identity LOCKED: Cool Letterpress Checklist. Flat materials. No tomato scream / 
 | 9 | cut later cards + quieter history | cut-elements | elevate9-cut-later.png | transparent later plates |
 | 10 | type calm weights + room meta | specify-the-look | elevate10-type-calm.png, elevate10-rooms.png | weight 500 calm |
 | 11 | household invite plate + Checking as | bar Sweepy share | elevate11-invite-plate.png | invite code plate |
+| 12 | critic A/B vs Sweepy+Tody | critic-subagents | elevate12-final-*.png + CRITIC_ELEVATE.md | MIXED/LOSS ~6.2–6.5 vs bars |
