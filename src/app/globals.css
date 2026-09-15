@@ -1163,3 +1163,12 @@ body {
 .job-strip { background: #f3e0c0 !important; border-color: #1a1f24 !important; }
 .later-card { background: #faf7f1 !important; }
 .status-overdue { background: #fff0ec !important; color: #8a2218 !important; }
+
+
+/* r25 — beauty: spacing rhythm */
+.today-list { gap: 0.55rem !important; }
+.chore-tile { padding: 0.85rem 0.95rem !important; gap: 0.95rem !important; }
+.job-strip { padding: 0.75rem 1rem !important; margin-bottom: 0.85rem !important; }
+.materials-row { margin-bottom: 0.55rem !important; }
+.aside-actions { gap: 0.5rem !important; margin-top: 0.85rem !important; }
+.shell header, header.shell { padding-bottom: 0.75rem !important; }

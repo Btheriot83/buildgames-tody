@@ -182,3 +182,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Kraft/enamel materials less muddy; enamel white panels cleaner vs bar mint canvas.
 - commit: 8e7c0df
 - transitions: (none)
+
+## r25 — beauty-spacing
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r25-after-beauty-spacing.png
+- verdict: Spacing less cramped/brutal; Due list rhythm closer to Tody task breathing.
+- commit: 5b096f2
+- transitions: (none)
