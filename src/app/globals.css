@@ -1228,3 +1228,13 @@ body {
 .eyebrow { letter-spacing: 0.12em !important; }
 /* kill residual loud cobalt offsets on kraft */
 .chore-tile { box-shadow: 3px 3px 0 rgba(26,31,36,0.12) !important; }
+
+
+/* r29 — beauty: residue meter thinner / less loud */
+.dirt-meter { margin-top: 0.35rem !important; }
+.dirt-meter-track { height: 7px !important; gap: 3px !important; }
+.dirt-seg { border-radius: 2px !important; background: rgba(26,31,36,0.1) !important; }
+.dirt-overdue .dirt-seg.is-on { background: #c94a3c !important; }
+.dirt-due .dirt-seg.is-on { background: #c9a04a !important; }
+.dirt-ok .dirt-seg.is-on { background: #4a9a82 !important; }
+.dirt-meter-fill { opacity: 0.08 !important; }
