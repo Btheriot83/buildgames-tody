@@ -1799,3 +1799,27 @@ body {
   letter-spacing: 0.02em !important;
   color: var(--ink-mute) !important;
 }
+
+/* r2 — contrast: Quiet Enamel kraft slips punch off enamel */
+body {
+  background-color: #f4f6f8 !important;
+}
+.chore-tile {
+  background: #f6e8d2 !important;
+  border-color: #c4b08a !important;
+  box-shadow: 3px 3px 0 rgba(26, 31, 36, 0.1) !important;
+}
+.status-overdue {
+  background: #ffe5df !important;
+  color: #7a1f16 !important;
+  border-color: rgba(214, 59, 44, 0.6) !important;
+  font-weight: 760 !important;
+}
+.job-strip {
+  background: #f0d9b8 !important;
+  border-color: #c4b08a !important;
+}
+.today-aside {
+  background: #fffcfa !important;
+  border-color: #c5ccd4 !important;
+}
