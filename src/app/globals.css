@@ -1913,3 +1913,25 @@ body {
   letter-spacing: 0.05em !important;
   font-size: 0.62rem !important;
 }
+
+/* r6 — buttons: tomato magnet discs closer to dream-target DONE stamps */
+.stamp-btn {
+  width: 76px !important;
+  height: 76px !important;
+  box-shadow: 3px 3px 0 rgba(177, 46, 34, 0.28) !important;
+}
+.stamp-btn::after {
+  content: "DONE" !important;
+  font-size: 0.56rem !important;
+  bottom: 11px !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 800 !important;
+}
+.stamp-btn svg {
+  transform: translateY(-7px) scale(1.12) !important;
+  width: 26px !important;
+  height: 26px !important;
+}
+.chore-tile.phase-press .stamp-btn {
+  transform: scale(0.94) !important;
+}
