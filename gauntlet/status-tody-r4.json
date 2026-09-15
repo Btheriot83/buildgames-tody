@@ -1,0 +1,121 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "demoUrl": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "identity": "Fridge Magnet Board",
+  "identityFrozen": true,
+  "roundsCounted": 20,
+  "roundShas": [
+    "bee9b45",
+    "630fb5b",
+    "e24e6b3",
+    "8b8b38d",
+    "c44e692",
+    "8576254",
+    "cdccea0",
+    "591f1cc",
+    "06bd127",
+    "1b996b4",
+    "0df0b86",
+    "07d83fd",
+    "1aaf9a1",
+    "a7762ea",
+    "2982797",
+    "f270963",
+    "2219d87",
+    "13b9df7",
+    "980c220",
+    "93b6b18"
+  ],
+  "beautyRounds": 8,
+  "beautyShas": [
+    "d0370c5",
+    "2feaa28",
+    "d5911ec",
+    "d0638b2",
+    "7ceed15",
+    "7d92101",
+    "610c0fa",
+    "005eb18"
+  ],
+  "shotCount": 39,
+  "barShotRounds": [
+    5,
+    10,
+    15,
+    20,
+    28
+  ],
+  "barShots": [
+    "r0-bar-method.png",
+    "r0-bar-todyapp.png",
+    "r10-bar-todyapp.png",
+    "r12-after-bar-gap.png",
+    "r15-bar-todyapp.png",
+    "r17-after-bar-gap.png",
+    "r20-after-bar-gap.png",
+    "r20-bar-todyapp.png",
+    "r28-bar-todyapp.png",
+    "r4-after-bar-gap.png",
+    "r5-bar-todyapp.png",
+    "r9-after-bar-gap.png"
+  ],
+  "dreamLoop": {
+    "baseline": "gauntlet/shots-r4/r0-baseline.png",
+    "target": "gauntlet/shots-r4/dream-target.png",
+    "localTarget": ".dream-loop/target.png",
+    "note": "Refined from live UI screenshot via gpt_image_2; Newsreader mark kept per IDENTITY"
+  },
+  "transitionsWired": [
+    {
+      "recipe": "toast",
+      "action": "magnet slap / undo / add chore / plan accept"
+    },
+    {
+      "recipe": "success-check",
+      "action": "magnet slap (justDone)"
+    },
+    {
+      "recipe": "checkbox-check",
+      "action": "stamp magnet (.t-check)"
+    },
+    {
+      "recipe": "number-pop-in",
+      "action": "due count + streak"
+    },
+    {
+      "recipe": "tabs-sliding",
+      "action": "Today/Rooms/History/Stuff"
+    },
+    {
+      "recipe": "error-state-shake",
+      "action": "Stick chore empty title"
+    },
+    {
+      "recipe": "panel-reveal",
+      "action": "Plan a room open"
+    },
+    {
+      "recipe": "skeleton-reveal",
+      "action": "board load"
+    },
+    {
+      "recipe": "texts-reveal/stagger",
+      "action": "household billboard"
+    }
+  ],
+  "honestNotes": [
+    "Integrity r1-r20 each separate commit + shot; bar A/B on 5/10/15/20.",
+    "Beauty r21-r28: quieter shadows, enamel magnet rings, type breathing, materials demotion, spacing \u2014 still Fridge Magnet Board, flat no-gradient.",
+    "Original todyapp.com still wins colorful room-grid marketing polish; candidate wins physical tomato-magnet Today job.",
+    "Brandon found Tileboard a little ugly \u2014 beauty rounds targeted comic-brutalist loudness without reseed."
+  ],
+  "workbench": "apps/tody/gauntlet/workbench-r4.md",
+  "doNotMessageBrandon": true,
+  "finishedAtPt": "2026-09-14 10:25 PM PT",
+  "finishedAtUtc": "2026-09-15T05:25:29Z",
+  "branch": "feat/phase-b4-r4",
+  "head": "005eb18"
+}
