@@ -231,6 +231,17 @@ export function BoardApp() {
     return board.due.filter((d) => d.status === "ok" || d.status === "fresh");
   }, [board]);
 
+  const stampsTodayByMember = useMemo(() => {
+    if (!board) return new Map<string, number>();
+    const counts = new Map<string, number>();
+    const day = board.today;
+    for (const h of board.history) {
+      if (!h.completed_at.startsWith(day)) continue;
+      counts.set(h.member_name, (counts.get(h.member_name) ?? 0) + 1);
+    }
+    return counts;
+  }, [board]);
+
   if (loading && !board) {
     return (
       <main className="shell" style={{ padding: "3rem 0" }}>
@@ -545,27 +556,25 @@ export function BoardApp() {
                           gap: "0.45rem",
                         }}
                       >
-                        {board.members.map((m) => (
+                        {board.members.map((m) => {
+                          const stamps = stampsTodayByMember.get(m.name) ?? 0;
+                          return (
                           <li
                             key={m.id}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "0.55rem",
-                            }}
+                            className="member-row"
                           >
                             <span
-                              style={{
-                                width: 12,
-                                height: 12,
-                                borderRadius: "50%",
-                                background: m.color,
-                              }}
+                              className="member-dot"
+                              style={{ background: m.color }}
                             />
-                            <span style={{ fontWeight: 600 }}>{m.name}</span>
-                            <span className="eyebrow">{m.role}</span>
+                            <span className="member-name">{m.name}</span>
+                            <span className="eyebrow member-role">{m.role}</span>
+                            <span className="member-stamps">
+                              {stamps} stamp{stamps === 1 ? "" : "s"} today
+                            </span>
                           </li>
-                        ))}
+                          );
+                        })}
                       </ul>
                       <div style={{ display: "flex", gap: "0.4rem" }}>
                         <input

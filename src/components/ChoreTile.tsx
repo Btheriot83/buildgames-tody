@@ -55,8 +55,8 @@ export function ChoreTile({ due, roomName, assigneeName, busy, onComplete }: Pro
   const label =
     due.status === "overdue"
       ? due.overdueDays === 1
-        ? "1 day overdue"
-        : `${due.overdueDays} days overdue`
+        ? "Overdue by 1 day"
+        : `Overdue by ${due.overdueDays} days`
       : due.status === "due"
         ? "Due today"
         : due.status;
