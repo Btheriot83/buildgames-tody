@@ -70,5 +70,12 @@
   "branch": "feat/phase-b4-r4",
   "head": "baab72d",
   "pr": "https://github.com/Btheriot83/buildgames-tody/pull/4",
-  "status": "done"
+  "status": "done",
+  "vercel_deployment": "dpl_5TsHGqBA7a6fAL9aug5w1NcgFXt9",
+  "vercel_inspect": "https://vercel.com/brandon-theriots-projects/buildgames-tody/5TsHGqBA7a6fAL9aug5w1NcgFXt9",
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "http": 200,
+    "identity": "Fridge Magnet Board"
+  }
 }
