@@ -524,29 +524,28 @@ export function BoardApp() {
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Who’s checking
+                        Shared house
                       </h2>
-                      <p className="eyebrow" style={{ marginBottom: "0.55rem" }}>
-                        Invite · {board.household.invite_code}
+                      <p className="eyebrow" style={{ marginBottom: "0.45rem" }}>
+                        Who’s checking · invite {board.household.invite_code}
                       </p>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: "0.75rem 0",
-                          display: "grid",
-                          gap: "0.45rem",
-                        }}
-                      >
+                      <div className="house-share-row" aria-label="Household members">
                         {board.members.map((m) => (
-                          <li
+                          <button
                             key={m.id}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "0.55rem",
-                            }}
+                            type="button"
+                            className={`house-chip${m.id === activeMember?.id ? " is-active" : ""}`}
+                            onClick={() => void setActive(m.id)}
+                            title={`Act as ${m.name}`}
                           >
+                            <span className="house-chip-mark" aria-hidden />
+                            <span className="house-chip-name">{m.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <ul className="house-role-list">
+                        {board.members.map((m) => (
+                          <li key={m.id}>
                             <span className="member-dot" aria-hidden />
                             <span style={{ fontWeight: 600 }}>{m.name}</span>
                             <span className="eyebrow">{m.role}</span>
