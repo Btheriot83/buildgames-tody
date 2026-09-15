@@ -1238,3 +1238,11 @@ body {
 .dirt-due .dirt-seg.is-on { background: #c9a04a !important; }
 .dirt-ok .dirt-seg.is-on { background: #4a9a82 !important; }
 .dirt-meter-fill { opacity: 0.08 !important; }
+
+
+/* r30 — beauty: hide materials strip on Today fold (job first) */
+.materials-row { display: none !important; }
+.job-strip { margin-bottom: 1rem !important; border-radius: 2px; }
+.chore-tile { border-radius: 4px !important; }
+.tile { border-radius: 4px !important; }
+.aside-actions .btn { border-radius: 4px !important; }
