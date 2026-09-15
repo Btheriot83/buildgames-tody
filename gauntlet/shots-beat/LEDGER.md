@@ -18,3 +18,6 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat11 | Folio numerals readable | beat11-folio-nums.png | Spottable numeral weight |
 
 | beat12 | History letterpress rows | beat12-history.png | Spottable tab craft |
+
+| beat13 | Job strip main wrap + bottom rule on tiles | beat13-jobstrip.png | Spottable structure |
+| beat14 | Disclosure / button radius consistency | beat14-home.png | Spottable polish |

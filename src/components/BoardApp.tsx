@@ -385,11 +385,13 @@ export function BoardApp() {
               <div className="t-skel is-revealed">
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
-                    <p className="job-verb">Today → check complete</p>
-                    <p className="job-hint">
-                      Open Due today. Press the check.
-                    </p>
-                    <span className="job-count">
+                    <div className="job-strip-main">
+                      <p className="job-verb">Today → check complete</p>
+                      <p className="job-hint">
+                        Open Due today. Press the check.
+                      </p>
+                    </div>
+                    <span className="job-count" aria-label={`${todayDue.length} due`}>
                       <NumberPop value={todayDue.length} />
                       <small>due</small>
                     </span>

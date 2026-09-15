@@ -734,3 +734,19 @@ select.field { min-height: 40px !important; }
 .history-row, [data-tab-panel="history"] .tile {
   border-radius: 2px;
 }
+
+
+/* beat13 — job strip main + hairline rules on chore cards */
+.job-strip-main { flex: 1; min-width: 12rem; }
+.chore-tile {
+  border-top: 1px solid var(--rule) !important;
+  border-left: 1px solid var(--rule) !important;
+  border-right: 1px solid var(--rule) !important;
+  border-bottom: 1px solid var(--ink) !important;
+}
+.chore-title-row { align-items: baseline !important; }
+
+
+/* beat14 — summary disclosure letterpress */
+details summary.eyebrow { letter-spacing: 0.12em; }
+details .btn { border-radius: 2px; }
