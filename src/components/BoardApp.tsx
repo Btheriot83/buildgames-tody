@@ -357,7 +357,7 @@ export function BoardApp() {
           <SlidingTabs tabs={TABS} value={tab} onChange={setTab} />
           <div style={{ flex: 1 }} />
           <label className="eyebrow" htmlFor="who">
-            Acting as
+            Checking as
           </label>
           <select
             id="who"
@@ -527,9 +527,10 @@ export function BoardApp() {
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
                         Shared house
                       </h2>
-                      <p className="eyebrow" style={{ marginBottom: "0.45rem" }}>
-                        Who’s checking · invite {board.household.invite_code}
-                      </p>
+                      <div className="invite-plate">
+                        <span className="eyebrow">Household invite</span>
+                        <code className="invite-code">{board.household.invite_code}</code>
+                      </div>
                       <div className="house-share-row" aria-label="Household members">
                         {board.members.map((m) => (
                           <button

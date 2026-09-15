@@ -1360,3 +1360,23 @@ body {
 .billboard-ledger h1 {
   font-weight: 500 !important;
 }
+
+/* elevate11: Sweepy share — invite plate */
+.invite-plate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--tile);
+  margin: 0.25rem 0 0.55rem;
+}
+.invite-code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--ink);
+}
