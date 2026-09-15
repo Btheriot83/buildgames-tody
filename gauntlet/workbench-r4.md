@@ -203,3 +203,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Stamp check + CTA corners consistent; residue meter thinner like Tody bars.
 - commit: bce6ecc
 - transitions: checkbox-check + toast on slap
+
+## r28 — beauty-coherence
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r28-after-beauty-coherence.png, gauntlet/shots-r4/r28-bar-todyapp.png
+- verdict: Coherence pass: tabs/streak quieter; still Fridge Magnet vs Tody colorful rooms — original wins marketing polish, candidate wins physical magnet job.
+- commit: 7af3179
+- transitions: tabs-sliding + number-pop + success-check
