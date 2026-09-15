@@ -1974,3 +1974,31 @@ body {
   line-height: 1.4 !important;
 }
 .eyebrow { font-size: 0.62rem !important; letter-spacing: 0.12em !important; }
+
+/* r8 — contrast: cobalt active tab pill (flat) + Later quieter */
+.t-tabs {
+  background: var(--chalk) !important;
+  border: 1px solid var(--rule) !important;
+}
+.t-tabs-pill {
+  background: #e8eef6 !important;
+  border: 1px solid #b8c8dc !important;
+  box-shadow: none !important;
+}
+.t-tab[aria-selected="true"] {
+  color: var(--sea-deep) !important;
+  font-weight: 700 !important;
+}
+.later-card {
+  background: #f5f2ed !important;
+  border-color: var(--rule) !important;
+  opacity: 0.86 !important;
+}
+.later-card .later-title { font-weight: 650 !important; color: var(--ink-soft) !important; }
+.field {
+  background: #fffcf7 !important;
+  border-color: #aeb6bf !important;
+}
+.today-aside {
+  border-color: #c5ccd4 !important;
+}
