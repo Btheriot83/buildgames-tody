@@ -969,3 +969,414 @@ header.shell > div:first-child {
 .status-pill {
   border-radius: 2px !important;
 }
+
+
+/* ——— ELEVATE vs Sweepy/Tody (Cool Letterpress Checklist) ——— */
+
+/* elevate1: specify-the-look — quieter overdue ink plates (no black scream) */
+.status-overdue {
+  background: var(--tile) !important;
+  color: var(--ink) !important;
+  border: 1.5px solid var(--ink) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+}
+.status-due {
+  background: var(--chalk) !important;
+  color: var(--slate-deep) !important;
+  border: 1px solid var(--slate) !important;
+  font-weight: 600 !important;
+}
+.status-pill {
+  font-size: 0.62rem !important;
+  padding: 0.2rem 0.45rem !important;
+}
+
+/* elevate2: design-system — room-as-tile plates (Sweepy grid + letterpress) */
+.room-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 860px) {
+  .room-tile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+}
+.room-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.95rem 0.9rem 0.85rem;
+  background: var(--tile);
+  border: 1px solid var(--rule-strong);
+  border-bottom: 1.5px solid var(--ink);
+  border-radius: 2px;
+  min-height: 148px;
+  cursor: default;
+  transition: background 160ms ease, border-color 160ms ease, transform 140ms ease;
+}
+.room-tile:hover {
+  background: var(--chalk);
+  border-color: var(--ink);
+}
+.room-tile.is-hot {
+  border-color: var(--ink);
+  border-bottom-width: 2px;
+}
+.room-tile-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.room-tile-name {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+.room-tile-mark {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 1px;
+  background: var(--tile);
+  flex: 0 0 auto;
+  margin-top: 0.25rem;
+}
+.room-tile-mark.is-due { background: var(--slate); border-color: var(--slate-deep); }
+.room-tile-mark.is-overdue { background: var(--ink); }
+.room-tile-mark.is-ok { background: var(--done); border-color: var(--done); }
+.room-tile-meta {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  margin: 0;
+}
+.room-tile-pressure {
+  margin-top: auto;
+}
+.room-tile-pressure .dirt-meter-track {
+  height: 10px !important;
+}
+.room-tile-due-count {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* elevate2: Sweepy household share — chip row, no scream */
+.house-share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.35rem 0 0.65rem;
+}
+.house-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--tile);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 36px;
+}
+.house-chip:hover { background: var(--chalk); border-color: var(--ink); }
+.house-chip.is-active {
+  border-color: var(--ink);
+  border-bottom-width: 2px;
+  background: var(--chalk);
+}
+.house-chip-mark {
+  width: 8px; height: 8px; border-radius: 1px;
+  background: var(--ink); opacity: 0.45;
+}
+.house-chip.is-active .house-chip-mark { opacity: 1; }
+.house-chip-name { line-height: 1; }
+.house-role-list {
+  list-style: none; padding: 0; margin: 0 0 0.55rem;
+  display: grid; gap: 0.35rem;
+}
+.house-role-list li {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+/* elevate3: cut-elements — quieter job strip, less chrome */
+.job-strip {
+  padding: 0.55rem 0.85rem !important;
+  margin-bottom: 0.85rem !important;
+}
+.job-strip .job-verb {
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem) !important;
+}
+.job-strip .job-hint { font-size: 0.85rem !important; }
+.job-strip .job-count {
+  font-size: 1.55rem !important;
+  padding: 0.35rem 0.55rem !important;
+  min-width: 2.6rem !important;
+}
+.rooms-job .job-verb { font-size: 1.25rem !important; }
+
+/* elevate4: Tody bar-gap — taller cheerful room plates + status corner */
+.room-tile {
+  min-height: 168px;
+  padding: 1.05rem 1rem 0.95rem;
+  aspect-ratio: 1.15 / 1;
+}
+.room-tile-name { font-size: 1.28rem !important; }
+.room-tile-mark {
+  width: 12px !important;
+  height: 12px !important;
+  border-width: 2px !important;
+}
+.room-tile-grid { gap: 0.85rem; }
+
+/* elevate5: remove-ai-tells — kill soft anything left */
+.toast-host .t-toast {
+  box-shadow: none !important;
+  border: 1px solid var(--paper);
+  border-radius: 2px !important;
+}
+.stamp-motion { box-shadow: none !important; }
+.tile, .chore-tile, .room-tile, .job-strip {
+  box-shadow: none !important;
+}
+
+/* elevate3: cut-elements — less brand chrome, denser aside */
+.billboard-ledger > .eyebrow { letter-spacing: 0.12em; }
+.streak-ring {
+  min-width: 2.8rem !important;
+  min-height: 2.8rem !important;
+  padding: 0.3rem 0.4rem !important;
+  opacity: 0.92;
+}
+.streak-ring .eyebrow { font-size: 0.5rem !important; }
+.today-aside { padding: 0.95rem !important; }
+
+/* elevate4: Tody bar-gap — select room plate → chore bars detail */
+.room-tile {
+  cursor: pointer;
+}
+.room-tile.is-selected {
+  background: var(--chalk) !important;
+  border-color: var(--ink) !important;
+  border-bottom-width: 2px;
+  outline: 1px solid var(--ink);
+  outline-offset: 1px;
+}
+.room-tile:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 2px;
+}
+.room-detail-plate {
+  margin-top: 0.85rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--ink) !important;
+  border-radius: 2px;
+  background: var(--tile) !important;
+}
+.room-detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule);
+}
+.room-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.room-detail-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 0.65rem;
+  align-items: baseline;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--rule);
+}
+.room-detail-list li:first-child { border-top: none; padding-top: 0; }
+.room-detail-list .dirt-meter {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+}
+
+/* elevate5: remove-ai-tells — kill-list audit */
+body {
+  /* no vibe purple, no soft orbs */
+  background-image: url("/art/letterpress-grain.svg") !important;
+}
+.btn-primary, .btn-clay, .stamp-btn, .house-chip.is-active {
+  /* no gradient fills */
+  background-image: none !important;
+}
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.room-tile, .chore-tile, .job-strip, .today-aside, .room-detail-plate {
+  filter: none !important;
+}
+
+/* elevate5 cont: job-count as folio plate not shout box */
+.job-strip .job-count {
+  border-width: 1px !important;
+  border-color: var(--rule-strong) !important;
+  background: var(--chalk) !important;
+  color: var(--ink) !important;
+  font-size: 1.35rem !important;
+}
+
+/* elevate7: make-it-alive — room plate press + ink spine on overdue chores */
+.room-tile:active {
+  transform: translateY(1px) scale(0.985);
+  background: var(--chalk);
+}
+.chore-tile[data-status="overdue"] {
+  border-left: 3px solid var(--ink) !important;
+}
+.chore-tile[data-status="due"] {
+  border-left: 3px solid var(--slate) !important;
+}
+.chore-tile[data-status="ok"],
+.chore-tile[data-status="fresh"] {
+  border-left: 3px solid var(--rule) !important;
+}
+
+/* elevate8: design-system-from-assets — space scale + tileboard rhythm */
+:root {
+  --tb-gap: 0.65rem;
+  --tb-gap-lg: 1rem;
+  --tb-pad: 0.85rem;
+  --tb-radius: 2px;
+}
+.today-list { gap: var(--tb-gap) !important; }
+.room-tile-grid { gap: var(--tb-gap-lg) !important; }
+.chore-tile { padding: var(--tb-pad) 0.9rem !important; }
+.shell { width: min(1040px, calc(100% - 1.5rem)) !important; }
+.today-grid { gap: var(--tb-gap-lg) !important; }
+
+/* elevate9: cut — quieter later cards */
+.later-card {
+  padding: 0.55rem 0.75rem !important;
+  border: 1px solid var(--rule) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* elevate7: make-it-alive — room plate press + ink spine on overdue chores */
+.room-tile:active {
+  transform: translateY(1px) scale(0.985);
+  background: var(--chalk);
+}
+.chore-tile[data-status="overdue"] {
+  border-left: 3px solid var(--ink) !important;
+}
+.chore-tile[data-status="due"] {
+  border-left: 3px solid var(--slate) !important;
+}
+.chore-tile[data-status="ok"],
+.chore-tile[data-status="fresh"] {
+  border-left: 3px solid var(--rule) !important;
+}
+
+/* elevate8: design-system-from-assets — space scale + tileboard rhythm */
+:root {
+  --tb-gap: 0.65rem;
+  --tb-gap-lg: 1rem;
+  --tb-pad: 0.85rem;
+  --tb-radius: 2px;
+}
+.today-list { gap: var(--tb-gap) !important; }
+.room-tile-grid { gap: var(--tb-gap-lg) !important; }
+.chore-tile { padding: var(--tb-pad) 0.9rem !important; }
+.shell { width: min(1040px, calc(100% - 1.5rem)) !important; }
+.today-grid { gap: var(--tb-gap-lg) !important; }
+
+/* elevate9: cut — quieter later cards */
+.later-card {
+  padding: 0.55rem 0.75rem !important;
+  border: 1px solid var(--rule) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* elevate10: type calm — Sweepy readability without soft UI */
+.room-tile-name {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+.chore-title {
+  font-size: 1.02rem !important;
+  font-weight: 500 !important;
+}
+.status-pill {
+  letter-spacing: 0.06em !important;
+  font-weight: 500 !important;
+}
+.house-chip {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.billboard-ledger h1 {
+  font-weight: 500 !important;
+}
+
+/* elevate10: type calm — Sweepy readability without soft UI */
+.room-tile-name {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+.chore-title {
+  font-size: 1.02rem !important;
+  font-weight: 500 !important;
+}
+.status-pill {
+  letter-spacing: 0.06em !important;
+  font-weight: 500 !important;
+}
+.house-chip {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.billboard-ledger h1 {
+  font-weight: 500 !important;
+}
+
+/* elevate11: Sweepy share — invite plate */
+.invite-plate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: var(--tile);
+  margin: 0.25rem 0 0.55rem;
+}
+.invite-code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--ink);
+}

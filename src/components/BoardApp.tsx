@@ -48,6 +48,7 @@ export function BoardApp() {
   const [addError, setAddError] = useState(false);
   const [memberName, setMemberName] = useState("");
   const [exiting, setExiting] = useState<Set<string>>(new Set());
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
   const { toast, node: toastNode } = useToast();
 
   const refresh = useCallback((h: LocalHousehold) => {
@@ -307,7 +308,7 @@ export function BoardApp() {
           }}
         >
           <div className="billboard-ledger">
-            <p className="eyebrow">Cool Letterpress Checklist · Tileboard</p>
+            <p className="eyebrow">Tileboard</p>
             <div className="t-stagger is-shown">
               <h1 className="font-display t-stagger-line">
                 {board.household.name}
@@ -356,7 +357,7 @@ export function BoardApp() {
           <SlidingTabs tabs={TABS} value={tab} onChange={setTab} />
           <div style={{ flex: 1 }} />
           <label className="eyebrow" htmlFor="who">
-            Acting as
+            Checking as
           </label>
           <select
             id="who"
@@ -386,9 +387,9 @@ export function BoardApp() {
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
                     <div className="job-strip-main">
-                      <p className="job-verb">Today → check complete</p>
+                      <p className="job-verb">Due today → ink check</p>
                       <p className="job-hint">
-                        Press the ink check. Clear what’s due.
+                        Press once. Clear the plate.
                       </p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
@@ -480,7 +481,7 @@ export function BoardApp() {
                               gap: "0.45rem",
                             }}
                           >
-                            {later.slice(0, 6).map((d) => (
+                            {later.slice(0, 4).map((d) => (
                               <li
                                 key={d.choreId}
                                 className="tile later-card"
@@ -524,35 +525,26 @@ export function BoardApp() {
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Who’s checking
+                        Shared house
                       </h2>
-                      <p className="eyebrow" style={{ marginBottom: "0.55rem" }}>
-                        Invite · {board.household.invite_code}
-                      </p>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: "0.75rem 0",
-                          display: "grid",
-                          gap: "0.45rem",
-                        }}
-                      >
+                      <div className="invite-plate">
+                        <span className="eyebrow">Household invite</span>
+                        <code className="invite-code">{board.household.invite_code}</code>
+                      </div>
+                      <div className="house-share-row" aria-label="Household members">
                         {board.members.map((m) => (
-                          <li
+                          <button
                             key={m.id}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "0.55rem",
-                            }}
+                            type="button"
+                            className={`house-chip${m.id === activeMember?.id ? " is-active" : ""}`}
+                            onClick={() => void setActive(m.id)}
+                            title={`Act as ${m.name}`}
                           >
-                            <span className="member-dot" aria-hidden />
-                            <span style={{ fontWeight: 600 }}>{m.name}</span>
-                            <span className="eyebrow">{m.role}</span>
-                          </li>
+                            <span className="house-chip-mark" aria-hidden />
+                            <span className="house-chip-name">{m.name}</span>
+                          </button>
                         ))}
-                      </ul>
+                      </div>
                       <div style={{ display: "flex", gap: "0.4rem" }}>
                         <input
                           className="field"
@@ -690,49 +682,125 @@ export function BoardApp() {
             )}
 
             {tab === "rooms" && (
-              <div style={{ display: "grid", gap: "1rem" }}>
-                {board.rooms.map((room) => {
-                  const items = board.due.filter((d) => d.roomId === room.id);
-                  return (
-                    <section
-                      key={room.id}
-                      className="tile room-card"
-                      style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
-                    >
-                      <h2 className="room-title" style={{ margin: 0 }}>
-                        {room.name}
-                      </h2>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: 0,
-                          display: "grid",
-                          gap: "0.55rem",
+              <div className="rooms-elevate">
+                <div className="job-strip rooms-job">
+                  <div className="job-strip-main">
+                    <p className="job-verb">House rooms</p>
+                    <p className="job-hint">
+                      Cleanliness at a glance. Shared house.
+                    </p>
+                  </div>
+                  <span className="job-count" aria-label={`${board.rooms.length} rooms`}>
+                    <NumberPop value={board.rooms.length} />
+                    <small>rooms</small>
+                  </span>
+                </div>
+                <ul className="room-tile-grid">
+                  {board.rooms.map((room) => {
+                    const items = board.due.filter((d) => d.roomId === room.id);
+                    const overdueN = items.filter((d) => d.status === "overdue").length;
+                    const dueN = items.filter((d) => d.status === "due").length;
+                    const hotN = overdueN + dueN;
+                    const avgDirt =
+                      items.length === 0
+                        ? 0
+                        : items.reduce((s, d) => s + d.dirt, 0) / items.length;
+                    const mark =
+                      overdueN > 0 ? "overdue" : dueN > 0 ? "due" : items.length ? "ok" : "idle";
+                    return (
+                      <li
+                        key={room.id}
+                        className={`room-tile${hotN > 0 ? " is-hot" : ""}${selectedRoomId === room.id ? " is-selected" : ""}`}
+                        data-mark={mark}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() =>
+                          setSelectedRoomId((id) => (id === room.id ? null : room.id))
+                        }
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedRoomId((id) => (id === room.id ? null : room.id));
+                          }
                         }}
                       >
-                        {items.map((d) => (
-                          <li
-                            key={d.choreId}
-                            style={{
-                              display: "grid",
-                              gap: "0.3rem",
-                              borderTop: "1px solid var(--rule)",
-                              paddingTop: "0.5rem",
-                            }}
+                        <div className="room-tile-top">
+                          <h2 className="room-tile-name">{room.name}</h2>
+                          <span
+                            className={`room-tile-mark${mark !== "idle" ? ` is-${mark}` : ""}`}
+                            title={
+                              overdueN
+                                ? `${overdueN} overdue`
+                                : dueN
+                                  ? `${dueN} due`
+                                  : "Clear"
+                            }
+                            aria-hidden
+                          />
+                        </div>
+                        <p className="room-tile-meta">
+                          {items.length === 0
+                            ? "No chores yet"
+                            : hotN > 0
+                              ? `${hotN} need a check`
+                              : `${items.length} on the list`}
+                        </p>
+                        <div className="room-tile-pressure">
+                          <div
+                            className={`dirt-meter dirt-${
+                              overdueN ? "overdue" : dueN ? "due" : "ok"
+                            }`}
                           >
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                gap: "0.5rem",
-                              }}
-                            >
-                              <span>{d.title}</span>
-                              <span className={`status-pill status-${d.status}`}>
-                                {d.status}
-                              </span>
+                            <div className="dirt-meter-track">
+                              {Array.from({ length: 6 }).map((_, i) => (
+                                <span
+                                  key={i}
+                                  className={`dirt-seg${
+                                    i < Math.round(avgDirt * 6) ? " is-on" : ""
+                                  }`}
+                                />
+                              ))}
                             </div>
+                          </div>
+                          <p className="room-tile-due-count">
+                            {overdueN > 0
+                              ? `Overdue · ${overdueN}`
+                              : dueN > 0
+                                ? `Due · ${dueN}`
+                                : "Clear"}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+                {selectedRoomId && (() => {
+                  const room = board.rooms.find((r) => r.id === selectedRoomId);
+                  const items = board.due.filter((d) => d.roomId === selectedRoomId);
+                  if (!room) return null;
+                  return (
+                    <div className="room-detail-plate tile" key={selectedRoomId}>
+                      <div className="room-detail-head">
+                        <h3 className="room-tile-name">{room.name}</h3>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-compact"
+                          onClick={() => setSelectedRoomId(null)}
+                        >
+                          Close
+                        </button>
+                      </div>
+                      <ul className="room-detail-list">
+                        {items.map((d) => (
+                          <li key={d.choreId}>
+                            <span className="later-title">{d.title}</span>
+                            <span className={`status-pill status-${d.status}`}>
+                              {d.status === "overdue"
+                                ? `Overdue · ${d.overdueDays}d`
+                                : d.status === "due"
+                                  ? "Due today"
+                                  : d.status}
+                            </span>
                             <div
                               className={`dirt-meter dirt-${
                                 d.status === "overdue" || d.status === "due"
@@ -754,14 +822,12 @@ export function BoardApp() {
                           </li>
                         ))}
                         {items.length === 0 && (
-                          <li style={{ color: "var(--ink-mute)" }}>
-                            No chores in this room yet.
-                          </li>
+                          <li className="room-tile-meta">No chores in this room yet.</li>
                         )}
                       </ul>
-                    </section>
+                    </div>
                   );
-                })}
+                })()}
               </div>
             )}
 
@@ -771,7 +837,7 @@ export function BoardApp() {
                   Shared history
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Who checked what. Nothing rewritten in the dark.
+                  Who checked what.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
