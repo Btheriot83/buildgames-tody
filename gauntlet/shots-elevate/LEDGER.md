@@ -16,3 +16,4 @@ Identity LOCKED: Cool Letterpress Checklist. Flat materials. No tomato scream / 
 | 7 | ink spine on due/overdue tiles + room press | make-it-alive | elevate7-ink-spine.png | left ink plate mark |
 | 8 | space tokens + wider shell rhythm | design-system-from-assets | elevate8-design-system.png | --tb-gap rhythm |
 | 9 | cut later cards + quieter history | cut-elements | elevate9-cut-later.png | transparent later plates |
+| 10 | type calm weights + room meta | specify-the-look | elevate10-type-calm.png, elevate10-rooms.png | weight 500 calm |

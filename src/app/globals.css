@@ -1318,3 +1318,45 @@ body {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+/* elevate10: type calm — Sweepy readability without soft UI */
+.room-tile-name {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+.chore-title {
+  font-size: 1.02rem !important;
+  font-weight: 500 !important;
+}
+.status-pill {
+  letter-spacing: 0.06em !important;
+  font-weight: 500 !important;
+}
+.house-chip {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.billboard-ledger h1 {
+  font-weight: 500 !important;
+}
+
+/* elevate10: type calm — Sweepy readability without soft UI */
+.room-tile-name {
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+}
+.chore-title {
+  font-size: 1.02rem !important;
+  font-weight: 500 !important;
+}
+.status-pill {
+  letter-spacing: 0.06em !important;
+  font-weight: 500 !important;
+}
+.house-chip {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+}
+.billboard-ledger h1 {
+  font-weight: 500 !important;
+}
