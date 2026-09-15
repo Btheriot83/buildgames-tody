@@ -925,3 +925,12 @@ body {
   color: #7a1510 !important;
   border-color: #d63b2c !important;
 }
+
+
+/* r6 — buttons/dream-loop: larger tomato magnet + DONE */
+.stamp-btn { width: 68px !important; height: 68px !important; }
+.stamp-btn::after { font-size: 0.62rem !important; letter-spacing: 0.12em !important; bottom: 9px !important; }
+.stamp-btn svg { width: 24px; height: 24px; }
+@media (max-width: 860px) {
+  .stamp-btn { width: 74px !important; height: 74px !important; }
+}

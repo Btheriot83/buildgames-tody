@@ -45,3 +45,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Overdue pills hotter/clearer vs live; bar marketing still wins category polish.
 - commit: 68576ec
 - transitions: (none this round)
+
+## r6 — buttons
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r6-after-buttons.png
+- verdict: Magnet tap targets closer to dream-target DONE discs; original uses different complete UX.
+- commit: e82a1a7
+- transitions: checkbox-check (.t-check) on magnet stamp
