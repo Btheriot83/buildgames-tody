@@ -49,7 +49,8 @@
     "afterShots": [
       "gauntlet/screenshots/r3-after-home.png",
       "gauntlet/screenshots/r3-after-loop.png",
-      "gauntlet/screenshots/r3-after-mobile.png"
+      "gauntlet/screenshots/r3-after-mobile.png",
+      "gauntlet/screenshots/r3-live-redeploy.png"
     ],
     "visibleGate": "pass",
     "hardBarApplied": true,
@@ -66,11 +67,11 @@
   },
   "live_smoke": {
     "url": "https://buildgames-tody.vercel.app/",
-    "http": null,
+    "http": 200,
     "core_loop": "magnet stamp complete + residue meters",
     "gradients": 0,
     "identity": "Fridge Magnet Board",
-    "at_pt": "2026-09-14 9:39 PM PT"
+    "at_pt": "2026-09-14 9:40 PM PT"
   },
   "status": "done",
   "doNotMessageBrandon": true,
@@ -80,6 +81,9 @@
     "glow": "killed",
     "source": "Brandon Inkwell review \u2192 all apps"
   },
-  "finishedAtPt": "2026-09-14 9:39 PM PT",
-  "finishedAtUtc": "2026-09-15T04:39:17Z"
+  "finishedAtPt": "2026-09-14 9:40 PM PT",
+  "finishedAtUtc": "2026-09-15T04:40:40Z",
+  "commit": "51a9c95",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/3",
+  "vercel_deployment": "dpl_HUSW9mwF8AiaEgUxdBJ6pJGiQE2G"
 }
