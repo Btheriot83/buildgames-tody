@@ -1260,3 +1260,16 @@ body {
 .chore-tile[data-status="fresh"] {
   border-left: 3px solid var(--rule) !important;
 }
+
+/* elevate8: design-system-from-assets — space scale + tileboard rhythm */
+:root {
+  --tb-gap: 0.65rem;
+  --tb-gap-lg: 1rem;
+  --tb-pad: 0.85rem;
+  --tb-radius: 2px;
+}
+.today-list { gap: var(--tb-gap) !important; }
+.room-tile-grid { gap: var(--tb-gap-lg) !important; }
+.chore-tile { padding: var(--tb-pad) 0.9rem !important; }
+.shell { width: min(1040px, calc(100% - 1.5rem)) !important; }
+.today-grid { gap: var(--tb-gap-lg) !important; }
