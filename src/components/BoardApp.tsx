@@ -380,20 +380,6 @@ export function BoardApp() {
         </div>
       </header>
 
-      <div className="shell no-print materials-row" style={{ paddingBottom: "0.65rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 200px", gap: "0.75rem", alignItems: "stretch" }}>
-          <figure className="fridge-plate">
-            <img src="/art/empty-fridge.png" alt="" />
-            <figcaption>Fridge Magnet Board — enamel · kraft · tomato magnet</figcaption>
-          </figure>
-          <div className="magnet-rail" aria-hidden>
-            <img src="/art/magnet-beat-1.png" alt="" />
-            <img src="/art/magnet-beat-2.png" alt="" />
-            <img src="/art/magnet-beat-3.png" alt="" />
-          </div>
-        </div>
-      </div>
-
       <main className="shell" style={{ paddingBottom: "5rem" }}>
         <div className="t-page-slide" data-page={tab === "stuff" ? "2" : "1"}>
           <section
@@ -413,6 +399,19 @@ export function BoardApp() {
                       <NumberPop value={todayDue.length} /> due
                     </span>
                   </div>
+                  <div className="shell no-print materials-row" style={{ padding: "0 0 0.85rem", width: "100%" }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 160px", gap: "0.65rem", alignItems: "stretch" }}>
+                      <figure className="fridge-plate">
+                        <img src="/art/empty-fridge.png" alt="" />
+                        <figcaption>Fridge Magnet Board — enamel · kraft · tomato magnet</figcaption>
+                      </figure>
+                      <div className="magnet-rail" aria-hidden>
+                        <img src="/art/magnet-beat-1.png" alt="" />
+                        <img src="/art/magnet-beat-2.png" alt="" />
+                        <img src="/art/magnet-beat-3.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
                   <div
                     className="today-grid"
                     style={{
@@ -430,10 +429,7 @@ export function BoardApp() {
                           marginBottom: "0.75rem",
                         }}
                       >
-                        <h2
-                          className="font-display"
-                          style={{ fontSize: "1.35rem", margin: 0 }}
-                        >
+                        <h2 className="section-title">
                           Due today
                         </h2>
                         <span className="eyebrow">
@@ -449,8 +445,8 @@ export function BoardApp() {
                             height={280}
                           />
                           <p
-                            className="font-display"
-                            style={{ fontSize: "1.45rem", margin: 0 }}
+                            className="section-title"
+                            style={{ fontSize: "1.35rem", margin: 0 }}
                           >
                             Board’s clear.
                           </p>
@@ -496,7 +492,7 @@ export function BoardApp() {
                             {later.slice(0, 6).map((d) => (
                               <li
                                 key={d.choreId}
-                                className="tile"
+                                className="tile later-card"
                                 style={{
                                   padding: "0.75rem 1rem",
                                   display: "grid",
@@ -510,7 +506,7 @@ export function BoardApp() {
                                     gap: "0.5rem",
                                   }}
                                 >
-                                  <span>{d.title}</span>
+                                  <span className="later-title">{d.title}</span>
                                   <span className="eyebrow">{d.dueAt}</span>
                                 </div>
                                 <div
@@ -536,10 +532,7 @@ export function BoardApp() {
                     </div>
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
-                      <h2
-                        className="font-display"
-                        style={{ fontSize: "1.05rem", marginTop: 0 }}
-                      >
+                      <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
                         Who’s stamping
                       </h2>
                       <p className="eyebrow">Invite · {board.household.invite_code}</p>
@@ -586,30 +579,23 @@ export function BoardApp() {
                         />
                         <button
                           type="button"
-                          className="btn btn-ghost"
+                          className="btn btn-primary btn-compact"
                           onClick={() => void addMember()}
                         >
                           Add
                         </button>
                       </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "0.5rem",
-                          marginTop: "1rem",
-                        }}
-                      >
+                      <div className="aside-actions">
                         <button
                           type="button"
-                          className="btn btn-ghost"
+                          className="btn btn-ghost btn-compact"
                           onClick={() => void undo()}
                         >
                           Undo
                         </button>
                         <button
                           type="button"
-                          className="btn btn-ghost"
+                          className="btn btn-clay btn-compact"
                           onClick={() => setShowAdd((s) => !s)}
                         >
                           New chore
@@ -730,10 +716,7 @@ export function BoardApp() {
                       className="tile"
                       style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
                     >
-                      <h2
-                        className="font-display"
-                        style={{ margin: 0, fontSize: "1.35rem" }}
-                      >
+                      <h2 className="room-title" style={{ margin: 0 }}>
                         {room.name}
                       </h2>
                       <ul
@@ -801,7 +784,7 @@ export function BoardApp() {
 
             {tab === "history" && (
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>
+                <h2 className="section-title" style={{ marginTop: 0 }}>
                   Shared history
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
@@ -864,7 +847,7 @@ export function BoardApp() {
               }}
             >
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>
+                <h2 className="section-title" style={{ marginTop: 0 }}>
                   Inventory
                 </h2>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -885,7 +868,7 @@ export function BoardApp() {
                 </ul>
               </div>
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>
+                <h2 className="section-title" style={{ marginTop: 0 }}>
                   Household notes
                 </h2>
                 {board.recipes.map((r) => (
