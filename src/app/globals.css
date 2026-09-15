@@ -1670,3 +1670,16 @@ body {
 .chore-tile { padding: 0.72rem 0.85rem !important; gap: 0.85rem !important; }
 .dirt-meter { margin-top: 0.28rem !important; }
 .job-strip { margin-bottom: 0.85rem !important; padding: 0.7rem 0.95rem !important; }
+
+
+/* r5 — contrast: residue segments + overdue heat toward Tody bars */
+.dirt-meter-track { height: 8px !important; gap: 2px !important; }
+.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
+.dirt-due .dirt-seg.is-on { background: #d4a017 !important; }
+.status-overdue {
+  letter-spacing: 0.04em !important;
+  font-size: 0.64rem !important;
+}
+.chore-tile[data-status="overdue"] {
+  border-color: #c9a07a !important;
+}
