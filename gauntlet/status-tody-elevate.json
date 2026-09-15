@@ -107,8 +107,28 @@
   "doNotMessageBrandon": true,
   "branch": "elevate-pro-bars-letterpress",
   "finishedAtUtc": "2026-09-15T13:50:13Z",
-  "finishedAtPt": "2026-09-15 ~6:50 AM PT",
+  "finishedAtPt": "2026-09-15 6:54 AM PT",
   "shotCount": 18,
   "shotsDir": "gauntlet/shots-elevate/",
-  "ledger": "gauntlet/shots-elevate/LEDGER.md"
+  "ledger": "gauntlet/shots-elevate/LEDGER.md",
+  "pr_url": "https://github.com/Btheriot83/buildgames-tody/pull/8",
+  "pr_merged": true,
+  "mainSha": "4186a2d",
+  "vercel_status": "READY",
+  "vercel_deployment": "buildgames-tody-pcuopboxa-brandon-theriots-projects.vercel.app",
+  "live_smoke": {
+    "ok": true,
+    "at_pt": "2026-09-15 6:54 AM PT",
+    "http": 200,
+    "shot": "gauntlet/shots-elevate/elevate12-live-prod-smoke.png",
+    "checks": [
+      "HTTP 200",
+      "Cool Letterpress Checklist identity",
+      "Rooms tile grid",
+      "Shared house invite plate",
+      "Overdue outline plates (no tomato)",
+      "0 decorative gradients",
+      "PR #8 merged; prod READY"
+    ]
+  }
 }
