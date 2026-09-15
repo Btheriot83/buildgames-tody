@@ -42,13 +42,13 @@
     "at_pt": "2026-09-15 12:45 AM PT"
   },
   "phaseB": {
-    "loopsCompleted": 12,
+    "loopsCompleted": 14,
     "loopsCap": 25,
     "shotsDir": "gauntlet/shots-beat/",
     "ledger": "gauntlet/shots-beat/LEDGER.md",
     "stopEarly": false,
     "independentCriticWinsOverallCraft": false,
-    "honestVerdictVsTody": "MIXED \u2014 candidate wins restraint / cool-plain letterpress identity and kills red overdue scream; Tody still leads polished colorful marketing craft. Continue loops.",
+    "honestVerdictVsTody": "MIXED \u2014 letterpress restraint + no red scream; Tody still leads colorful marketing polish. Continue.",
     "commits": [
       "beat1",
       "beat2",
@@ -61,7 +61,9 @@
       "beat9",
       "beat10",
       "beat11",
-      "beat12"
+      "beat12",
+      "beat13",
+      "beat14"
     ]
   },
   "hardBar": {
@@ -73,8 +75,7 @@
   "live_smoke": {
     "url": "https://buildgames-tody.vercel.app/",
     "http": 200,
-    "aliased": true,
-    "at_pt": "2026-09-15 12:45 AM PT"
+    "at_pt": "2026-09-15 12:47 AM PT"
   },
   "status": "in_progress_beats",
   "next": "Continue beat13\u201325 until independent screenshot critic says WIN vs todyapp.com"
