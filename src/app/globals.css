@@ -2301,3 +2301,61 @@ header .streak-ring { opacity: 0.85; }
   border-radius: 4px !important;
   padding: 0.85rem 1rem !important;
 }
+
+/* craft8: final letterpress polish — folio, streak, assign quiet */
+header.shell {
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.35rem;
+  padding-bottom: 1.05rem !important;
+}
+.streak-ring {
+  width: 70px !important;
+  height: 70px !important;
+  border: 1.5px solid var(--ink) !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 0 rgba(34, 28, 36, 0.1) !important;
+  background: var(--chalk) !important;
+}
+.streak-ring .eyebrow { color: var(--slate) !important; }
+.assign-row {
+  opacity: 0.92;
+}
+.assign-row .eyebrow {
+  font-size: 0.58rem !important;
+}
+.chore-tile.fun-card {
+  padding: 1rem 1.05rem !important;
+}
+.stamp-btn.t-check[aria-checked="false"] svg path {
+  opacity: 0.28 !important;
+}
+/* ink plate under room rail */
+.today-room-rail {
+  margin-bottom: 1.1rem !important;
+  padding-bottom: 0.15rem;
+}
+.ob-title {
+  font-family: var(--font-serif), Georgia, serif !important;
+  letter-spacing: -0.03em !important;
+}
+.ob-card {
+  border-radius: 8px !important;
+  box-shadow: 0 14px 0 rgba(34, 28, 36, 0.08) !important;
+}
+@media (max-width: 720px) {
+  .today-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .today-room-rail {
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    grid-auto-columns: minmax(140px, 70%);
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stamp-btn.t-check {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}
