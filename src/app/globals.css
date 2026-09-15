@@ -934,3 +934,8 @@ body {
 @media (max-width: 860px) {
   .stamp-btn { width: 74px !important; height: 74px !important; }
 }
+
+
+/* r7 — fonts: chore title ladder toward target */
+.chore-title { font-size: 1.14rem !important; font-weight: 750 !important; letter-spacing: -0.018em !important; }
+.chore-meta { font-size: 0.82rem !important; font-weight: 500; color: var(--ink-soft) !important; }
