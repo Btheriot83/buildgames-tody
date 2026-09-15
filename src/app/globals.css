@@ -1626,3 +1626,20 @@ body {
   font-size: clamp(1.15rem, 2.3vw, 1.4rem) !important;
   letter-spacing: -0.022em !important;
 }
+
+
+/* r2 — contrast: kraft slips punch off quiet enamel */
+.chore-tile {
+  background: #f3e2c4 !important;
+  border-color: #cbb892 !important;
+}
+.status-overdue {
+  background: #ffe8e2 !important;
+  color: #7a1f16 !important;
+  border-color: rgba(214,59,44,0.55) !important;
+  font-weight: 750 !important;
+}
+.job-strip {
+  background: #f0dcc0 !important;
+  border-color: #cbb892 !important;
+}
