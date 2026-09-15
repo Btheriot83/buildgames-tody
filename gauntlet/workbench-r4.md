@@ -38,3 +38,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: List denser like Tody rows; original still wins colorful room tiles.
 - commit: f5a81fc
 - transitions: (none)
+
+## r5 — contrast
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r5-after-contrast.png, gauntlet/shots-r4/r5-bar-todyapp.png
+- verdict: Overdue pills hotter/clearer vs live; bar marketing still wins category polish.
+- commit: 68576ec
+- transitions: (none this round)

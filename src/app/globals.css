@@ -911,3 +911,17 @@ body {
 .today-list { gap: 0.45rem !important; }
 .chore-tile { padding: 0.78rem 0.9rem !important; }
 .chore-title-row { gap: 0.4rem; }
+
+
+/* r5 — contrast: overdue pills punch like Tody */
+.status-pill {
+  font-size: 0.7rem !important;
+  border-width: 1.5px !important;
+  border-radius: 2px !important;
+  padding: 0.3rem 0.5rem !important;
+}
+.status-overdue {
+  background: #ffe1da !important;
+  color: #7a1510 !important;
+  border-color: #d63b2c !important;
+}
