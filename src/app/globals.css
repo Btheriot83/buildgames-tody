@@ -1000,3 +1000,15 @@ body {
   letter-spacing: 0.02em;
 }
 .assignee-chip { font-family: var(--font-sans), system-ui, sans-serif !important; font-weight: 700 !important; }
+
+
+/* r15 — buttons/dream: Undo quiet, New chore loud */
+.aside-actions { gap: 0.55rem !important; }
+.aside-actions .btn-ghost {
+  background: #fff !important;
+  color: var(--ink-soft) !important;
+  border: 1.5px solid var(--rule-strong) !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+.aside-actions .btn-clay { font-size: 1rem !important; padding-inline: 1.1rem; }
