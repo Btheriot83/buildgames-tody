@@ -51,7 +51,7 @@ export function PlanPanel({ onAccept }: Props) {
     return (
       <button
         type="button"
-        className="btn btn-ghost"
+        className="btn btn-primary btn-compact"
         onClick={() => setOpen(true)}
       >
         Plan a room
@@ -60,9 +60,10 @@ export function PlanPanel({ onAccept }: Props) {
   }
 
   return (
+    <div className="t-panel-slide" data-open="true">
     <div className="tile plan-panel" style={{ padding: "1rem", marginTop: "0.75rem" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-        <h3 className="font-display" style={{ margin: 0, fontSize: "1.15rem" }}>
+        <h3 className="section-title" style={{ margin: 0, fontSize: "1.15rem" }}>
           From a room description
         </h3>
         <button type="button" className="btn btn-ghost" style={{ minHeight: 36, padding: "0.35rem 0.7rem" }} onClick={() => setOpen(false)}>
@@ -117,6 +118,7 @@ export function PlanPanel({ onAccept }: Props) {
           </button>
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -9,6 +9,7 @@ const newsreader = Newsreader({
 });
 const source = Source_Sans_3({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-source",
   display: "swap",
 });

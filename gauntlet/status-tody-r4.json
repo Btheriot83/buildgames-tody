@@ -1,0 +1,81 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "demoUrl": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "identity": "Fridge Magnet Board",
+  "identityFrozen": true,
+  "roundsCounted": 20,
+  "roundShas": [
+    "bee9b45",
+    "630fb5b",
+    "e24e6b3",
+    "8b8b38d",
+    "c44e692",
+    "8576254",
+    "cdccea0",
+    "591f1cc",
+    "06bd127",
+    "1b996b4",
+    "0df0b86",
+    "07d83fd",
+    "1aaf9a1",
+    "a7762ea",
+    "2982797",
+    "f270963",
+    "2219d87",
+    "13b9df7",
+    "980c220",
+    "93b6b18"
+  ],
+  "beautyRounds": 12,
+  "beautyShas": [
+    "d0370c5",
+    "2feaa28",
+    "d5911ec",
+    "d0638b2",
+    "7ceed15",
+    "7d92101",
+    "610c0fa",
+    "005eb18",
+    "e1b78e4",
+    "2148fa7",
+    "68d512a",
+    "51db05e"
+  ],
+  "shotCount": 44,
+  "barShotRounds": [
+    5,
+    10,
+    15,
+    20,
+    28
+  ],
+  "honestNotes": [
+    "Integrity r1-r20: separate commits + shots; bar A/B every 5th; Fridge Magnet Board locked.",
+    "Beauty r21-r32: quieter shadows, enamel magnet rings, type breathing, hide materials clutter, thinner dirt bars, chrome polish \u2014 Brandon found prior craft a little ugly.",
+    "dream-loop target at gauntlet/shots-r4/dream-target.png used for several counted closes.",
+    "Original todyapp.com still wins colorful room-grid marketing polish; candidate wins physical tomato-magnet Today job + local-first.",
+    "transitions.dev wired on real actions (toast/success-check/checkbox/number-pop/tabs/error-shake/panel-reveal/skeleton)."
+  ],
+  "dreamLoop": {
+    "target": "gauntlet/shots-r4/dream-target.png",
+    "baseline": "gauntlet/shots-r4/r0-baseline.png"
+  },
+  "workbench": "apps/tody/gauntlet/workbench-r4.md",
+  "doNotMessageBrandon": true,
+  "finishedAtPt": "2026-09-14 10:28 PM PT",
+  "finishedAtUtc": "2026-09-15T05:28:46Z",
+  "branch": "feat/phase-b4-r4",
+  "head": "baab72d",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/4",
+  "status": "done",
+  "vercel_deployment": "dpl_5TsHGqBA7a6fAL9aug5w1NcgFXt9",
+  "vercel_inspect": "https://vercel.com/brandon-theriots-projects/buildgames-tody/5TsHGqBA7a6fAL9aug5w1NcgFXt9",
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "http": 200,
+    "identity": "Fridge Magnet Board"
+  }
+}

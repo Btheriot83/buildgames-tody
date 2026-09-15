@@ -1,0 +1,89 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "demo_url": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "baselineScore": 3.8,
+  "reseed": true,
+  "reseedReason": "Fridge Magnet Board locked from B2 \u2014 Bathhouse discarded",
+  "phaseA": {
+    "done": true,
+    "reseeded": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "identityPath": "docs/IDENTITY.md",
+    "aesthetic": "Fridge Magnet Board",
+    "priorAesthetic": "Bathhouse Ledger"
+  },
+  "phaseB2": {
+    "roundsCompleted": 10,
+    "roundsTarget": 10,
+    "workbench": "gauntlet/workbench-r2.md",
+    "identityFrozen": true
+  },
+  "phaseB3": {
+    "roundsCompleted": 20,
+    "roundsTarget": 20,
+    "workbench": "gauntlet/workbench-r3.md",
+    "identityFrozen": true,
+    "focus": [
+      "fonts",
+      "contrast",
+      "buttons",
+      "close-AB-vs-tody",
+      "flat-no-gradient"
+    ],
+    "barShots": [
+      "gauntlet/screenshots/r3-bar-todyapp.png",
+      "gauntlet/screenshots/r3-bar-method.png"
+    ],
+    "afterShots": [
+      "gauntlet/screenshots/r3-after-home.png",
+      "gauntlet/screenshots/r3-after-loop.png",
+      "gauntlet/screenshots/r3-after-mobile.png",
+      "gauntlet/screenshots/r3-live-redeploy.png"
+    ],
+    "visibleGate": "pass",
+    "hardBarApplied": true,
+    "gradients": 0
+  },
+  "ai": {
+    "route": "/api/plan",
+    "env": [
+      "BUILD_GAMES_LLM_API_KEY",
+      "XAI_API_KEY",
+      "OPENAI_API_KEY",
+      "ANTHROPIC_* fallback"
+    ]
+  },
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "http": 200,
+    "core_loop": "magnet stamp complete + residue meters",
+    "gradients": 0,
+    "identity": "Fridge Magnet Board",
+    "at_pt": "2026-09-14 9:40 PM PT"
+  },
+  "status": "done",
+  "doNotMessageBrandon": true,
+  "hardBar": {
+    "gradients": "stripped",
+    "glassBlur": "killed",
+    "glow": "killed",
+    "source": "Brandon Inkwell review \u2192 all apps"
+  },
+  "finishedAtPt": "2026-09-14 9:40 PM PT",
+  "finishedAtUtc": "2026-09-15T04:40:40Z",
+  "commit": "93a0bcf",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/3",
+  "vercel_deployment": "dpl_HUSW9mwF8AiaEgUxdBJ6pJGiQE2G"
+}
