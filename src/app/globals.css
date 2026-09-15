@@ -1244,3 +1244,19 @@ body {
   color: var(--ink) !important;
   font-size: 1.35rem !important;
 }
+
+/* elevate7: make-it-alive — room plate press + ink spine on overdue chores */
+.room-tile:active {
+  transform: translateY(1px) scale(0.985);
+  background: var(--chalk);
+}
+.chore-tile[data-status="overdue"] {
+  border-left: 3px solid var(--ink) !important;
+}
+.chore-tile[data-status="due"] {
+  border-left: 3px solid var(--slate) !important;
+}
+.chore-tile[data-status="ok"],
+.chore-tile[data-status="fresh"] {
+  border-left: 3px solid var(--rule) !important;
+}

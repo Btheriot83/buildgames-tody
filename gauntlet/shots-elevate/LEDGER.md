@@ -11,3 +11,4 @@ Identity LOCKED: Cool Letterpress Checklist. Flat materials. No tomato scream / 
 | 4 | room select → chore bars detail | make-it-alive / bar Tody | elevate4-room-detail.png | Tody expand room → bars |
 | 5 | remove-ai-tells kill-list + quieter due folio | remove-ai-tells | elevate5-anti-tells.png | chalk due count; no blur/glow |
 | 6 | hand-rewrite job strip / rooms voice | hand-rewrite-copy | elevate6-hand-copy.png | Due today → ink check |
+| 7 | ink spine on due/overdue tiles + room press | make-it-alive | elevate7-ink-spine.png | left ink plate mark |
