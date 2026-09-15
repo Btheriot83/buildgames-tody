@@ -953,3 +953,9 @@ body {
 .fridge-plate img { max-height: 56px !important; }
 .magnet-rail { padding: 0.35rem !important; }
 .magnet-rail img { width: 34px !important; height: 34px !important; }
+
+
+/* r10 — fonts: job strip verb closer to target utility */
+.job-strip .job-verb { font-size: clamp(1.25rem, 2.6vw, 1.65rem) !important; font-weight: 750 !important; letter-spacing: -0.02em !important; }
+.job-strip .job-hint { font-size: 0.92rem !important; }
+.job-strip .job-count { font-size: 0.78rem !important; box-shadow: 2px 2px 0 var(--ink); }

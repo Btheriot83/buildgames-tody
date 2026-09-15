@@ -73,3 +73,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Materials demoted so Due owns fold — closer to dream-target priority.
 - commit: a4688f6
 - transitions: (none)
+
+## r10 — fonts
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r10-after-fonts.png, gauntlet/shots-r4/r10-bar-todyapp.png
+- verdict: Job verb louder utility; original hero marketing type still wins landing.
+- commit: 161041d
+- transitions: number-pop-in on due count + streak
