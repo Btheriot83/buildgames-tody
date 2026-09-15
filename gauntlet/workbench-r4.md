@@ -80,3 +80,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Job verb louder utility; original hero marketing type still wins landing.
 - commit: 161041d
 - transitions: number-pop-in on due count + streak
+
+## r11 — buttons
+- files: src/app/globals.css, src/components/BoardApp.tsx
+- shot: gauntlet/shots-r4/r11-after-buttons.png
+- verdict: Stick chore CTA + error shake wired on empty title; original has no fridge form.
+- commit: d680212
+- transitions: error-state-shake (.t-input-wrap.is-error / .is-shaking) on Stick chore validation

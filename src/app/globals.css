@@ -959,3 +959,15 @@ body {
 .job-strip .job-verb { font-size: clamp(1.25rem, 2.6vw, 1.65rem) !important; font-weight: 750 !important; letter-spacing: -0.02em !important; }
 .job-strip .job-hint { font-size: 0.92rem !important; }
 .job-strip .job-count { font-size: 0.78rem !important; box-shadow: 2px 2px 0 var(--ink); }
+
+
+/* r11 — buttons: Stick chore full-width clay weight */
+.t-input-wrap .btn-clay {
+  width: 100%;
+  font-weight: 750;
+  box-shadow: 3px 3px 0 var(--ink);
+  letter-spacing: 0.01em;
+}
+.t-input-wrap.is-error .field {
+  border-color: var(--clay) !important;
+}

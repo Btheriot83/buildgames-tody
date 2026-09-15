@@ -650,7 +650,7 @@ export function BoardApp() {
                         >
                           <label className="label">Title</label>
                           <input
-                            className={`field${addError ? " t-error" : ""}`}
+                            className={`field t-input${addError ? " t-error is-error is-shaking" : ""}`}
                             value={addTitle}
                             onChange={(e) => {
                               setAddTitle(e.target.value);
