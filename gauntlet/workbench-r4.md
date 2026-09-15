@@ -175,3 +175,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Type less scream-y; chore titles breathe like Tody list craft while mark stays Newsreader.
 - commit: 5059867
 - transitions: (none)
+
+## r24 — beauty-enamel
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r24-after-beauty-enamel.png
+- verdict: Kraft/enamel materials less muddy; enamel white panels cleaner vs bar mint canvas.
+- commit: 8e7c0df
+- transitions: (none)

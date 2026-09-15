@@ -1146,3 +1146,20 @@ footer, .shell > p, .backup-link { color: var(--ink-soft) !important; font-weigh
   font-size: clamp(1.7rem, 3.8vw, 2.4rem) !important;
   font-weight: 550 !important;
 }
+
+
+/* r24 — beauty: enamel + kraft materials refine */
+body {
+  background-color: #f5f6f8 !important;
+}
+.chore-tile {
+  background: #f7e7cb !important;
+  border: 2px solid #1a1f24 !important;
+}
+.tile:not(.chore-tile) {
+  background: #ffffff !important;
+  border: 1.5px solid #c5ccd4 !important;
+}
+.job-strip { background: #f3e0c0 !important; border-color: #1a1f24 !important; }
+.later-card { background: #faf7f1 !important; }
+.status-overdue { background: #fff0ec !important; color: #8a2218 !important; }
