@@ -871,3 +871,18 @@ body {
 .today-list-col .section-title {
   font-size: 1.35rem !important;
 }
+
+/* r2 — contrast: enamel vs kraft separation */
+.chore-tile {
+  background: #f2d7a8 !important;
+  border: 2.5px solid var(--ink) !important;
+  box-shadow: 5px 5px 0 rgba(26, 31, 36, 0.22) !important;
+}
+.tile:not(.chore-tile) {
+  background: #ffffff;
+  border: 1.5px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(26, 31, 36, 0.12);
+}
+body {
+  background-color: #f3f5f7;
+}
