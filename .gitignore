@@ -45,3 +45,6 @@ test-results/
 playwright-report/
 /tmp/
 .env.local
+
+# dream-loop working files
+.dream-loop/

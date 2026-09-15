@@ -856,3 +856,18 @@ body {
   color: var(--ink-soft) !important;
   letter-spacing: 0.1em;
 }
+
+
+/* —— PHASE B4 INTEGRITY —— */
+/* Identity frozen: Fridge Magnet Board. Flat fills only. dream-loop + transitions. */
+
+/* r1 — fonts: Due today title scale closer to Tody list header */
+.section-title {
+  font-size: 1.28rem !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.15;
+}
+.today-list-col .section-title {
+  font-size: 1.35rem !important;
+}
