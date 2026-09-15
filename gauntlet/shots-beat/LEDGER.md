@@ -21,3 +21,17 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 
 | beat13 | Job strip main wrap + bottom rule on tiles | beat13-jobstrip.png | Spottable structure |
 | beat14 | Disclosure / button radius consistency | beat14-home.png | Spottable polish |
+| beat15 | Overdue ink pills + job-strip ink rule | beat15-contrast.png | Spottable contrast |
+| beat16 | Check plate + ghost ink edge | beat16-buttons.png | Spottable buttons |
+| beat17 | Cut aside lede + footer brand | beat17-cut.png | Spottable cut |
+| beat18 | Dirt bar height/gaps 6-seg | beat18-bargap.png | Spottable bar-gap |
+| beat19 | Press indent + square ink flecks | beat19-alive.png | Spottable alive |
+| beat20 | Hand job-hint + toast copy | beat20-copy.png | Spottable copy |
+| beat21 | Mono chore-meta + serif later titles | beat21-fonts.png | Spottable fonts |
+| beat22 | Ink square members; kill rainbow dots | beat22-antislop.png | Spottable anti-slop |
+| beat23 | Rooms letterpress cards + ink history marks | beat23-rooms.png | Spottable rooms |
+| beat24 | Sticky mobile job-strip + 58px checks | beat24-mobile.png | Spottable mobile |
+| beat25 | Folio hairline under header + tab craft | beat25-folio.png / beat25-history.png | Spottable final polish |
+
+
+Final critic (beat25): MIXED vs todyapp.com — letterpress product craft strong; Tody still leads colorful marketing. Cap 25 reached. No soft WIN.

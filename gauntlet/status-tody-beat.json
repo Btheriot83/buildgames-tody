@@ -6,8 +6,8 @@
   "demo_url": "https://buildgames-tody.vercel.app",
   "bar": "https://todyapp.com/",
   "path": "/workspace/build-games/apps/tody",
-  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/6",
-  "branch": "feat/letterpress-reseed",
+  "pr": null,
+  "branch": "feat/beat15-25",
   "doNotMessageBrandon": true,
   "catalog": {
     "index": "https://design-catalog-three.vercel.app/data/index.json",
@@ -29,26 +29,31 @@
       7,
       8
     ],
-    "seed": "42afb12b2f3069ca8f74bbc5f076ca6aa406e5bec38e610b825117e23b628515",
-    "seedShownInUI": false,
     "identityPath": "docs/IDENTITY.md",
-    "artifacts": [
-      "docs/DISCOVER.md",
-      "docs/DEFINE.md",
-      "docs/DELIVER.md",
-      "docs/IDENTITY.md"
-    ],
-    "criticNote": "z.ai vision critic hallucinated / could not fetch image URLs; shots ready for independent critic. Builder did not self-grade studio score.",
-    "at_pt": "2026-09-15 12:45 AM PT"
+    "criticNote": "z.ai vision broken; beat25 critic via Read of paired shots"
   },
   "phaseB": {
-    "loopsCompleted": 14,
+    "loopsCompleted": 25,
     "loopsCap": 25,
+    "loopsThisRun": [
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
     "shotsDir": "gauntlet/shots-beat/",
     "ledger": "gauntlet/shots-beat/LEDGER.md",
     "stopEarly": false,
     "independentCriticWinsOverallCraft": false,
-    "honestVerdictVsTody": "MIXED \u2014 letterpress restraint + no red scream; Tody still leads colorful marketing polish. Continue.",
+    "honestVerdictVsTody": "MIXED \u2014 letterpress product craft + ink overdue plates + 6-seg bars; Tody still leads colorful marketing polish. Cap 25. No soft WIN.",
+    "criticPath": "gauntlet/shots-beat/critic-beat25.txt",
     "commits": [
       "beat1",
       "beat2",
@@ -63,7 +68,18 @@
       "beat11",
       "beat12",
       "beat13",
-      "beat14"
+      "beat14",
+      "beat15",
+      "beat16",
+      "beat17",
+      "beat18",
+      "beat19",
+      "beat20",
+      "beat21",
+      "beat22",
+      "beat23",
+      "beat24",
+      "beat25"
     ]
   },
   "hardBar": {
@@ -74,9 +90,9 @@
   },
   "live_smoke": {
     "url": "https://buildgames-tody.vercel.app/",
-    "http": 200,
-    "at_pt": "2026-09-15 12:47 AM PT"
+    "http": null,
+    "at_pt": "2026-09-15 12:57 AM PT"
   },
-  "status": "in_progress_beats",
-  "next": "Continue beat13\u201325 until independent screenshot critic says WIN vs todyapp.com"
+  "status": "beats_complete_mixed",
+  "next": "Cap 25 reached with MIXED verdict; no further beat loops unless Brandon reopens"
 }

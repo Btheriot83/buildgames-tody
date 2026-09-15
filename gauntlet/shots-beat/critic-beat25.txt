@@ -1,0 +1,23 @@
+# Independent critic — screenshots only (z.ai vision broken; human Read of paired shots)
+
+Bar: gauntlet/shots-beat/bar-todyapp.png (todyapp.com marketing hero)
+Candidate: beat25-folio.png, beat24-mobile.png, beat23-rooms.png, beat18-bargap.png
+
+## What Tody still wins
+- Colorful marketing craft: mint field, coral CTA sticker on “autopilot”, App Store stack, QR, social proof density
+- Room tile color language (kitchen/living/bath palette) reads playful product instantly
+- Overdue bars use red→orange→green narrative that sells dueness in one glance on the marketing mock
+
+## What Tileboard / Cool Letterpress wins
+- Flat letterpress restraint: no gradients, no glass, no tomato overdue scream
+- Serif household name + mono meta + ink overdue plates read as intentional print system
+- 6-seg dirt bars + ink check plates make the core job (press check → clear due) obvious in ≤3s in product UI
+- Anti-slop: ink square members, cut aside/footer chrome, sticky mobile job-strip
+
+## Overall craft vs todyapp.com
+**MIXED — not a WIN.** Product UI letterpress craft is strong and more disciplined than Tody’s marketing chrome, but the bar shot is a polished consumer marketing page; Tileboard does not beat that colorful marketing story overall. Do not invent soft WIN.
+
+Evidence paths:
+- /workspace/build-games/apps/tody/gauntlet/shots-beat/bar-todyapp.png
+- /workspace/build-games/apps/tody/gauntlet/shots-beat/beat25-folio.png
+- /workspace/build-games/apps/tody/gauntlet/shots-beat/beat24-mobile.png

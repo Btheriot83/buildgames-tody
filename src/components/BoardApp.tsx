@@ -103,7 +103,7 @@ export function BoardApp() {
       refresh(next);
       setJustDone(true);
       setTimeout(() => setJustDone(false), 1200);
-      toast(`Checked off — ${activeMember.name}`);
+      toast(`Checked — ${activeMember.name}`);
     } catch (e) {
       setExiting((prev) => {
         const n = new Set(prev);
@@ -153,14 +153,14 @@ export function BoardApp() {
     refresh(next);
     setAddTitle("");
     setShowAdd(false);
-    toast("Added to the list");
+    toast("On the list");
   }
 
   async function addMember() {
     if (!household || !memberName.trim()) return;
     refresh(await addMemberLocal(household, memberName.trim()));
     setMemberName("");
-    toast("Added to the house");
+    toast("In the house");
   }
 
   async function acceptPlan(chores: PlannedChore[], plannedRoom: string) {
@@ -242,7 +242,7 @@ export function BoardApp() {
                 width: "40%",
                 background: "var(--chalk)",
                 marginBottom: 12,
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
             <div
@@ -251,7 +251,7 @@ export function BoardApp() {
                 width: "70%",
                 background: "var(--chalk)",
                 marginBottom: 8,
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
             <div
@@ -259,7 +259,7 @@ export function BoardApp() {
                 height: 14,
                 width: "55%",
                 background: "var(--chalk)",
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
           </div>
@@ -388,7 +388,7 @@ export function BoardApp() {
                     <div className="job-strip-main">
                       <p className="job-verb">Today → check complete</p>
                       <p className="job-hint">
-                        Open Due today. Press the check.
+                        Press the ink check. Clear what’s due.
                       </p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
@@ -432,7 +432,7 @@ export function BoardApp() {
                             Nothing due.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
-                            Add a chore — or plan a room.
+                            List a chore, or plan a room.
                           </p>
                           <div className="empty-quiet-actions">
                             <button
@@ -505,11 +505,11 @@ export function BoardApp() {
                                   style={{ opacity: 0.85 }}
                                 >
                                   <div className="dirt-meter-track">
-                                    {Array.from({ length: 8 }).map((_, i) => (
+                                    {Array.from({ length: 6 }).map((_, i) => (
                                       <span
                                         key={i}
                                         className={`dirt-seg${
-                                          i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                          i < Math.round(d.dirt * 6) ? " is-on" : ""
                                         }`}
                                       />
                                     ))}
@@ -526,9 +526,8 @@ export function BoardApp() {
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
                         Who’s checking
                       </h2>
-                      <p className="eyebrow">Invite · {board.household.invite_code}</p>
-                      <p style={{ color: "var(--ink-mute)", fontSize: "0.88rem", margin: "0.35rem 0 0.6rem" }}>
-                        Pick yourself. Check what’s due.
+                      <p className="eyebrow" style={{ marginBottom: "0.55rem" }}>
+                        Invite · {board.household.invite_code}
                       </p>
                       <ul
                         style={{
@@ -548,14 +547,7 @@ export function BoardApp() {
                               gap: "0.55rem",
                             }}
                           >
-                            <span
-                              style={{
-                                width: 12,
-                                height: 12,
-                                borderRadius: "50%",
-                                background: m.color,
-                              }}
-                            />
+                            <span className="member-dot" aria-hidden />
                             <span style={{ fontWeight: 600 }}>{m.name}</span>
                             <span className="eyebrow">{m.role}</span>
                           </li>
@@ -704,7 +696,7 @@ export function BoardApp() {
                   return (
                     <section
                       key={room.id}
-                      className="tile"
+                      className="tile room-card"
                       style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
                     >
                       <h2 className="room-title" style={{ margin: 0 }}>
@@ -749,11 +741,11 @@ export function BoardApp() {
                               }`}
                             >
                               <div className="dirt-meter-track">
-                                {Array.from({ length: 8 }).map((_, i) => (
+                                {Array.from({ length: 6 }).map((_, i) => (
                                   <span
                                     key={i}
                                     className={`dirt-seg${
-                                      i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                      i < Math.round(d.dirt * 6) ? " is-on" : ""
                                     }`}
                                   />
                                 ))}
@@ -794,15 +786,7 @@ export function BoardApp() {
                         borderTop: "1px solid var(--rule)",
                       }}
                     >
-                      <span
-                        style={{
-                          width: 10,
-                          height: 10,
-                          borderRadius: "50%",
-                          background: h.member_color,
-                          marginTop: 6,
-                        }}
-                      />
+                      <span className="member-dot history-mark" aria-hidden />
                       <div>
                         <strong>{h.chore_title}</strong>
                         <div style={{ color: "var(--ink-mute)", fontSize: "0.9rem" }}>
@@ -885,9 +869,6 @@ export function BoardApp() {
         </div>
       </main>
 
-      <footer className="shell no-print" style={{ padding: "1.25rem 0 2rem", color: "var(--ink-mute)", fontSize: "0.8rem" }}>
-        <p>Tileboard · Cool Letterpress Checklist</p>
-      </footer>
     </>
   );
 }

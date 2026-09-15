@@ -750,3 +750,222 @@ select.field { min-height: 40px !important; }
 /* beat14 — summary disclosure letterpress */
 details summary.eyebrow { letter-spacing: 0.12em; }
 details .btn { border-radius: 2px; }
+
+
+/* beat15 — contrast: overdue ink weight + job-strip rule */
+.job-strip {
+  border-color: var(--ink) !important;
+  background: var(--chalk) !important;
+}
+.status-overdue {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+.status-due {
+  background: var(--tile) !important;
+  color: var(--slate-deep) !important;
+  border-color: var(--slate) !important;
+  font-weight: 700 !important;
+}
+.billboard-ledger > p:last-of-type,
+.billboard-ledger .t-stagger-line--2 {
+  color: var(--ink-soft) !important;
+  font-weight: 500;
+}
+.chore-meta { color: var(--ink-soft) !important; }
+
+
+/* beat16 — buttons: letterpress check plate + ghost ink edge */
+.stamp-btn {
+  border-width: 2px !important;
+  border-color: var(--ink) !important;
+  background: var(--tile) !important;
+  box-shadow: inset 0 0 0 1px var(--rule) !important;
+}
+.stamp-btn:hover:not(:disabled) {
+  background: var(--chalk) !important;
+}
+.btn-ghost {
+  border-color: var(--ink) !important;
+  color: var(--ink) !important;
+  border-radius: 2px !important;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--chalk) !important;
+}
+.btn, .btn-primary, .btn-clay, .btn-compact {
+  border-radius: 2px !important;
+}
+
+
+/* beat17 — cut: quieter aside, no footer brand repeat */
+.today-aside .section-title { margin-bottom: 0.35rem !important; }
+.aside-actions { margin-top: 0.55rem !important; }
+
+
+/* beat18 — bar-gap: Tody-adjacent segmented pressure */
+.dirt-meter-track {
+  height: 11px !important;
+  gap: 3px !important;
+}
+.dirt-seg {
+  border-radius: 0 !important;
+  border: none !important;
+  background: rgba(34, 28, 36, 0.1) !important;
+}
+.dirt-seg.is-on {
+  transform: none !important;
+}
+.dirt-overdue .dirt-seg.is-on,
+.dirt-due .dirt-seg.is-on {
+  background: var(--ink) !important;
+}
+.dirt-ok .dirt-seg.is-on {
+  background: var(--done) !important;
+}
+.dirt-meter-fill { display: none !important; } /* kill soft continuous wash */
+.chore-tile .dirt-meter { margin-top: 0.45rem !important; }
+
+
+/* beat19 — alive: press indent + check spring reads in ≤3s */
+.chore-tile.phase-press {
+  transform: scale(0.978) translateY(2px) !important;
+  background: var(--chalk) !important;
+}
+.chore-tile.phase-press .stamp-btn {
+  transform: scale(0.88) translateY(2px) !important;
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+}
+.chore-tile.phase-press .stamp-btn svg path {
+  stroke: var(--paper) !important;
+}
+.chore-tile.phase-stamp {
+  border-color: var(--done) !important;
+  border-bottom-color: var(--done) !important;
+}
+.stamp-particles i {
+  background: var(--ink) !important;
+  border-radius: 0 !important; /* square ink flecks, not soft dots */
+}
+
+
+/* beat21 — fonts: meta mono + section measure */
+.chore-meta {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+.job-strip .job-hint {
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: 0.9rem !important;
+  color: var(--ink-soft) !important;
+}
+.job-strip .job-verb {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+}
+.later-title {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+}
+.label, .eyebrow {
+  font-family: var(--font-mono), monospace !important;
+}
+
+
+/* beat22 — anti-slop: ink member marks + square skeleton */
+.member-dot {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 1px !important;
+  background: var(--ink) !important;
+  opacity: 0.55 !important;
+  display: inline-block;
+}
+.member-row:first-child .member-dot,
+li:has(.member-dot) .member-dot {
+  opacity: 0.55 !important;
+}
+.today-aside li:first-of-type .member-dot { opacity: 1 !important; }
+.t-skel-skeleton > div {
+  border-radius: 2px !important;
+}
+
+
+/* beat23 — rooms letterpress cards */
+.room-card {
+  border-radius: 2px !important;
+  border: 1px solid var(--rule) !important;
+  border-bottom: 1.5px solid var(--ink) !important;
+  box-shadow: none !important;
+  background: var(--tile) !important;
+}
+.room-title {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 550 !important;
+  letter-spacing: -0.025em !important;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.15rem !important;
+}
+.history-mark {
+  margin-top: 6px;
+  opacity: 1 !important;
+}
+
+
+/* beat24 — mobile: sticky job strip + denser stack */
+@media (max-width: 860px) {
+  .job-strip {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--chalk) !important;
+    border-color: var(--ink) !important;
+    margin-left: -0.15rem;
+    margin-right: -0.15rem;
+  }
+  .job-strip .job-count {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .today-list { gap: 0.55rem !important; }
+  .chore-tile { padding: 0.85rem 0.8rem !important; }
+  .stamp-btn { width: 58px !important; height: 58px !important; }
+  .billboard-ledger h1 { font-size: 1.85rem !important; }
+  .today-aside { padding: 1rem !important; }
+}
+
+
+/* beat25 — folio hairline under billboard + tab craft */
+.billboard-ledger {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.15rem;
+}
+header.shell > div:first-child {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 0.85rem;
+  align-items: flex-end;
+}
+.t-tabs {
+  border-color: var(--rule-strong) !important;
+}
+.t-tabs-pill {
+  border-color: var(--ink) !important;
+  background: var(--tile) !important;
+}
+.job-strip .job-count {
+  border-width: 1.5px !important;
+}
+.status-pill {
+  border-radius: 2px !important;
+}
