@@ -28,3 +28,4 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat19 | Press indent + square ink flecks | beat19-alive.png | Spottable alive |
 | beat20 | Hand job-hint + toast copy | beat20-copy.png | Spottable copy |
 | beat21 | Mono chore-meta + serif later titles | beat21-fonts.png | Spottable fonts |
+| beat22 | Ink square members; kill rainbow dots | beat22-antislop.png | Spottable anti-slop |

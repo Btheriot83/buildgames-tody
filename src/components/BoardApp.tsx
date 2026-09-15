@@ -242,7 +242,7 @@ export function BoardApp() {
                 width: "40%",
                 background: "var(--chalk)",
                 marginBottom: 12,
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
             <div
@@ -251,7 +251,7 @@ export function BoardApp() {
                 width: "70%",
                 background: "var(--chalk)",
                 marginBottom: 8,
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
             <div
@@ -259,7 +259,7 @@ export function BoardApp() {
                 height: 14,
                 width: "55%",
                 background: "var(--chalk)",
-                borderRadius: 4,
+                borderRadius: 2,
               }}
             />
           </div>
@@ -547,14 +547,7 @@ export function BoardApp() {
                               gap: "0.55rem",
                             }}
                           >
-                            <span
-                              style={{
-                                width: 12,
-                                height: 12,
-                                borderRadius: "50%",
-                                background: m.color,
-                              }}
-                            />
+                            <span className="member-dot" aria-hidden />
                             <span style={{ fontWeight: 600 }}>{m.name}</span>
                             <span className="eyebrow">{m.role}</span>
                           </li>

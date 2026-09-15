@@ -875,3 +875,22 @@ details .btn { border-radius: 2px; }
 .label, .eyebrow {
   font-family: var(--font-mono), monospace !important;
 }
+
+
+/* beat22 — anti-slop: ink member marks + square skeleton */
+.member-dot {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 1px !important;
+  background: var(--ink) !important;
+  opacity: 0.55 !important;
+  display: inline-block;
+}
+.member-row:first-child .member-dot,
+li:has(.member-dot) .member-dot {
+  opacity: 0.55 !important;
+}
+.today-aside li:first-of-type .member-dot { opacity: 1 !important; }
+.t-skel-skeleton > div {
+  border-radius: 2px !important;
+}
