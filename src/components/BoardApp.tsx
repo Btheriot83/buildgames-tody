@@ -103,7 +103,7 @@ export function BoardApp() {
       refresh(next);
       setJustDone(true);
       setTimeout(() => setJustDone(false), 1200);
-      toast(`Checked off — ${activeMember.name}`);
+      toast(`Checked — ${activeMember.name}`);
     } catch (e) {
       setExiting((prev) => {
         const n = new Set(prev);
@@ -153,14 +153,14 @@ export function BoardApp() {
     refresh(next);
     setAddTitle("");
     setShowAdd(false);
-    toast("Added to the list");
+    toast("On the list");
   }
 
   async function addMember() {
     if (!household || !memberName.trim()) return;
     refresh(await addMemberLocal(household, memberName.trim()));
     setMemberName("");
-    toast("Added to the house");
+    toast("In the house");
   }
 
   async function acceptPlan(chores: PlannedChore[], plannedRoom: string) {
@@ -388,7 +388,7 @@ export function BoardApp() {
                     <div className="job-strip-main">
                       <p className="job-verb">Today → check complete</p>
                       <p className="job-hint">
-                        Open Due today. Press the check.
+                        Press the ink check. Clear what’s due.
                       </p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
@@ -432,7 +432,7 @@ export function BoardApp() {
                             Nothing due.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
-                            Add a chore — or plan a room.
+                            List a chore, or plan a room.
                           </p>
                           <div className="empty-quiet-actions">
                             <button
