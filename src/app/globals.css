@@ -1716,3 +1716,20 @@ body {
   font-size: 0.64rem !important;
   letter-spacing: 0.13em !important;
 }
+
+
+/* r8 — contrast: Later quieter; Due kraft owns fold */
+.later-card {
+  background: #f7f4ef !important;
+  border-color: var(--rule) !important;
+  opacity: 0.88 !important;
+}
+.later-card .later-title { font-weight: 650 !important; color: var(--ink-soft) !important; }
+.today-aside {
+  border-color: var(--rule) !important;
+  background: #fffcfa !important;
+}
+.field {
+  background: #fffcf7 !important;
+  border-color: var(--rule-strong) !important;
+}
