@@ -526,9 +526,8 @@ export function BoardApp() {
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
                         Who’s checking
                       </h2>
-                      <p className="eyebrow">Invite · {board.household.invite_code}</p>
-                      <p style={{ color: "var(--ink-mute)", fontSize: "0.88rem", margin: "0.35rem 0 0.6rem" }}>
-                        Pick yourself. Check what’s due.
+                      <p className="eyebrow" style={{ marginBottom: "0.55rem" }}>
+                        Invite · {board.household.invite_code}
                       </p>
                       <ul
                         style={{
@@ -885,9 +884,6 @@ export function BoardApp() {
         </div>
       </main>
 
-      <footer className="shell no-print" style={{ padding: "1.25rem 0 2rem", color: "var(--ink-mute)", fontSize: "0.8rem" }}>
-        <p>Tileboard · Cool Letterpress Checklist</p>
-      </footer>
     </>
   );
 }

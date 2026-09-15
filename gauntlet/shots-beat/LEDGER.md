@@ -23,3 +23,4 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat14 | Disclosure / button radius consistency | beat14-home.png | Spottable polish |
 | beat15 | Overdue ink pills + job-strip ink rule | beat15-contrast.png | Spottable contrast |
 | beat16 | Check plate + ghost ink edge | beat16-buttons.png | Spottable buttons |
+| beat17 | Cut aside lede + footer brand | beat17-cut.png | Spottable cut |

@@ -798,3 +798,8 @@ details .btn { border-radius: 2px; }
 .btn, .btn-primary, .btn-clay, .btn-compact {
   border-radius: 2px !important;
 }
+
+
+/* beat17 — cut: quieter aside, no footer brand repeat */
+.today-aside .section-title { margin-bottom: 0.35rem !important; }
+.aside-actions { margin-top: 0.55rem !important; }
