@@ -728,3 +728,9 @@ select.field { min-height: 40px !important; }
   font-weight: 600 !important;
   letter-spacing: -0.03em;
 }
+
+
+/* beat12 — history rows letterpress */
+.history-row, [data-tab-panel="history"] .tile {
+  border-radius: 2px;
+}

@@ -16,3 +16,5 @@
 Stop rule: independent screenshot critic says candidate wins overall craft vs Tody, or 25 loops.
 
 | beat11 | Folio numerals readable | beat11-folio-nums.png | Spottable numeral weight |
+
+| beat12 | History letterpress rows | beat12-history.png | Spottable tab craft |
