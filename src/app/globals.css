@@ -775,3 +775,26 @@ details .btn { border-radius: 2px; }
   font-weight: 500;
 }
 .chore-meta { color: var(--ink-soft) !important; }
+
+
+/* beat16 — buttons: letterpress check plate + ghost ink edge */
+.stamp-btn {
+  border-width: 2px !important;
+  border-color: var(--ink) !important;
+  background: var(--tile) !important;
+  box-shadow: inset 0 0 0 1px var(--rule) !important;
+}
+.stamp-btn:hover:not(:disabled) {
+  background: var(--chalk) !important;
+}
+.btn-ghost {
+  border-color: var(--ink) !important;
+  color: var(--ink) !important;
+  border-radius: 2px !important;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--chalk) !important;
+}
+.btn, .btn-primary, .btn-clay, .btn-compact {
+  border-radius: 2px !important;
+}
