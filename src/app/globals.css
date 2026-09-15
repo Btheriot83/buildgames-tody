@@ -942,3 +942,30 @@ li:has(.member-dot) .member-dot {
   .billboard-ledger h1 { font-size: 1.85rem !important; }
   .today-aside { padding: 1rem !important; }
 }
+
+
+/* beat25 — folio hairline under billboard + tab craft */
+.billboard-ledger {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.15rem;
+}
+header.shell > div:first-child {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 0.85rem;
+  align-items: flex-end;
+}
+.t-tabs {
+  border-color: var(--rule-strong) !important;
+}
+.t-tabs-pill {
+  border-color: var(--ink) !important;
+  background: var(--tile) !important;
+}
+.job-strip .job-count {
+  border-width: 1.5px !important;
+}
+.status-pill {
+  border-radius: 2px !important;
+}
