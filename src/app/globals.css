@@ -1997,3 +1997,64 @@ header .streak-ring { opacity: 0.85; }
 .chore-tile[data-status="due"] {
   border-left: 3px solid var(--slate) !important;
 }
+
+/* craft3: typography elevation — measure, weight, letterpress rhythm */
+.chore-title {
+  font-family: var(--font-sans), system-ui, sans-serif !important;
+  font-size: 1.12rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -0.018em !important;
+  line-height: 1.22 !important;
+  color: var(--ink) !important;
+}
+.chore-meta {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.01em;
+  color: var(--ink-mute) !important;
+  margin-top: 0.18rem;
+}
+.section-title {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-weight: 550 !important;
+  letter-spacing: -0.025em !important;
+  font-size: 1.35rem !important;
+  line-height: 1.15 !important;
+}
+.job-verb {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-size: 1.55rem !important;
+  font-weight: 550 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
+  color: var(--ink) !important;
+}
+.billboard-ledger h1 {
+  font-size: clamp(2.15rem, 3.2vw, 2.75rem) !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.05 !important;
+  max-width: 16ch !important;
+}
+.utility-line {
+  font-size: 1.02rem !important;
+  max-width: 32ch !important;
+  letter-spacing: -0.01em;
+}
+.later-title {
+  font-weight: 600 !important;
+  letter-spacing: -0.015em;
+  font-size: 0.95rem;
+}
+.room-tile-name {
+  font-size: 1.22rem !important;
+  letter-spacing: -0.028em !important;
+}
+.status-pill {
+  font-size: 0.6rem !important;
+  letter-spacing: 0.1em !important;
+}
+.invite-code {
+  font-family: var(--font-mono), monospace !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.16em !important;
+  font-weight: 600;
+}
