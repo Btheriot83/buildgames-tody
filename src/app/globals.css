@@ -1172,3 +1172,28 @@ body {
 .materials-row { margin-bottom: 0.55rem !important; }
 .aside-actions { gap: 0.5rem !important; margin-top: 0.85rem !important; }
 .shell header, header.shell { padding-bottom: 0.75rem !important; }
+
+
+/* r26 — beauty: demote decorative materials clutter */
+.materials-row {
+  opacity: 0.75 !important;
+  filter: none !important;
+}
+.fridge-plate {
+  border-width: 1.5px !important;
+  border-radius: 2px;
+}
+.fridge-plate img { max-height: 48px !important; object-position: center; }
+.fridge-plate figcaption { font-size: 0.55rem !important; padding: 0.25rem 0.5rem !important; }
+.magnet-rail {
+  background: #faf6ef !important;
+  border-width: 1.5px !important;
+  padding: 0.3rem !important;
+}
+.magnet-rail img { width: 30px !important; height: 30px !important; border-width: 1.5px !important; }
+.magnet-tape {
+  font-size: 0.65rem !important;
+  letter-spacing: 0.12em !important;
+  padding: 0.4rem 1rem !important;
+  border-bottom-width: 3px !important;
+}

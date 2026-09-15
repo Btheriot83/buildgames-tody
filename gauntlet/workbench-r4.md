@@ -189,3 +189,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Spacing less cramped/brutal; Due list rhythm closer to Tody task breathing.
 - commit: 5b096f2
 - transitions: (none)
+
+## r26 — beauty-materials
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r26-after-beauty-materials.png
+- verdict: Materials strip quieter so Due + magnets own the fold; less craft-fair clutter.
+- commit: 7e3e5a6
+- transitions: (none)
