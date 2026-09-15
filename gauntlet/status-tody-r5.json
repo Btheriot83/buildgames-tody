@@ -10,7 +10,16 @@
   "identityPath": "apps/tody/docs/IDENTITY.md",
   "phaseA": {
     "done": true,
-    "techniquesDone": [1, 2, 3, 4, 5, 6, 7, 8],
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
     "lennyDiscoverPath": "apps/tody/docs/DISCOVER.md",
     "lennyDefinePath": "apps/tody/docs/DEFINE.md",
     "lennyDeliverPath": "apps/tody/docs/DELIVER.md",
@@ -41,11 +50,14 @@
     "e5c34d4",
     "69c1373"
   ],
-  "shotCount": 17,
-  "barShotRounds": [5, 10],
+  "shotCount": 18,
+  "barShotRounds": [
+    5,
+    10
+  ],
   "honestNotes": [
-    "WEAK full Anshu 1–8 craft reseed: Quiet Enamel Fridge Magnet Board (stainless photo ugliness killed; identity name kept).",
-    "Integrity r1–r10: separate rN commits + shots-r5; bar A/B on r5/r10; flat no-gradient held.",
+    "WEAK full Anshu 1\u20138 craft reseed: Quiet Enamel Fridge Magnet Board (stainless photo ugliness killed; identity name kept).",
+    "Integrity r1\u2013r10: separate rN commits + shots-r5; bar A/B on r5/r10; flat no-gradient held.",
     "dream-loop target at gauntlet/shots-r5/dream-target.png used for magnet/aside closes.",
     "Original todyapp.com still wins colorful room-grid marketing polish; candidate wins physical tomato-magnet Today job + local-first Quiet Enamel craft.",
     "transitions.dev wired on real actions (toast/success-check/checkbox/number-pop/tabs/error-shake/panel-reveal/skeleton/texts-reveal)."
@@ -56,10 +68,10 @@
   },
   "workbench": "apps/tody/gauntlet/workbench-r5.md",
   "doNotMessageBrandon": true,
-  "finishedAtPt": "2026-09-14 11:54 PM PT",
-  "finishedAtUtc": "2026-09-15T06:54:28Z",
+  "finishedAtPt": "2026-09-14 11:55 PM PT",
+  "finishedAtUtc": "2026-09-15T06:55:08Z",
   "branch": "feat/phase-b5-r5",
-  "head": "9e2e9b9",
+  "head": "c227d94",
   "pr": "https://github.com/Btheriot83/buildgames-tody/pull/5",
   "status": "done",
   "vercel_deployment": "dpl_9fh7XpKsDmbN3Atu8JvLgKZv7K1b",
