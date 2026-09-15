@@ -44,3 +44,4 @@ data/*.db-*
 test-results/
 playwright-report/
 /tmp/
+.env.local

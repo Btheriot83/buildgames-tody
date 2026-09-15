@@ -292,6 +292,12 @@ export function BoardApp() {
 
   return (
     <>
+      <div className="bath-tape" aria-hidden>
+        <span>Bathhouse Ledger</span>
+        <span>Clay stamp</span>
+        <span>Dirt wipes clean</span>
+        <span>Ceramic tile</span>
+      </div>
       <WaterShader />
       {toastNode}
       <StampMotion play={justDone} />
@@ -308,25 +314,19 @@ export function BoardApp() {
             alignItems: "flex-end",
           }}
         >
-          <div>
-            <p className="eyebrow">Tileboard</p>
+          <div className="billboard-ledger">
+            <p className="eyebrow">Bathhouse Ledger · Tileboard</p>
             <div className="t-stagger is-shown">
-              <h1
-                className="font-display t-stagger-line"
-                style={{
-                  fontSize: "clamp(2rem, 5vw, 2.85rem)",
-                  margin: "0.2rem 0 0",
-                  lineHeight: 1.05,
-                }}
-              >
+              <h1 className="font-display t-stagger-line">
                 {board.household.name}
               </h1>
               <p
                 className="t-stagger-line t-stagger-line--2"
                 style={{
-                  color: "var(--ink-mute)",
-                  margin: "0.4rem 0 0",
-                  maxWidth: 440,
+                  color: "var(--ink-soft)",
+                  margin: "0.55rem 0 0",
+                  maxWidth: 460,
+                  fontSize: "1.05rem",
                 }}
               >
                 What’s due. Press the clay stamp. Dirt wipes clean.
@@ -381,6 +381,20 @@ export function BoardApp() {
           </select>
         </div>
       </header>
+
+      <div className="shell no-print" style={{ paddingBottom: "0.75rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "1rem", alignItems: "stretch" }}>
+          <figure className="ledger-plate" style={{ margin: 0 }}>
+            <img src="/art/ceramic-wash.png" alt="" style={{ maxHeight: 120, width: "100%", objectFit: "cover" }} />
+            <figcaption>Bathhouse Ledger — matte ceramic · sea-glass · clay stamp</figcaption>
+          </figure>
+          <div className="stamp-rail" aria-hidden>
+            <img src="/art/stamp-beat-1.png" alt="" />
+            <img src="/art/stamp-beat-2.png" alt="" />
+            <img src="/art/stamp-beat-3.png" alt="" />
+          </div>
+        </div>
+      </div>
 
       <main className="shell" style={{ paddingBottom: "5rem" }}>
         <div className="t-page-slide" data-page={tab === "stuff" ? "2" : "1"}>

@@ -417,3 +417,76 @@ a { color: inherit; text-decoration: none; }
   .today-grid { display: flex !important; flex-direction: column; }
   .stamp-btn { width: 64px; height: 64px; border-radius: 12px; }
 }
+
+/* —— VISIBLE DELTA — Bathhouse Ledger billboard (identity amplified, not reseeding) —— */
+.bath-tape {
+  display: flex; gap: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap;
+  background: var(--clay); color: #fff8f4;
+  border-bottom: 3px solid var(--ink);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600;
+}
+.bath-tape span:nth-child(even) { color: #ffe0d0; }
+
+body {
+  background-color: var(--linen);
+  background-image:
+    url("/art/tile-grain.svg"),
+    linear-gradient(180deg, rgba(244,240,232,0.82), rgba(244,240,232,0.9)),
+    url("/art/ceramic-wash.png");
+  background-size: 280px auto, auto, cover;
+  background-blend-mode: multiply, normal, soft-light;
+}
+.shader-bg { opacity: 0.08 !important; filter: grayscale(0.4) saturate(0.5); }
+
+.billboard-ledger h1 {
+  font-family: var(--font-serif), Georgia, serif !important;
+  font-size: clamp(3rem, 8vw, 5.2rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.035em !important;
+  max-width: 10ch;
+  margin: 0.15rem 0 0 !important;
+}
+.ledger-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+.ledger-materials {
+  position: sticky; top: 1rem;
+  display: grid; gap: 0.75rem;
+}
+.ledger-plate {
+  margin: 0;
+  border: 2px solid var(--ink);
+  box-shadow: 10px 10px 0 color-mix(in srgb, var(--sea) 45%, transparent);
+  background: var(--tile);
+  overflow: hidden;
+}
+.ledger-plate img { display: block; width: 100%; height: auto; min-height: 160px; object-fit: cover; }
+.ledger-plate figcaption {
+  margin: 0; padding: 0.4rem 0.7rem; border-top: 2px solid var(--ink);
+  font-family: var(--font-mono), monospace; font-size: 0.62rem;
+  letter-spacing: 0.12em; text-transform: uppercase; background: var(--chalk);
+}
+.stamp-rail {
+  display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;
+  border: 2px solid var(--ink); background: var(--tile); padding: 0.55rem;
+  box-shadow: 6px 6px 0 var(--clay);
+}
+.stamp-rail img { width: 56px; height: 56px; object-fit: cover; border: 1px solid var(--rule-strong); }
+.chore-tile {
+  border: 1.5px solid var(--rule-strong) !important;
+  box-shadow: 6px 6px 0 rgba(196,92,58,0.18) !important;
+}
+.tile {
+  border: 1.5px solid var(--rule-strong);
+  box-shadow: 8px 8px 0 rgba(61,122,122,0.15);
+}
+@media (max-width: 900px) {
+  .ledger-stage { grid-template-columns: 1fr; }
+  .ledger-materials { position: relative; top: auto; }
+}
