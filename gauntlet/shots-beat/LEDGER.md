@@ -32,3 +32,6 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat23 | Rooms letterpress cards + ink history marks | beat23-rooms.png | Spottable rooms |
 | beat24 | Sticky mobile job-strip + 58px checks | beat24-mobile.png | Spottable mobile |
 | beat25 | Folio hairline under header + tab craft | beat25-folio.png / beat25-history.png | Spottable final polish |
+
+
+Final critic (beat25): MIXED vs todyapp.com — letterpress product craft strong; Tody still leads colorful marketing. Cap 25 reached. No soft WIN.
