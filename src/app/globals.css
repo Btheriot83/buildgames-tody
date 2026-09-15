@@ -827,3 +827,26 @@ details .btn { border-radius: 2px; }
 }
 .dirt-meter-fill { display: none !important; } /* kill soft continuous wash */
 .chore-tile .dirt-meter { margin-top: 0.45rem !important; }
+
+
+/* beat19 — alive: press indent + check spring reads in ≤3s */
+.chore-tile.phase-press {
+  transform: scale(0.978) translateY(2px) !important;
+  background: var(--chalk) !important;
+}
+.chore-tile.phase-press .stamp-btn {
+  transform: scale(0.88) translateY(2px) !important;
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+}
+.chore-tile.phase-press .stamp-btn svg path {
+  stroke: var(--paper) !important;
+}
+.chore-tile.phase-stamp {
+  border-color: var(--done) !important;
+  border-bottom-color: var(--done) !important;
+}
+.stamp-particles i {
+  background: var(--ink) !important;
+  border-radius: 0 !important; /* square ink flecks, not soft dots */
+}
