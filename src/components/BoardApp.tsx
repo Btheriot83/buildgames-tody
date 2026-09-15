@@ -696,7 +696,7 @@ export function BoardApp() {
                   return (
                     <section
                       key={room.id}
-                      className="tile"
+                      className="tile room-card"
                       style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
                     >
                       <h2 className="room-title" style={{ margin: 0 }}>
@@ -741,11 +741,11 @@ export function BoardApp() {
                               }`}
                             >
                               <div className="dirt-meter-track">
-                                {Array.from({ length: 8 }).map((_, i) => (
+                                {Array.from({ length: 6 }).map((_, i) => (
                                   <span
                                     key={i}
                                     className={`dirt-seg${
-                                      i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                      i < Math.round(d.dirt * 6) ? " is-on" : ""
                                     }`}
                                   />
                                 ))}
@@ -786,15 +786,7 @@ export function BoardApp() {
                         borderTop: "1px solid var(--rule)",
                       }}
                     >
-                      <span
-                        style={{
-                          width: 10,
-                          height: 10,
-                          borderRadius: "50%",
-                          background: h.member_color,
-                          marginTop: 6,
-                        }}
-                      />
+                      <span className="member-dot history-mark" aria-hidden />
                       <div>
                         <strong>{h.chore_title}</strong>
                         <div style={{ color: "var(--ink-mute)", fontSize: "0.9rem" }}>
