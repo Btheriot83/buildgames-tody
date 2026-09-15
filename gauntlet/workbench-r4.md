@@ -168,3 +168,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Magnet reads as enamel disc (inset rings, flat fills); closer to dream slap affordance vs bar list checkboxes.
 - commit: bfe3ed0
 - transitions: (none)
+
+## r23 — beauty-type
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r23-after-beauty-type.png
+- verdict: Type less scream-y; chore titles breathe like Tody list craft while mark stays Newsreader.
+- commit: 5059867
+- transitions: (none)
