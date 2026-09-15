@@ -224,3 +224,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Materials craft strip removed from fold — Due + magnets own the stage like Tody focus.
 - commit: a56eda2
 - transitions: (none)
+
+## r31 — beauty-magnet-pop
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r31-after-beauty-magnet-pop.png
+- verdict: Double-ring magnet reads more physical without gradients; clearer slap target.
+- commit: e28714e
+- transitions: (none)

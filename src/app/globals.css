@@ -1246,3 +1246,23 @@ body {
 .chore-tile { border-radius: 4px !important; }
 .tile { border-radius: 4px !important; }
 .aside-actions .btn { border-radius: 4px !important; }
+
+
+/* r31 — beauty: magnet slap affordance stronger (flat rings only) */
+.stamp-btn {
+  width: 66px !important; height: 66px !important;
+  background: #e04333 !important;
+  border: 2.5px solid #1a1f24 !important;
+  box-shadow:
+    0 0 0 3px #fff8f4,
+    0 0 0 5px #1a1f24,
+    3px 3px 0 rgba(26,31,36,0.25) !important;
+}
+.stamp-btn::before { display: none !important; }
+.stamp-btn::after {
+  bottom: 10px !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.16em !important;
+}
+.stamp-btn svg { transform: translateY(-6px) scale(1.05) !important; }
+.stamp-btn svg path { opacity: 0.75 !important; stroke: #fff8f4 !important; }
