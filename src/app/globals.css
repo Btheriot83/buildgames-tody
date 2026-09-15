@@ -1786,3 +1786,140 @@ header .streak-ring { opacity: 0.85; }
   opacity: 1 !important;
   stroke-dashoffset: 0 !important;
 }
+
+/* ========== CONTEST CRAFT WAVE — letterpress loveable ========== */
+
+/* craft1: Today room mini-rail (tile-first glance) */
+.today-room-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+@media (max-width: 860px) {
+  .today-room-rail { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.today-room-chip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--rule-strong);
+  border-bottom: 1.5px solid var(--ink);
+  border-radius: 4px;
+  background: var(--tile);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  box-shadow: 2px 2px 0 rgba(34, 28, 36, 0.07);
+  transition:
+    transform 160ms var(--press-ease),
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+.today-room-chip:hover {
+  background: var(--chalk);
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+.today-room-chip:active {
+  transform: translateY(1px) scale(0.985);
+  box-shadow: 0 0 0 rgba(34, 28, 36, 0);
+}
+.today-room-chip.is-hot {
+  border-color: var(--ink);
+  border-bottom-width: 2px;
+}
+.today-room-glyph {
+  width: 2.15rem;
+  height: 2.15rem;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--chalk);
+  color: var(--slate-deep);
+  flex: 0 0 auto;
+}
+.today-room-glyph[data-mark="due"] {
+  background: rgba(61, 79, 99, 0.12);
+  color: var(--slate-deep);
+  border-color: var(--slate);
+}
+.today-room-glyph[data-mark="overdue"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.today-room-glyph[data-mark="ok"] {
+  background: rgba(63, 90, 74, 0.12);
+  color: var(--done);
+  border-color: var(--done);
+}
+.today-room-copy {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.today-room-copy strong {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 550;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.today-room-copy .font-mono {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.room-glyph { display: block; }
+
+.room-tile-art {
+  position: relative;
+}
+.room-tile-glyph {
+  position: absolute;
+  left: 0.45rem;
+  bottom: 0.45rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--tile);
+  color: var(--slate-deep);
+  box-shadow: 2px 2px 0 rgba(34, 28, 36, 0.1);
+}
+.room-tile-glyph[data-mark="due"] {
+  background: rgba(61, 79, 99, 0.14);
+  color: var(--slate-deep);
+}
+.room-tile-glyph[data-mark="overdue"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.room-tile-glyph[data-mark="ok"] {
+  background: rgba(63, 90, 74, 0.14);
+  color: var(--done);
+  border-color: var(--done);
+}
+
+.job-hint {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  font-weight: 500;
+  line-height: 1.3;
+}

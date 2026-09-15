@@ -28,6 +28,7 @@ import { ChoreTile } from "./ChoreTile";
 import { PlanPanel } from "./PlanPanel";
 import { StampMotion } from "./StampMotion";
 import { OnboardingWalkthrough } from "./OnboardingWalkthrough";
+import { RoomGlyph, roomGlyphKind } from "./RoomGlyph";
 
 const ROOM_ART: Record<string, string> = {
   kitchen: "/art/packs/kitchen.webp",
@@ -361,7 +362,7 @@ export function BoardApp() {
               <p
                 className="t-stagger-line t-stagger-line--2 utility-line"
               >
-                Shared house todos — check them off.
+                What’s due in this house today.
               </p>
             </div>
           </div>
@@ -427,12 +428,46 @@ export function BoardApp() {
                   <div className="job-strip" role="status">
                     <div className="job-strip-main">
                       <p className="job-verb">Due today</p>
+                      <p className="job-hint">Rooms at a glance — then the checklist.</p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
                       <NumberPop value={todayDue.length} />
                       <small>due</small>
                     </span>
                   </div>
+                  <ul className="today-room-rail" aria-label="Rooms due at a glance">
+                    {board.rooms.map((room) => {
+                      const items = board.due.filter((d) => d.roomId === room.id);
+                      const overdueN = items.filter((d) => d.status === "overdue").length;
+                      const dueN = items.filter((d) => d.status === "due").length;
+                      const hotN = overdueN + dueN;
+                      const mark =
+                        overdueN > 0 ? "overdue" : dueN > 0 ? "due" : items.length ? "ok" : "idle";
+                      return (
+                        <li key={room.id}>
+                          <button
+                            type="button"
+                            className={`today-room-chip fun-card${hotN > 0 ? " is-hot" : ""}`}
+                            data-mark={mark}
+                            onClick={() => {
+                              setSelectedRoomId(room.id);
+                              setTab("rooms");
+                            }}
+                          >
+                            <span className="today-room-glyph" data-mark={mark}>
+                              <RoomGlyph name={room.name} size={22} />
+                            </span>
+                            <span className="today-room-copy">
+                              <strong>{room.name}</strong>
+                              <span className="font-mono">
+                                {hotN > 0 ? `${hotN} due` : items.length ? "clear" : "—"}
+                              </span>
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <div
                     className="today-grid"
                     style={{
@@ -767,6 +802,9 @@ export function BoardApp() {
                       >
                         <div className="room-tile-art">
                           <img src={roomArt(room.name)} alt="" width={96} height={96} />
+                          <span className="room-tile-glyph" data-mark={mark} aria-hidden>
+                            <RoomGlyph kind={roomGlyphKind(room.name)} size={26} />
+                          </span>
                         </div>
                         <div className="room-tile-top">
                           <h2 className="room-tile-name">{room.name}</h2>
