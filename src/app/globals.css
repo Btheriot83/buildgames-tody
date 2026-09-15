@@ -1380,3 +1380,397 @@ body {
   font-weight: 600;
   color: var(--ink);
 }
+
+/* ========== FUN PASS (Jordan) — cards, images, button press ========== */
+:root {
+  --card-lift: 0 6px 0 rgba(34, 28, 36, 0.06);
+  --card-lift-hover: 0 10px 0 rgba(34, 28, 36, 0.1);
+  --press-ease: cubic-bezier(0.34, 1.45, 0.64, 1);
+  --btn-press-dur: 140ms;
+  --learn-shift: 3px;
+  --learn-spread: 8deg;
+  --learn-in: 280ms;
+  --learn-out: 220ms;
+  --learn-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --check-box: 150ms;
+  --check-draw: 320ms;
+  --check-delay: 40ms;
+  --check-uncheck: 120ms;
+  --check-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.utility-line {
+  color: var(--ink-soft) !important;
+  margin: 0.45rem 0 0 !important;
+  max-width: 28ch;
+  font-size: 1.08rem !important;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* Fix broken button transitions: isolated transform on press layer, no conflicts */
+.btn.btn-press,
+.stamp-btn.btn-press,
+.house-chip {
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0);
+  transition:
+    background var(--btn-press-dur) ease,
+    color var(--btn-press-dur) ease,
+    border-color var(--btn-press-dur) ease,
+    box-shadow var(--btn-press-dur) ease,
+    transform var(--btn-press-dur) var(--press-ease) !important;
+  will-change: transform;
+}
+.btn.btn-press:hover:not(:disabled) {
+  transform: translate3d(0, -1px, 0) !important;
+  box-shadow: 0 3px 0 rgba(34, 28, 36, 0.12) !important;
+}
+.btn.btn-press:active:not(:disabled) {
+  transform: translate3d(0, 2px, 0) scale(0.985) !important;
+  box-shadow: 0 0 0 rgba(34, 28, 36, 0) !important;
+}
+.btn.btn-press:disabled {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary.btn-press,
+.btn-clay.btn-press {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border: 1px solid var(--ink) !important;
+}
+.btn-primary.btn-press:hover:not(:disabled),
+.btn-clay.btn-press:hover:not(:disabled) {
+  background: var(--slate-deep) !important;
+}
+
+/* learn-more chevron on primary CTAs */
+.btn.t-learn {
+  gap: 0.45rem;
+}
+.btn.t-learn .t-learn-chevron {
+  display: inline-flex;
+  transform: translateX(0);
+  transition: transform var(--learn-out) var(--learn-ease);
+}
+.btn.t-learn .t-learn-arm {
+  transform-box: view-box;
+  transform-origin: 10px 8px;
+  transition: transform var(--learn-out) var(--learn-ease);
+}
+.btn.t-learn:hover:not(:disabled) .t-learn-chevron {
+  transform: translateX(var(--learn-shift));
+  transition-duration: var(--learn-in);
+}
+.btn.t-learn:hover:not(:disabled) .t-learn-arm-top {
+  transform: rotate(var(--learn-spread));
+  transition-duration: var(--learn-in);
+}
+.btn.t-learn:hover:not(:disabled) .t-learn-arm-bot {
+  transform: rotate(calc(var(--learn-spread) * -1));
+  transition-duration: var(--learn-in);
+}
+
+/* Fun cards: lift + soft layered shadow (not glass, not gradient) */
+.fun-card {
+  border-radius: 10px !important;
+  box-shadow: var(--card-lift) !important;
+  transition:
+    transform 180ms var(--press-ease),
+    box-shadow 180ms ease,
+    border-color 160ms ease,
+    background 160ms ease !important;
+}
+.fun-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-lift-hover) !important;
+}
+.chore-tile.fun-card {
+  border-radius: 10px !important;
+  box-shadow: var(--card-lift) !important;
+}
+.chore-tile.fun-card:hover {
+  transform: translateY(-2px);
+}
+.chore-tile.fun-card.phase-press,
+.chore-tile.fun-card.phase-stamp,
+.chore-tile.fun-card.phase-wipe,
+.chore-tile.fun-card.phase-exit {
+  /* phase transforms win over hover lift */
+  box-shadow: var(--card-lift) !important;
+}
+.chore-tile.fun-card.phase-press {
+  transform: scale(0.978) translateY(2px) !important;
+}
+.chore-tile.fun-card.phase-exit {
+  transform: translateX(12px) scale(0.99) !important;
+  opacity: 0;
+}
+
+.stamp-btn.btn-press:hover:not(:disabled) {
+  transform: translate3d(0, -1px, 0) !important;
+}
+.stamp-btn.btn-press:active:not(:disabled),
+.chore-tile.phase-press .stamp-btn.btn-press {
+  transform: scale(0.9) translateY(2px) !important;
+}
+.stamp-icon-wrap {
+  display: inline-flex;
+  line-height: 0;
+}
+.stamp-btn.t-check[aria-checked="true"] {
+  background: var(--done) !important;
+  color: var(--paper) !important;
+  border-color: var(--done) !important;
+}
+.stamp-btn.t-check svg path {
+  transition: stroke-dashoffset var(--check-draw) var(--check-ease) var(--check-delay);
+}
+
+/* Room cards with imagery */
+.room-tile.fun-card {
+  min-height: 200px;
+  overflow: hidden;
+  border-radius: 12px !important;
+}
+.room-tile-art {
+  margin: -0.35rem -0.25rem 0.15rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--chalk);
+  aspect-ratio: 16 / 10;
+}
+.room-tile-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.house-chip-avatar {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 3px;
+  border: 1px solid var(--ink);
+  background: var(--chalk);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.house-chip.is-active .house-chip-avatar {
+  background: var(--ink);
+  color: var(--paper);
+}
+.house-chip:active {
+  transform: translate3d(0, 1px, 0) scale(0.98) !important;
+}
+
+/* Onboarding — friend walkthrough cards */
+.ob-root {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.ob-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(34, 28, 36, 0.38);
+}
+.ob-card {
+  position: relative;
+  z-index: 1;
+  width: min(520px, calc(100vw - 1.5rem));
+  max-height: min(92vh, 760px);
+  overflow: auto;
+  padding: 1.15rem 1.2rem 1.2rem;
+  border-radius: 16px !important;
+  border: 1px solid var(--ink) !important;
+  background: var(--tile) !important;
+  box-shadow: 0 18px 0 rgba(34, 28, 36, 0.08) !important;
+}
+.ob-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+.ob-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--rule-strong);
+}
+.ob-dot.is-active { background: var(--ink); }
+.ob-dot.is-done { background: var(--done); }
+.ob-progress-label {
+  margin-left: auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.ob-hero {
+  border: 1px solid var(--rule-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--chalk);
+  margin-bottom: 0.85rem;
+}
+.ob-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 220px;
+  object-fit: cover;
+}
+.ob-pack-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+.ob-pack-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  padding: 0.45rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 12px;
+  background: var(--tile);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  box-shadow: var(--card-lift);
+  transition: transform 140ms var(--press-ease), border-color 140ms ease, box-shadow 140ms ease;
+}
+.ob-pack-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  background: var(--chalk);
+}
+.ob-pack-card strong {
+  font-size: 0.95rem;
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 550;
+}
+.ob-pack-card span {
+  font-size: 0.75rem;
+  color: var(--ink-mute);
+  line-height: 1.3;
+}
+.ob-pack-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--ink);
+}
+.ob-pack-card:active {
+  transform: translateY(1px) scale(0.98);
+}
+.ob-pack-card.is-on {
+  border-color: var(--ink);
+  border-bottom-width: 2px;
+  background: var(--chalk);
+  box-shadow: var(--card-lift-hover);
+}
+.ob-housemate {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+.ob-housemate img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+}
+.ob-invite-hint {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin: 0.25rem 0 0;
+}
+.ob-invite-hint code {
+  letter-spacing: 0.1em;
+}
+.ob-mini-today {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+  padding: 0.75rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 10px;
+  background: var(--chalk);
+}
+.ob-mini-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.ob-mini-check {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--tile);
+  flex: 0 0 auto;
+}
+.ob-title {
+  font-size: 1.45rem;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.ob-body {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+.ob-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.65rem;
+  align-items: center;
+}
+.ob-actions .onboard-cta { flex: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn.btn-press, .stamp-btn.btn-press, .fun-card, .ob-pack-card, .house-chip {
+    transition: none !important;
+    transform: none !important;
+  }
+  .btn.t-learn .t-learn-chevron, .btn.t-learn .t-learn-arm { transition: none !important; }
+}
+
+.assign-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+.assign-select {
+  min-height: 32px !important;
+  padding: 0.25rem 0.45rem !important;
+  font-size: 0.8rem !important;
+  width: auto;
+  max-width: 11rem;
+}
+.assignee-chip.muted { color: var(--ink-mute); font-weight: 500; }
+
+/* First paint: hide competing streak chrome a bit */
+header .streak-ring { opacity: 0.85; }

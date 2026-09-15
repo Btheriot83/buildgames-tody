@@ -5,6 +5,8 @@
  * Server sql.js APIs remain as optional sync/export mirrors.
  */
 
+import type { PackId } from "./chore-packs";
+import { CHORE_PACKS } from "./chore-packs";
 import {
   computeDue,
   computeStreak,
@@ -531,4 +533,105 @@ export async function importLocalJSON(payload: unknown): Promise<LocalHousehold>
   }
   await setRaw(p.data);
   return p.data;
+}
+
+/** Merge selected preset packs into the household (rooms + chores). Idempotent by title+room. */
+export async function applyPacksToHousehold(
+  h: LocalHousehold,
+  packIds: PackId[],
+  opts?: { replaceSeeded?: boolean }
+): Promise<LocalHousehold> {
+  const packs = CHORE_PACKS.filter((p) => packIds.includes(p.id));
+  if (packs.length === 0) return h;
+
+  let rooms = [...h.rooms];
+  const chores = opts?.replaceSeeded ? [] : [...h.chores];
+  const owner = h.members.find((m) => m.role === "owner") ?? h.members[0];
+  if (!owner) return h;
+
+  const ensureRoom = (name: string) => {
+    let room = rooms.find((r) => r.name.toLowerCase() === name.toLowerCase());
+    if (!room) {
+      room = { id: rid("r"), name, sortOrder: rooms.length };
+      rooms = [...rooms, room];
+    }
+    return room;
+  };
+
+  const existingTitles = new Set(
+    chores.filter((c) => !c.archived).map((c) => `${c.roomId}::${c.title.toLowerCase()}`)
+  );
+
+  for (const pack of packs) {
+    for (const def of pack.chores) {
+      const room = ensureRoom(def.roomName);
+      const key = `${room.id}::${def.title.toLowerCase()}`;
+      if (existingTitles.has(key)) continue;
+      const created = new Date();
+      created.setUTCDate(created.getUTCDate() - 2);
+      chores.push({
+        id: rid("c"),
+        roomId: room.id,
+        title: def.title,
+        notes: def.notes ?? "",
+        frequencyKind: def.kind,
+        frequencyN: def.n,
+        assigneeId: null,
+        private: false,
+        createdBy: owner.id,
+        createdAt: created.toISOString(),
+        archived: false,
+      });
+      existingTitles.add(key);
+    }
+  }
+
+  const next: LocalHousehold = { ...h, rooms, chores };
+  await setRaw(next);
+  return next;
+}
+
+export async function renameMemberLocal(
+  h: LocalHousehold,
+  memberId: string,
+  name: string
+): Promise<LocalHousehold> {
+  const trimmed = name.trim();
+  if (!trimmed) return h;
+  const next: LocalHousehold = {
+    ...h,
+    members: h.members.map((m) =>
+      m.id === memberId ? { ...m, name: trimmed } : m
+    ),
+  };
+  await setRaw(next);
+  return next;
+}
+
+/** Ensure a placeholder housemate exists (invite plate). */
+export async function ensureHousematePlaceholder(
+  h: LocalHousehold,
+  name: string
+): Promise<LocalHousehold> {
+  const trimmed = name.trim() || "Housemate";
+  const nonOwner = h.members.find((m) => m.role !== "owner");
+  if (nonOwner) {
+    return renameMemberLocal(h, nonOwner.id, trimmed);
+  }
+  return addMemberLocal(h, trimmed);
+}
+
+export async function assignChoreLocal(
+  h: LocalHousehold,
+  choreId: string,
+  memberId: string | null
+): Promise<LocalHousehold> {
+  const next: LocalHousehold = {
+    ...h,
+    chores: h.chores.map((c) =>
+      c.id === choreId ? { ...c, assigneeId: memberId } : c
+    ),
+  };
+  await setRaw(next);
+  return next;
 }

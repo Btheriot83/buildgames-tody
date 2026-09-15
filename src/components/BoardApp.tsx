@@ -5,7 +5,10 @@ import type { FrequencyKind } from "@/lib/frequency";
 import {
   addChoreLocal,
   addMemberLocal,
+  applyPacksToHousehold,
+  assignChoreLocal,
   completeLocal,
+  ensureHousematePlaceholder,
   exportLocalJSON,
   importLocalJSON,
   loadHousehold,
@@ -15,6 +18,7 @@ import {
   type BoardView,
   type LocalHousehold,
 } from "@/lib/local-board";
+import type { PackId } from "@/lib/chore-packs";
 import type { PlannedChore } from "@/lib/plan-chores";
 import { useToast } from "./Toast";
 import { SlidingTabs } from "./SlidingTabs";
@@ -23,6 +27,21 @@ import { NumberPop } from "./NumberPop";
 import { ChoreTile } from "./ChoreTile";
 import { PlanPanel } from "./PlanPanel";
 import { StampMotion } from "./StampMotion";
+import { OnboardingWalkthrough } from "./OnboardingWalkthrough";
+
+const ROOM_ART: Record<string, string> = {
+  kitchen: "/art/packs/kitchen.webp",
+  "hall bath": "/art/packs/bath.webp",
+  bath: "/art/packs/bath.webp",
+  living: "/art/packs/living.webp",
+  laundry: "/art/packs/weekly.webp",
+  "garage bay": "/art/packs/weekly.webp",
+  garage: "/art/packs/weekly.webp",
+};
+
+function roomArt(name: string) {
+  return ROOM_ART[name.toLowerCase()] ?? "/art/hero-empty.webp";
+}
 
 type Board = BoardView;
 
@@ -78,6 +97,26 @@ export function BoardApp() {
   useEffect(() => {
     void load();
   }, [load]);
+
+  async function assignChore(choreId: string, memberId: string | null) {
+    if (!household) return;
+    const next = await assignChoreLocal(household, choreId, memberId);
+    refresh(next);
+  }
+
+  async function applyPacks(ids: PackId[]) {
+    if (!household) return;
+    const next = await applyPacksToHousehold(household, ids, { replaceSeeded: true });
+    refresh(next);
+    toast(ids.length === 1 ? "Pack stamped on" : `${ids.length} packs stamped on`);
+  }
+
+  async function saveHousemate(name: string) {
+    if (!household) return;
+    const next = await ensureHousematePlaceholder(household, name);
+    refresh(next);
+    toast("Housemate on the invite plate");
+  }
 
   const activeMember = useMemo(() => {
     if (!board) return null;
@@ -280,7 +319,7 @@ export function BoardApp() {
             Board unavailable
           </h1>
           <p style={{ color: "var(--ink-soft)" }}>{error}</p>
-          <button type="button" className="btn btn-primary" onClick={() => void load()}>
+          <button type="button" className="btn btn-primary btn-press" onClick={() => void load()}>
             Retry
           </button>
         </div>
@@ -293,6 +332,12 @@ export function BoardApp() {
   return (
     <>
       {toastNode}
+      <OnboardingWalkthrough
+        inviteCode={board.household.invite_code}
+        onApplyPacks={applyPacks}
+        onSaveHousemate={saveHousemate}
+        onLandToday={() => setTab("today")}
+      />
       <StampMotion play={justDone} />
       <header
         className="shell no-print"
@@ -314,15 +359,9 @@ export function BoardApp() {
                 {board.household.name}
               </h1>
               <p
-                className="t-stagger-line t-stagger-line--2"
-                style={{
-                  color: "var(--ink-soft)",
-                  margin: "0.55rem 0 0",
-                  maxWidth: 480,
-                  fontSize: "1.05rem",
-                }}
+                className="t-stagger-line t-stagger-line--2 utility-line"
               >
-                What’s due in this house today.
+                Shared house todos — check them off.
               </p>
             </div>
           </div>
@@ -387,10 +426,7 @@ export function BoardApp() {
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
                     <div className="job-strip-main">
-                      <p className="job-verb">Due today → ink check</p>
-                      <p className="job-hint">
-                        Press once. Clear the plate.
-                      </p>
+                      <p className="job-verb">Due today</p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
                       <NumberPop value={todayDue.length} />
@@ -419,10 +455,10 @@ export function BoardApp() {
                         </h2>
                       </div>
                       {todayDue.length === 0 ? (
-                        <div className="tile empty-quiet">
+                        <div className="tile empty-quiet fun-card">
                           <img
-                            src="/art/empty-checklist.png"
-                            alt="Empty letterpress checklist — nothing due"
+                            src="/art/hero-empty.webp"
+                            alt="Letterpress checklist — nothing due"
                             width={280}
                             height={280}
                           />
@@ -433,12 +469,12 @@ export function BoardApp() {
                             Nothing due.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
-                            List a chore, or plan a room.
+                            Stamp a pack or add a chore.
                           </p>
                           <div className="empty-quiet-actions">
                             <button
                               type="button"
-                              className="btn btn-clay"
+                              className="btn btn-clay btn-press"
                               onClick={() => setShowAdd(true)}
                             >
                               Add a chore
@@ -459,8 +495,11 @@ export function BoardApp() {
                               due={d}
                               roomName={roomName(d.roomId)}
                               assigneeName={assignee?.name ?? null}
+                              assigneeId={chore?.assignee_id ?? null}
+                              members={board.members}
                               busy={!!completing}
                               onComplete={complete}
+                              onAssign={(id, mid) => void assignChore(id, mid)}
                             />
                             );
                           })}
@@ -540,7 +579,9 @@ export function BoardApp() {
                             onClick={() => void setActive(m.id)}
                             title={`Act as ${m.name}`}
                           >
-                            <span className="house-chip-mark" aria-hidden />
+                            <span className="house-chip-avatar" aria-hidden>
+                              {(m.name || "?").slice(0, 1)}
+                            </span>
                             <span className="house-chip-name">{m.name}</span>
                           </button>
                         ))}
@@ -554,7 +595,7 @@ export function BoardApp() {
                         />
                         <button
                           type="button"
-                          className="btn btn-primary btn-compact"
+                          className="btn btn-primary btn-compact btn-press"
                           onClick={() => void addMember()}
                         >
                           Add
@@ -563,14 +604,14 @@ export function BoardApp() {
                       <div className="aside-actions">
                         <button
                           type="button"
-                          className="btn btn-ghost btn-compact"
+                          className="btn btn-ghost btn-compact btn-press"
                           onClick={() => void undo()}
                         >
                           Undo
                         </button>
                         <button
                           type="button"
-                          className="btn btn-clay btn-compact"
+                          className="btn btn-clay btn-compact btn-press"
                           onClick={() => setShowAdd((s) => !s)}
                         >
                           New chore
@@ -599,7 +640,7 @@ export function BoardApp() {
                           </a>
                           <button
                             type="button"
-                            className="btn btn-primary"
+                            className="btn btn-primary btn-press"
                             onClick={() => void exportJson()}
                           >
                             Export
@@ -667,7 +708,7 @@ export function BoardApp() {
                           )}
                           <button
                             type="button"
-                            className="btn btn-clay"
+                            className="btn btn-clay btn-press"
                             style={{ marginTop: "0.75rem", width: "100%" }}
                             onClick={() => void addChore()}
                           >
@@ -710,7 +751,7 @@ export function BoardApp() {
                     return (
                       <li
                         key={room.id}
-                        className={`room-tile${hotN > 0 ? " is-hot" : ""}${selectedRoomId === room.id ? " is-selected" : ""}`}
+                        className={`room-tile fun-card${hotN > 0 ? " is-hot" : ""}${selectedRoomId === room.id ? " is-selected" : ""}`}
                         data-mark={mark}
                         role="button"
                         tabIndex={0}
@@ -724,6 +765,9 @@ export function BoardApp() {
                           }
                         }}
                       >
+                        <div className="room-tile-art">
+                          <img src={roomArt(room.name)} alt="" width={96} height={96} />
+                        </div>
                         <div className="room-tile-top">
                           <h2 className="room-tile-name">{room.name}</h2>
                           <span
@@ -784,7 +828,7 @@ export function BoardApp() {
                         <h3 className="room-tile-name">{room.name}</h3>
                         <button
                           type="button"
-                          className="btn btn-ghost btn-compact"
+                          className="btn btn-ghost btn-compact btn-press"
                           onClick={() => setSelectedRoomId(null)}
                         >
                           Close
