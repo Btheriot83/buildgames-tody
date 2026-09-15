@@ -1273,3 +1273,27 @@ body {
 .chore-tile { padding: var(--tb-pad) 0.9rem !important; }
 .shell { width: min(1040px, calc(100% - 1.5rem)) !important; }
 .today-grid { gap: var(--tb-gap-lg) !important; }
+
+/* elevate9: cut — quieter later cards */
+.later-card {
+  padding: 0.55rem 0.75rem !important;
+  border: 1px solid var(--rule) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* elevate7: make-it-alive — room plate press + ink spine on overdue chores */
+.room-tile:active {
+  transform: translateY(1px) scale(0.985);
+  background: var(--chalk);
+}
+.chore-tile[data-status="overdue"] {
+  border-left: 3px solid var(--ink) !important;
+}
+.chore-tile[data-status="due"] {
+  border-left: 3px solid var(--slate) !important;
+}
+.chore-tile[data-status="ok"],
+.chore-tile[data-status="fresh"] {
+  border-left: 3px solid var(--rule) !important;
+}
