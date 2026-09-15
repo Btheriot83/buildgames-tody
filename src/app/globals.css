@@ -1823,3 +1823,27 @@ body {
   background: #fffcfa !important;
   border-color: #c5ccd4 !important;
 }
+
+/* r3 — buttons: tomato New chore earns stamp weight; Undo quieter */
+.aside-actions .btn-clay {
+  font-size: 1.05rem !important;
+  min-height: 50px !important;
+  font-weight: 720 !important;
+  border: 1.5px solid var(--ink) !important;
+  letter-spacing: -0.01em !important;
+}
+.aside-actions .btn-primary {
+  min-height: 50px !important;
+  font-weight: 700 !important;
+  border: 1.5px solid var(--ink) !important;
+}
+.aside-actions .btn-ghost {
+  min-height: 44px !important;
+  color: var(--ink-mute) !important;
+  border-color: var(--rule) !important;
+  font-weight: 600 !important;
+  background: #fff !important;
+}
+.aside-actions .btn-clay:hover:not(:disabled) {
+  background: #b12e22 !important;
+}
