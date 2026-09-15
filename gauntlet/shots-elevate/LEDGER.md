@@ -10,3 +10,4 @@ Identity LOCKED: Cool Letterpress Checklist. Flat materials. No tomato scream / 
 | 3 | cut brand + redundant member list | cut-elements | elevate3-cut-chrome.png | Tileboard eyebrow; chips-only house |
 | 4 | room select → chore bars detail | make-it-alive / bar Tody | elevate4-room-detail.png | Tody expand room → bars |
 | 5 | remove-ai-tells kill-list + quieter due folio | remove-ai-tells | elevate5-anti-tells.png | chalk due count; no blur/glow |
+| 6 | hand-rewrite job strip / rooms voice | hand-rewrite-copy | elevate6-hand-copy.png | Due today → ink check |

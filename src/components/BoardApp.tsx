@@ -387,9 +387,9 @@ export function BoardApp() {
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
                     <div className="job-strip-main">
-                      <p className="job-verb">Today → check complete</p>
+                      <p className="job-verb">Due today → ink check</p>
                       <p className="job-hint">
-                        Press the ink check. Clear what’s due.
+                        Press once. Clear the plate.
                       </p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
@@ -684,9 +684,9 @@ export function BoardApp() {
               <div className="rooms-elevate">
                 <div className="job-strip rooms-job">
                   <div className="job-strip-main">
-                    <p className="job-verb">Rooms as plates</p>
+                    <p className="job-verb">House rooms</p>
                     <p className="job-hint">
-                      Cleanliness at a glance — shared house, no scream.
+                      Cleanliness at a glance. Shared house.
                     </p>
                   </div>
                   <span className="job-count" aria-label={`${board.rooms.length} rooms`}>
