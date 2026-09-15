@@ -59,3 +59,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Titles punch chore-first toward target; original still wins colorful room chrome.
 - commit: afa55f7
 - transitions: (none)
+
+## r8 — contrast
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r8-after-contrast.png
+- verdict: Residue segments read pressure like Tody bars; flat fills only.
+- commit: 0ccbf69
+- transitions: (none)

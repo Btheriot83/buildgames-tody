@@ -939,3 +939,10 @@ body {
 /* r7 — fonts: chore title ladder toward target */
 .chore-title { font-size: 1.14rem !important; font-weight: 750 !important; letter-spacing: -0.018em !important; }
 .chore-meta { font-size: 0.82rem !important; font-weight: 500; color: var(--ink-soft) !important; }
+
+
+/* r8 — contrast: dirt residue segments hold */
+.dirt-meter-track { height: 11px !important; gap: 2px !important; }
+.dirt-seg { background: rgba(26,31,36,0.16) !important; border: 1px solid rgba(26,31,36,0.14) !important; border-radius: 1px !important; }
+.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
+.dirt-due .dirt-seg.is-on { background: #c9843a !important; }
