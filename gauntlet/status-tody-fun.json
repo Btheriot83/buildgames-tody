@@ -1,0 +1,76 @@
+{
+  "slug": "tody",
+  "product": "Tileboard",
+  "phase": "FUN_ONBOARD_JORDAN",
+  "status": "shipped",
+  "demoUrl": "https://buildgames-tody.vercel.app",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/9",
+  "prMerged": true,
+  "vercel": "READY",
+  "identity": "Cool Letterpress Checklist",
+  "jordanLens": {
+    "utilitySentence": "Shared house todos \u2014 check them off.",
+    "presetsNotEmptyAbyss": true,
+    "funNotCarnival": true
+  },
+  "onboarding": {
+    "doc": "docs/ONBOARDING.md",
+    "activation": "household with preset chore pack applied \u2192 Today",
+    "packs": [
+      "kitchen",
+      "bath",
+      "living",
+      "weekly"
+    ],
+    "skipAlways": true,
+    "persistKey": "tileboard.onboarded.v1",
+    "returnVisitNoReplay": true
+  },
+  "transitionsFixed": {
+    "brokenWas": "stamp pointerup reset press before click; btn transform feedback weak/conflicting; elevate killed card shadows",
+    "fix": [
+      "btn-press hover lift + active press scale (isolated translate3d)",
+      "learn-more-hover chevron on onboard CTA",
+      "checkbox-check stroke draw on stamp",
+      "stamp pointerup no longer cancels press before click",
+      "npx transitions-dev add like-button learn-more-hover checkbox-check card-tilt toggle avatar-group-hover"
+    ]
+  },
+  "visibleDeltas": [
+    "Friend walkthrough onboard with illustrated Kitchen/Bath/Living/Weekly pack cards",
+    "First-paint utility line: Shared house todos \u2014 check them off.",
+    "Room cards with letterpress pack imagery + lift/shadow fun cards",
+    "Assign dropdown on due chores (shared house who's-doing-what)",
+    "Button press/hover actually fires; check-off ink draw without cancel fight"
+  ],
+  "shots": [
+    "gauntlet/shots-fun/01-onboard-start.png",
+    "gauntlet/shots-fun/02-onboard-packs.png",
+    "gauntlet/shots-fun/03-onboard-housemate.png",
+    "gauntlet/shots-fun/04-today-after-packs.png",
+    "gauntlet/shots-fun/05-assigned.png",
+    "gauntlet/shots-fun/06-checkoff-mid.png",
+    "gauntlet/shots-fun/07-checkoff-after.png",
+    "gauntlet/shots-fun/08-rooms-cards.png",
+    "gauntlet/shots-fun/09-return-no-replay.png",
+    "gauntlet/shots-fun/10-button-hover.png"
+  ],
+  "smoke": {
+    "onboardPresets": true,
+    "assign": true,
+    "checkOffVisibleTransition": true,
+    "returnVisitNoOnboardReplay": true
+  },
+  "catalogTechniques": [
+    "image-generation",
+    "make-it-alive",
+    "specify-the-look",
+    "cut-elements",
+    "remove-ai-tells",
+    "hand-rewrite-copy"
+  ],
+  "guides": [
+    "friend-walkthrough-onboarding",
+    "narrow/builder-guides/04-jordan.md"
+  ]
+}
