@@ -122,3 +122,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Later quieter than Due kraft; Due remains the job fold.
 - commit: c010e78
 - transitions: texts-reveal / stagger already on household billboard load
+
+## r17 — bar-gap
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r17-after-bar-gap.png
+- verdict: Room tiles stay flat kraft/enamel (no color mesh); original still wins multi-hue room grid.
+- commit: 89d8031
+- transitions: (none)

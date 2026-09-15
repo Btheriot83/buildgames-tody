@@ -1021,3 +1021,18 @@ body {
   opacity: 0.95;
 }
 .later-card .later-title { font-weight: 700; font-size: 0.98rem; }
+
+
+/* r17 — bar gap/dream: flat room chips (no gradient) */
+.room-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.35rem 0.55rem; border: 1.5px solid var(--ink);
+  background: var(--chalk); font-weight: 700; font-size: 0.8rem;
+  border-radius: 3px; box-shadow: 2px 2px 0 rgba(26,31,36,0.1);
+}
+.rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.65rem; }
+.room-tile-flat {
+  border: 2px solid var(--ink); background: #fff; padding: 0.85rem;
+  box-shadow: 3px 3px 0 rgba(47,95,158,0.14); border-radius: 3px;
+}
+.room-tile-flat .room-title { font-size: 1.05rem !important; }
