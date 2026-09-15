@@ -1772,3 +1772,30 @@ body {
   background-image: none !important;
 }
 .shader-bg, .t-clear-glow { display: none !important; }
+
+
+/* === Phase B6 R6 integrity — Quiet Enamel locked === */
+
+/* r1 — fonts: Due / chore optical denser toward dream-target */
+.today-list-col .section-title {
+  font-size: 1.38rem !important;
+  font-weight: 780 !important;
+  letter-spacing: -0.028em !important;
+  color: var(--ink) !important;
+}
+.chore-title {
+  font-size: 1.12rem !important;
+  font-weight: 720 !important;
+  letter-spacing: -0.018em !important;
+  line-height: 1.22 !important;
+}
+.job-strip .job-verb {
+  font-size: clamp(1.2rem, 2.4vw, 1.48rem) !important;
+  font-weight: 760 !important;
+  letter-spacing: -0.024em !important;
+}
+.chore-meta {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.02em !important;
+  color: var(--ink-mute) !important;
+}
