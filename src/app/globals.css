@@ -2058,3 +2058,71 @@ header .streak-ring { opacity: 0.85; }
   letter-spacing: 0.16em !important;
   font-weight: 600;
 }
+
+/* craft4: check-off delight — ink stamp pop + slate particles */
+:root {
+  --like-color: var(--done);
+  --like-fill: 160ms;
+  --like-pop: 380ms;
+  --like-pop-ease: cubic-bezier(0.34, 1.7, 0.64, 1);
+  --like-particle-dur: 560ms;
+  --check-box: 160ms;
+  --check-draw: 340ms;
+  --check-delay: 50ms;
+  --check-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stamp-btn.t-check {
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  border: 2px solid var(--ink) !important;
+  border-radius: 4px !important;
+  background: var(--tile) !important;
+  color: var(--ink);
+  box-shadow: 2px 2px 0 rgba(34, 28, 36, 0.1);
+  transition:
+    background var(--check-box) var(--check-ease),
+    border-color var(--check-box) var(--check-ease),
+    color var(--check-box) var(--check-ease),
+    box-shadow var(--check-box) var(--check-ease),
+    transform 140ms var(--like-pop-ease) !important;
+}
+.stamp-btn.t-check:hover:not(:disabled) {
+  background: var(--chalk) !important;
+  box-shadow: 3px 3px 0 rgba(34, 28, 36, 0.12);
+}
+.stamp-btn.t-check[aria-checked="true"] {
+  background: var(--done) !important;
+  border-color: var(--done) !important;
+  color: var(--paper) !important;
+  box-shadow: 0 0 0 rgba(34, 28, 36, 0);
+  animation: stamp-ink-pop var(--like-pop) var(--like-pop-ease);
+}
+@keyframes stamp-ink-pop {
+  0% { transform: scale(0.86); }
+  55% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.stamp-particles i {
+  background: var(--slate) !important;
+  border-radius: 1px !important;
+}
+.chore-tile.is-bursting .stamp-particles i:nth-child(odd) {
+  background: var(--done) !important;
+}
+.chore-tile.phase-stamp {
+  border-color: var(--done) !important;
+  box-shadow: 3px 3px 0 rgba(63, 90, 74, 0.18) !important;
+}
+.chore-tile.phase-wipe .dirt-wipe {
+  background: rgba(63, 90, 74, 0.18) !important;
+}
+.chore-tile.fun-card.phase-exit {
+  transform: translateX(18px) scale(0.97) !important;
+  filter: saturate(0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-btn.t-check[aria-checked="true"] { animation: none !important; }
+  .chore-tile.fun-card.phase-exit { filter: none; }
+}
