@@ -1036,3 +1036,13 @@ body {
   box-shadow: 3px 3px 0 rgba(47,95,158,0.14); border-radius: 3px;
 }
 .room-tile-flat .room-title { font-size: 1.05rem !important; }
+
+
+/* r18 — fonts: household mark optical (Newsreader kept) */
+.billboard-ledger h1 {
+  font-size: clamp(1.85rem, 4.2vw, 2.65rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.028em !important;
+  line-height: 1.05 !important;
+}
+.billboard-ledger .eyebrow { font-size: 0.68rem !important; letter-spacing: 0.16em !important; }

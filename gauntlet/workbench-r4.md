@@ -129,3 +129,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Room tiles stay flat kraft/enamel (no color mesh); original still wins multi-hue room grid.
 - commit: 89d8031
 - transitions: (none)
+
+## r18 — fonts
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r18-after-fonts.png
+- verdict: Mark size closer to dream-target without abandoning Newsreader identity.
+- commit: 5094758
+- transitions: (none)
