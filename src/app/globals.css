@@ -971,3 +971,12 @@ body {
 .t-input-wrap.is-error .field {
   border-color: var(--clay) !important;
 }
+
+
+/* r12 — bar gap: plan panel sits as kraft sheet */
+.plan-panel {
+  border: 2px solid var(--ink) !important;
+  background: #faf6ef !important;
+  box-shadow: 4px 4px 0 rgba(47,95,158,0.18) !important;
+}
+.t-panel-slide[data-open="true"] { display: block; }

@@ -87,3 +87,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Stick chore CTA + error shake wired on empty title; original has no fridge form.
 - commit: d680212
 - transitions: error-state-shake (.t-input-wrap.is-error / .is-shaking) on Stick chore validation
+
+## r12 — bar-gap
+- files: src/app/globals.css, src/components/PlanPanel.tsx
+- shot: gauntlet/shots-r4/r12-after-bar-gap.png
+- verdict: Plan opens as kraft panel (panel-reveal); original has no AI plan sheet.
+- commit: 44c6577
+- transitions: panel-reveal (.t-panel-slide data-open) on Plan a room
