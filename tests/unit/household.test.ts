@@ -3,7 +3,7 @@ import { createMemoryDbAsync } from "@/lib/db";
 import {
   completeChore,
   getBoardSnapshot,
-  seedSampleHousehold,
+  seedHouseholdBoard,
   undoLast,
 } from "@/lib/household";
 import type { AppDatabase } from "@/lib/db-types";
@@ -13,7 +13,7 @@ describe("household board", () => {
 
   beforeAll(async () => {
     db = await createMemoryDbAsync();
-    seedSampleHousehold(db);
+    seedHouseholdBoard(db);
   });
 
   it("seeds members rooms chores", () => {

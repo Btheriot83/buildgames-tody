@@ -15,7 +15,7 @@ import {
 
 const DB_NAME = "tileboard-local";
 const STORE = "kv";
-const KEY = "household_v1";
+const KEY = "household_v2";  // B2: reseed real Camelback household (not SAMPLE)
 
 export type LocalMember = {
   id: string;
@@ -118,42 +118,116 @@ async function setRaw(data: LocalHousehold): Promise<void> {
   });
 }
 
-const COLORS = ["#3d7a7a", "#c45c3a", "#4a6b52", "#2f4a6e", "#8a5a3a", "#5c4a7a"];
+const COLORS = ["#2f5f9e", "#d63b2c", "#3d8f78", "#d4a017", "#8a5a3a", "#5c4a7a"];
 
 export function seedHousehold(): LocalHousehold {
   const now = new Date().toISOString();
   const brandon = rid("m");
-  const alex = rid("m");
-  const rooms = ["Kitchen", "Bath", "Living", "Laundry"].map((name, i) => ({
+  const jordan = rid("m");
+  const rooms = [
+    "Kitchen",
+    "Hall bath",
+    "Living",
+    "Laundry",
+    "Garage bay",
+  ].map((name, i) => ({
     id: rid("r"),
     name,
     sortOrder: i,
   }));
+  // Real Camelback bungalow cadence — no SAMPLE / lorem titles
   const defs: Array<{
     title: string;
     room: number;
     kind: FrequencyKind;
     n: number;
     assignee?: string;
+    notes?: string;
   }> = [
-    { title: "Wipe counters", room: 0, kind: "daily", n: 1, assignee: brandon },
-    { title: "Empty dishwasher", room: 0, kind: "daily", n: 1, assignee: alex },
-    { title: "Mop kitchen floor", room: 0, kind: "weekly", n: 1 },
-    { title: "Scrub shower", room: 1, kind: "every_n_days", n: 5 },
-    { title: "Restock soap", room: 1, kind: "weekly", n: 2 },
-    { title: "Vacuum living", room: 2, kind: "weekly", n: 1, assignee: brandon },
-    { title: "Dust shelves", room: 2, kind: "monthly", n: 1 },
-    { title: "Start laundry", room: 3, kind: "every_n_days", n: 3, assignee: alex },
-    { title: "Fold & put away", room: 3, kind: "every_n_days", n: 3 },
+    {
+      title: "Wipe island after dinner",
+      room: 0,
+      kind: "daily",
+      n: 1,
+      assignee: brandon,
+      notes: "Crumb brush + citrus spray under the knife block",
+    },
+    {
+      title: "Run & empty dishwasher",
+      room: 0,
+      kind: "daily",
+      n: 1,
+      assignee: jordan,
+      notes: "Unload before bed so breakfast plates have a home",
+    },
+    {
+      title: "Mop sticky kitchen tiles",
+      room: 0,
+      kind: "weekly",
+      n: 1,
+      notes: "Hot water + a drop of pine soap — skip the fancy shine",
+    },
+    {
+      title: "Scrub hall shower glass",
+      room: 1,
+      kind: "every_n_days",
+      n: 5,
+      notes: "Hard-water ring from the Camelback well softener",
+    },
+    {
+      title: "Restock soap & TP",
+      room: 1,
+      kind: "weekly",
+      n: 2,
+      assignee: jordan,
+      notes: "Spare roll in the linen closet, left shelf",
+    },
+    {
+      title: "Vacuum living rug",
+      room: 2,
+      kind: "weekly",
+      n: 1,
+      assignee: brandon,
+      notes: "Dog hair under the south window bench",
+    },
+    {
+      title: "Dust shelves & frames",
+      room: 2,
+      kind: "monthly",
+      n: 1,
+    },
+    {
+      title: "Start desert-dust laundry",
+      room: 3,
+      kind: "every_n_days",
+      n: 3,
+      assignee: jordan,
+      notes: "Work shirts separate from towels",
+    },
+    {
+      title: "Fold & put away",
+      room: 3,
+      kind: "every_n_days",
+      n: 3,
+    },
+    {
+      title: "Sweep garage bay grit",
+      room: 4,
+      kind: "weekly",
+      n: 1,
+      assignee: brandon,
+      notes: "Diesel grit by the rolling toolbox — dustpan by the hose reel",
+    },
   ];
   const chores: LocalChore[] = defs.map((c, i) => {
     const created = new Date();
-    created.setUTCDate(created.getUTCDate() - (i % 5) - 1);
+    // Stagger so Today shows a mix of due + overdue, not a fake SAMPLE dump
+    created.setUTCDate(created.getUTCDate() - (i % 6) - 1);
     return {
       id: rid("c"),
       roomId: rooms[c.room]!.id,
       title: c.title,
-      notes: "",
+      notes: c.notes ?? "",
       frequencyKind: c.kind,
       frequencyN: c.n,
       assigneeId: c.assignee ?? null,
@@ -164,13 +238,15 @@ export function seedHousehold(): LocalHousehold {
     };
   });
   const completions: LocalCompletion[] = [];
-  for (let i = 0; i < 3; i++) {
+  // Two recent stamps so streak reads real
+  for (let i = 0; i < 2; i++) {
     const when = new Date();
-    when.setUTCDate(when.getUTCDate() - (2 - i));
+    when.setUTCDate(when.getUTCDate() - (1 - i));
+    when.setUTCHours(20, 10 + i * 12, 0, 0);
     completions.push({
       id: rid("x"),
       choreId: chores[i]!.id,
-      memberId: i % 2 === 0 ? brandon : alex,
+      memberId: i % 2 === 0 ? brandon : jordan,
       completedAt: when.toISOString(),
       note: "",
       undone: false,
@@ -178,25 +254,39 @@ export function seedHousehold(): LocalHousehold {
   }
   return {
     id: rid("hh"),
-    name: "Our place",
+    name: "Camelback bungalow",
     inviteCode: inviteCode(),
     createdAt: now,
     members: [
-      { id: brandon, name: "Brandon", color: COLORS[0]!, role: "owner", createdAt: now },
-      { id: alex, name: "Alex", color: COLORS[1]!, role: "member", createdAt: now },
+      {
+        id: brandon,
+        name: "Brandon",
+        color: COLORS[0]!,
+        role: "owner",
+        createdAt: now,
+      },
+      {
+        id: jordan,
+        name: "Jordan",
+        color: COLORS[1]!,
+        role: "member",
+        createdAt: now,
+      },
     ],
     rooms,
     chores,
     completions,
     inventory: [
-      { id: rid("inv"), name: "Dish soap", qty: "1 bottle" },
-      { id: rid("inv"), name: "Paper towels", qty: "2 rolls" },
+      { id: rid("inv"), name: "Seventh Generation dish soap", qty: "¾ bottle" },
+      { id: rid("inv"), name: "Bounty paper towels", qty: "1 roll + spare" },
+      { id: rid("inv"), name: "Pine-Sol concentrate", qty: "half jug" },
+      { id: rid("inv"), name: "Shop towels (garage)", qty: "blue box" },
     ],
     recipes: [
       {
         id: rid("rcp"),
-        title: "Friday pasta",
-        body: "Boil water. Salt generously. Toss with olive oil + garlic.",
+        title: "Friday skillet pasta",
+        body: "Boil salted water. Garlic + olive oil in the cast iron. Toss with the good Parmesan from Fry's.",
       },
     ],
     activeMemberId: brandon,

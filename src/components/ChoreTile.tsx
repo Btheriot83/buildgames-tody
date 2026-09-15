@@ -7,15 +7,16 @@ import { DirtMeter } from "./DirtMeter";
 type Props = {
   due: ChoreDue;
   roomName: string;
+  assigneeName?: string | null;
   busy: boolean;
   onComplete: (choreId: string) => Promise<void>;
 };
 
 /**
- * Physical complete: press → stamp spring → check draw → dirt wipe → dust → exit.
+ * Physical complete: press → magnet slap → check draw → residue wipe → dust → exit.
  * One job done excellently.
  */
-export function ChoreTile({ due, roomName, busy, onComplete }: Props) {
+export function ChoreTile({ due, roomName, assigneeName, busy, onComplete }: Props) {
   const [phase, setPhase] = useState<
     "idle" | "press" | "stamp" | "wipe" | "exit"
   >("idle");
@@ -68,7 +69,7 @@ export function ChoreTile({ due, roomName, busy, onComplete }: Props) {
         className="stamp-btn t-check"
         role="checkbox"
         aria-checked={checked}
-        aria-label={`Complete ${due.title}`}
+        aria-label={`Stamp complete: ${due.title}`}
         disabled={busy || phase !== "idle"}
         onPointerDown={() => {
           if (phase === "idle" && !busy) setPhase("press");
@@ -116,6 +117,9 @@ export function ChoreTile({ due, roomName, busy, onComplete }: Props) {
         </div>
         <div className="chore-meta">
           {roomName} · {frequencyLabel(due.frequency)}
+          {assigneeName ? (
+            <span className="assignee-chip"> · {assigneeName}</span>
+          ) : null}
         </div>
         <DirtMeter dirt={due.dirt} status={due.status} wiping={phase === "wipe" || phase === "exit"} />
       </div>
