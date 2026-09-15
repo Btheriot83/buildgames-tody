@@ -1072,3 +1072,20 @@ footer, .shell > p, .backup-link { color: var(--ink-soft) !important; font-weigh
 .chore-tile { border-radius: 2px !important; }
 /* flat hard bar reaffirm */
 *[style*="linear-gradient"], *[style*="radial-gradient"] { background-image: none !important; }
+
+
+/* —— B4 BEAUTY CRAFT (Fridge Magnet Board · still flat) —— */
+/* r21 — beauty: quieter ink offsets (kill comic ugliness) */
+:root { --shadow: 3px 3px 0 rgba(26, 31, 36, 0.1); }
+.chore-tile {
+  box-shadow: 3px 3px 0 rgba(26, 31, 36, 0.14) !important;
+}
+.tile:not(.chore-tile) {
+  box-shadow: 3px 3px 0 rgba(26, 31, 36, 0.08) !important;
+}
+.job-strip {
+  box-shadow: 4px 4px 0 rgba(214, 59, 44, 0.55) !important;
+}
+.btn-primary, .btn-clay { box-shadow: 2px 2px 0 var(--ink) !important; }
+.fridge-plate { box-shadow: 3px 3px 0 rgba(47, 95, 158, 0.14) !important; }
+.magnet-rail { box-shadow: 3px 3px 0 rgba(212, 160, 23, 0.35) !important; }
