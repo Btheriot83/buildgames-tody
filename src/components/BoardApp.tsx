@@ -509,10 +509,16 @@ export function BoardApp() {
                           <div className="empty-quiet-actions">
                             <button
                               type="button"
-                              className="btn btn-clay btn-press"
+                              className="btn btn-clay btn-press t-learn"
                               onClick={() => setShowAdd(true)}
                             >
                               Add a chore
+                              <span className="t-learn-chevron" aria-hidden>
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                                  <path className="t-learn-arm t-learn-arm-top" d="M6 4l4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                                  <path className="t-learn-arm t-learn-arm-bot" d="M6 12l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                                </svg>
+                              </span>
                             </button>
                             <PlanPanel onAccept={acceptPlan} />
                           </div>
@@ -646,10 +652,16 @@ export function BoardApp() {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-clay btn-compact btn-press"
+                          className="btn btn-clay btn-compact btn-press t-learn"
                           onClick={() => setShowAdd((s) => !s)}
                         >
                           New chore
+                          <span className="t-learn-chevron" aria-hidden>
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                              <path className="t-learn-arm t-learn-arm-top" d="M6 4l4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                              <path className="t-learn-arm t-learn-arm-bot" d="M6 12l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                            </svg>
+                          </span>
                         </button>
                         <PlanPanel onAccept={acceptPlan} />
                       </div>
