@@ -28,6 +28,7 @@ import { ChoreTile } from "./ChoreTile";
 import { PlanPanel } from "./PlanPanel";
 import { StampMotion } from "./StampMotion";
 import { OnboardingWalkthrough } from "./OnboardingWalkthrough";
+import { RoomGlyph, roomGlyphKind } from "./RoomGlyph";
 
 const ROOM_ART: Record<string, string> = {
   kitchen: "/art/packs/kitchen.webp",
@@ -361,7 +362,7 @@ export function BoardApp() {
               <p
                 className="t-stagger-line t-stagger-line--2 utility-line"
               >
-                Shared house todos — check them off.
+                What’s due in this house today.
               </p>
             </div>
           </div>
@@ -427,12 +428,46 @@ export function BoardApp() {
                   <div className="job-strip" role="status">
                     <div className="job-strip-main">
                       <p className="job-verb">Due today</p>
+                      <p className="job-hint">Rooms at a glance — then the checklist.</p>
                     </div>
                     <span className="job-count" aria-label={`${todayDue.length} due`}>
                       <NumberPop value={todayDue.length} />
                       <small>due</small>
                     </span>
                   </div>
+                  <ul className="today-room-rail" aria-label="Rooms due at a glance">
+                    {board.rooms.map((room) => {
+                      const items = board.due.filter((d) => d.roomId === room.id);
+                      const overdueN = items.filter((d) => d.status === "overdue").length;
+                      const dueN = items.filter((d) => d.status === "due").length;
+                      const hotN = overdueN + dueN;
+                      const mark =
+                        overdueN > 0 ? "overdue" : dueN > 0 ? "due" : items.length ? "ok" : "idle";
+                      return (
+                        <li key={room.id}>
+                          <button
+                            type="button"
+                            className={`today-room-chip fun-card${hotN > 0 ? " is-hot" : ""}`}
+                            data-mark={mark}
+                            onClick={() => {
+                              setSelectedRoomId(room.id);
+                              setTab("rooms");
+                            }}
+                          >
+                            <span className="today-room-glyph" data-mark={mark}>
+                              <RoomGlyph name={room.name} size={22} />
+                            </span>
+                            <span className="today-room-copy">
+                              <strong>{room.name}</strong>
+                              <span className="font-mono">
+                                {hotN > 0 ? `${hotN} due` : items.length ? "clear" : "—"}
+                              </span>
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
                   <div
                     className="today-grid"
                     style={{
@@ -442,18 +477,6 @@ export function BoardApp() {
                     }}
                   >
                     <div className="today-list-col">
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "baseline",
-                          marginBottom: "0.75rem",
-                        }}
-                      >
-                        <h2 className="section-title">
-                          Due today
-                        </h2>
-                      </div>
                       {todayDue.length === 0 ? (
                         <div className="tile empty-quiet fun-card">
                           <img
@@ -469,15 +492,21 @@ export function BoardApp() {
                             Nothing due.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
-                            Stamp a pack or add a chore.
+                            Clear plate. Stamp a pack or press Add a chore.
                           </p>
                           <div className="empty-quiet-actions">
                             <button
                               type="button"
-                              className="btn btn-clay btn-press"
+                              className="btn btn-clay btn-press t-learn"
                               onClick={() => setShowAdd(true)}
                             >
                               Add a chore
+                              <span className="t-learn-chevron" aria-hidden>
+                                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                                  <path className="t-learn-arm t-learn-arm-top" d="M6 4l4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                                  <path className="t-learn-arm t-learn-arm-bot" d="M6 12l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                                </svg>
+                              </span>
                             </button>
                             <PlanPanel onAccept={acceptPlan} />
                           </div>
@@ -509,7 +538,7 @@ export function BoardApp() {
                       {later.length > 0 && (
                         <div style={{ marginTop: "1.75rem" }}>
                           <h3 className="eyebrow" style={{ marginBottom: "0.6rem" }}>
-                            Later
+                            Coming up
                           </h3>
                           <ul
                             style={{
@@ -563,8 +592,8 @@ export function BoardApp() {
                     </div>
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
-                      <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Shared house
+                      <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.15rem" }}>
+                        This house
                       </h2>
                       <div className="invite-plate">
                         <span className="eyebrow">Household invite</span>
@@ -611,10 +640,16 @@ export function BoardApp() {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-clay btn-compact btn-press"
+                          className="btn btn-clay btn-compact btn-press t-learn"
                           onClick={() => setShowAdd((s) => !s)}
                         >
                           New chore
+                          <span className="t-learn-chevron" aria-hidden>
+                            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                              <path className="t-learn-arm t-learn-arm-top" d="M6 4l4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                              <path className="t-learn-arm t-learn-arm-bot" d="M6 12l4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                            </svg>
+                          </span>
                         </button>
                         <PlanPanel onAccept={acceptPlan} />
                       </div>
@@ -728,7 +763,7 @@ export function BoardApp() {
                   <div className="job-strip-main">
                     <p className="job-verb">House rooms</p>
                     <p className="job-hint">
-                      Cleanliness at a glance. Shared house.
+                      Ink plates for every room — tap one to open the list.
                     </p>
                   </div>
                   <span className="job-count" aria-label={`${board.rooms.length} rooms`}>
@@ -767,6 +802,9 @@ export function BoardApp() {
                       >
                         <div className="room-tile-art">
                           <img src={roomArt(room.name)} alt="" width={96} height={96} />
+                          <span className="room-tile-glyph" data-mark={mark} aria-hidden>
+                            <RoomGlyph kind={roomGlyphKind(room.name)} size={26} />
+                          </span>
                         </div>
                         <div className="room-tile-top">
                           <h2 className="room-tile-name">{room.name}</h2>
@@ -878,10 +916,10 @@ export function BoardApp() {
             {tab === "history" && (
               <div className="tile" style={{ padding: "1.15rem" }}>
                 <h2 className="section-title" style={{ marginTop: 0 }}>
-                  Shared history
+                  Who checked what
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Who checked what.
+                  House ledger — newest first.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
