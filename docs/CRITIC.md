@@ -39,3 +39,9 @@
 
 ## Verdict
 Review-ready once live Vercel demo smokes the core loop without 500s.
+
+
+## Live smoke (2026-09-14 PT)
+- URL: https://buildgames-tody.vercel.app/ → HTTP 200
+- Playwright: heading "Our place", complete chore → toast "Done — Brandon", History tab OK
+- Screenshots: `public/screenshots/07-live.png`, `08-live-history.png`
