@@ -886,3 +886,22 @@ body {
 body {
   background-color: #f3f5f7;
 }
+
+
+/* r3 — buttons: New chore / Plan / Undo triad weight */
+.aside-actions .btn-clay {
+  flex: 1.35 1 auto;
+  min-width: 7.5rem;
+  font-size: 0.95rem;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.aside-actions .btn-primary {
+  flex: 1.1 1 auto;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.aside-actions .btn-ghost {
+  flex: 0.85 1 auto;
+  border-width: 1.5px;
+  font-weight: 600;
+  box-shadow: none;
+}
