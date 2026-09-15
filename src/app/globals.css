@@ -1643,3 +1643,23 @@ body {
   background: #f0dcc0 !important;
   border-color: #cbb892 !important;
 }
+
+
+/* r3 — buttons: New chore tomato earns weight */
+.aside-actions .btn-clay {
+  font-size: 1.02rem !important;
+  min-height: 48px !important;
+  padding-inline: 1.15rem !important;
+  border-width: 1.5px !important;
+  border-color: var(--ink) !important;
+}
+.aside-actions .btn-ghost {
+  min-height: 48px !important;
+  color: var(--ink-mute) !important;
+  border-color: var(--rule) !important;
+}
+.aside-actions .btn-primary {
+  min-height: 48px !important;
+  border-color: var(--ink) !important;
+  border-width: 1.5px !important;
+}
