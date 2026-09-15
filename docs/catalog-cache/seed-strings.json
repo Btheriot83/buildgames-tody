@@ -1,0 +1,65 @@
+{
+  "slug": "seed-strings",
+  "number": 1,
+  "stage": "Discover",
+  "title": "Use seed strings to inject variety",
+  "principle": "Models can’t truly act random—they predict the most likely token. Bring randomness from outside the model. Sakana AI’s String Seed of Thought: generate a long random alphanumeric string, then derive creative direction from subpatterns in that string so every run lands somewhere new.",
+  "procedure": [
+    "Ask the agent to generate a long, random alphanumeric string via a shell script (outside the model’s token priors).",
+    "Have it define creative direction—color, layout, typography—from that string, looking past the surface for subpatterns, special numbers, or other sparks.",
+    "Instruct it to bring that direction to life with judgment, and never reveal the string in the UI—it’s inspiration only."
+  ],
+  "examplePrompts": [
+    "I want you to build me a landing page for my productivity app.\n\nFollow this procedure:\n\n1. Generate a long, random alphanumeric string using a shell script.\n2. Define the creative direction (color scheme, layout, typography, etc.) based on the string. Look beyond the surface for subpatterns, special numbers, anything that inspires you.\n3. Use your judgment to bring this direction to life and make it look great.\n\nDon't reveal the string in the design. It's only for your inspiration."
+  ],
+  "tips": [
+    "Asking for “something unique” or “completely at random” still yields the same fake-random patterns (pottery metaphors, identical structures).",
+    "Default unseeded runs collapse to purplish gradients, text-left / graphic-right SaaS layouts.",
+    "Seeded runs produce one-of-a-kind schemes—no two runs match.",
+    "Sakana’s SSoT (https://sakana.ai/ssot/) generates entropy inside the prompt; Anshu’s catalog recipe prefers external shell entropy so the model cannot fake the seed."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+    "https://sakana.ai/ssot/"
+  ],
+  "related": [
+    "ambitious-prompts",
+    "remove-ai-tells",
+    "critic-subagents"
+  ],
+  "workedExamples": [
+    {
+      "title": "Productivity landing default collapse",
+      "before": "Four unseeded Claude Opus runs of “Build me a landing page for my productivity app” → purplish gradient, text-left / graphic-right, identical structure every time.",
+      "after": "Same brief plus a shell-generated seed string → divergent color, type, and layout; no two runs match.",
+      "body": "From the Lenny essay: without an external seed the model predicts the SaaS default. Asking for “totally unique / completely at random” still yields fake-random sameness (same awkward pottery metaphors). The seed forces decisions off the training prior. Cite: Lenny guest post."
+    },
+    {
+      "title": "This catalog’s Quiet Folio direction",
+      "body": "A 64-char hex seed was hashed; subpatterns (flat runs, cool trailing digits) picked Quiet Folio / letterpress monograph—paper #FAF9F7, ink #221C24, oversized folio numerals, one ink mark. The string never appears in the UI. See docs/REDESIGN.md and docs/CRITIC_LOOP.md."
+    },
+    {
+      "title": "Failure mode: reveal the seed",
+      "body": "If the agent prints the seed in the hero or footer, the technique collapses into a gimmick and the page still looks generated. Keep the string private to the model’s inspiration step."
+    }
+  ],
+  "antiPatterns": [
+    "Prompting “make it unique / random” with no external entropy—still collapses to familiar slop.",
+    "Reusing one seed across products until every artifact shares the same accidental palette.",
+    "Showing the seed string in the design (turns craft into a novelty badge)."
+  ],
+  "checklist": [
+    "Agent generated entropy outside the model (shell / crypto), not “imagine a random string.”",
+    "Creative direction cites subpatterns in that string (color, type, layout).",
+    "Seed is not visible in the shipped UI.",
+    "A second run with a new seed produces a visibly different direction."
+  ],
+  "promptWhy": [
+    "External shell entropy + forced direction-from-string breaks the SaaS-landing prior without inventing fake randomness in prose."
+  ],
+  "pairsWellWith": [
+    "ambitious-prompts",
+    "remove-ai-tells",
+    "critic-subagents"
+  ]
+}

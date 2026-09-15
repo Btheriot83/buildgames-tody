@@ -1,0 +1,66 @@
+{
+  "slug": "remove-ai-tells",
+  "number": 7,
+  "stage": "Deliver",
+  "title": "Remove AI tells",
+  "principle": "Certain visual and copy patterns scream “generated.” Maintain a kill-list and scrub the UI until those fingerprints are gone. This catalog’s anti-slop stance sits in the same independent lineage as public tooling like design-slop-cop and Build Games–style anti-slop practice—not as an endorsement of any one tool.",
+  "procedure": [
+    "Walk the design against a kill-list of common AI tells.",
+    "Replace default type stacks (Inter / Geist / Space Grotesk) with a distinctive pairing chosen on purpose.",
+    "Remove vibe-purple chrome, decorative gradients-as-chrome, and glassmorphism panels.",
+    "Delete 3-card emoji feature grids, fake stats, and headline badges that add no information.",
+    "Re-check with a critic or fresh eyes until the page no longer reads as template slop."
+  ],
+  "examplePrompts": [
+    "Audit this page for AI design tells and remove them. Kill-list:\n- Vibe purple / indigo accent defaults\n- Gradients used as chrome (hero washes, button fills) without compositional reason\n- Glassmorphism cards and frosted panels\n- Inter, Geist, or Space Grotesk as the default type stack\n- Three-card grids with emoji icons and generic feature blurbs\n- Fake stats / social-proof numbers\n- Headline badges (“New”, “AI-powered”, sparkles)\n- Soft drop shadows and glowing orbs as decoration\n\nReplace with intentional color, type, and structure. Do not swap one tell for another."
+  ],
+  "tips": [
+    "Tells compound—fixing one gradient while leaving Inter + emoji cards still reads as slop.",
+    "Related public tooling: https://github.com/AdrianKrebs/design-slop-cop (independent; cited for lineage, not endorsement).",
+    "This site’s paper/ink desk is itself an anti-tell choice: plum-cast paper, monochrome chrome, serif + IBM Plex—no accent rainbow."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+    "https://github.com/AdrianKrebs/design-slop-cop"
+  ],
+  "related": [
+    "cut-elements",
+    "hand-rewrite-copy",
+    "seed-strings",
+    "specify-the-look"
+  ],
+  "workedExamples": [
+    {
+      "title": "Kill-list scrub (public technique; deeper Lenny tips paywalled)",
+      "body": "Technique 7+ in the Lenny essay sit behind the paywall from the free preview. This catalog’s kill-list (vibe-purple, gradient chrome, glassmorphism, Inter/Geist/Space Grotesk defaults, emoji 3-card grids, fake stats, sparkle badges) is an editorial condensation aligned with the essay’s Deliver stage—not a verbatim paywalled transcript. Cite Lenny for the technique name/stage; see Sources for the gap note."
+    },
+    {
+      "title": "Quiet Folio as anti-tell",
+      "body": "This site: plum-cast paper, monochrome chrome, serif + IBM Plex, letterpress numerals—no accent rainbow. Crafted plain instead of template docs."
+    },
+    {
+      "title": "design-slop-cop as kill-list cousin",
+      "body": "Independent public tooling (Adrian Krebs, GitHub) flags deterministic slop patterns overlapping this kill-list—vibe purple, glass, gradient chrome, emoji feature grids. Use as a second pass after taste, not a substitute for it. Cite: github.com/AdrianKrebs/design-slop-cop; no endorsement."
+    }
+  ],
+  "antiPatterns": [
+    "Fixing one tell (gradient) while leaving Inter + emoji feature cards.",
+    "Swapping purple for another default accent rainbow.",
+    "Treating anti-slop tooling as a substitute for taste."
+  ],
+  "checklist": [
+    "Walked a written kill-list against the live UI.",
+    "Type stack is intentional, not the model default.",
+    "No decorative glass / orb / sparkle chrome.",
+    "Fresh critic or human pass no longer tags it as template slop."
+  ],
+  "promptWhy": [
+    "An explicit kill-list beats “make it less AI”—models need named fingerprints to delete."
+  ],
+  "pairsWellWith": [
+    "cut-elements",
+    "hand-rewrite-copy",
+    "seed-strings",
+    "specify-the-look"
+  ]
+}

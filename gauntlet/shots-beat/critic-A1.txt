@@ -1,0 +1,27 @@
+# Design Critique
+
+## The Intended Aesthetic
+
+This is chasing the **Awwwards-tier dark-mode creative studio** aesthetic — think Exo Ape, Basement Studio, Obys Agency. The formula: massive display typography, dark canvas, an "eye" or organic focal element, decorative Japanese text for exoticism, and a footer marquee.
+
+## What a Top Studio Would Do Differently
+
+**Typography as craft, not scale.** Studios like Obys don't just make text big — they make it *sharp*. Precise optical kerning, deliberate baseline shifts, letters that have been chosen, not defaulted to. Every character feels placed by a human hand.
+
+**One concept executed ruthlessly.** The best studios pick *one* weird idea and commit fully. This design feels like it's hedging — large type + eye motif + gradient glow + Japanese text + grain texture. A top studio would kill 3 of those 5.
+
+**Whitespace as confidence.** The composition feels crowded. Top studios let things breathe — a single line of type floating in 90% empty black space hits harder than layering five competing elements.
+
+**Color discipline.** The purple/blue gradient is the most generic choice possible. A strong studio would use one aggressive accent (electric orange, acid yellow) or pure monochrome with a single material shift.
+
+## Biggest Gaps
+
+1. **The eye/orb reads as AI-generated filler.** It's decorative without being conceptual. There's no "why" behind it.
+2. **Japanese text as ornament** is a dead trope — studios actually *speak* through multilingual text or don't use it.
+3. **Typography lacks tension.** The large wordmark feels like a font was chosen from a dropdown, not designed.
+4. **Footer marquee** is check-the-box, not earned.
+5. **The glow/gradient** is soft where it should be either *nonexistent* or *blinding*.
+
+---
+
+##

@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 /** Technique 5 — keyframe still sequence + CSS interpolation on complete.
- * Plays a short stamp→wipe→settle reel tied to the core job (not decorative loop spam).
+ * Plays a short press→wipe→settle reel tied to the core job (not decorative loop spam).
  */
 const FRAMES = [
-  "/art/magnet-beat-1.png",
-  "/art/magnet-beat-2.png",
-  "/art/magnet-beat-3.png",
+  "/art/press-beat-1.png",
+  "/art/press-beat-2.png",
+  "/art/press-beat-3.png",
 ];
 
 export function StampMotion({ play }: { play: boolean }) {

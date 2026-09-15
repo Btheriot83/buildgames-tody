@@ -1,0 +1,69 @@
+{
+  "slug": "critic-subagents",
+  "number": 3,
+  "stage": "Define",
+  "title": "Create positive feedback loops with subagents",
+  "principle": "The implementer can’t objectively judge its own work—it still sees code, rationale, and sunk effort. A fresh-context critic that sees screenshots only evaluates aesthetic and quality. Use a strong (expensive) model for taste decisions and a cheaper model for grunt implementation.",
+  "procedure": [
+    "Capture a screenshot of the current design.",
+    "Invoke the critic in a fresh context with only the screenshot—no code, implementation details, or prior critiques.",
+    "Ask it to name the aesthetic the design is going for, imagine how a top design studio would execute that aesthetic, then outline the biggest gaps.",
+    "Require a score out of 10 against that studio-level bar.",
+    "Stop only when the critic independently scores ≥9/10. Do not put that threshold in the critic prompt—keep scoring objective. Reuse the same critic prompt each iteration."
+  ],
+  "examplePrompts": [
+    "I want you to improve this design. To figure out what to focus on, use a strong subagent as a design critic.\n\nFollow this procedure at each iteration:\n\n- Capture a screenshot of the current design\n- Invoke the critic in a fresh context, with just the screenshot, not the code, implementation details, or earlier iterations/critiques\n- Ask it to evaluate the aesthetic that the design is going for, imagine how a top design studio would execute this aesthetic, then outline the biggest gaps\n- Lastly, it should provide a score out of 10 indicating how close the current design is to that studio-level quality bar\n\nProvide this guidance to the critic in its prompt:\n\n- It should think high-level about the overall structure and composition as well as look at the fine details\n- It should watch out for patterns that feel overdone, excessive, or otherwise obviously AI-generated, and penalize them\n- It should provide tight, specific feedback, not vague prose\n- It should be bold and opinionated, not rely on what’s safe or easy\n\nYour work is only complete when the critic independently deems it 9/10 or higher. Do not put that criterion in the critic prompt; keep it objective in its scoring. Use the same critic prompt each time."
+  ],
+  "tips": [
+    "Bad criteria: vague beauty judgments. OK: studio-bar framing. Great: rank against concrete example images.",
+    "Give moodboard / baseline images as quality anchors—not targets to copy.",
+    "Set stopping carefully or the critic never says “done” and tokens burn forever; try 1–2 iterations first.",
+    "Bigger models for critic taste; capable-but-cheaper models for implementation."
+  ],
+  "sourceUrls": [
+    "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world"
+  ],
+  "related": [
+    "image-generation",
+    "cut-elements",
+    "remove-ai-tells",
+    "seed-strings"
+  ],
+  "workedExamples": [
+    {
+      "title": "Seeded landings → individual identity",
+      "before": "Promising seeded pages still stuck in text-left / CTA / nav / graphic-right.",
+      "after": "Fresh-context critic on screenshots only, loop until ≥9/10 → each page keeps its aesthetic but gains distinct composition.",
+      "body": "Lenny: expensive critic for taste (<10% tokens in the example), cheaper model for grunt work. Stopping criterion stays outside the critic prompt. Cite: Lenny."
+    },
+    {
+      "title": "Criteria quality ladder",
+      "body": "Bad: “looks beautiful, not AI.” OK: studio-bar framing. Great: rank against concrete example images. Paraphrase from Lenny tips."
+    },
+    {
+      "title": "This catalog’s critic loops",
+      "body": "docs/CRITIC_LOOP.md records rounds scored against Lenny density + Stripe/Economist restraint—same pattern applied to the desk itself."
+    }
+  ],
+  "antiPatterns": [
+    "Letting the implementer score its own work while still seeing the code and sunk effort.",
+    "Putting the ≥9/10 stop rule inside the critic prompt (it inflates scores to finish).",
+    "Running endless loops with mushy criteria until tokens burn out."
+  ],
+  "checklist": [
+    "Critic sees screenshot only—fresh context, no code or prior critiques.",
+    "Same critic prompt reused each iteration.",
+    "Stop rule lives with the implementer, not inside the critic.",
+    "Tried 1–2 iterations before committing to a long loop.",
+    "Optional: baseline / moodboard images as quality anchors, not copy targets."
+  ],
+  "promptWhy": [
+    "Screenshot-only critic + studio-bar scoring + external stop rule creates an objective taste loop the implementer can’t game."
+  ],
+  "pairsWellWith": [
+    "cut-elements",
+    "remove-ai-tells",
+    "image-generation",
+    "seed-strings"
+  ]
+}

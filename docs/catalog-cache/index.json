@@ -1,0 +1,430 @@
+{
+  "name": "Design Catalog",
+  "description": "Letterpress study desk of AI design techniques (Anshu Chimala, Nate Parrott, Greg Huntoon). Public sources only; no endorsement.",
+  "baseUrl": "https://design-catalog-three.vercel.app",
+  "lastUpdated": "2026-09-15T07:33:01.367Z",
+  "techniqueCount": 24,
+  "designerCount": 4,
+  "sourceCount": 9,
+  "stages": [
+    {
+      "id": "Discover",
+      "techniqueCount": 8,
+      "techniqueSlugs": [
+        "seed-strings",
+        "ambitious-prompts",
+        "thinking-before-prompt",
+        "ten-options-then-remix",
+        "sketch-what-you-cant-describe",
+        "wireframe-first",
+        "tc-ebc-task",
+        "tc-ebc-context"
+      ]
+    },
+    {
+      "id": "Define",
+      "techniqueCount": 9,
+      "techniqueSlugs": [
+        "critic-subagents",
+        "image-generation",
+        "video-motion",
+        "specify-the-look",
+        "design-system-from-assets",
+        "give-real-context",
+        "make-it-alive",
+        "tc-ebc-elements",
+        "tc-ebc-behavior"
+      ]
+    },
+    {
+      "id": "Deliver",
+      "techniqueCount": 7,
+      "techniqueSlugs": [
+        "cut-elements",
+        "remove-ai-tells",
+        "hand-rewrite-copy",
+        "point-and-talk",
+        "last-mile-manual",
+        "keep-working-alongside",
+        "tc-ebc-constraints"
+      ]
+    }
+  ],
+  "designers": [
+    {
+      "slug": "anshu-chimala",
+      "name": "Anshu Chimala",
+      "status": "complete",
+      "techniqueCount": 8,
+      "url": "https://design-catalog-three.vercel.app/designers/anshu-chimala",
+      "json": "https://design-catalog-three.vercel.app/data/designers/anshu-chimala.json"
+    },
+    {
+      "slug": "greg-huntoon",
+      "name": "Greg Huntoon",
+      "status": "partial",
+      "techniqueCount": 5,
+      "url": "https://design-catalog-three.vercel.app/designers/greg-huntoon",
+      "json": "https://design-catalog-three.vercel.app/data/designers/greg-huntoon.json"
+    },
+    {
+      "slug": "nate-parrott",
+      "name": "Nate Parrott",
+      "status": "partial",
+      "techniqueCount": 11,
+      "url": "https://design-catalog-three.vercel.app/designers/nate-parrott",
+      "json": "https://design-catalog-three.vercel.app/data/designers/nate-parrott.json"
+    },
+    {
+      "slug": "brandon-theriot",
+      "name": "Brandon Theriot",
+      "status": "curator",
+      "techniqueCount": 0,
+      "url": "https://design-catalog-three.vercel.app/designers/brandon-theriot",
+      "json": "https://design-catalog-three.vercel.app/data/designers/brandon-theriot.json"
+    }
+  ],
+  "techniques": [
+    {
+      "slug": "seed-strings",
+      "number": 1,
+      "title": "Use seed strings to inject variety",
+      "stage": "Discover",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/seed-strings",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/seed-strings.json"
+    },
+    {
+      "slug": "ambitious-prompts",
+      "number": 2,
+      "title": "Be much more ambitious with your prompts",
+      "stage": "Discover",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/ambitious-prompts",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/ambitious-prompts.json"
+    },
+    {
+      "slug": "critic-subagents",
+      "number": 3,
+      "title": "Create positive feedback loops with subagents",
+      "stage": "Define",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/critic-subagents",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/critic-subagents.json"
+    },
+    {
+      "slug": "image-generation",
+      "number": 4,
+      "title": "Use image generation to enrich designs",
+      "stage": "Define",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/image-generation",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/image-generation.json"
+    },
+    {
+      "slug": "video-motion",
+      "number": 5,
+      "title": "For more advanced motion, use video generation",
+      "stage": "Define",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/video-motion",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/video-motion.json"
+    },
+    {
+      "slug": "cut-elements",
+      "number": 6,
+      "title": "Cut out elements that don’t add value",
+      "stage": "Deliver",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/cut-elements",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/cut-elements.json"
+    },
+    {
+      "slug": "remove-ai-tells",
+      "number": 7,
+      "title": "Remove AI tells",
+      "stage": "Deliver",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/remove-ai-tells",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/remove-ai-tells.json"
+    },
+    {
+      "slug": "hand-rewrite-copy",
+      "number": 8,
+      "title": "Rewrite copy by hand",
+      "stage": "Deliver",
+      "designerSlug": "anshu-chimala",
+      "designerName": "Anshu Chimala",
+      "url": "https://design-catalog-three.vercel.app/techniques/hand-rewrite-copy",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/hand-rewrite-copy.json"
+    },
+    {
+      "slug": "thinking-before-prompt",
+      "number": 9,
+      "title": "Do the thinking before you prompt",
+      "stage": "Discover",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/thinking-before-prompt",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/thinking-before-prompt.json"
+    },
+    {
+      "slug": "specify-the-look",
+      "number": 10,
+      "title": "Tell Claude what it should look like",
+      "stage": "Define",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/specify-the-look",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/specify-the-look.json"
+    },
+    {
+      "slug": "design-system-from-assets",
+      "number": 11,
+      "title": "Turn recurring work into a design system",
+      "stage": "Define",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/design-system-from-assets",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/design-system-from-assets.json"
+    },
+    {
+      "slug": "ten-options-then-remix",
+      "number": 12,
+      "title": "Ask for ten options, then remix",
+      "stage": "Discover",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/ten-options-then-remix",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/ten-options-then-remix.json"
+    },
+    {
+      "slug": "sketch-what-you-cant-describe",
+      "number": 13,
+      "title": "Sketch what you can’t describe",
+      "stage": "Discover",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/sketch-what-you-cant-describe",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/sketch-what-you-cant-describe.json"
+    },
+    {
+      "slug": "point-and-talk",
+      "number": 14,
+      "title": "Point and talk",
+      "stage": "Deliver",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/point-and-talk",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/point-and-talk.json"
+    },
+    {
+      "slug": "wireframe-first",
+      "number": 15,
+      "title": "Wireframe first when fidelity doesn’t matter",
+      "stage": "Discover",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/wireframe-first",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/wireframe-first.json"
+    },
+    {
+      "slug": "last-mile-manual",
+      "number": 16,
+      "title": "Make the last mile manual",
+      "stage": "Deliver",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/last-mile-manual",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/last-mile-manual.json"
+    },
+    {
+      "slug": "give-real-context",
+      "number": 17,
+      "title": "Give Claude your real context",
+      "stage": "Define",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/give-real-context",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/give-real-context.json"
+    },
+    {
+      "slug": "keep-working-alongside",
+      "number": 18,
+      "title": "Keep working alongside Claude",
+      "stage": "Deliver",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/keep-working-alongside",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/keep-working-alongside.json"
+    },
+    {
+      "slug": "make-it-alive",
+      "number": 19,
+      "title": "Make it alive",
+      "stage": "Define",
+      "designerSlug": "nate-parrott",
+      "designerName": "Nate Parrott",
+      "url": "https://design-catalog-three.vercel.app/techniques/make-it-alive",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/make-it-alive.json"
+    },
+    {
+      "slug": "tc-ebc-task",
+      "number": 20,
+      "title": "TC-EBC · Task",
+      "stage": "Discover",
+      "designerSlug": "greg-huntoon",
+      "designerName": "Greg Huntoon",
+      "url": "https://design-catalog-three.vercel.app/techniques/tc-ebc-task",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/tc-ebc-task.json"
+    },
+    {
+      "slug": "tc-ebc-context",
+      "number": 21,
+      "title": "TC-EBC · Context",
+      "stage": "Discover",
+      "designerSlug": "greg-huntoon",
+      "designerName": "Greg Huntoon",
+      "url": "https://design-catalog-three.vercel.app/techniques/tc-ebc-context",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/tc-ebc-context.json"
+    },
+    {
+      "slug": "tc-ebc-elements",
+      "number": 22,
+      "title": "TC-EBC · Elements",
+      "stage": "Define",
+      "designerSlug": "greg-huntoon",
+      "designerName": "Greg Huntoon",
+      "url": "https://design-catalog-three.vercel.app/techniques/tc-ebc-elements",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/tc-ebc-elements.json"
+    },
+    {
+      "slug": "tc-ebc-behavior",
+      "number": 23,
+      "title": "TC-EBC · Behavior",
+      "stage": "Define",
+      "designerSlug": "greg-huntoon",
+      "designerName": "Greg Huntoon",
+      "url": "https://design-catalog-three.vercel.app/techniques/tc-ebc-behavior",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/tc-ebc-behavior.json"
+    },
+    {
+      "slug": "tc-ebc-constraints",
+      "number": 24,
+      "title": "TC-EBC · Constraints",
+      "stage": "Deliver",
+      "designerSlug": "greg-huntoon",
+      "designerName": "Greg Huntoon",
+      "url": "https://design-catalog-three.vercel.app/techniques/tc-ebc-constraints",
+      "json": "https://design-catalog-three.vercel.app/data/techniques/tc-ebc-constraints.json"
+    }
+  ],
+  "routes": {
+    "human": {
+      "home": "https://design-catalog-three.vercel.app/",
+      "techniques": "https://design-catalog-three.vercel.app/techniques",
+      "prompts": "https://design-catalog-three.vercel.app/prompts",
+      "compare": "https://design-catalog-three.vercel.app/compare",
+      "designers": "https://design-catalog-three.vercel.app/designers",
+      "sources": "https://design-catalog-three.vercel.app/sources",
+      "agents": "https://design-catalog-three.vercel.app/agents",
+      "about": "https://design-catalog-three.vercel.app/about",
+      "motion": "https://design-catalog-three.vercel.app/motion"
+    },
+    "machine": {
+      "llmsTxt": "https://design-catalog-three.vercel.app/llms.txt",
+      "llmsFullTxt": "https://design-catalog-three.vercel.app/llms-full.txt",
+      "index": "https://design-catalog-three.vercel.app/data/index.json",
+      "techniques": "https://design-catalog-three.vercel.app/data/techniques.json",
+      "designers": "https://design-catalog-three.vercel.app/data/designers.json",
+      "prompts": "https://design-catalog-three.vercel.app/data/prompts.json",
+      "sources": "https://design-catalog-three.vercel.app/data/sources.json",
+      "techniqueSchema": "https://design-catalog-three.vercel.app/schema/technique.schema.json",
+      "designerSchema": "https://design-catalog-three.vercel.app/schema/designer.schema.json",
+      "forAgentsMd": "https://raw.githubusercontent.com/Btheriot83/design-catalog/main/docs/FOR_AGENTS.md",
+      "api": {
+        "index": "https://design-catalog-three.vercel.app/api/index",
+        "techniques": "https://design-catalog-three.vercel.app/api/techniques",
+        "designers": "https://design-catalog-three.vercel.app/api/designers",
+        "prompts": "https://design-catalog-three.vercel.app/api/prompts",
+        "sources": "https://design-catalog-three.vercel.app/api/sources"
+      }
+    }
+  },
+  "anshuMapping": {
+    "note": "Build Games Phase A runs Anshu techniques 1–8 once per app; artifacts DISCOVER.md / DEFINE.md / DELIVER.md.",
+    "techniques": [
+      {
+        "number": 1,
+        "slug": "seed-strings",
+        "stage": "Discover",
+        "artifact": "docs/DISCOVER.md"
+      },
+      {
+        "number": 2,
+        "slug": "ambitious-prompts",
+        "stage": "Discover",
+        "artifact": "docs/DISCOVER.md"
+      },
+      {
+        "number": 3,
+        "slug": "critic-subagents",
+        "stage": "Define",
+        "artifact": "docs/DEFINE.md"
+      },
+      {
+        "number": 4,
+        "slug": "image-generation",
+        "stage": "Define",
+        "artifact": "docs/DEFINE.md"
+      },
+      {
+        "number": 5,
+        "slug": "video-motion",
+        "stage": "Define",
+        "artifact": "docs/DEFINE.md"
+      },
+      {
+        "number": 6,
+        "slug": "cut-elements",
+        "stage": "Deliver",
+        "artifact": "docs/DELIVER.md"
+      },
+      {
+        "number": 7,
+        "slug": "remove-ai-tells",
+        "stage": "Deliver",
+        "artifact": "docs/DELIVER.md"
+      },
+      {
+        "number": 8,
+        "slug": "hand-rewrite-copy",
+        "stage": "Deliver",
+        "artifact": "docs/DELIVER.md"
+      }
+    ]
+  },
+  "canonicalApps": {
+    "tileboard": {
+      "name": "Tileboard",
+      "job": "Household chore PWA (Build Games stand-in for tody)",
+      "live": "https://buildgames-tody.vercel.app",
+      "original": "https://todyapp.com/",
+      "improvementPath": "Full Anshu 1–8 reseed (DISCOVER→DEFINE→DELIVER) then ≤25 beat-the-original loops with spottable deltas.",
+      "catalog": {
+        "fieldGuide": "https://design-catalog-three.vercel.app/compare",
+        "prompts": "https://design-catalog-three.vercel.app/prompts",
+        "techniques": "https://design-catalog-three.vercel.app/techniques",
+        "anshu": "https://design-catalog-three.vercel.app/designers/anshu-chimala"
+      }
+    }
+  },
+  "disclaimer": "Independent project. Public sources only. No affiliation or endorsement implied by any citation."
+}

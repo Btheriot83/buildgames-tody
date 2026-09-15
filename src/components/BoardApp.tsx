@@ -103,7 +103,7 @@ export function BoardApp() {
       refresh(next);
       setJustDone(true);
       setTimeout(() => setJustDone(false), 1200);
-      toast(`Magnet slapped — ${activeMember.name}`);
+      toast(`Checked off — ${activeMember.name}`);
     } catch (e) {
       setExiting((prev) => {
         const n = new Set(prev);
@@ -153,7 +153,7 @@ export function BoardApp() {
     refresh(next);
     setAddTitle("");
     setShowAdd(false);
-    toast("Stuck on the fridge");
+    toast("Added to the list");
   }
 
   async function addMember() {
@@ -190,7 +190,7 @@ export function BoardApp() {
       });
     }
     refresh(h);
-    toast(`Stuck ${chores.length} new chores on the fridge`);
+    toast(`Added ${chores.length} chores`);
   }
 
   async function exportJson() {
@@ -265,7 +265,7 @@ export function BoardApp() {
           </div>
         </div>
         <p className="eyebrow" style={{ marginTop: "1rem" }}>
-          Opening the fridge…
+          Opening the list…
         </p>
       </main>
     );
@@ -291,11 +291,6 @@ export function BoardApp() {
 
   return (
     <>
-      <div className="magnet-tape" aria-hidden>
-        <span>Fridge Magnet Board</span>
-        <span>Today</span>
-        <span>Slap magnet</span>
-      </div>
       {toastNode}
       <StampMotion play={justDone} />
       <header
@@ -312,7 +307,7 @@ export function BoardApp() {
           }}
         >
           <div className="billboard-ledger">
-            <p className="eyebrow">Fridge Magnet Board · Tileboard</p>
+            <p className="eyebrow">Cool Letterpress Checklist · Tileboard</p>
             <div className="t-stagger is-shown">
               <h1 className="font-display t-stagger-line">
                 {board.household.name}
@@ -326,7 +321,7 @@ export function BoardApp() {
                   fontSize: "1.05rem",
                 }}
               >
-                Due on the fridge. Slap the magnet — done.
+                What’s due in this house today.
               </p>
             </div>
           </div>
@@ -390,12 +385,13 @@ export function BoardApp() {
               <div className="t-skel is-revealed">
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
-                    <p className="job-verb">Today → slap complete</p>
+                    <p className="job-verb">Today → check complete</p>
                     <p className="job-hint">
-                      Due today. Slap the tomato magnet. Residue wipes.
+                      Open Due today. Press the check.
                     </p>
                     <span className="job-count">
-                      <NumberPop value={todayDue.length} /> due
+                      <NumberPop value={todayDue.length} />
+                      <small>due</small>
                     </span>
                   </div>
                   <div
@@ -418,15 +414,12 @@ export function BoardApp() {
                         <h2 className="section-title">
                           Due today
                         </h2>
-                        <span className="eyebrow">
-                          <NumberPop value={todayDue.length} /> due
-                        </span>
                       </div>
                       {todayDue.length === 0 ? (
                         <div className="tile empty-quiet">
                           <img
-                            src="/art/empty-fridge.png"
-                            alt="Empty fridge door with magnets — quiet chore board"
+                            src="/art/empty-checklist.png"
+                            alt="Empty letterpress checklist — nothing due"
                             width={280}
                             height={280}
                           />
@@ -434,11 +427,21 @@ export function BoardApp() {
                             className="section-title"
                             style={{ fontSize: "1.35rem", margin: 0 }}
                           >
-                            Fridge is clear.
+                            Nothing due.
                           </p>
-                          <p style={{ color: "var(--ink-mute)", marginBottom: 0 }}>
-                            Nothing due. Stick a chore — or plan a room.
+                          <p style={{ color: "var(--ink-mute)", marginBottom: "1rem" }}>
+                            Add a chore — or plan a room.
                           </p>
+                          <div className="empty-quiet-actions">
+                            <button
+                              type="button"
+                              className="btn btn-clay"
+                              onClick={() => setShowAdd(true)}
+                            >
+                              Add a chore
+                            </button>
+                            <PlanPanel onAccept={acceptPlan} />
+                          </div>
                         </div>
                       ) : (
                         <ul className="today-list">
@@ -519,11 +522,11 @@ export function BoardApp() {
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Who’s on the fridge
+                        Who’s checking
                       </h2>
                       <p className="eyebrow">Invite · {board.household.invite_code}</p>
                       <p style={{ color: "var(--ink-mute)", fontSize: "0.88rem", margin: "0.35rem 0 0.6rem" }}>
-                        Pick yourself. Slap magnets on what’s due.
+                        Pick yourself. Check what’s due.
                       </p>
                       <ul
                         style={{
@@ -642,7 +645,7 @@ export function BoardApp() {
                               setAddTitle(e.target.value);
                               setAddError(false);
                             }}
-                            placeholder="e.g. Wipe fridge"
+                            placeholder="e.g. Wipe counters"
                           />
                           <label className="label" style={{ marginTop: "0.6rem" }}>
                             Room
@@ -682,7 +685,7 @@ export function BoardApp() {
                             style={{ marginTop: "0.75rem", width: "100%" }}
                             onClick={() => void addChore()}
                           >
-                            Stick chore
+                            Add chore
                           </button>
                         </div>
                       )}
@@ -774,7 +777,7 @@ export function BoardApp() {
                   Shared history
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Who stamped what. Nothing rewritten in the dark.
+                  Who checked what. Nothing rewritten in the dark.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
@@ -812,7 +815,7 @@ export function BoardApp() {
                   ))}
                   {board.history.length === 0 && (
                     <li style={{ color: "var(--ink-mute)" }}>
-                      Empty log. Slap a magnet to begin.
+                      Empty log. Check something off to begin.
                     </li>
                   )}
                 </ul>
@@ -880,17 +883,8 @@ export function BoardApp() {
         </div>
       </main>
 
-      <footer
-        className="shell no-print"
-        style={{
-          paddingBottom: "2rem",
-          color: "var(--ink-mute)",
-          fontSize: "0.85rem",
-        }}
-      >
-        <p>
-          Tileboard. Slap one magnet at a time. Best streak: <NumberPop value={board.streak.best} />.
-        </p>
+      <footer className="shell no-print" style={{ padding: "1.25rem 0 2rem", color: "var(--ink-mute)", fontSize: "0.8rem" }}>
+        <p>Tileboard · Cool Letterpress Checklist</p>
       </footer>
     </>
   );

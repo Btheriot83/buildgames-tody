@@ -21,15 +21,15 @@ const plex = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tileboard — Today chores → stamp complete",
+  title: "Tileboard — What’s due today",
   description:
-    "Fridge magnet chore board: see what's due today, slap the magnet to stamp complete. Optional AI room plan. Local-first.",
+    "Cool letterpress checklist: see what’s due in this house today, press the check to complete. Optional AI room plan. Local-first.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Tileboard" },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#d63b2c",
+  themeColor: "#3d4f63",
   width: "device-width",
   initialScale: 1,
 };
