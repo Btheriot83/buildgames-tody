@@ -94,3 +94,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Plan opens as kraft panel (panel-reveal); original has no AI plan sheet.
 - commit: 44c6577
 - transitions: panel-reveal (.t-panel-slide data-open) on Plan a room
+
+## r13 — contrast
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r13-after-contrast.png
+- verdict: Tab pill harder ink edge toward target; original uses soft iOS segments.
+- commit: 8c366d8
+- transitions: tabs-sliding (.t-tabs / .t-tabs-pill) on Today/Rooms/History/Stuff

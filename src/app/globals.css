@@ -980,3 +980,14 @@ body {
   box-shadow: 4px 4px 0 rgba(47,95,158,0.18) !important;
 }
 .t-panel-slide[data-open="true"] { display: block; }
+
+
+/* r13 — contrast: tabs active like dream-target chips */
+.t-tabs { padding: 4px !important; background: #e6eaee !important; }
+.t-tabs-pill {
+  background: #fff !important;
+  border: 2px solid var(--ink) !important;
+  box-shadow: 2px 2px 0 rgba(26,31,36,0.16) !important;
+}
+.t-tab { font-weight: 700 !important; font-size: 0.95rem !important; }
+.t-tab[aria-selected="true"] { color: var(--ink) !important; }
