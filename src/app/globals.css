@@ -1609,3 +1609,20 @@ body {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
+
+
+/* r1 — fonts: Due / chore optical toward dream-target */
+.today-list-col .section-title {
+  font-size: 1.32rem !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em !important;
+}
+.chore-title {
+  font-size: 1.08rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+.job-strip .job-verb {
+  font-size: clamp(1.15rem, 2.3vw, 1.4rem) !important;
+  letter-spacing: -0.022em !important;
+}
