@@ -690,78 +690,87 @@ export function BoardApp() {
             )}
 
             {tab === "rooms" && (
-              <div style={{ display: "grid", gap: "1rem" }}>
-                {board.rooms.map((room) => {
-                  const items = board.due.filter((d) => d.roomId === room.id);
-                  return (
-                    <section
-                      key={room.id}
-                      className="tile room-card"
-                      style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
-                    >
-                      <h2 className="room-title" style={{ margin: 0 }}>
-                        {room.name}
-                      </h2>
-                      <ul
-                        style={{
-                          listStyle: "none",
-                          padding: 0,
-                          margin: 0,
-                          display: "grid",
-                          gap: "0.55rem",
-                        }}
+              <div className="rooms-elevate">
+                <div className="job-strip rooms-job">
+                  <div className="job-strip-main">
+                    <p className="job-verb">Rooms as plates</p>
+                    <p className="job-hint">
+                      Cleanliness at a glance — shared house, no scream.
+                    </p>
+                  </div>
+                  <span className="job-count" aria-label={`${board.rooms.length} rooms`}>
+                    <NumberPop value={board.rooms.length} />
+                    <small>rooms</small>
+                  </span>
+                </div>
+                <ul className="room-tile-grid">
+                  {board.rooms.map((room) => {
+                    const items = board.due.filter((d) => d.roomId === room.id);
+                    const overdueN = items.filter((d) => d.status === "overdue").length;
+                    const dueN = items.filter((d) => d.status === "due").length;
+                    const hotN = overdueN + dueN;
+                    const avgDirt =
+                      items.length === 0
+                        ? 0
+                        : items.reduce((s, d) => s + d.dirt, 0) / items.length;
+                    const mark =
+                      overdueN > 0 ? "overdue" : dueN > 0 ? "due" : items.length ? "ok" : "idle";
+                    return (
+                      <li
+                        key={room.id}
+                        className={`room-tile${hotN > 0 ? " is-hot" : ""}`}
+                        data-mark={mark}
                       >
-                        {items.map((d) => (
-                          <li
-                            key={d.choreId}
-                            style={{
-                              display: "grid",
-                              gap: "0.3rem",
-                              borderTop: "1px solid var(--rule)",
-                              paddingTop: "0.5rem",
-                            }}
+                        <div className="room-tile-top">
+                          <h2 className="room-tile-name">{room.name}</h2>
+                          <span
+                            className={`room-tile-mark${mark !== "idle" ? ` is-${mark}` : ""}`}
+                            title={
+                              overdueN
+                                ? `${overdueN} overdue`
+                                : dueN
+                                  ? `${dueN} due`
+                                  : "Clear"
+                            }
+                            aria-hidden
+                          />
+                        </div>
+                        <p className="room-tile-meta">
+                          {items.length === 0
+                            ? "No chores yet"
+                            : hotN > 0
+                              ? `${hotN} need a check`
+                              : `${items.length} on the list`}
+                        </p>
+                        <div className="room-tile-pressure">
+                          <div
+                            className={`dirt-meter dirt-${
+                              overdueN ? "overdue" : dueN ? "due" : "ok"
+                            }`}
                           >
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "space-between",
-                                gap: "0.5rem",
-                              }}
-                            >
-                              <span>{d.title}</span>
-                              <span className={`status-pill status-${d.status}`}>
-                                {d.status}
-                              </span>
+                            <div className="dirt-meter-track">
+                              {Array.from({ length: 6 }).map((_, i) => (
+                                <span
+                                  key={i}
+                                  className={`dirt-seg${
+                                    i < Math.round(avgDirt * 6) ? " is-on" : ""
+                                  }`}
+                                />
+                              ))}
                             </div>
-                            <div
-                              className={`dirt-meter dirt-${
-                                d.status === "overdue" || d.status === "due"
-                                  ? d.status
-                                  : "ok"
-                              }`}
-                            >
-                              <div className="dirt-meter-track">
-                                {Array.from({ length: 6 }).map((_, i) => (
-                                  <span
-                                    key={i}
-                                    className={`dirt-seg${
-                                      i < Math.round(d.dirt * 6) ? " is-on" : ""
-                                    }`}
-                                  />
-                                ))}
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                        {items.length === 0 && (
-                          <li style={{ color: "var(--ink-mute)" }}>
-                            No chores in this room yet.
-                          </li>
-                        )}
-                      </ul>
-                    </section>
-                  );
-                })}
+                          </div>
+                          <p className="room-tile-due-count">
+                            {overdueN > 0
+                              ? `Overdue · ${overdueN}`
+                              : dueN > 0
+                                ? `Due · ${dueN}`
+                                : "Clear"}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             )}
 

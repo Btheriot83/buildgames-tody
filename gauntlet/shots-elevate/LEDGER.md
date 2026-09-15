@@ -1,0 +1,8 @@
+# Elevate ledger — Tileboard vs Sweepy / Tody
+
+Identity LOCKED: Cool Letterpress Checklist. Flat materials. No tomato scream / Fridge Magnet.
+
+| Loop | Focus | Technique | Shot | Visible ~3s |
+|------|-------|-----------|------|-------------|
+| 0 | baseline | — | elevate0-baseline.png | black overdue invert scream |
+| 1 | quieter overdue ink plates + room-as-tile grid | specify-the-look + design-system | elevate1-quiet-plates.png, elevate1-rooms-grid.png | outline overdue · Nd; 3-col room plates |
