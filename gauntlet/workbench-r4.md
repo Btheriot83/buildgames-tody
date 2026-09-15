@@ -66,3 +66,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Residue segments read pressure like Tody bars; flat fills only.
 - commit: 0ccbf69
 - transitions: (none)
+
+## r9 — bar-gap
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r9-after-bar-gap.png
+- verdict: Materials demoted so Due owns fold — closer to dream-target priority.
+- commit: a4688f6
+- transitions: (none)

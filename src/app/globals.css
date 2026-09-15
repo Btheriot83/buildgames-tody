@@ -946,3 +946,10 @@ body {
 .dirt-seg { background: rgba(26,31,36,0.16) !important; border: 1px solid rgba(26,31,36,0.14) !important; border-radius: 1px !important; }
 .dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
 .dirt-due .dirt-seg.is-on { background: #c9843a !important; }
+
+
+/* r9 — bar gap/dream: compact materials row */
+.materials-row { opacity: 0.88; transform: scale(0.98); transform-origin: left center; margin-bottom: 0.35rem !important; }
+.fridge-plate img { max-height: 56px !important; }
+.magnet-rail { padding: 0.35rem !important; }
+.magnet-rail img { width: 34px !important; height: 34px !important; }
