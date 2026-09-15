@@ -161,3 +161,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Quieter ink offsets kill comic-brutalist loudness; original still smoother marketing polish.
 - commit: 6285d1d
 - transitions: (none)
+
+## r22 — beauty-magnet
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r22-after-beauty-magnet.png
+- verdict: Magnet reads as enamel disc (inset rings, flat fills); closer to dream slap affordance vs bar list checkboxes.
+- commit: bfe3ed0
+- transitions: (none)
