@@ -505,11 +505,11 @@ export function BoardApp() {
                                   style={{ opacity: 0.85 }}
                                 >
                                   <div className="dirt-meter-track">
-                                    {Array.from({ length: 8 }).map((_, i) => (
+                                    {Array.from({ length: 6 }).map((_, i) => (
                                       <span
                                         key={i}
                                         className={`dirt-seg${
-                                          i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                          i < Math.round(d.dirt * 6) ? " is-on" : ""
                                         }`}
                                       />
                                     ))}

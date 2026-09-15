@@ -24,3 +24,4 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 | beat15 | Overdue ink pills + job-strip ink rule | beat15-contrast.png | Spottable contrast |
 | beat16 | Check plate + ghost ink edge | beat16-buttons.png | Spottable buttons |
 | beat17 | Cut aside lede + footer brand | beat17-cut.png | Spottable cut |
+| beat18 | Dirt bar height/gaps 6-seg | beat18-bargap.png | Spottable bar-gap |

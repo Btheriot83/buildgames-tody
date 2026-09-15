@@ -1,6 +1,6 @@
 "use client";
 
-/** Segmented residue meter — Fridge Magnet Board / Tody-like physical dueness. */
+/** Segmented residue meter — Cool letterpress segmented pressure — Tody-adjacent bar gaps. */
 export function DirtMeter({
   dirt,
   status,
@@ -10,7 +10,7 @@ export function DirtMeter({
   status: "due" | "overdue" | "ok" | "fresh";
   wiping?: boolean;
 }) {
-  const segments = 8;
+  const segments = 6;
   const filled = Math.round(Math.max(0, Math.min(1, dirt)) * segments);
   const tone =
     status === "overdue" ? "overdue" : status === "due" ? "due" : "ok";

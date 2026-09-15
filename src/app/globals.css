@@ -803,3 +803,27 @@ details .btn { border-radius: 2px; }
 /* beat17 — cut: quieter aside, no footer brand repeat */
 .today-aside .section-title { margin-bottom: 0.35rem !important; }
 .aside-actions { margin-top: 0.55rem !important; }
+
+
+/* beat18 — bar-gap: Tody-adjacent segmented pressure */
+.dirt-meter-track {
+  height: 11px !important;
+  gap: 3px !important;
+}
+.dirt-seg {
+  border-radius: 0 !important;
+  border: none !important;
+  background: rgba(34, 28, 36, 0.1) !important;
+}
+.dirt-seg.is-on {
+  transform: none !important;
+}
+.dirt-overdue .dirt-seg.is-on,
+.dirt-due .dirt-seg.is-on {
+  background: var(--ink) !important;
+}
+.dirt-ok .dirt-seg.is-on {
+  background: var(--done) !important;
+}
+.dirt-meter-fill { display: none !important; } /* kill soft continuous wash */
+.chore-tile .dirt-meter { margin-top: 0.45rem !important; }
