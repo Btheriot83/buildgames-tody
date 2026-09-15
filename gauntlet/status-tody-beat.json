@@ -6,7 +6,7 @@
   "demo_url": "https://buildgames-tody.vercel.app",
   "bar": "https://todyapp.com/",
   "path": "/workspace/build-games/apps/tody",
-  "pr": null,
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/7",
   "branch": "feat/beat15-25",
   "doNotMessageBrandon": true,
   "catalog": {
@@ -90,9 +90,13 @@
   },
   "live_smoke": {
     "url": "https://buildgames-tody.vercel.app/",
-    "http": null,
-    "at_pt": "2026-09-15 12:57 AM PT"
+    "http": 200,
+    "vercel": "READY",
+    "productionSha": "b9acf6b",
+    "deployment": "https://buildgames-tody-ffpgc0a90-brandon-theriots-projects.vercel.app",
+    "at_pt": "2026-09-15 1:00 AM PT"
   },
   "status": "beats_complete_mixed",
-  "next": "Cap 25 reached with MIXED verdict; no further beat loops unless Brandon reopens"
+  "next": "Cap 25 reached with MIXED verdict; no further beat loops unless Brandon reopens",
+  "mergeCommit": "b9acf6b931b4e46ddb9d54382cb244779416ecd0"
 }
