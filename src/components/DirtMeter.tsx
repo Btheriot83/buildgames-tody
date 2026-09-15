@@ -1,6 +1,6 @@
 "use client";
 
-/** Segmented dirt pressure meter — Bathhouse Ledger / Tody-like physical dueness. */
+/** Segmented residue meter — Fridge Magnet Board / Tody-like physical dueness. */
 export function DirtMeter({
   dirt,
   status,
@@ -23,7 +23,7 @@ export function DirtMeter({
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={pct}
-      aria-label="Dirt pressure"
+      aria-label="Residue pressure"
       style={{ ["--dirt" as string]: String(dirt) }}
     >
       <div className="dirt-meter-fill" style={{ width: `${pct}%` }} />

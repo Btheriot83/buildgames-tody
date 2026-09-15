@@ -80,7 +80,7 @@ export function PlanPanel({ onAccept }: Props) {
         rows={3}
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
-        placeholder="Small bath with glass shower, pedestal sink, no window fan, two kids sharing…"
+        placeholder="Galley kitchen with island, dog bowls by the back door, sticky tile near the fridge…"
         style={{ minHeight: 88, resize: "vertical" }}
       />
       <button
@@ -113,7 +113,7 @@ export function PlanPanel({ onAccept }: Props) {
             style={{ width: "100%", marginTop: "0.75rem" }}
             onClick={() => void onAccept(plan.chores, plan.roomName)}
           >
-            Stamp {plan.chores.length} tiles onto the board
+            Stick {plan.chores.length} chores on the fridge
           </button>
         </div>
       )}

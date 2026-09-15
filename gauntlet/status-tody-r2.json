@@ -1,0 +1,74 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "demo_url": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "baselineScore": 3.8,
+  "reseed": true,
+  "reseedReason": "Brandon selective identity reseed \u2014 Bathhouse failed \u22643s chore read",
+  "phaseA": {
+    "done": true,
+    "reseeded": true,
+    "techniquesDone": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "identityPath": "docs/IDENTITY.md",
+    "aesthetic": "Fridge Magnet Board",
+    "priorAesthetic": "Bathhouse Ledger",
+    "lennyDiscoverPath": "docs/DISCOVER.md",
+    "lennyDefinePath": "docs/DEFINE.md",
+    "lennyDeliverPath": "docs/DELIVER.md",
+    "imagesGenerated": [
+      "public/art/empty-fridge.png",
+      "public/art/enamel-wash.png",
+      "public/art/magnet-beat-1.png",
+      "public/art/magnet-beat-2.png",
+      "public/art/magnet-beat-3.png"
+    ],
+    "videoOrMotionPath": "src/components/StampMotion.tsx + ChoreTile magnet slap",
+    "criticFreshContext": true,
+    "copyHandRewritten": true
+  },
+  "phaseB2": {
+    "roundsCompleted": 10,
+    "roundsTarget": 10,
+    "workbench": "gauntlet/workbench-r2.md",
+    "identityFrozen": true,
+    "jobClarity": "Today chores \u2192 stamp complete (job strip + tomato magnet)",
+    "realData": "Camelback bungalow household_v2 \u2014 no SAMPLE",
+    "visibleGate": "pass",
+    "hardBarApplied": true
+  },
+  "ai": {
+    "route": "/api/plan",
+    "env": [
+      "BUILD_GAMES_LLM_API_KEY",
+      "XAI_API_KEY",
+      "OPENAI_API_KEY",
+      "ANTHROPIC_* fallback"
+    ]
+  },
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "local": "http://127.0.0.1:3031/",
+    "core_loop": "magnet stamp complete + residue meters + StampMotion",
+    "at_pt": "pending redeploy"
+  },
+  "status": "pending_deploy",
+  "doNotMessageBrandon": true,
+  "hardBar": {
+    "gradients": "stripped",
+    "glassBlur": "killed",
+    "glow": "killed",
+    "waterShader": "removed",
+    "source": "Brandon Inkwell review \u2192 all apps"
+  }
+}

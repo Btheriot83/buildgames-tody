@@ -16,7 +16,6 @@ import {
   type LocalHousehold,
 } from "@/lib/local-board";
 import type { PlannedChore } from "@/lib/plan-chores";
-import { WaterShader } from "./WaterShader";
 import { useToast } from "./Toast";
 import { SlidingTabs } from "./SlidingTabs";
 import { SuccessCheck } from "./SuccessCheck";
@@ -104,7 +103,7 @@ export function BoardApp() {
       refresh(next);
       setJustDone(true);
       setTimeout(() => setJustDone(false), 1200);
-      toast(`Done — ${activeMember.name}`);
+      toast(`Magnet slapped — ${activeMember.name}`);
     } catch (e) {
       setExiting((prev) => {
         const n = new Set(prev);
@@ -154,7 +153,7 @@ export function BoardApp() {
     refresh(next);
     setAddTitle("");
     setShowAdd(false);
-    toast("Tile placed");
+    toast("Stuck on the fridge");
   }
 
   async function addMember() {
@@ -191,7 +190,7 @@ export function BoardApp() {
       });
     }
     refresh(h);
-    toast(`Stamped ${chores.length} new tiles onto the board`);
+    toast(`Stuck ${chores.length} new chores on the fridge`);
   }
 
   async function exportJson() {
@@ -266,7 +265,7 @@ export function BoardApp() {
           </div>
         </div>
         <p className="eyebrow" style={{ marginTop: "1rem" }}>
-          Laying tiles…
+          Loading the fridge board…
         </p>
       </main>
     );
@@ -292,13 +291,12 @@ export function BoardApp() {
 
   return (
     <>
-      <div className="bath-tape" aria-hidden>
-        <span>Bathhouse Ledger</span>
-        <span>Clay stamp</span>
-        <span>Dirt wipes clean</span>
-        <span>Ceramic tile</span>
+      <div className="magnet-tape" aria-hidden>
+        <span>Fridge Magnet Board</span>
+        <span>Today chores</span>
+        <span>Slap magnet</span>
+        <span>Done</span>
       </div>
-      <WaterShader />
       {toastNode}
       <StampMotion play={justDone} />
       <header
@@ -315,7 +313,7 @@ export function BoardApp() {
           }}
         >
           <div className="billboard-ledger">
-            <p className="eyebrow">Bathhouse Ledger · Tileboard</p>
+            <p className="eyebrow">Fridge Magnet Board · Tileboard</p>
             <div className="t-stagger is-shown">
               <h1 className="font-display t-stagger-line">
                 {board.household.name}
@@ -325,11 +323,11 @@ export function BoardApp() {
                 style={{
                   color: "var(--ink-soft)",
                   margin: "0.55rem 0 0",
-                  maxWidth: 460,
+                  maxWidth: 480,
                   fontSize: "1.05rem",
                 }}
               >
-                What’s due. Press the clay stamp. Dirt wipes clean.
+                What’s due on the fridge. Slap the magnet. Chore’s done.
               </p>
             </div>
           </div>
@@ -382,16 +380,16 @@ export function BoardApp() {
         </div>
       </header>
 
-      <div className="shell no-print" style={{ paddingBottom: "0.75rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "1rem", alignItems: "stretch" }}>
-          <figure className="ledger-plate" style={{ margin: 0 }}>
-            <img src="/art/ceramic-wash.png" alt="" style={{ maxHeight: 120, width: "100%", objectFit: "cover" }} />
-            <figcaption>Bathhouse Ledger — matte ceramic · sea-glass · clay stamp</figcaption>
+      <div className="shell no-print materials-row" style={{ paddingBottom: "0.65rem" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 200px", gap: "0.75rem", alignItems: "stretch" }}>
+          <figure className="fridge-plate">
+            <img src="/art/empty-fridge.png" alt="" />
+            <figcaption>Fridge Magnet Board — enamel · kraft · tomato magnet</figcaption>
           </figure>
-          <div className="stamp-rail" aria-hidden>
-            <img src="/art/stamp-beat-1.png" alt="" />
-            <img src="/art/stamp-beat-2.png" alt="" />
-            <img src="/art/stamp-beat-3.png" alt="" />
+          <div className="magnet-rail" aria-hidden>
+            <img src="/art/magnet-beat-1.png" alt="" />
+            <img src="/art/magnet-beat-2.png" alt="" />
+            <img src="/art/magnet-beat-3.png" alt="" />
           </div>
         </div>
       </div>
@@ -406,6 +404,15 @@ export function BoardApp() {
             {tab === "today" && (
               <div className="t-skel is-revealed">
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
+                  <div className="job-strip" role="status">
+                    <p className="job-verb">Today → stamp complete</p>
+                    <p className="job-hint">
+                      Open Due today. Slap the red magnet on a chore. Residue wipes clean.
+                    </p>
+                    <span className="job-count">
+                      <NumberPop value={todayDue.length} /> due
+                    </span>
+                  </div>
                   <div
                     className="today-grid"
                     style={{
@@ -427,7 +434,7 @@ export function BoardApp() {
                           className="font-display"
                           style={{ fontSize: "1.35rem", margin: 0 }}
                         >
-                          Due now
+                          Due today
                         </h2>
                         <span className="eyebrow">
                           <NumberPop value={todayDue.length} /> due
@@ -436,8 +443,8 @@ export function BoardApp() {
                       {todayDue.length === 0 ? (
                         <div className="tile empty-quiet">
                           <img
-                            src="/art/empty-quiet.png"
-                            alt="Folded linen on ceramic tiles — quiet board"
+                            src="/art/empty-fridge.png"
+                            alt="Empty fridge door with magnets — quiet chore board"
                             width={280}
                             height={280}
                           />
@@ -445,23 +452,30 @@ export function BoardApp() {
                             className="font-display"
                             style={{ fontSize: "1.45rem", margin: 0 }}
                           >
-                            All clear.
+                            Board’s clear.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: 0 }}>
-                            No overdue tiles. Put the cloth down — or describe a room to plan.
+                            Nothing due. Stick a new chore on the fridge — or describe a room to plan.
                           </p>
                         </div>
                       ) : (
                         <ul className="today-list">
-                          {todayDue.map((d) => (
+                          {todayDue.map((d) => {
+                            const chore = board.chores.find((c) => c.id === d.choreId);
+                            const assignee = board.members.find(
+                              (m) => m.id === chore?.assignee_id
+                            );
+                            return (
                             <ChoreTile
                               key={d.choreId}
                               due={d}
                               roomName={roomName(d.roomId)}
+                              assigneeName={assignee?.name ?? null}
                               busy={!!completing}
                               onComplete={complete}
                             />
-                          ))}
+                            );
+                          })}
                         </ul>
                       )}
 
@@ -524,11 +538,14 @@ export function BoardApp() {
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
                       <h2
                         className="font-display"
-                        style={{ fontSize: "1.2rem", marginTop: 0 }}
+                        style={{ fontSize: "1.05rem", marginTop: 0 }}
                       >
-                        Household
+                        Who’s stamping
                       </h2>
                       <p className="eyebrow">Invite · {board.household.invite_code}</p>
+                      <p style={{ color: "var(--ink-mute)", fontSize: "0.88rem", margin: "0.35rem 0 0.6rem" }}>
+                        Pick yourself, then slap magnets on Due today.
+                      </p>
                       <ul
                         style={{
                           listStyle: "none",
@@ -693,7 +710,7 @@ export function BoardApp() {
                             style={{ marginTop: "0.75rem", width: "100%" }}
                             onClick={() => void addChore()}
                           >
-                            Place tile
+                            Stick chore
                           </button>
                         </div>
                       )}
@@ -826,7 +843,7 @@ export function BoardApp() {
                   ))}
                   {board.history.length === 0 && (
                     <li style={{ color: "var(--ink-mute)" }}>
-                      Empty log. Stamp one tile to begin.
+                      Empty log. Slap a magnet to begin.
                     </li>
                   )}
                 </ul>
@@ -903,7 +920,7 @@ export function BoardApp() {
         }}
       >
         <p>
-          Tileboard. One stamp at a time. Best streak: <NumberPop value={board.streak.best} />.
+          Tileboard. Slap one magnet at a time. Best streak: <NumberPop value={board.streak.best} />.
         </p>
       </footer>
     </>

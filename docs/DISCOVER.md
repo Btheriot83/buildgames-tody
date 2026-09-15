@@ -1,60 +1,53 @@
-# Discover — Tileboard / Tody
+# Discover — Tileboard / Tody (RESEED)
 
-Generated: 2026-09-14 PT · Gauntlet Lenny/Anshu (not checklist theater)
+Generated: 2026-09-14 ~9:15 PM PT · Brandon allowed selective identity reseed · Phase A Lenny 1–8 restart
 
 ## Seed
 ```
-165ab287e2be3be18447ec31e7812cbbe366f213f0b2123dd1660952d7ce9806
+1e3483ddec6a78371c842abfbde1a423c746b6e9d71a361f3e434d15c479f2c4
 ```
-Derived offline via `openssl rand -hex 32`. **Not shown in UI.**
+Derived via `openssl rand -hex 32`. **Not shown in UI.**
 
 ### Subpattern reads
 | Slice | Read | Design pull |
 |-------|------|-------------|
-| `165a` / `b287` | deep tide ink + warm clay | sea-glass stamp vs terracotta press |
-| `e2be3be` | ceramic beige run | chalk tile field, matte not glass |
-| `18447ec` | teal→moss shift | dirt meter cool→hot without purple |
-| `31e7812` | industrial hex | stamped control, not soft pill SaaS |
-| `cbbe366` / `f213` | chalk dust / grit | wipe animation, grain texture |
-| `0b2123dd` | corridor rhythm | single Today column priority |
-| `1660952d` / `7ce9806` | quiet close | empty-state still life, not emoji blob |
+| `1e34` / `83dd` | tomato magnet / cool steel | primary stamp = red magnet slap |
+| `ec6a7837` | mustard | secondary magnet accent |
+| `1c842abf` | cobalt | room/member chip color |
+| `bde1a423` | kraft paper warm | chore card field |
+| `c746b6e9` | fridge white enamel | app ground |
+| `d71a361f` | charcoal sharpie | ink, titles |
+| `3e434d15` | mint magnet | success / wiped |
+| `c479f2c4` | cork clip shadow | header clip bar |
 
 ## Feel statement (sensory)
-Tileboard should feel like pressing a damp clay stamp onto a linen chore card in a bathhouse utility closet: cool ceramic under the thumb, a soft *thunk*, dirt segments wiping clean like soap film leaving porcelain. Not a productivity dashboard. Not Dusty-the-mascot carnival. One physical complete.
-
+Tileboard should feel like the chore board stuck on the fridge door: white enamel, kraft cards under colored magnets, a fat tomato-red magnet you slap to mark done. Dirt pressure like dry-erase residue wiping clean. Instantly reads as **household Today chores** — not a spa ledger, not SaaS.
 
 ## Broad idea list (Technique 2 — inspire only, then human steer)
-Asked for short high-level languages, then filtered by taste:
-
-1. Onsen utility closet clipboard
-2. Hotel housekeeper stamp book
-3. Porcelain dip-test strips (dirt as chemistry)
-4. Letterpress galley proof for chores
-5. Submarine ballast panel (too costume — reject)
-6. Greenhouse moisture meters
-7. Scout merit-badge sash (too cute — reject)
-8. Darkroom developing timers
-9. Train conductor punch tickets
-10. Ceramic studio glaze test tiles
-11. Ship’s daily standing orders
-12. Laundromat card-stamp machine
-13. Museum object condition report
-14. Climbing gym route tags
-15. Pharmacy amber vial labels (reject — clinical)
-
-**Taste notes:** Reject costume/cosplay (5,7), clinical (15), and soft wellness sage. Favor materials you can *hear*: stamp thunk, wipe of film on porcelain, chalk dust. Dirt as visible pressure beats gamified mascots.
+1. Fridge magnet chore board ← **picked**
+2. Kitchen clipboard with red clip
+3. Laundry card-stamp machine
+4. Cork pin board of chore slips
+5. Dry-erase wall calendar
+6. Scout merit sash (reject — cute)
+7. Hotel housekeeper stamp book (reject — hospitality costume)
+8. Porcelain bathhouse ledger (reject — prior identity; Brandon: drop bathhouse)
+9. Submarine ballast (reject — costume)
+10. Letterpress galley (reject — too print-shop)
 
 ## Direction briefs (2–3 bold)
 
-### A — "Bathhouse Ledger" (ambitious pick)
-Ceramic utility closet meets hotel housekeeper clipboard. Matte linen ground, sea-glass + clay only, Newsreader mark for the household name, Source Sans for the list. Dirt rises in 8 porcelain segments. Complete = thumb-press stamp → spring → wipe → dust flecks → tile exits. AI room plan is a side drawer, never the hero.
-References imagined: Japanese onsen utility tile photos; Ace Hotel housekeeper clipboard; Keep Talking and Nobody Explodes panel density without the panic.
+### A — Fridge Magnet Board (PICK)
+White enamel ground, kraft chore cards, tomato-red magnet as the complete control, cobalt/mustard member magnets, dirt as dry-erase residue segments. Job in ≤3s: see Due list → slap magnet → residue wipes. Voice: kitchen clipboard short.
 
-### B — "Industrial Panel" (discarded)
-Bakelite switches, engraved labels, amber lamps. Strong personality but fights mobile thumb targets and reads cosplay vs Tody’s calm home product. **Why cut:** core job is household Today, not submarine ballast.
+### B — Kitchen Clipboard
+Kraft board + spring clip header, checkbox stamps. Strong chore read but less playful than magnets; clip chrome can feel stationery-app.
 
-### C — "Soft Sunroom" (discarded)
-Sheer curtains, sage, rounded everything. Too close to vibe-coded wellness SaaS; Fraunces/sage cluster already overplayed in Build Games. **Why cut:** fails ANTI_SLOP human-taste test; softens the physical stamp.
+### C — Laundry Ledger
+Punch-card / laundromat stamp. Chore-adjacent but narrows the metaphor to one room.
 
-## Pick
-**A — Bathhouse Ledger.** Serves the one job (Today complete feels physical), clears purple/Inter/glass tells, and leaves room for real Imagine still-life empty states.
+## Pick + why
+**Fridge Magnet Board.** Screams household chores on sight. Magnet slap = physical complete (keeps stamp craft). Drops bathhouse metaphor entirely. Kitchen clipboard kept as secondary material language (kraft cards), not the world.
+
+## Discarded
+Bathhouse Ledger (prior freeze) — beautiful but failed ≤3s “this is chores” read; Brandon ordered reseed.

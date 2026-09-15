@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
  * Plays a short stamp→wipe→settle reel tied to the core job (not decorative loop spam).
  */
 const FRAMES = [
-  "/art/stamp-beat-1.png",
-  "/art/stamp-beat-2.png",
-  "/art/stamp-beat-3.png",
+  "/art/magnet-beat-1.png",
+  "/art/magnet-beat-2.png",
+  "/art/magnet-beat-3.png",
 ];
 
 export function StampMotion({ play }: { play: boolean }) {

@@ -62,10 +62,11 @@ export function ensureHousehold(db: AppDatabase): {
   if (existing) {
     return { householdId: existing.id, inviteCode: existing.invite_code };
   }
-  return seedSampleHousehold(db);
+  return seedHouseholdBoard(db);
 }
 
-export function seedSampleHousehold(db: AppDatabase): {
+/** Real Camelback household board — not SAMPLE/lorem. */
+export function seedHouseholdBoard(db: AppDatabase): {
   householdId: string;
   inviteCode: string;
 } {
@@ -74,7 +75,7 @@ export function seedSampleHousehold(db: AppDatabase): {
   const code = inviteCode();
   db.prepare(
     "INSERT INTO households (id, name, invite_code, created_at) VALUES (?, ?, ?, ?)"
-  ).run(householdId, "Our place", code, now);
+  ).run(householdId, "Camelback bungalow", code, now);
 
   const brandon = id("m");
   const partner = id("m");
@@ -83,9 +84,9 @@ export function seedSampleHousehold(db: AppDatabase): {
   ).run(brandon, householdId, "Brandon", MEMBER_COLORS[0], "owner", now);
   db.prepare(
     "INSERT INTO members (id, household_id, name, color, role, created_at) VALUES (?, ?, ?, ?, ?, ?)"
-  ).run(partner, householdId, "Alex", MEMBER_COLORS[1], "member", now);
+  ).run(partner, householdId, "Jordan", MEMBER_COLORS[1], "member", now);
 
-  const roomDefs = ["Kitchen", "Bath", "Living", "Laundry"];
+  const roomDefs = ["Kitchen", "Hall bath", "Living", "Laundry", "Garage bay"];
   const roomIds: string[] = [];
   roomDefs.forEach((name, i) => {
     const rid = id("r");
@@ -102,15 +103,16 @@ export function seedSampleHousehold(db: AppDatabase): {
     n: number;
     assignee?: string;
   }> = [
-    { title: "Wipe counters", room: 0, kind: "daily", n: 1, assignee: brandon },
-    { title: "Empty dishwasher", room: 0, kind: "daily", n: 1, assignee: partner },
-    { title: "Mop kitchen floor", room: 0, kind: "weekly", n: 1 },
-    { title: "Scrub shower", room: 1, kind: "every_n_days", n: 5 },
-    { title: "Restock soap", room: 1, kind: "weekly", n: 2 },
-    { title: "Vacuum living", room: 2, kind: "weekly", n: 1, assignee: brandon },
-    { title: "Dust shelves", room: 2, kind: "monthly", n: 1 },
-    { title: "Start laundry", room: 3, kind: "every_n_days", n: 3, assignee: partner },
+    { title: "Wipe island after dinner", room: 0, kind: "daily", n: 1, assignee: brandon },
+    { title: "Run & empty dishwasher", room: 0, kind: "daily", n: 1, assignee: partner },
+    { title: "Mop sticky kitchen tiles", room: 0, kind: "weekly", n: 1 },
+    { title: "Scrub hall shower glass", room: 1, kind: "every_n_days", n: 5 },
+    { title: "Restock soap & TP", room: 1, kind: "weekly", n: 2, assignee: partner },
+    { title: "Vacuum living rug", room: 2, kind: "weekly", n: 1, assignee: brandon },
+    { title: "Dust shelves & frames", room: 2, kind: "monthly", n: 1 },
+    { title: "Start desert-dust laundry", room: 3, kind: "every_n_days", n: 3, assignee: partner },
     { title: "Fold & put away", room: 3, kind: "every_n_days", n: 3 },
+    { title: "Sweep garage bay grit", room: 4, kind: "weekly", n: 1, assignee: brandon },
   ];
 
   const today = toISODate(new Date());
@@ -160,8 +162,8 @@ export function seedSampleHousehold(db: AppDatabase): {
   ).run(
     id("rcp"),
     householdId,
-    "Friday pasta",
-    "Boil water. Salt generously. Toss with olive oil + garlic. Shared fridge note: use the good Parmesan.",
+    "Friday skillet pasta",
+    "Boil salted water. Garlic + olive oil in the cast iron. Toss with the good Parmesan from Fry's.",
     now
   );
 
