@@ -312,19 +312,25 @@ export function BoardApp() {
           }}
         >
           <div className="billboard-ledger">
-            <p className="eyebrow">Fridge Magnet Board · Tileboard</p>
+            <div className="brand-row">
+              <span className="brand-mark" aria-hidden>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+                  <rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+                  <rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.6"/>
+                  <rect x="10" y="10" width="7" height="7" rx="1.5" fill="currentColor"/>
+                </svg>
+              </span>
+              <span className="brand-name">Tileboard</span>
+              <span className="brand-sep" aria-hidden>·</span>
+              <span className="brand-sub">Fridge Magnet Board</span>
+            </div>
             <div className="t-stagger is-shown">
               <h1 className="font-display t-stagger-line">
                 {board.household.name}
               </h1>
               <p
-                className="t-stagger-line t-stagger-line--2"
-                style={{
-                  color: "var(--ink-soft)",
-                  margin: "0.55rem 0 0",
-                  maxWidth: 480,
-                  fontSize: "1.05rem",
-                }}
+                className="t-stagger-line t-stagger-line--2 billboard-lede"
               >
                 Due on the fridge. Slap the magnet — done.
               </p>
