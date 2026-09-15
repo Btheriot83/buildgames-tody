@@ -1,0 +1,73 @@
+{
+  "slug": "tody",
+  "app": "Tileboard",
+  "demoUrl": "https://buildgames-tody.vercel.app",
+  "bar": "https://todyapp.com/",
+  "path": "/workspace/build-games/apps/tody",
+  "call": "WEAK",
+  "identity": "Fridge Magnet Board (Quiet Enamel craft)",
+  "identityFrozen": true,
+  "identityPath": "apps/tody/docs/IDENTITY.md",
+  "phaseA": {
+    "done": true,
+    "techniquesDone": [1, 2, 3, 4, 5, 6, 7, 8],
+    "lennyDiscoverPath": "apps/tody/docs/DISCOVER.md",
+    "lennyDefinePath": "apps/tody/docs/DEFINE.md",
+    "lennyDeliverPath": "apps/tody/docs/DELIVER.md",
+    "imagesGenerated": [
+      "public/art/enamel-quiet.png",
+      "public/art/empty-fridge.png",
+      "public/art/tomato-magnet.png",
+      "public/art/magnet-beat-1.png",
+      "public/art/magnet-beat-2.png",
+      "public/art/magnet-beat-3.png"
+    ],
+    "videoOrMotionPath": "src/components/StampMotion.tsx + ChoreTile slap reel",
+    "criticFreshContext": true,
+    "copyHandRewritten": true,
+    "phaseACommit": "a73cb3f",
+    "visibleDelta": "apps/tody/gauntlet/VISIBLE_DELTA.md"
+  },
+  "roundsCounted": 10,
+  "roundShas": [
+    "29d8c09",
+    "e532357",
+    "006978f",
+    "f36b8d3",
+    "c93c6dc",
+    "11b6abf",
+    "d8b38a1",
+    "ca3fb83",
+    "e5c34d4",
+    "69c1373"
+  ],
+  "shotCount": 17,
+  "barShotRounds": [5, 10],
+  "honestNotes": [
+    "WEAK full Anshu 1–8 craft reseed: Quiet Enamel Fridge Magnet Board (stainless photo ugliness killed; identity name kept).",
+    "Integrity r1–r10: separate rN commits + shots-r5; bar A/B on r5/r10; flat no-gradient held.",
+    "dream-loop target at gauntlet/shots-r5/dream-target.png used for magnet/aside closes.",
+    "Original todyapp.com still wins colorful room-grid marketing polish; candidate wins physical tomato-magnet Today job + local-first Quiet Enamel craft.",
+    "transitions.dev wired on real actions (toast/success-check/checkbox/number-pop/tabs/error-shake/panel-reveal/skeleton/texts-reveal)."
+  ],
+  "dreamLoop": {
+    "target": "gauntlet/shots-r5/dream-target.png",
+    "baseline": "gauntlet/shots-r5/r0-baseline.png"
+  },
+  "workbench": "apps/tody/gauntlet/workbench-r5.md",
+  "doNotMessageBrandon": true,
+  "finishedAtPt": "2026-09-14 11:54 PM PT",
+  "finishedAtUtc": "2026-09-15T06:54:28Z",
+  "branch": "feat/phase-b5-r5",
+  "head": "9e2e9b9",
+  "pr": "https://github.com/Btheriot83/buildgames-tody/pull/5",
+  "status": "done",
+  "vercel_deployment": "dpl_9fh7XpKsDmbN3Atu8JvLgKZv7K1b",
+  "vercel_inspect": "https://vercel.com/brandon-theriots-projects/buildgames-tody/9fh7XpKsDmbN3Atu8JvLgKZv7K1b",
+  "live_smoke": {
+    "url": "https://buildgames-tody.vercel.app/",
+    "http": 200,
+    "identity": "Fridge Magnet Board",
+    "jobTiles": 9
+  }
+}
