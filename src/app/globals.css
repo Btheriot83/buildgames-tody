@@ -1733,3 +1733,20 @@ body {
   background: #fffcf7 !important;
   border-color: var(--rule-strong) !important;
 }
+
+
+/* r9 — bar-gap: aside actions stack cleaner toward dream-target */
+.aside-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.45rem !important;
+}
+.aside-actions .btn { width: 100%; }
+.today-aside { padding: 1.05rem 1.1rem !important; }
+.shell { width: min(1100px, calc(100% - 1.5rem)); }
+@media (min-width: 900px) {
+  .today-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.7fr) !important;
+    gap: 1.15rem !important;
+  }
+}
