@@ -917,3 +917,28 @@ li:has(.member-dot) .member-dot {
   margin-top: 6px;
   opacity: 1 !important;
 }
+
+
+/* beat24 — mobile: sticky job strip + denser stack */
+@media (max-width: 860px) {
+  .job-strip {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--chalk) !important;
+    border-color: var(--ink) !important;
+    margin-left: -0.15rem;
+    margin-right: -0.15rem;
+  }
+  .job-strip .job-count {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .today-list { gap: 0.55rem !important; }
+  .chore-tile { padding: 0.85rem 0.8rem !important; }
+  .stamp-btn { width: 58px !important; height: 58px !important; }
+  .billboard-ledger h1 { font-size: 1.85rem !important; }
+  .today-aside { padding: 1rem !important; }
+}
