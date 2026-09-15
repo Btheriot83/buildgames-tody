@@ -1683,3 +1683,16 @@ body {
 .chore-tile[data-status="overdue"] {
   border-color: #c9a07a !important;
 }
+
+
+/* r6 — buttons: magnet discs closer to dream-target DONE stamps */
+.stamp-btn {
+  width: 72px !important;
+  height: 72px !important;
+}
+.stamp-btn::after {
+  font-size: 0.58rem !important;
+  bottom: 10px !important;
+  letter-spacing: 0.16em !important;
+}
+.stamp-btn svg { transform: translateY(-6px) scale(1.08) !important; }
