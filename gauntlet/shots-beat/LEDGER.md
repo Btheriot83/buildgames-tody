@@ -14,3 +14,5 @@
 | beat10 | Empty art border; room titles | beat10-home.png | Spottable empty craft |
 
 Stop rule: independent screenshot critic says candidate wins overall craft vs Tody, or 25 loops.
+
+| beat11 | Folio numerals readable | beat11-folio-nums.png | Spottable numeral weight |
