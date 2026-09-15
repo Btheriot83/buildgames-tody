@@ -196,3 +196,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Materials strip quieter so Due + magnets own the fold; less craft-fair clutter.
 - commit: 7e3e5a6
 - transitions: (none)
+
+## r27 — beauty-stamp
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r27-after-beauty-stamp.png
+- verdict: Stamp check + CTA corners consistent; residue meter thinner like Tody bars.
+- commit: bce6ecc
+- transitions: checkbox-check + toast on slap
