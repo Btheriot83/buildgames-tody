@@ -21,3 +21,4 @@ Stop rule: independent screenshot critic says candidate wins overall craft vs To
 
 | beat13 | Job strip main wrap + bottom rule on tiles | beat13-jobstrip.png | Spottable structure |
 | beat14 | Disclosure / button radius consistency | beat14-home.png | Spottable polish |
+| beat15 | Overdue ink pills + job-strip ink rule | beat15-contrast.png | Spottable contrast |

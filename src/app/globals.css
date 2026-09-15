@@ -750,3 +750,28 @@ select.field { min-height: 40px !important; }
 /* beat14 — summary disclosure letterpress */
 details summary.eyebrow { letter-spacing: 0.12em; }
 details .btn { border-radius: 2px; }
+
+
+/* beat15 — contrast: overdue ink weight + job-strip rule */
+.job-strip {
+  border-color: var(--ink) !important;
+  background: var(--chalk) !important;
+}
+.status-overdue {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+.status-due {
+  background: var(--tile) !important;
+  color: var(--slate-deep) !important;
+  border-color: var(--slate) !important;
+  font-weight: 700 !important;
+}
+.billboard-ledger > p:last-of-type,
+.billboard-ledger .t-stagger-line--2 {
+  color: var(--ink-soft) !important;
+  font-weight: 500;
+}
+.chore-meta { color: var(--ink-soft) !important; }
