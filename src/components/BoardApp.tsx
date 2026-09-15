@@ -48,6 +48,7 @@ export function BoardApp() {
   const [addError, setAddError] = useState(false);
   const [memberName, setMemberName] = useState("");
   const [exiting, setExiting] = useState<Set<string>>(new Set());
+  const [selectedRoomId, setSelectedRoomId] = useState<string | null>(null);
   const { toast, node: toastNode } = useToast();
 
   const refresh = useCallback((h: LocalHousehold) => {
@@ -708,8 +709,19 @@ export function BoardApp() {
                     return (
                       <li
                         key={room.id}
-                        className={`room-tile${hotN > 0 ? " is-hot" : ""}`}
+                        className={`room-tile${hotN > 0 ? " is-hot" : ""}${selectedRoomId === room.id ? " is-selected" : ""}`}
                         data-mark={mark}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() =>
+                          setSelectedRoomId((id) => (id === room.id ? null : room.id))
+                        }
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedRoomId((id) => (id === room.id ? null : room.id));
+                          }
+                        }}
                       >
                         <div className="room-tile-top">
                           <h2 className="room-tile-name">{room.name}</h2>
@@ -761,6 +773,60 @@ export function BoardApp() {
                     );
                   })}
                 </ul>
+                {selectedRoomId && (() => {
+                  const room = board.rooms.find((r) => r.id === selectedRoomId);
+                  const items = board.due.filter((d) => d.roomId === selectedRoomId);
+                  if (!room) return null;
+                  return (
+                    <div className="room-detail-plate tile" key={selectedRoomId}>
+                      <div className="room-detail-head">
+                        <h3 className="room-tile-name">{room.name}</h3>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-compact"
+                          onClick={() => setSelectedRoomId(null)}
+                        >
+                          Close
+                        </button>
+                      </div>
+                      <ul className="room-detail-list">
+                        {items.map((d) => (
+                          <li key={d.choreId}>
+                            <span className="later-title">{d.title}</span>
+                            <span className={`status-pill status-${d.status}`}>
+                              {d.status === "overdue"
+                                ? `Overdue · ${d.overdueDays}d`
+                                : d.status === "due"
+                                  ? "Due today"
+                                  : d.status}
+                            </span>
+                            <div
+                              className={`dirt-meter dirt-${
+                                d.status === "overdue" || d.status === "due"
+                                  ? d.status
+                                  : "ok"
+                              }`}
+                            >
+                              <div className="dirt-meter-track">
+                                {Array.from({ length: 6 }).map((_, i) => (
+                                  <span
+                                    key={i}
+                                    className={`dirt-seg${
+                                      i < Math.round(d.dirt * 6) ? " is-on" : ""
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                        {items.length === 0 && (
+                          <li className="room-tile-meta">No chores in this room yet.</li>
+                        )}
+                      </ul>
+                    </div>
+                  );
+                })()}
               </div>
             )}
 

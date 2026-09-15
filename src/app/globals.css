@@ -1166,3 +1166,55 @@ header.shell > div:first-child {
 }
 .streak-ring .eyebrow { font-size: 0.5rem !important; }
 .today-aside { padding: 0.95rem !important; }
+
+/* elevate4: Tody bar-gap — select room plate → chore bars detail */
+.room-tile {
+  cursor: pointer;
+}
+.room-tile.is-selected {
+  background: var(--chalk) !important;
+  border-color: var(--ink) !important;
+  border-bottom-width: 2px;
+  outline: 1px solid var(--ink);
+  outline-offset: 1px;
+}
+.room-tile:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 2px;
+}
+.room-detail-plate {
+  margin-top: 0.85rem;
+  padding: 1rem 1.05rem;
+  border: 1px solid var(--ink) !important;
+  border-radius: 2px;
+  background: var(--tile) !important;
+}
+.room-detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule);
+}
+.room-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+.room-detail-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 0.65rem;
+  align-items: baseline;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--rule);
+}
+.room-detail-list li:first-child { border-top: none; padding-top: 0; }
+.room-detail-list .dirt-meter {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+}
