@@ -143,3 +143,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Chrome tape/streak contrast holds; success-check still fires beside streak on slap.
 - commit: 4d0623f
 - transitions: success-check (.t-success-check) on magnet slap; skeleton-reveal on board load
+
+## r20 — bar-gap
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r20-after-bar-gap.png, gauntlet/shots-r4/r20-bar-todyapp.png
+- verdict: Live closer to dream-target density/CTA/type; original still wins colorful room marketing polish. Fridge Magnet Board locked.
+- commit: bb1cad1
+- transitions: toast + success-check + checkbox-check + number-pop + tabs-sliding + error-shake + panel-reveal on real actions

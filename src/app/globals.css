@@ -1059,3 +1059,16 @@ body {
   border-bottom: 4px solid var(--clay) !important;
 }
 footer, .shell > p, .backup-link { color: var(--ink-soft) !important; font-weight: 600; }
+
+
+/* r20 — coherence/dream close: shell + job strip final */
+.shell { width: min(1120px, calc(100% - 1.5rem)); }
+.job-strip {
+  border-width: 3px !important;
+  box-shadow: 6px 6px 0 var(--clay) !important;
+  background: #f4dfc0 !important;
+}
+.today-list-col .section-title { font-size: 1.4rem !important; }
+.chore-tile { border-radius: 2px !important; }
+/* flat hard bar reaffirm */
+*[style*="linear-gradient"], *[style*="radial-gradient"] { background-image: none !important; }
