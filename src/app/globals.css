@@ -1663,3 +1663,10 @@ body {
   border-color: var(--ink) !important;
   border-width: 1.5px !important;
 }
+
+
+/* r4 — bar-gap: denser Due list like Tody rows */
+.today-list { gap: 0.4rem !important; }
+.chore-tile { padding: 0.72rem 0.85rem !important; gap: 0.85rem !important; }
+.dirt-meter { margin-top: 0.28rem !important; }
+.job-strip { margin-bottom: 0.85rem !important; padding: 0.7rem 0.95rem !important; }
