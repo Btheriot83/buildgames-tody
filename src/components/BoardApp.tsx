@@ -481,7 +481,7 @@ export function BoardApp() {
                               gap: "0.45rem",
                             }}
                           >
-                            {later.slice(0, 6).map((d) => (
+                            {later.slice(0, 4).map((d) => (
                               <li
                                 key={d.choreId}
                                 className="tile later-card"
@@ -836,7 +836,7 @@ export function BoardApp() {
                   Shared history
                 </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Who checked what. Nothing rewritten in the dark.
+                  Who checked what.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
