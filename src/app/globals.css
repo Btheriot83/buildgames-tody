@@ -1881,3 +1881,35 @@ body {
   .job-strip { grid-template-columns: minmax(0, 1fr) auto !important; }
   .job-complete-stamp { display: none; }
 }
+
+/* r5 — contrast: 4-seg residue + labels toward dream / Tody bars (+ bar A/B) */
+.dirt-meter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+.dirt-meter-track {
+  height: 9px !important;
+  gap: 3px !important;
+  flex: 1;
+  min-width: 0;
+}
+.dirt-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
+.dirt-due .dirt-seg.is-on { background: #d4a017 !important; }
+.dirt-ok .dirt-seg.is-on { background: #3d8f78 !important; }
+.dirt-overdue .dirt-label { color: #9a2e22; }
+.dirt-due .dirt-label { color: #8a6a12; }
+.status-overdue {
+  letter-spacing: 0.05em !important;
+  font-size: 0.62rem !important;
+}
