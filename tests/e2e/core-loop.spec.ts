@@ -7,9 +7,9 @@ test("core loop: board loads, complete chore, history updates", async ({
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible({
     timeout: 30_000,
   });
-  await expect(page.getByRole("heading", { name: "Needs a hand" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Due now" })).toBeVisible();
 
-  const completeBtn = page.getByRole("button", { name: /Complete / }).first();
+  const completeBtn = page.locator(".stamp-btn").first();
   if (await completeBtn.count()) {
     await completeBtn.click();
     await expect(page.locator(".t-toast")).toContainText(/Done/i, {

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   computeDue,
   computeStreak,
+  dirtFill,
   frequencyIntervalDays,
   nextDueAfter,
   sortChoresByUrgency,
@@ -68,5 +69,36 @@ describe("local board seed", () => {
     expect(view.due.length).toBe(view.chores.length);
     expect(view.members.length).toBe(2);
     expect(view.household.invite_code).toHaveLength(6);
+  });
+});
+
+
+describe("dirt meter", () => {
+  it("pegs high when overdue", () => {
+    const d = computeDue({
+      choreId: "1",
+      title: "A",
+      roomId: "r",
+      frequency: { kind: "every_n_days", n: 5 },
+      lastCompletedAt: "2026-09-01T12:00:00.000Z",
+      createdAt: "2026-08-01T00:00:00.000Z",
+      today: "2026-09-14",
+    });
+    expect(d.status).toBe("overdue");
+    expect(d.dirt).toBeGreaterThan(0.8);
+    expect(d.dirt).toBeLessThanOrEqual(1);
+  });
+
+  it("dirtFill is bounded", () => {
+    const v = dirtFill({
+      frequency: { kind: "weekly", n: 1 },
+      lastCompletedAt: "2026-09-10T00:00:00.000Z",
+      createdAt: "2026-09-01T00:00:00.000Z",
+      today: "2026-09-14",
+      overdueDays: 0,
+      status: "due",
+    });
+    expect(v).toBeGreaterThanOrEqual(0);
+    expect(v).toBeLessThanOrEqual(1);
   });
 });

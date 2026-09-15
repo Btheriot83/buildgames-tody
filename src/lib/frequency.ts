@@ -16,6 +16,8 @@ export type ChoreDue = {
   dueAt: string; // ISO date (YYYY-MM-DD) when next due
   overdueDays: number;
   status: "due" | "overdue" | "ok" | "fresh";
+  /** 0..1 physical dirt pressure (Tody-style meter). 1 = max overdue. */
+  dirt: number;
 };
 
 const DAY_MS = 86_400_000;
@@ -57,6 +59,35 @@ export function frequencyIntervalDays(f: Frequency): number {
   }
 }
 
+
+/** Physical dirt fill 0..1 — rises through the interval, pegs at 1 when overdue. */
+export function dirtFill(opts: {
+  frequency: Frequency;
+  lastCompletedAt: string | null;
+  createdAt: string;
+  today: string;
+  overdueDays: number;
+  status: ChoreDue["status"];
+}): number {
+  const interval = Math.max(1, frequencyIntervalDays(opts.frequency));
+  const anchor = opts.lastCompletedAt
+    ? opts.lastCompletedAt.slice(0, 10)
+    : opts.createdAt.slice(0, 10);
+  const elapsed = Math.max(0, daysBetween(anchor, opts.today));
+  // Map elapsed/interval so due-today sits ~0.82 and overdue climbs to 1
+  let fill = elapsed / interval;
+  if (opts.status === "overdue") {
+    fill = Math.min(1, 0.82 + Math.min(opts.overdueDays, interval) / interval * 0.18);
+  } else if (opts.status === "due") {
+    fill = Math.min(0.86, Math.max(0.72, fill));
+  } else if (opts.status === "ok") {
+    fill = Math.min(0.55, Math.max(0.28, fill));
+  } else {
+    fill = Math.min(0.22, fill);
+  }
+  return Math.max(0, Math.min(1, Number(fill.toFixed(3))));
+}
+
 /** Next due date after a completion (or creation) date. */
 export function nextDueAfter(completedOn: string, f: Frequency): string {
   const n = Math.max(1, Math.floor(f.n || 1));
@@ -89,6 +120,15 @@ export function computeDue(opts: {
   else if (delta === 0) status = "due";
   else if (delta >= -1) status = "ok";
   else status = "fresh";
+  const overdueDays = Math.max(0, delta);
+  const dirt = dirtFill({
+    frequency: opts.frequency,
+    lastCompletedAt: opts.lastCompletedAt,
+    createdAt: opts.createdAt,
+    today: opts.today,
+    overdueDays,
+    status,
+  });
   return {
     choreId: opts.choreId,
     title: opts.title,
@@ -96,8 +136,9 @@ export function computeDue(opts: {
     frequency: opts.frequency,
     lastCompletedAt: opts.lastCompletedAt,
     dueAt,
-    overdueDays: Math.max(0, delta),
+    overdueDays,
     status,
+    dirt,
   };
 }
 

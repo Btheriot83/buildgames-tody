@@ -366,6 +366,8 @@ export async function addChoreLocal(
     title: string;
     roomId: string;
     frequencyKind: FrequencyKind;
+    frequencyN?: number;
+    notes?: string;
     createdBy: string;
   }
 ): Promise<LocalHousehold> {
@@ -377,9 +379,9 @@ export async function addChoreLocal(
         id: rid("c"),
         roomId: opts.roomId,
         title: opts.title,
-        notes: "",
+        notes: opts.notes ?? "",
         frequencyKind: opts.frequencyKind,
-        frequencyN: 1,
+        frequencyN: Math.max(1, opts.frequencyN ?? 1),
         assigneeId: null,
         private: false,
         createdBy: opts.createdBy,

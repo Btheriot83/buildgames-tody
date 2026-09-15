@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { frequencyLabel, type FrequencyKind } from "@/lib/frequency";
+import type { FrequencyKind } from "@/lib/frequency";
 import {
   addChoreLocal,
   addMemberLocal,
@@ -15,11 +15,15 @@ import {
   type BoardView,
   type LocalHousehold,
 } from "@/lib/local-board";
+import type { PlannedChore } from "@/lib/plan-chores";
 import { WaterShader } from "./WaterShader";
 import { useToast } from "./Toast";
 import { SlidingTabs } from "./SlidingTabs";
 import { SuccessCheck } from "./SuccessCheck";
 import { NumberPop } from "./NumberPop";
+import { ChoreTile } from "./ChoreTile";
+import { PlanPanel } from "./PlanPanel";
+import { StampMotion } from "./StampMotion";
 
 type Board = BoardView;
 
@@ -44,7 +48,7 @@ export function BoardApp() {
   const [addFreq, setAddFreq] = useState<FrequencyKind>("weekly");
   const [addError, setAddError] = useState(false);
   const [memberName, setMemberName] = useState("");
-  const [offline, setOffline] = useState(true);
+  const [exiting, setExiting] = useState<Set<string>>(new Set());
   const { toast, node: toastNode } = useToast();
 
   const refresh = useCallback((h: LocalHousehold) => {
@@ -59,8 +63,6 @@ export function BoardApp() {
     try {
       const h = await loadHousehold();
       refresh(h);
-      setOffline(true); // local-first; server optional
-      // Optional server mirror (ignore failures — Vercel may lack writable FS)
       try {
         await fetch("/api/board", { cache: "no-store" });
       } catch {
@@ -94,16 +96,29 @@ export function BoardApp() {
   async function complete(choreId: string) {
     if (!household || !activeMember) return;
     setCompleting(choreId);
+    setExiting((prev) => new Set(prev).add(choreId));
     try {
       const next = await completeLocal(household, choreId, activeMember.id);
+      // brief hold so exit animation can finish feeling physical
+      await new Promise((r) => setTimeout(r, 180));
       refresh(next);
       setJustDone(true);
       setTimeout(() => setJustDone(false), 1200);
       toast(`Done — ${activeMember.name}`);
     } catch (e) {
+      setExiting((prev) => {
+        const n = new Set(prev);
+        n.delete(choreId);
+        return n;
+      });
       toast(e instanceof Error ? e.message : "Could not complete");
     } finally {
       setCompleting(null);
+      setExiting((prev) => {
+        const n = new Set(prev);
+        n.delete(choreId);
+        return n;
+      });
     }
   }
 
@@ -111,7 +126,11 @@ export function BoardApp() {
     if (!household) return;
     const next = await undoLocal(household);
     refresh(next);
-    toast(next.undoStack.length < (household.undoStack.length) ? "Undone" : "Nothing to undo");
+    toast(
+      next.undoStack.length < household.undoStack.length
+        ? "Undone"
+        : "Nothing to undo"
+    );
   }
 
   async function setActive(memberId: string) {
@@ -135,14 +154,44 @@ export function BoardApp() {
     refresh(next);
     setAddTitle("");
     setShowAdd(false);
-    toast("Chore added to the tile wall");
+    toast("Tile placed");
   }
 
   async function addMember() {
     if (!household || !memberName.trim()) return;
     refresh(await addMemberLocal(household, memberName.trim()));
     setMemberName("");
-    toast("Member joined");
+    toast("Added to the house");
+  }
+
+  async function acceptPlan(chores: PlannedChore[], plannedRoom: string) {
+    if (!household || !activeMember) return;
+    let h = household;
+    // find or create room by name
+    let room =
+      h.rooms.find(
+        (r) => r.name.toLowerCase() === plannedRoom.toLowerCase()
+      ) ?? null;
+    if (!room) {
+      // reuse first room if names don't match closely — keep simple
+      room = h.rooms[0] ?? null;
+    }
+    if (!room) {
+      toast("Add a room first");
+      return;
+    }
+    for (const c of chores) {
+      h = await addChoreLocal(h, {
+        title: c.title,
+        roomId: room.id,
+        frequencyKind: c.frequencyKind,
+        frequencyN: c.frequencyN,
+        createdBy: activeMember.id,
+        notes: c.notes,
+      });
+    }
+    refresh(h);
+    toast(`Stamped ${chores.length} new tiles onto the board`);
   }
 
   async function exportJson() {
@@ -155,7 +204,7 @@ export function BoardApp() {
     a.href = URL.createObjectURL(blob);
     a.download = "tileboard-backup.json";
     a.click();
-    toast("Backup downloaded");
+    toast("Backup saved");
   }
 
   async function importJson(file: File) {
@@ -164,16 +213,19 @@ export function BoardApp() {
       const payload = JSON.parse(text);
       const next = await importLocalJSON(payload);
       refresh(next);
-      toast("Household restored");
+      toast("Restored");
     } catch (e) {
       toast(e instanceof Error ? e.message : "Import failed");
     }
   }
 
-    const todayDue = useMemo(() => {
+  const todayDue = useMemo(() => {
     if (!board) return [];
-    return board.due.filter((d) => d.status === "due" || d.status === "overdue");
-  }, [board]);
+    return board.due.filter(
+      (d) =>
+        (d.status === "due" || d.status === "overdue") && !exiting.has(d.choreId)
+    );
+  }, [board, exiting]);
 
   const later = useMemo(() => {
     if (!board) return [];
@@ -185,12 +237,37 @@ export function BoardApp() {
       <main className="shell" style={{ padding: "3rem 0" }}>
         <div className="t-skel tile" style={{ padding: "1.5rem", minHeight: 120 }}>
           <div className="t-skel-skeleton is-pulsing">
-            <div style={{ height: 18, width: "40%", background: "var(--chalk)", marginBottom: 12, borderRadius: 4 }} />
-            <div style={{ height: 14, width: "70%", background: "var(--chalk)", marginBottom: 8, borderRadius: 4 }} />
-            <div style={{ height: 14, width: "55%", background: "var(--chalk)", borderRadius: 4 }} />
+            <div
+              style={{
+                height: 18,
+                width: "40%",
+                background: "var(--chalk)",
+                marginBottom: 12,
+                borderRadius: 4,
+              }}
+            />
+            <div
+              style={{
+                height: 14,
+                width: "70%",
+                background: "var(--chalk)",
+                marginBottom: 8,
+                borderRadius: 4,
+              }}
+            />
+            <div
+              style={{
+                height: 14,
+                width: "55%",
+                background: "var(--chalk)",
+                borderRadius: 4,
+              }}
+            />
           </div>
         </div>
-        <p className="eyebrow" style={{ marginTop: "1rem" }}>Laying tiles…</p>
+        <p className="eyebrow" style={{ marginTop: "1rem" }}>
+          Laying tiles…
+        </p>
       </main>
     );
   }
@@ -217,42 +294,78 @@ export function BoardApp() {
     <>
       <WaterShader />
       {toastNode}
-      <header className="shell no-print" style={{ paddingTop: "1.5rem", paddingBottom: "1rem" }}>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", justifyContent: "space-between", alignItems: "flex-end" }}>
+      <StampMotion play={justDone} />
+      <header
+        className="shell no-print"
+        style={{ paddingTop: "1.5rem", paddingBottom: "1rem" }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "1rem",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+          }}
+        >
           <div>
-            <p className="eyebrow">Tileboard · local-first</p>
+            <p className="eyebrow">Tileboard</p>
             <div className="t-stagger is-shown">
-              <h1 className="font-display t-stagger-line" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", margin: "0.2rem 0 0", lineHeight: 1.05 }}>
+              <h1
+                className="font-display t-stagger-line"
+                style={{
+                  fontSize: "clamp(2rem, 5vw, 2.85rem)",
+                  margin: "0.2rem 0 0",
+                  lineHeight: 1.05,
+                }}
+              >
                 {board.household.name}
               </h1>
-              <p className="t-stagger-line t-stagger-line--2" style={{ color: "var(--ink-mute)", margin: "0.4rem 0 0", maxWidth: 420 }}>
-                Flexible chores. Neutral shared history. Your data stays yours.
+              <p
+                className="t-stagger-line t-stagger-line--2"
+                style={{
+                  color: "var(--ink-mute)",
+                  margin: "0.4rem 0 0",
+                  maxWidth: 440,
+                }}
+              >
+                What’s due. Press the clay stamp. Dirt wipes clean.
               </p>
             </div>
           </div>
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
-            <div className="streak-ring" style={{ ["--p" as string]: Math.min(100, board.streak.current * 12) }} title="Completion streak">
+            <div
+              className="streak-ring"
+              style={{ ["--p" as string]: Math.min(100, board.streak.current * 12) }}
+              title="Completion streak"
+            >
               <span>
                 <div style={{ fontSize: "1.1rem", fontWeight: 700 }}>
                   <NumberPop value={board.streak.current} />
                 </div>
-                <div className="eyebrow" style={{ fontSize: "0.55rem" }}>streak</div>
+                <div className="eyebrow" style={{ fontSize: "0.55rem" }}>
+                  streak
+                </div>
               </span>
             </div>
             <SuccessCheck show={justDone} />
           </div>
         </div>
 
-        {offline && (
-          <p className="eyebrow" style={{ color: "var(--sea)", marginTop: "0.75rem" }}>
-            Local-first · data in your browser (IndexedDB) · export anytime
-          </p>
-        )}
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "1.25rem", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.75rem",
+            marginTop: "1.25rem",
+            alignItems: "center",
+          }}
+        >
           <SlidingTabs tabs={TABS} value={tab} onChange={setTab} />
           <div style={{ flex: 1 }} />
-          <label className="eyebrow" htmlFor="who">Acting as</label>
+          <label className="eyebrow" htmlFor="who">
+            Acting as
+          </label>
           <select
             id="who"
             className="field"
@@ -271,209 +384,383 @@ export function BoardApp() {
 
       <main className="shell" style={{ paddingBottom: "5rem" }}>
         <div className="t-page-slide" data-page={tab === "stuff" ? "2" : "1"}>
-          <section className="t-page" data-page-id="1" style={{ display: tab === "stuff" ? "none" : "block" }}>
+          <section
+            className="t-page"
+            data-page-id="1"
+            style={{ display: tab === "stuff" ? "none" : "block" }}
+          >
             {tab === "today" && (
               <div className="t-skel is-revealed">
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
-                <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "minmax(0, 1.2fr) minmax(0, 0.8fr)" }}>
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.75rem" }}>
-                      <h2 className="font-display" style={{ fontSize: "1.35rem", margin: 0 }}>
-                        Needs a hand
-                      </h2>
-                      <span className="eyebrow">
-                        <NumberPop value={todayDue.length} /> due
-                      </span>
-                    </div>
-                    {todayDue.length === 0 ? (
-                      <div className="tile" style={{ padding: "1.5rem" }}>
-                        <p className="font-display" style={{ fontSize: "1.4rem", margin: 0 }}>
-                          Quiet board.
-                        </p>
-                        <p style={{ color: "var(--ink-mute)", marginBottom: 0 }}>
-                          Nothing overdue. Enjoy the linen silence — or add a chore.
-                        </p>
+                  <div
+                    className="today-grid"
+                    style={{
+                      display: "grid",
+                      gap: "1rem",
+                      gridTemplateColumns: "minmax(0, 1.35fr) minmax(0, 0.75fr)",
+                    }}
+                  >
+                    <div className="today-list-col">
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "baseline",
+                          marginBottom: "0.75rem",
+                        }}
+                      >
+                        <h2
+                          className="font-display"
+                          style={{ fontSize: "1.35rem", margin: 0 }}
+                        >
+                          Due now
+                        </h2>
+                        <span className="eyebrow">
+                          <NumberPop value={todayDue.length} /> due
+                        </span>
                       </div>
-                    ) : (
-                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.65rem" }}>
-                        {todayDue.map((d) => (
-                          <li
-                            key={d.choreId}
-                            className={`tile chore-tile${completing === d.choreId ? " is-completing" : ""}`}
-                            style={{ padding: "1rem 1.1rem", display: "flex", gap: "0.85rem", alignItems: "center" }}
+                      {todayDue.length === 0 ? (
+                        <div className="tile empty-quiet">
+                          <img
+                            src="/art/empty-quiet.png"
+                            alt="Folded linen on ceramic tiles — quiet board"
+                            width={280}
+                            height={280}
+                          />
+                          <p
+                            className="font-display"
+                            style={{ fontSize: "1.45rem", margin: 0 }}
                           >
-                            <div className="done-flash" />
-                            <button
-                              type="button"
-                              className="btn btn-clay"
-                              style={{ minWidth: 52, minHeight: 52, padding: 0, borderRadius: 8 }}
-                              aria-label={`Complete ${d.title}`}
-                              disabled={!!completing}
-                              onClick={() => void complete(d.choreId)}
-                            >
-                              ✓
-                            </button>
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div style={{ fontWeight: 650 }}>{d.title}</div>
-                              <div style={{ color: "var(--ink-mute)", fontSize: "0.85rem" }}>
-                                {roomName(d.roomId)} · {frequencyLabel(d.frequency)}
-                              </div>
-                            </div>
-                            <span className={`status-pill status-${d.status}`}>
-                              {d.status === "overdue" ? `${d.overdueDays}d late` : "due"}
-                            </span>
+                            All clear.
+                          </p>
+                          <p style={{ color: "var(--ink-mute)", marginBottom: 0 }}>
+                            No overdue tiles. Put the cloth down — or describe a room to plan.
+                          </p>
+                        </div>
+                      ) : (
+                        <ul className="today-list">
+                          {todayDue.map((d) => (
+                            <ChoreTile
+                              key={d.choreId}
+                              due={d}
+                              roomName={roomName(d.roomId)}
+                              busy={!!completing}
+                              onComplete={complete}
+                            />
+                          ))}
+                        </ul>
+                      )}
+
+                      {later.length > 0 && (
+                        <div style={{ marginTop: "1.75rem" }}>
+                          <h3 className="eyebrow" style={{ marginBottom: "0.6rem" }}>
+                            Later
+                          </h3>
+                          <ul
+                            style={{
+                              listStyle: "none",
+                              padding: 0,
+                              margin: 0,
+                              display: "grid",
+                              gap: "0.45rem",
+                            }}
+                          >
+                            {later.slice(0, 6).map((d) => (
+                              <li
+                                key={d.choreId}
+                                className="tile"
+                                style={{
+                                  padding: "0.75rem 1rem",
+                                  display: "grid",
+                                  gap: "0.35rem",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    gap: "0.5rem",
+                                  }}
+                                >
+                                  <span>{d.title}</span>
+                                  <span className="eyebrow">{d.dueAt}</span>
+                                </div>
+                                <div
+                                  className="dirt-meter dirt-ok"
+                                  style={{ opacity: 0.85 }}
+                                >
+                                  <div className="dirt-meter-track">
+                                    {Array.from({ length: 8 }).map((_, i) => (
+                                      <span
+                                        key={i}
+                                        className={`dirt-seg${
+                                          i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                        }`}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
+                      <h2
+                        className="font-display"
+                        style={{ fontSize: "1.2rem", marginTop: 0 }}
+                      >
+                        Household
+                      </h2>
+                      <p className="eyebrow">Invite · {board.household.invite_code}</p>
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          padding: 0,
+                          margin: "0.75rem 0",
+                          display: "grid",
+                          gap: "0.45rem",
+                        }}
+                      >
+                        {board.members.map((m) => (
+                          <li
+                            key={m.id}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "0.55rem",
+                            }}
+                          >
+                            <span
+                              style={{
+                                width: 12,
+                                height: 12,
+                                borderRadius: "50%",
+                                background: m.color,
+                              }}
+                            />
+                            <span style={{ fontWeight: 600 }}>{m.name}</span>
+                            <span className="eyebrow">{m.role}</span>
                           </li>
                         ))}
                       </ul>
-                    )}
-
-                    {later.length > 0 && (
-                      <div style={{ marginTop: "1.75rem" }}>
-                        <h3 className="eyebrow" style={{ marginBottom: "0.6rem" }}>Coming up</h3>
-                        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.45rem" }}>
-                          {later.slice(0, 6).map((d) => (
-                            <li key={d.choreId} className="tile" style={{ padding: "0.75rem 1rem", display: "flex", justifyContent: "space-between", gap: "0.5rem" }}>
-                              <span>{d.title}</span>
-                              <span className="eyebrow">{d.dueAt}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  <aside className="tile" style={{ padding: "1.15rem", alignSelf: "start" }}>
-                    <h2 className="font-display" style={{ fontSize: "1.2rem", marginTop: 0 }}>Household</h2>
-                    <p className="eyebrow">Invite · {board.household.invite_code}</p>
-                    <ul style={{ listStyle: "none", padding: 0, margin: "0.75rem 0", display: "grid", gap: "0.45rem" }}>
-                      {board.members.map((m) => (
-                        <li key={m.id} style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}>
-                          <span style={{ width: 12, height: 12, borderRadius: "50%", background: m.color }} />
-                          <span style={{ fontWeight: 600 }}>{m.name}</span>
-                          <span className="eyebrow">{m.role}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div style={{ display: "flex", gap: "0.4rem" }}>
-                      <input
-                        className="field"
-                        placeholder="Add member"
-                        value={memberName}
-                        onChange={(e) => setMemberName(e.target.value)}
-                      />
-                      <button type="button" className="btn btn-ghost" onClick={() => void addMember()}>
-                        Add
-                      </button>
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "1rem" }}>
-                      <button type="button" className="btn btn-ghost" onClick={() => void undo()}>
-                        Undo
-                      </button>
-                      <button type="button" className="btn btn-ghost" onClick={() => setShowAdd((s) => !s)}>
-                        New chore
-                      </button>
-                      <a className="btn btn-ghost" href="/print" target="_blank" rel="noreferrer">
-                        Print plan
-                      </a>
-                      <button type="button" className="btn btn-primary" onClick={() => void exportJson()}>
-                        Export
-                      </button>
-                      <label className="btn btn-ghost" style={{ cursor: "pointer" }}>
-                        Import
+                      <div style={{ display: "flex", gap: "0.4rem" }}>
                         <input
-                          type="file"
-                          accept="application/json"
-                          hidden
-                          onChange={(e) => {
-                            const f = e.target.files?.[0];
-                            if (f) void importJson(f);
-                          }}
-                        />
-                      </label>
-                      <button
-                        type="button"
-                        className="btn btn-ghost"
-                        onClick={() => {
-                          if (!board) return;
-                          const header = "title,room,frequency,n,due,status";
-                          const rows = board.due.map((d) => {
-                            const ch = board.chores.find((c) => c.id === d.choreId);
-                            const room = board.rooms.find((r) => r.id === d.roomId)?.name ?? "";
-                            return [d.title, room, ch?.frequency_kind ?? "", ch?.frequency_n ?? "", d.dueAt, d.status]
-                              .map((x) => `"${String(x).replace(/"/g, '""')}"`)
-                              .join(",");
-                          });
-                          const blob = new Blob([[header, ...rows].join("\n")], { type: "text/csv" });
-                          const a = document.createElement("a");
-                          a.href = URL.createObjectURL(blob);
-                          a.download = "tileboard-chores.csv";
-                          a.click();
-                          toast("CSV downloaded");
-                        }}
-                      >
-                        CSV
-                      </button>
-                    </div>
-                    {showAdd && (
-                      <div className={`t-input-wrap${addError ? " is-error" : ""}`} style={{ marginTop: "1rem" }}>
-                        <label className="label">Title</label>
-                        <input
-                          className={`field${addError ? " t-error" : ""}`}
-                          value={addTitle}
-                          onChange={(e) => {
-                            setAddTitle(e.target.value);
-                            setAddError(false);
-                          }}
-                          placeholder="e.g. Wipe fridge"
-                        />
-                        <label className="label" style={{ marginTop: "0.6rem" }}>Room</label>
-                        <select
                           className="field"
-                          value={addRoom || board.rooms[0]?.id || ""}
-                          onChange={(e) => setAddRoom(e.target.value)}
+                          placeholder="Add member"
+                          value={memberName}
+                          onChange={(e) => setMemberName(e.target.value)}
+                        />
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          onClick={() => void addMember()}
                         >
-                          {board.rooms.map((r) => (
-                            <option key={r.id} value={r.id}>{r.name}</option>
-                          ))}
-                        </select>
-                        <label className="label" style={{ marginTop: "0.6rem" }}>Frequency</label>
-                        <select
-                          className="field"
-                          value={addFreq}
-                          onChange={(e) => setAddFreq(e.target.value as FrequencyKind)}
-                        >
-                          <option value="daily">Daily</option>
-                          <option value="every_n_days">Every few days</option>
-                          <option value="weekly">Weekly</option>
-                          <option value="monthly">Monthly</option>
-                        </select>
-                        {addError && <p className="t-error-msg">Add a title and room.</p>}
-                        <button type="button" className="btn btn-clay" style={{ marginTop: "0.75rem", width: "100%" }} onClick={() => void addChore()}>
-                          Place tile
+                          Add
                         </button>
                       </div>
-                    )}
-                  </aside>
-                </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: "0.5rem",
+                          marginTop: "1rem",
+                        }}
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          onClick={() => void undo()}
+                        >
+                          Undo
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          onClick={() => setShowAdd((s) => !s)}
+                        >
+                          New chore
+                        </button>
+                        <PlanPanel onAccept={acceptPlan} />
+                      </div>
+                      <details style={{ marginTop: "0.85rem" }}>
+                        <summary className="eyebrow" style={{ cursor: "pointer" }}>
+                          Backup & print
+                        </summary>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexWrap: "wrap",
+                            gap: "0.5rem",
+                            marginTop: "0.65rem",
+                          }}
+                        >
+                          <a
+                            className="btn btn-ghost"
+                            href="/print"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Print plan
+                          </a>
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick={() => void exportJson()}
+                          >
+                            Export
+                          </button>
+                          <label className="btn btn-ghost" style={{ cursor: "pointer" }}>
+                            Import
+                            <input
+                              type="file"
+                              accept="application/json"
+                              hidden
+                              onChange={(e) => {
+                                const f = e.target.files?.[0];
+                                if (f) void importJson(f);
+                              }}
+                            />
+                          </label>
+                        </div>
+                      </details>
+                      {showAdd && (
+                        <div
+                          className={`t-input-wrap${addError ? " is-error" : ""}`}
+                          style={{ marginTop: "1rem" }}
+                        >
+                          <label className="label">Title</label>
+                          <input
+                            className={`field${addError ? " t-error" : ""}`}
+                            value={addTitle}
+                            onChange={(e) => {
+                              setAddTitle(e.target.value);
+                              setAddError(false);
+                            }}
+                            placeholder="e.g. Wipe fridge"
+                          />
+                          <label className="label" style={{ marginTop: "0.6rem" }}>
+                            Room
+                          </label>
+                          <select
+                            className="field"
+                            value={addRoom || board.rooms[0]?.id || ""}
+                            onChange={(e) => setAddRoom(e.target.value)}
+                          >
+                            {board.rooms.map((r) => (
+                              <option key={r.id} value={r.id}>
+                                {r.name}
+                              </option>
+                            ))}
+                          </select>
+                          <label className="label" style={{ marginTop: "0.6rem" }}>
+                            Frequency
+                          </label>
+                          <select
+                            className="field"
+                            value={addFreq}
+                            onChange={(e) =>
+                              setAddFreq(e.target.value as FrequencyKind)
+                            }
+                          >
+                            <option value="daily">Daily</option>
+                            <option value="every_n_days">Every few days</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                          </select>
+                          {addError && (
+                            <p className="t-error-msg">Add a title and room.</p>
+                          )}
+                          <button
+                            type="button"
+                            className="btn btn-clay"
+                            style={{ marginTop: "0.75rem", width: "100%" }}
+                            onClick={() => void addChore()}
+                          >
+                            Place tile
+                          </button>
+                        </div>
+                      )}
+                    </aside>
+                  </div>
                 </div>
               </div>
             )}
 
             {tab === "rooms" && (
               <div style={{ display: "grid", gap: "1rem" }}>
-                {board.rooms.map((room, idx) => {
+                {board.rooms.map((room) => {
                   const items = board.due.filter((d) => d.roomId === room.id);
                   return (
-                    <section key={room.id} className="tile" style={{ padding: "1.1rem", display: "grid", gridTemplateColumns: idx % 2 === 0 ? "1fr" : "1fr", gap: "0.5rem" }}>
-                      <h2 className="font-display" style={{ margin: 0, fontSize: "1.35rem" }}>{room.name}</h2>
-                      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: "0.4rem" }}>
+                    <section
+                      key={room.id}
+                      className="tile"
+                      style={{ padding: "1.1rem", display: "grid", gap: "0.5rem" }}
+                    >
+                      <h2
+                        className="font-display"
+                        style={{ margin: 0, fontSize: "1.35rem" }}
+                      >
+                        {room.name}
+                      </h2>
+                      <ul
+                        style={{
+                          listStyle: "none",
+                          padding: 0,
+                          margin: 0,
+                          display: "grid",
+                          gap: "0.55rem",
+                        }}
+                      >
                         {items.map((d) => (
-                          <li key={d.choreId} style={{ display: "flex", justifyContent: "space-between", gap: "0.5rem", borderTop: "1px solid var(--rule)", paddingTop: "0.45rem" }}>
-                            <span>{d.title}</span>
-                            <span className={`status-pill status-${d.status}`}>{d.status}</span>
+                          <li
+                            key={d.choreId}
+                            style={{
+                              display: "grid",
+                              gap: "0.3rem",
+                              borderTop: "1px solid var(--rule)",
+                              paddingTop: "0.5rem",
+                            }}
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                gap: "0.5rem",
+                              }}
+                            >
+                              <span>{d.title}</span>
+                              <span className={`status-pill status-${d.status}`}>
+                                {d.status}
+                              </span>
+                            </div>
+                            <div
+                              className={`dirt-meter dirt-${
+                                d.status === "overdue" || d.status === "due"
+                                  ? d.status
+                                  : "ok"
+                              }`}
+                            >
+                              <div className="dirt-meter-track">
+                                {Array.from({ length: 8 }).map((_, i) => (
+                                  <span
+                                    key={i}
+                                    className={`dirt-seg${
+                                      i < Math.round(d.dirt * 8) ? " is-on" : ""
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
                           </li>
                         ))}
-                        {items.length === 0 && <li style={{ color: "var(--ink-mute)" }}>No chores in this room yet.</li>}
+                        {items.length === 0 && (
+                          <li style={{ color: "var(--ink-mute)" }}>
+                            No chores in this room yet.
+                          </li>
+                        )}
                       </ul>
                     </section>
                   );
@@ -483,18 +770,39 @@ export function BoardApp() {
 
             {tab === "history" && (
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>Shared history</h2>
+                <h2 className="font-display" style={{ marginTop: 0 }}>
+                  Shared history
+                </h2>
                 <p style={{ color: "var(--ink-mute)", marginTop: 0 }}>
-                  Neutral log — every completion attributable, nothing quietly rewritten.
+                  Who stamped what. Nothing rewritten in the dark.
                 </p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.history.map((h) => (
-                    <li key={h.id} style={{ display: "grid", gridTemplateColumns: "10px 1fr auto", gap: "0.75rem", alignItems: "start", padding: "0.65rem 0", borderTop: "1px solid var(--rule)" }}>
-                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: h.member_color, marginTop: 6 }} />
+                    <li
+                      key={h.id}
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "10px 1fr auto",
+                        gap: "0.75rem",
+                        alignItems: "start",
+                        padding: "0.65rem 0",
+                        borderTop: "1px solid var(--rule)",
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: 10,
+                          height: 10,
+                          borderRadius: "50%",
+                          background: h.member_color,
+                          marginTop: 6,
+                        }}
+                      />
                       <div>
                         <strong>{h.chore_title}</strong>
                         <div style={{ color: "var(--ink-mute)", fontSize: "0.9rem" }}>
-                          {h.member_name}{h.note ? ` — ${h.note}` : ""}
+                          {h.member_name}
+                          {h.note ? ` — ${h.note}` : ""}
                         </div>
                       </div>
                       <time className="eyebrow" dateTime={h.completed_at}>
@@ -503,20 +811,42 @@ export function BoardApp() {
                     </li>
                   ))}
                   {board.history.length === 0 && (
-                    <li style={{ color: "var(--ink-mute)" }}>No completions yet. Tap a clay check to start the streak.</li>
+                    <li style={{ color: "var(--ink-mute)" }}>
+                      Empty log. Stamp one tile to begin.
+                    </li>
                   )}
                 </ul>
               </div>
             )}
           </section>
 
-          <section className="t-page" data-page-id="2" style={{ display: tab === "stuff" ? "block" : "none" }}>
-            <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
+          <section
+            className="t-page"
+            data-page-id="2"
+            style={{ display: tab === "stuff" ? "block" : "none" }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gap: "1rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              }}
+            >
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>Inventory</h2>
+                <h2 className="font-display" style={{ marginTop: 0 }}>
+                  Inventory
+                </h2>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {board.inventory.map((i) => (
-                    <li key={i.id} style={{ padding: "0.45rem 0", borderTop: "1px solid var(--rule)", display: "flex", justifyContent: "space-between" }}>
+                    <li
+                      key={i.id}
+                      style={{
+                        padding: "0.45rem 0",
+                        borderTop: "1px solid var(--rule)",
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <span>{i.name}</span>
                       <span className="eyebrow">{i.qty}</span>
                     </li>
@@ -524,11 +854,24 @@ export function BoardApp() {
                 </ul>
               </div>
               <div className="tile" style={{ padding: "1.15rem" }}>
-                <h2 className="font-display" style={{ marginTop: 0 }}>Household notes</h2>
+                <h2 className="font-display" style={{ marginTop: 0 }}>
+                  Household notes
+                </h2>
                 {board.recipes.map((r) => (
-                  <article key={r.id} style={{ borderTop: "1px solid var(--rule)", paddingTop: "0.75rem" }}>
+                  <article
+                    key={r.id}
+                    style={{ borderTop: "1px solid var(--rule)", paddingTop: "0.75rem" }}
+                  >
                     <h3 style={{ margin: "0 0 0.35rem" }}>{r.title}</h3>
-                    <p style={{ margin: 0, color: "var(--ink-soft)", whiteSpace: "pre-wrap" }}>{r.body}</p>
+                    <p
+                      style={{
+                        margin: 0,
+                        color: "var(--ink-soft)",
+                        whiteSpace: "pre-wrap",
+                      }}
+                    >
+                      {r.body}
+                    </p>
                   </article>
                 ))}
               </div>
@@ -537,10 +880,16 @@ export function BoardApp() {
         </div>
       </main>
 
-      <footer className="shell no-print" style={{ paddingBottom: "2rem", color: "var(--ink-mute)", fontSize: "0.85rem" }}>
+      <footer
+        className="shell no-print"
+        style={{
+          paddingBottom: "2rem",
+          color: "var(--ink-mute)",
+          fontSize: "0.85rem",
+        }}
+      >
         <p>
-          Tileboard is a personal Tody replacement — no accounts, no telemetry. Core loop is IndexedDB local-first; optional server sql.js for print/API.
-          Best streak: <NumberPop value={board.streak.best} />.
+          Tileboard. One stamp at a time. Best streak: <NumberPop value={board.streak.best} />.
         </p>
       </footer>
     </>

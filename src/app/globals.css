@@ -50,7 +50,7 @@
   --color-moss: var(--moss);
   --color-rule: var(--rule);
   --color-tile: var(--tile);
-  --font-serif: var(--font-fraunces);
+  --font-serif: var(--font-display);
   --font-sans: var(--font-source);
   --font-mono: var(--font-plex);
 }
@@ -63,8 +63,11 @@ body {
   background-color: var(--linen);
   background-image:
     url("/art/tile-grain.svg"),
-    radial-gradient(900px 500px at 0% 0%, rgba(61, 122, 122, 0.08), transparent 55%),
-    radial-gradient(700px 420px at 100% 10%, rgba(196, 92, 58, 0.07), transparent 50%);
+    linear-gradient(180deg, rgba(244,240,232,0.92), rgba(244,240,232,0.97)),
+    url("/art/ceramic-wash.png"),
+    radial-gradient(700px 380px at 0% 0%, rgba(61, 122, 122, 0.04), transparent 55%);
+  background-size: auto, auto, cover, auto;
+  background-blend-mode: normal, normal, soft-light, normal;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, sans-serif;
   line-height: 1.5;
@@ -77,8 +80,8 @@ a { color: inherit; text-decoration: none; }
 .font-display {
   font-family: var(--font-serif), Georgia, serif;
   font-optical-sizing: auto;
+  font-style: normal;
   font-weight: 550;
-  font-variation-settings: "SOFT" 30, "WONK" 0.5;
 }
 .font-mono { font-family: var(--font-mono), ui-monospace, monospace; }
 
@@ -143,23 +146,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.95rem;
 }
 
-/* Chore tile complete flip */
-.chore-tile {
-  position: relative;
-  overflow: hidden;
-  transition: border-color 200ms ease, transform 200ms cubic-bezier(0.22,1,0.36,1);
-}
-.chore-tile:hover { transform: translateY(-1px); }
-.chore-tile.is-completing {
-  border-color: var(--moss);
-}
-.chore-tile .done-flash {
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(61,122,122,0.12), rgba(196,92,58,0.1));
-  opacity: 0; pointer-events: none;
-  transition: opacity 300ms ease;
-}
-.chore-tile.is-completing .done-flash { opacity: 1; }
+/* old flip removed — see gauntlet physical complete below */
 
 .status-pill {
   display: inline-flex; align-items: center; gap: 0.35rem;
@@ -199,4 +186,234 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .chore-tile, .btn { transition: none !important; }
+}
+
+
+/* === Gauntlet: physical Today complete + dirt meter === */
+.chore-tile {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.95rem 1.05rem;
+  list-style: none;
+  transform-origin: 18% 50%;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 280ms ease,
+    max-height 320ms ease,
+    padding 280ms ease,
+    margin 280ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+  max-height: 220px;
+}
+.chore-tile.phase-press { transform: scale(0.985) translateY(1px); }
+.chore-tile.phase-stamp {
+  transform: scale(1.012);
+  border-color: var(--moss);
+  box-shadow: 0 1px 0 rgba(28,36,40,0.04), 0 10px 28px rgba(74,107,82,0.12);
+}
+.chore-tile.phase-wipe { border-color: var(--moss); }
+.chore-tile.phase-exit {
+  opacity: 0;
+  transform: translateX(18px) scale(0.98);
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border-width: 0;
+  overflow: hidden;
+}
+
+.stamp-btn {
+  position: relative;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(160, 72, 46, 0.45);
+  background: var(--clay);
+  color: #fff8f4;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 2px 0 rgba(160, 72, 46, 0.35),
+    0 8px 18px rgba(196, 92, 58, 0.18);
+  transition:
+    transform 140ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 160ms ease,
+    box-shadow 160ms ease;
+  --check-len: 15;
+}
+.chore-tile.phase-press .stamp-btn {
+  transform: scale(0.9) translateY(2px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.18),
+    0 1px 0 rgba(160, 72, 46, 0.3);
+}
+.chore-tile.phase-stamp .stamp-btn {
+  background: var(--moss);
+  border-color: rgba(74, 107, 82, 0.55);
+  transform: scale(1.06);
+  animation: stamp-spring 420ms cubic-bezier(0.34, 1.7, 0.64, 1);
+}
+@keyframes stamp-spring {
+  0% { transform: scale(0.86); }
+  55% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.stamp-btn:disabled { cursor: default; }
+.stamp-btn svg path { stroke: currentColor; }
+
+.stamp-particles {
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none;
+}
+.stamp-particles i {
+  position: absolute; left: 0; top: 0;
+  width: var(--psize, 2.5px); height: var(--psize, 2.5px);
+  border-radius: 50%;
+  background: var(--clay);
+  opacity: 0;
+}
+.chore-tile.is-bursting .stamp-particles i {
+  animation: stamp-burst var(--pdur, 520ms) ease-out var(--pdelay, 0ms) forwards;
+}
+@keyframes stamp-burst {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--px), var(--py)) scale(0.2); }
+}
+
+.chore-body { flex: 1; min-width: 0; display: grid; gap: 0.35rem; }
+.chore-title-row { display: flex; gap: 0.5rem; align-items: flex-start; justify-content: space-between; }
+.chore-title { font-weight: 650; font-size: 1.02rem; line-height: 1.25; }
+.chore-meta { color: var(--ink-mute); font-size: 0.84rem; }
+
+.dirt-meter { position: relative; margin-top: 0.2rem; }
+.dirt-meter-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  border-radius: 3px;
+  opacity: 0.22;
+  transition: width 280ms cubic-bezier(0.22,1,0.36,1), opacity 220ms ease;
+  pointer-events: none;
+}
+.dirt-overdue .dirt-meter-fill { background: var(--clay); }
+.dirt-due .dirt-meter-fill { background: #c9843a; }
+.dirt-ok .dirt-meter-fill { background: var(--moss); }
+.dirt-meter.is-wiping .dirt-meter-fill { width: 0% !important; opacity: 0; }
+.dirt-meter-track {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 3px;
+  height: 10px;
+}
+.dirt-seg {
+  border-radius: 2px;
+  background: rgba(28, 36, 40, 0.07);
+  border: 1px solid rgba(28, 36, 40, 0.04);
+  transition: background 220ms ease, transform 220ms ease, opacity 220ms ease;
+}
+.dirt-seg.is-on { transform: scaleY(1.05); }
+.dirt-overdue .dirt-seg.is-on { background: linear-gradient(180deg, #d97852, var(--clay)); }
+.dirt-due .dirt-seg.is-on { background: linear-gradient(180deg, #e0a35a, #c9843a); }
+.dirt-ok .dirt-seg.is-on { background: linear-gradient(180deg, #6a9a78, var(--moss)); }
+.dirt-meter.is-wiping .dirt-seg.is-on {
+  background: rgba(74, 107, 82, 0.18) !important;
+  opacity: 0.35;
+  transform: scaleY(0.7);
+}
+.dirt-wipe {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(250,247,241,0) 0%, rgba(250,247,241,0.85) 40%, rgba(250,247,241,0) 100%);
+  transform: translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+.dirt-meter.is-wiping .dirt-wipe {
+  opacity: 1;
+  animation: dirt-wipe 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes dirt-wipe {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+.today-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+
+.empty-quiet {
+  text-align: center;
+  padding: 1.75rem 1.25rem 1.5rem;
+}
+.empty-quiet img {
+  width: min(280px, 70%);
+  height: auto;
+  border-radius: 6px;
+  margin: 0 auto 1rem;
+  display: block;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+}
+
+.plan-panel textarea.field { font: inherit; }
+
+@media (max-width: 860px) {
+  .today-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chore-tile, .stamp-btn, .dirt-seg, .dirt-wipe { animation: none !important; transition: none !important; }
+  .chore-tile.phase-exit { opacity: 0.4; }
+}
+
+/* Tech 5 — stamp keyframe reel */
+.stamp-motion {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 5.5rem;
+  width: 120px;
+  height: 120px;
+  z-index: 50;
+  pointer-events: none;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow);
+  background: var(--tile);
+  animation: stamp-motion-in 180ms ease-out;
+}
+.stamp-motion-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 160ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stamp-motion-frame.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+.stamp-motion-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(244,240,232,0.35));
+  pointer-events: none;
+}
+@keyframes stamp-motion-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stamp-motion { display: none; }
+}
+
+
+/* Phase B R2 — Today hierarchy: list owns the thumb zone on mobile */
+@media (max-width: 860px) {
+  .today-aside { order: 2; }
+  .today-list-col { order: 1; }
+  .today-grid { display: flex !important; flex-direction: column; }
+  .stamp-btn { width: 64px; height: 64px; border-radius: 12px; }
 }

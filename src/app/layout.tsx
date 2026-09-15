@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
+import { Newsreader, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-display",
   display: "swap",
 });
 const source = Source_Sans_3({
@@ -20,9 +20,9 @@ const plex = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tileboard — household chore board",
+  title: "Tileboard — Today chores that feel done",
   description:
-    "Personal Tody replacement: flexible chore frequency, shared history, local-first PWA.",
+    "Household Today list with a physical complete stamp. Optional AI chore plan from a room description. Local-first.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Tileboard" },
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${source.variable} ${plex.variable}`}>
+      <body className={`${newsreader.variable} ${source.variable} ${plex.variable}`}>
         {children}
       </body>
     </html>
