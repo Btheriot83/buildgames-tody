@@ -1750,3 +1750,25 @@ body {
     gap: 1.15rem !important;
   }
 }
+
+
+/* r10 — coherence: quiet chrome + flat hard bar reaffirm */
+.magnet-tape {
+  opacity: 0.92 !important;
+  border-bottom-width: 2px !important;
+}
+.t-tabs {
+  border-radius: 999px !important;
+  padding: 4px !important;
+}
+.t-tabs-pill { border-radius: 999px !important; }
+.streak-ring {
+  width: 68px !important;
+  height: 68px !important;
+}
+.status-pill { border-radius: 999px !important; }
+/* flat hard bar */
+*[style*="linear-gradient"], *[style*="radial-gradient"], *[style*="conic-gradient"] {
+  background-image: none !important;
+}
+.shader-bg, .t-clear-glow { display: none !important; }
