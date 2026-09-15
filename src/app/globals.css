@@ -1281,3 +1281,494 @@ body {
 .btn-ghost { border-radius: 4px !important; }
 /* final flat reaffirm */
 .shader-bg, .t-clear-glow { display: none !important; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   PHASE A WEAK RESEED — Quiet Enamel Fridge Magnet Board
+   Seed 84a38a6e… · flat no-gradient · lovable kitchen utility
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --linen: #f4f6f8;
+  --chalk: #eef1f4;
+  --ink: #1a1f24;
+  --ink-soft: #3c4650;
+  --ink-mute: #6a7580;
+  --sea: #2f5f9e;
+  --sea-deep: #234a7a;
+  --clay: #d63b2c;
+  --clay-deep: #b12e22;
+  --moss: #3d8f78;
+  --mustard: #d4a017;
+  --kraft: #f6e8d2;
+  --kraft-deep: #edd9b8;
+  --rule: #c5ccd4;
+  --rule-strong: #aeb6bf;
+  --tile: #ffffff;
+  --shadow: 2px 2px 0 rgba(26, 31, 36, 0.08);
+  --shadow-soft: 1px 1px 0 rgba(26, 31, 36, 0.06);
+}
+
+body {
+  background-color: var(--linen) !important;
+  background-image: url("/art/enamel-quiet.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: var(--ink) !important;
+}
+
+/* Quiet brand strip — not comic tape */
+.magnet-tape {
+  background: #1a1f24 !important;
+  color: #f4f6f8 !important;
+  border-bottom: 2px solid var(--clay) !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+  padding: 0.35rem 1rem !important;
+  opacity: 1 !important;
+  display: flex !important;
+  gap: 1.25rem !important;
+  justify-content: center !important;
+  text-transform: uppercase;
+  font-family: var(--font-mono), monospace;
+}
+.magnet-tape span:nth-child(2) { color: #ffb4a8; font-weight: 600; }
+
+/* Soft tiles — hairline steel, no neo-brutal offsets */
+.tile {
+  background: var(--tile) !important;
+  border: 1px solid var(--rule) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: 10px !important;
+}
+.chore-tile {
+  background: var(--kraft) !important;
+  border: 1px solid #d9c7a8 !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: 12px !important;
+  padding: 0.9rem 1rem !important;
+  gap: 1rem !important;
+}
+.later-card {
+  background: #faf8f4 !important;
+  border: 1px solid var(--rule) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  border-radius: 8px !important;
+}
+
+/* Tomato magnet with real enamel photo face */
+.stamp-btn {
+  width: 68px !important;
+  height: 68px !important;
+  border-radius: 50% !important;
+  border: 2px solid #fff8f4 !important;
+  background-color: var(--clay) !important;
+  background-image: url("/art/tomato-magnet.png") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  box-shadow:
+    0 0 0 2px var(--ink),
+    2px 2px 0 rgba(26, 31, 36, 0.2) !important;
+  color: #fff8f4 !important;
+  position: relative;
+  overflow: hidden;
+}
+.stamp-btn::before {
+  display: block !important;
+  content: "" !important;
+  position: absolute;
+  inset: 0;
+  background: rgba(214, 59, 44, 0.42) !important;
+  border-radius: 50%;
+  border: none !important;
+}
+.stamp-btn::after {
+  content: "DONE";
+  position: absolute;
+  bottom: 9px;
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 0.55rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  color: #fff !important;
+  z-index: 2;
+  opacity: 0.95;
+}
+.stamp-btn svg {
+  position: relative;
+  z-index: 2;
+  transform: translateY(-5px) !important;
+  color: #fff !important;
+}
+.stamp-btn svg path {
+  stroke: #fff !important;
+  opacity: 0.85 !important;
+}
+.chore-tile.phase-stamp .stamp-btn,
+.stamp-btn[aria-checked="true"] {
+  background-image: none !important;
+  background-color: var(--moss) !important;
+  box-shadow:
+    0 0 0 2px var(--ink),
+    2px 2px 0 rgba(26, 31, 36, 0.2) !important;
+}
+.chore-tile.phase-stamp .stamp-btn::before,
+.stamp-btn[aria-checked="true"]::before {
+  background: rgba(61, 143, 120, 0.15) !important;
+}
+
+/* Soft job strip */
+.job-strip {
+  background: #f3e6d0 !important;
+  border: 1px solid #d9c7a8 !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: 12px !important;
+  padding: 0.85rem 1.1rem !important;
+  margin-bottom: 1.1rem !important;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  align-items: center;
+}
+.job-strip .job-verb {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem) !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  letter-spacing: -0.02em !important;
+}
+.job-strip .job-hint {
+  grid-column: 1;
+  color: var(--ink-soft) !important;
+  font-size: 0.92rem !important;
+  font-weight: 500 !important;
+}
+.job-strip .job-count {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  background: var(--clay) !important;
+  color: #fff8f4 !important;
+  border: 1px solid var(--ink) !important;
+  border-radius: 8px !important;
+  padding: 0.55rem 0.75rem !important;
+  font-weight: 800 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  box-shadow: none !important;
+}
+
+/* Materials stay off the Today fold */
+.materials-row { display: none !important; }
+
+/* Quieter chrome */
+.billboard-ledger h1 {
+  font-size: clamp(1.75rem, 3.6vw, 2.35rem) !important;
+  font-weight: 550 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--ink) !important;
+  max-width: 18ch;
+}
+.billboard-ledger .eyebrow {
+  color: var(--sea) !important;
+  font-size: 0.66rem !important;
+  letter-spacing: 0.14em !important;
+}
+.billboard-ledger p {
+  color: var(--ink-soft) !important;
+  font-size: 1rem !important;
+  max-width: 34rem;
+}
+.section-title, .today-list-col .section-title {
+  font-size: 1.18rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--ink) !important;
+}
+.chore-title {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--ink) !important;
+}
+.chore-meta {
+  font-size: 0.78rem !important;
+  color: var(--ink-mute) !important;
+}
+.status-pill {
+  border-radius: 6px !important;
+  border: 1px solid var(--rule) !important;
+  font-weight: 650 !important;
+  background: #fff !important;
+}
+.status-overdue {
+  background: #fff1ee !important;
+  color: #8a2218 !important;
+  border-color: rgba(214, 59, 44, 0.4) !important;
+}
+.status-due {
+  background: #eef4fb !important;
+  color: var(--sea-deep) !important;
+  border-color: rgba(47, 95, 158, 0.35) !important;
+}
+
+/* Soft buttons — flat fills, hairline, no comic offset */
+.btn {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  border-width: 1px !important;
+  font-weight: 700 !important;
+  min-height: 44px;
+}
+.btn-primary {
+  background: var(--sea) !important;
+  color: #f7fbfb !important;
+  border-color: var(--sea-deep) !important;
+}
+.btn-clay {
+  background: var(--clay) !important;
+  color: #fff8f4 !important;
+  border-color: var(--clay-deep) !important;
+}
+.btn-ghost {
+  background: #fff !important;
+  color: var(--ink-soft) !important;
+  border: 1px solid var(--rule-strong) !important;
+  box-shadow: none !important;
+}
+
+/* Tabs soft */
+.t-tabs {
+  background: var(--chalk) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 10px !important;
+  padding: 3px !important;
+  box-shadow: none !important;
+}
+.t-tabs-pill {
+  border-radius: 8px !important;
+  border: 1px solid var(--rule) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+/* Streak quiet disc */
+.streak-ring {
+  border: 2px solid var(--ink) !important;
+  box-shadow: inset 0 0 0 5px #fff, 2px 2px 0 var(--clay) !important;
+  background: #fff !important;
+}
+
+/* Dirt residue — Tody-like thin segments */
+.dirt-meter-track { height: 6px !important; gap: 3px !important; }
+.dirt-seg { border-radius: 2px !important; background: rgba(26,31,36,0.08) !important; }
+.dirt-overdue .dirt-seg.is-on { background: #c94a3c !important; }
+.dirt-due .dirt-seg.is-on { background: #c9a04a !important; }
+.dirt-ok .dirt-seg.is-on { background: #4a9a82 !important; }
+
+/* Aside soft */
+.today-aside {
+  border-radius: 12px !important;
+  box-shadow: var(--shadow) !important;
+}
+.room-tile-flat {
+  border: 1px solid var(--rule) !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+}
+.room-chip {
+  border: 1px solid var(--rule) !important;
+  box-shadow: none !important;
+  border-radius: 999px !important;
+  background: var(--chalk) !important;
+}
+
+/* Empty state plate */
+.empty-quiet {
+  text-align: center;
+  padding: 1.5rem !important;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+.empty-quiet img {
+  width: min(220px, 70%);
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Hard bar: no decorative gradients / glass / glow */
+*[style*="linear-gradient"],
+*[style*="radial-gradient"],
+*[style*="conic-gradient"] { background-image: none !important; }
+.shader-bg, .t-clear-glow { display: none !important; }
+*[style*="backdrop-filter"], .glass, .glow {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+
+/* r1 — fonts: Due / chore optical toward dream-target */
+.today-list-col .section-title {
+  font-size: 1.32rem !important;
+  font-weight: 750 !important;
+  letter-spacing: -0.025em !important;
+}
+.chore-title {
+  font-size: 1.08rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+}
+.job-strip .job-verb {
+  font-size: clamp(1.15rem, 2.3vw, 1.4rem) !important;
+  letter-spacing: -0.022em !important;
+}
+
+
+/* r2 — contrast: kraft slips punch off quiet enamel */
+.chore-tile {
+  background: #f3e2c4 !important;
+  border-color: #cbb892 !important;
+}
+.status-overdue {
+  background: #ffe8e2 !important;
+  color: #7a1f16 !important;
+  border-color: rgba(214,59,44,0.55) !important;
+  font-weight: 750 !important;
+}
+.job-strip {
+  background: #f0dcc0 !important;
+  border-color: #cbb892 !important;
+}
+
+
+/* r3 — buttons: New chore tomato earns weight */
+.aside-actions .btn-clay {
+  font-size: 1.02rem !important;
+  min-height: 48px !important;
+  padding-inline: 1.15rem !important;
+  border-width: 1.5px !important;
+  border-color: var(--ink) !important;
+}
+.aside-actions .btn-ghost {
+  min-height: 48px !important;
+  color: var(--ink-mute) !important;
+  border-color: var(--rule) !important;
+}
+.aside-actions .btn-primary {
+  min-height: 48px !important;
+  border-color: var(--ink) !important;
+  border-width: 1.5px !important;
+}
+
+
+/* r4 — bar-gap: denser Due list like Tody rows */
+.today-list { gap: 0.4rem !important; }
+.chore-tile { padding: 0.72rem 0.85rem !important; gap: 0.85rem !important; }
+.dirt-meter { margin-top: 0.28rem !important; }
+.job-strip { margin-bottom: 0.85rem !important; padding: 0.7rem 0.95rem !important; }
+
+
+/* r5 — contrast: residue segments + overdue heat toward Tody bars */
+.dirt-meter-track { height: 8px !important; gap: 2px !important; }
+.dirt-overdue .dirt-seg.is-on { background: #d63b2c !important; }
+.dirt-due .dirt-seg.is-on { background: #d4a017 !important; }
+.status-overdue {
+  letter-spacing: 0.04em !important;
+  font-size: 0.64rem !important;
+}
+.chore-tile[data-status="overdue"] {
+  border-color: #c9a07a !important;
+}
+
+
+/* r6 — buttons: magnet discs closer to dream-target DONE stamps */
+.stamp-btn {
+  width: 72px !important;
+  height: 72px !important;
+}
+.stamp-btn::after {
+  font-size: 0.58rem !important;
+  bottom: 10px !important;
+  letter-spacing: 0.16em !important;
+}
+.stamp-btn svg { transform: translateY(-6px) scale(1.08) !important; }
+
+
+/* r7 — fonts: household mark + meta utility */
+.billboard-ledger h1 {
+  font-size: clamp(1.85rem, 3.8vw, 2.5rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.032em !important;
+}
+.billboard-ledger p {
+  font-size: 1.02rem !important;
+  line-height: 1.4 !important;
+}
+.chore-meta {
+  font-size: 0.74rem !important;
+  letter-spacing: 0.01em;
+}
+.eyebrow {
+  font-size: 0.64rem !important;
+  letter-spacing: 0.13em !important;
+}
+
+
+/* r8 — contrast: Later quieter; Due kraft owns fold */
+.later-card {
+  background: #f7f4ef !important;
+  border-color: var(--rule) !important;
+  opacity: 0.88 !important;
+}
+.later-card .later-title { font-weight: 650 !important; color: var(--ink-soft) !important; }
+.today-aside {
+  border-color: var(--rule) !important;
+  background: #fffcfa !important;
+}
+.field {
+  background: #fffcf7 !important;
+  border-color: var(--rule-strong) !important;
+}
+
+
+/* r9 — bar-gap: aside actions stack cleaner toward dream-target */
+.aside-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0.45rem !important;
+}
+.aside-actions .btn { width: 100%; }
+.today-aside { padding: 1.05rem 1.1rem !important; }
+.shell { width: min(1100px, calc(100% - 1.5rem)); }
+@media (min-width: 900px) {
+  .today-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.7fr) !important;
+    gap: 1.15rem !important;
+  }
+}
+
+
+/* r10 — coherence: quiet chrome + flat hard bar reaffirm */
+.magnet-tape {
+  opacity: 0.92 !important;
+  border-bottom-width: 2px !important;
+}
+.t-tabs {
+  border-radius: 999px !important;
+  padding: 4px !important;
+}
+.t-tabs-pill { border-radius: 999px !important; }
+.streak-ring {
+  width: 68px !important;
+  height: 68px !important;
+}
+.status-pill { border-radius: 999px !important; }
+/* flat hard bar */
+*[style*="linear-gradient"], *[style*="radial-gradient"], *[style*="conic-gradient"] {
+  background-image: none !important;
+}
+.shader-bg, .t-clear-glow { display: none !important; }

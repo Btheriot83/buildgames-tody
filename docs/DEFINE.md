@@ -1,32 +1,34 @@
-# Define — Tileboard / Fridge Magnet Board (RESEED)
+# Define — Tileboard / Quiet Enamel Fridge Magnet Board (WEAK reseed)
 
-Phase A · Anshu techniques 3–5 · 2026-09-14 ~9:20 PM PT  
-Prior Bathhouse Ledger identity discarded per Brandon selective reseed.
+Phase A · Anshu techniques 3–5 · 2026-09-14 ~11:55 PM PT  
+Prior steel-photo Fridge Magnet craft discarded as ugly; identity name kept.
 
 ## Mobbin
-Mobbin MCP paid-plan gate. Bar: live https://todyapp.com/ + `gauntlet/screenshots/bar-todyapp.png` (segmented dirt bars, room chores, overdue color).
+Mobbin MCP paid-plan gate. Bar: live https://todyapp.com/ + `gauntlet/shots-r5/r0-bar-todyapp.png` (colorful room grid, segmented dirt, coral CTA).
 
 ## Technique 4 — Images in UI
 | Asset | Path | Job | Use |
 |-------|------|-----|-----|
-| Empty fridge still | `public/art/empty-fridge.png` | db581f98… | Empty board + materials plate |
-| Enamel wash | `public/art/enamel-wash.png` | e20b7bec… | Body material wash |
-| Magnet beat 1–3 | `magnet-beat-1.png` … `3.png` | fe234fb1… / 34a1aca5… / f2db94b6… | Tech 5 reel + rail |
+| Quiet enamel wash | `public/art/enamel-quiet.png` (+ `enamel-wash.png`) | a2a9faf0… | Body material wash (white enamel, not stainless) |
+| Empty fridge still | `public/art/empty-fridge.png` | 33313513… | Empty board |
+| Tomato magnet face | `public/art/tomato-magnet.png` | 441b2f6d… | Stamp button face |
+| Magnet beat 1–3 | `magnet-beat-1.png` … `3.png` | 3641ded2… / f1c40e23… / 487e0c21… | Tech 5 reel |
+| Dream target | `.dream-loop/target.png` | b147f562… | Gauntlet close target |
 
 Higgsfield `gpt_image_2_5`. Not CSS blobs alone.
 
 ## Technique 5 — Motion craft
 - Core: magnet slap complete in `ChoreTile` (press → slap spring → check → residue wipe → exit)
 - Keyframe reel: `StampMotion` plays magnet-beat 1→2→3 on complete
-- transitions.dev supplemental (toast, tabs, check draw)
+- transitions.dev on real actions: toast, success-check, checkbox-check, number-pop, tabs-sliding, error-state-shake, panel-reveal, skeleton-reveal, texts-reveal
 
 ## Technique 3 — Fresh-context critic (screenshots only)
 
-### Critic A1 (Bathhouse live → Fridge Magnet Board)
-- Aesthetic named: Fridge Magnet Board (kitchen chore board)
-- Studio bar: Tody’s dirt bars + Instant household readability
-- Gaps closed vs bathhouse: metaphor no longer spa; tomato magnet + kraft cards + job strip “Today → stamp complete” readable in ≤3s
-- Penalize: leftover ceramic/bath copy — scrubbed
-- Score vs studio bar for *this* aesthetic: **9/10** (converged after job-strip + magnet affordance + real Camelback data)
+### Critic A1 (steel-photo ugly → Quiet Enamel)
+- Aesthetic named: Quiet Enamel Fridge Magnet Board
+- Studio bar: Tody dirt/room polish + lovable kitchen product
+- Gaps closed: stainless photo wash gone; neo-brutal thick borders softened to hairline; materials strip cut from fold; tomato magnet uses real enamel photo face
+- Penalize: leftover comic offsets / steel wash — scrubbed in Phase A CSS
+- Score vs studio bar for *this* aesthetic: **8.5/10** converging (still trails Tody colorful room marketing; wins physical magnet slap + local-first job)
 
-Screenshots: `gauntlet/screenshots/r2-phaseA-home.png`, `r2-phaseA-loop.png` (captured after local smoke).
+Screenshots: `gauntlet/shots-r5/r0-baseline.png` (before), Phase A after in `phaseA-after.png`.

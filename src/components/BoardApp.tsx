@@ -265,7 +265,7 @@ export function BoardApp() {
           </div>
         </div>
         <p className="eyebrow" style={{ marginTop: "1rem" }}>
-          Loading the fridge board…
+          Opening the fridge…
         </p>
       </main>
     );
@@ -293,9 +293,8 @@ export function BoardApp() {
     <>
       <div className="magnet-tape" aria-hidden>
         <span>Fridge Magnet Board</span>
-        <span>Today chores</span>
+        <span>Today</span>
         <span>Slap magnet</span>
-        <span>Done</span>
       </div>
       {toastNode}
       <StampMotion play={justDone} />
@@ -327,7 +326,7 @@ export function BoardApp() {
                   fontSize: "1.05rem",
                 }}
               >
-                What’s due on the fridge. Slap the magnet. Chore’s done.
+                Due on the fridge. Slap the magnet — done.
               </p>
             </div>
           </div>
@@ -391,26 +390,13 @@ export function BoardApp() {
               <div className="t-skel is-revealed">
                 <div className="t-skel-content" style={{ opacity: 1, filter: "none" }}>
                   <div className="job-strip" role="status">
-                    <p className="job-verb">Today → stamp complete</p>
+                    <p className="job-verb">Today → slap complete</p>
                     <p className="job-hint">
-                      Open Due today. Slap the red magnet on a chore. Residue wipes clean.
+                      Due today. Slap the tomato magnet. Residue wipes.
                     </p>
                     <span className="job-count">
                       <NumberPop value={todayDue.length} /> due
                     </span>
-                  </div>
-                  <div className="shell no-print materials-row" style={{ padding: "0 0 0.85rem", width: "100%" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 160px", gap: "0.65rem", alignItems: "stretch" }}>
-                      <figure className="fridge-plate">
-                        <img src="/art/empty-fridge.png" alt="" />
-                        <figcaption>Fridge Magnet Board — enamel · kraft · tomato magnet</figcaption>
-                      </figure>
-                      <div className="magnet-rail" aria-hidden>
-                        <img src="/art/magnet-beat-1.png" alt="" />
-                        <img src="/art/magnet-beat-2.png" alt="" />
-                        <img src="/art/magnet-beat-3.png" alt="" />
-                      </div>
-                    </div>
                   </div>
                   <div
                     className="today-grid"
@@ -448,10 +434,10 @@ export function BoardApp() {
                             className="section-title"
                             style={{ fontSize: "1.35rem", margin: 0 }}
                           >
-                            Board’s clear.
+                            Fridge is clear.
                           </p>
                           <p style={{ color: "var(--ink-mute)", marginBottom: 0 }}>
-                            Nothing due. Stick a new chore on the fridge — or describe a room to plan.
+                            Nothing due. Stick a chore — or plan a room.
                           </p>
                         </div>
                       ) : (
@@ -533,11 +519,11 @@ export function BoardApp() {
 
                     <aside className="tile today-aside" style={{ padding: "1.15rem", alignSelf: "start" }}>
                       <h2 className="section-title" style={{ marginTop: 0, fontSize: "1.05rem" }}>
-                        Who’s stamping
+                        Who’s on the fridge
                       </h2>
                       <p className="eyebrow">Invite · {board.household.invite_code}</p>
                       <p style={{ color: "var(--ink-mute)", fontSize: "0.88rem", margin: "0.35rem 0 0.6rem" }}>
-                        Pick yourself, then slap magnets on Due today.
+                        Pick yourself. Slap magnets on what’s due.
                       </p>
                       <ul
                         style={{

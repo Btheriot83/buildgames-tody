@@ -1,22 +1,11 @@
-# Visible delta — Tileboard RESEED (Fridge Magnet Board)
+# Visible delta — WEAK Phase A (Quiet Enamel Fridge Magnet Board)
 
-**Rule:** Spottable in ~3 seconds vs prior Bathhouse Ledger live demo.  
-**Identity:** New freeze — **Fridge Magnet Board** (Brandon selective reseed).  
-**Verdict:** Full Phase A reseed (not polish).
+**Before:** `gauntlet/shots-r5/r0-baseline.png` (live steel-photo craft)  
+**After:** `gauntlet/shots-r5/phaseA-after.png` (local Quiet Enamel)
 
-## Screenshots
-| | Path |
-| --- | --- |
-| **Before** (Bathhouse) | `gauntlet/screenshots/after-visible-home.png` |
-| **After** (Fridge Magnet) | `gauntlet/screenshots/r2-phaseA-home.png` |
-| **After loop** | `gauntlet/screenshots/r2-phaseA-loop.png` |
-| **Mobile** | `gauntlet/screenshots/r2-mobile.png` |
-
-## Five visible deltas (≤3s)
-1. **Black magnet tape** — `FRIDGE MAGNET BOARD / TODAY CHORES / SLAP MAGNET / DONE` replaces clay Bathhouse Ledger bar.
-2. **Job strip** — Kraft banner `Today → stamp complete` + red `N DUE` count — product job unmistakable.
-3. **Tomato magnet stamp** — Round red magnet with `DONE` label (not blank clay square).
-4. **Kraft chore cards** on enamel fridge field; household name **Camelback bungalow** with real chores (Wipe island, Sweep garage bay grit…).
-5. **Materials** — Empty fridge photo + circular magnet-beat rail (not ceramic wash plate).
-
-6. **Flat materials** — enamel photo + solid fills only; decorative gradients / glass blur / glow killed (Brandon Inkwell hard bar).
+Spottable in ≤3s:
+1. Body is quiet white enamel photo — brushed stainless steel wash is gone
+2. Chore cards use hairline kraft rules + soft radius — thick comic black borders gone
+3. Tomato magnet stamp shows real enamel magnet photography face
+4. Materials strip / magnet-beat rail removed from Today fold
+5. Copy: “Due on the fridge. Slap the magnet — done.” + “Today → slap complete”
