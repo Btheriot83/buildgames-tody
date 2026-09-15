@@ -307,7 +307,7 @@ export function BoardApp() {
           }}
         >
           <div className="billboard-ledger">
-            <p className="eyebrow">Cool Letterpress Checklist · Tileboard</p>
+            <p className="eyebrow">Tileboard</p>
             <div className="t-stagger is-shown">
               <h1 className="font-display t-stagger-line">
                 {board.household.name}
@@ -543,15 +543,6 @@ export function BoardApp() {
                           </button>
                         ))}
                       </div>
-                      <ul className="house-role-list">
-                        {board.members.map((m) => (
-                          <li key={m.id}>
-                            <span className="member-dot" aria-hidden />
-                            <span style={{ fontWeight: 600 }}>{m.name}</span>
-                            <span className="eyebrow">{m.role}</span>
-                          </li>
-                        ))}
-                      </ul>
                       <div style={{ display: "flex", gap: "0.4rem" }}>
                         <input
                           className="field"

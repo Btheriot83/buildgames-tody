@@ -1155,3 +1155,14 @@ header.shell > div:first-child {
 .tile, .chore-tile, .room-tile, .job-strip {
   box-shadow: none !important;
 }
+
+/* elevate3: cut-elements — less brand chrome, denser aside */
+.billboard-ledger > .eyebrow { letter-spacing: 0.12em; }
+.streak-ring {
+  min-width: 2.8rem !important;
+  min-height: 2.8rem !important;
+  padding: 0.3rem 0.4rem !important;
+  opacity: 0.92;
+}
+.streak-ring .eyebrow { font-size: 0.5rem !important; }
+.today-aside { padding: 0.95rem !important; }
