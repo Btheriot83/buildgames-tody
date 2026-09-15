@@ -1266,3 +1266,18 @@ body {
 }
 .stamp-btn svg { transform: translateY(-6px) scale(1.05) !important; }
 .stamp-btn svg path { opacity: 0.75 !important; stroke: #fff8f4 !important; }
+
+
+/* r32 — beauty: chrome polish vs todyapp cleanliness */
+.magnet-tape {
+  background: #1a1f24 !important;
+  border-bottom: 3px solid #d63b2c !important;
+  font-size: 0.62rem !important;
+  opacity: 0.95;
+}
+.billboard-ledger p { font-size: 0.98rem !important; color: #3c4650 !important; max-width: 36rem; }
+.t-tabs { border-radius: 8px !important; }
+.status-pill { font-weight: 650 !important; letter-spacing: 0.04em !important; }
+.btn-ghost { border-radius: 4px !important; }
+/* final flat reaffirm */
+.shader-bg, .t-clear-glow { display: none !important; }

@@ -231,3 +231,10 @@ Bar refs: `r0-bar-todyapp.png`, `r0-bar-method.png`
 - verdict: Double-ring magnet reads more physical without gradients; clearer slap target.
 - commit: e28714e
 - transitions: (none)
+
+## r32 — beauty-chrome
+- files: src/app/globals.css
+- shot: gauntlet/shots-r4/r32-after-beauty-chrome.png
+- verdict: Chrome quieter; candidate cleaner under Fridge Magnet — original still wins multi-room color marketing.
+- commit: ce41127
+- transitions: (none)
